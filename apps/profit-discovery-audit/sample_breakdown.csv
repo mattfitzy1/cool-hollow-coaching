@@ -1,0 +1,7 @@
+type,name,revenue,direct_cost
+customer,Acme Co,120000,70000
+customer,Beacon Retail,95000,82000
+customer,Cascade Group,60000,38000
+service,Core Service Package,200000,130000
+service,Add-on Consulting,55000,52000
+service,Rush Delivery Fee,20000,8000

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Without You - CFO Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  :root {
+    --deep-teal: #1F4E4A;
+    --deep-teal-hover: #163C38;
+    --sage: #A8B5A0;
+    --sage-soft: #D6DED0;
+    --sage-faint: #ECEFE7;
+    --off-white: #FAF8F3;
+    --cream: #F2EBDC;
+    --surface-raised: #FFFDF7;
+    --ink: #0E2B2A;
+    --body: #4A5957;
+    --muted: #7A8583;
+    --label: #2B4644;
+    --gold: #C89968;
+    --gold-soft: #E8CFA8;
+    --border: #E3DFD3;
+    --border-mid: #C9C3B1;
+    --callout-warning-bg: #FDF4C4;
+    --callout-warning-border: #E8D97A;
+    --callout-warning-text: #6B5A1F;
+    --shadow-std: rgba(42,60,58,0.10) 0px 8px 24px -8px, rgba(31,78,74,0.06) 0px 2px 8px 0px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Inter', -apple-system, 'SF Pro Display', system-ui, sans-serif;
+    color: var(--ink);
+    background: #d8d2c2;
+    font-feature-settings: "ss01" on;
+    -webkit-font-smoothing: antialiased;
+  }
+  body { scroll-snap-type: y mandatory; overflow-y: scroll; height: 100vh; }
+  .slide {
+    width: 100vw; height: 100vh; scroll-snap-align: start;
+    padding: 64px 96px 88px; position: relative; background: var(--off-white);
+    display: flex; flex-direction: column; justify-content: center; overflow: hidden;
+  }
+  .slide-num { position: absolute; top: 36px; right: 48px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .slide-tag { position: absolute; top: 36px; left: 96px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--deep-teal); font-weight: 600; }
+  .footnote { position: absolute; bottom: 32px; left: 96px; right: 96px; font-size: 11px; line-height: 1.5; color: var(--muted); font-style: italic; }
+  h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; color: var(--ink); }
+  h1 { font-size: 84px; line-height: 1.04; }
+  h2 { font-size: 48px; line-height: 1.1; margin-bottom: 16px; }
+  h3 { font-size: 24px; line-height: 1.2; }
+  .lede { font-size: 19px; line-height: 1.55; color: var(--body); max-width: 920px; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  .slide--title { padding: 0; }
+  .title-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; height: 100%; }
+  .title-panel { background: var(--deep-teal); display: flex; flex-direction: column; justify-content: space-between; padding: 80px; color: var(--off-white); position: relative; overflow: hidden; }
+  .title-panel::before { content: ''; position: absolute; right: -180px; bottom: -180px; width: 480px; height: 480px; border-radius: 50%; background: rgba(168,181,160,0.18); }
+  .wordmark { font-family: 'Fraunces', serif; font-size: 64px; font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
+  .wordmark .accent { color: var(--sage); }
+  .title-meta { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sage); font-weight: 500; }
+  .title-content { padding: 80px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+  .title-eyebrow { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--deep-teal); font-weight: 600; }
+  .title-content h1 { font-size: 66px; }
+  .title-tagline { font-family: 'Fraunces', serif; font-size: 26px; line-height: 1.35; color: var(--body); font-weight: 300; max-width: 560px; }
+  .title-byline { font-size: 14px; color: var(--muted); margin-top: auto; padding-top: 32px; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 40px; }
+  .stat { background: var(--surface-raised); border: 1px solid var(--border); border-radius: 14px; padding: 32px; box-shadow: var(--shadow-std); display: flex; flex-direction: column; gap: 10px; }
+  .stat-number { font-family: 'Fraunces', serif; font-size: 64px; line-height: 1; font-weight: 400; color: var(--deep-teal); letter-spacing: -0.02em; }
+  .stat-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--label); }
+  .stat-body { font-size: 14px; line-height: 1.5; color: var(--body); }
+
+  .modules { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 28px; }
+  .module { background: var(--surface-raised); border: 1px solid var(--border); border-left: 4px solid var(--deep-teal); border-radius: 10px; padding: 28px 32px; box-shadow: var(--shadow-std); display: flex; flex-direction: column; gap: 12px; }
+  .module-head { display: flex; align-items: center; gap: 12px; }
+  .module-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--deep-teal); background: var(--sage-faint); padding: 4px 10px; border-radius: 4px; }
+  .module-phase { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+  .module h3 { font-size: 22px; font-weight: 500; }
+  .module ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  .module li { font-size: 13.5px; line-height: 1.5; color: var(--body); padding-left: 14px; position: relative; }
+  .module li::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--sage); }
+  .module .why { font-size: 13px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 10px; margin-top: 2px; }
+  .module .why strong { color: var(--label); }
+
+  .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
+  .phase { background: var(--surface-raised); border: 1px solid var(--border); border-radius: 12px; padding: 26px 28px; box-shadow: var(--shadow-std); display: flex; flex-direction: column; gap: 12px; }
+  .phase-num { width: 40px; height: 40px; border-radius: 50%; background: var(--deep-teal); color: var(--off-white); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 20px; font-weight: 500; }
+  .phase h3 { font-size: 20px; font-weight: 500; }
+  .phase .phase-when { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+  .phase ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .phase li { font-size: 13px; line-height: 1.5; color: var(--body); padding-left: 16px; position: relative; }
+  .phase li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); }
+  .phase-gate { font-size: 11px; color: var(--callout-warning-text); background: var(--callout-warning-bg); padding: 6px 10px; border-radius: 4px; font-weight: 500; align-self: flex-start; }
+
+  .caps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 24px; }
+  .cap { background: var(--surface-raised); border: 1px solid var(--border); border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 8px; box-shadow: var(--shadow-std); }
+  .cap-icon { width: 34px; height: 34px; border-radius: 8px; background: var(--sage-faint); color: var(--deep-teal); display: flex; align-items: center; justify-content: center; }
+  .cap-icon svg { width: 18px; height: 18px; }
+  .cap h4 { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+  .cap p { font-size: 11.5px; line-height: 1.45; color: var(--body); }
+
+  .success-table { margin-top: 28px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-std); }
+  .success-row { display: grid; grid-template-columns: 1fr 1.4fr 1.6fr; gap: 0; }
+  .success-row.head { background: var(--deep-teal); color: var(--off-white); }
+  .success-row.head .success-cell { color: var(--off-white); font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .success-cell { padding: 16px 22px; border-right: 1px solid var(--border); font-size: 13.5px; line-height: 1.5; color: var(--body); }
+  .success-cell:last-child { border-right: none; }
+  .success-row:nth-child(odd):not(.head) { background: var(--sage-faint); }
+  .success-row strong { color: var(--ink); }
+
+  .humans { display: grid; grid-template-columns: 1fr; gap: 4px; margin-top: 28px; }
+  .human { display: grid; grid-template-columns: 32px 1fr; gap: 16px; align-items: start; padding: 16px 0; border-bottom: 1px solid var(--border); }
+  .human:last-child { border-bottom: none; }
+  .human-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--callout-warning-bg); color: var(--callout-warning-text); display: flex; align-items: center; justify-content: center; }
+  .human-icon svg { width: 16px; height: 16px; }
+  .human-text { font-size: 15px; line-height: 1.5; color: var(--body); }
+  .human-text strong { color: var(--ink); }
+
+  .next-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 36px; align-items: stretch; }
+  .step { background: var(--surface-raised); border: 1px solid var(--border); border-radius: 12px; padding: 20px 18px; box-shadow: var(--shadow-std); display: flex; flex-direction: column; gap: 8px; }
+  .step-num { width: 30px; height: 30px; border-radius: 50%; background: var(--sage-soft); color: var(--deep-teal); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+  .step h4 { font-family: 'Fraunces', serif; font-size: 16.5px; font-weight: 500; }
+  .step p { font-size: 12px; line-height: 1.45; color: var(--body); }
+  .step-when { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+
+  .slide--close { padding: 0; }
+  .close-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; height: 100%; }
+  .close-content { padding: 72px 80px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+  .close-content h2 { font-size: 56px; line-height: 1.08; }
+  .close-tagline { font-family: 'Fraunces', serif; font-size: 24px; line-height: 1.4; color: var(--body); font-weight: 300; max-width: 520px; }
+  .close-contact { background: var(--sage-faint); border-radius: 12px; padding: 26px 32px; max-width: 520px; }
+  .close-contact-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--body); }
+  .close-contact-row:last-child { border-bottom: none; }
+  .close-contact-row strong { color: var(--ink); font-weight: 600; }
+  .close-panel { background: var(--deep-teal); display: flex; flex-direction: column; justify-content: space-between; padding: 72px 80px; color: var(--off-white); position: relative; overflow: hidden; }
+  .close-panel::before { content: ''; position: absolute; right: -160px; bottom: -160px; width: 420px; height: 420px; border-radius: 50%; background: rgba(168,181,160,0.18); }
+  .close-panel-content { position: relative; z-index: 1; }
+  .close-panel h3 { font-family: 'Fraunces', serif; font-size: 30px; line-height: 1.25; color: var(--off-white); font-weight: 400; margin-bottom: 16px; }
+  .close-panel p { font-size: 14px; line-height: 1.55; color: var(--sage); max-width: 360px; }
+  .close-panel-meta { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sage); font-weight: 500; position: relative; z-index: 1; }
+
+  @media print {
+    body { overflow: visible; }
+    .slide { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 1: TITLE -->
+<section class="slide slide--title">
+  <div class="title-grid">
+    <div class="title-panel">
+      <div><div class="title-meta">For Cam, CFO</div></div>
+      <div class="wordmark">Cool Hollow<br>Coaching<span class="accent">.</span></div>
+      <div class="title-meta">Business Without You</div>
+    </div>
+    <div class="title-content">
+      <div class="title-eyebrow">CFO Briefing &middot; v1</div>
+      <h1>Where we stand,<br>and where this goes.</h1>
+      <p class="title-tagline">The curriculum, the funnel, and the AI build behind it, in one sitting.</p>
+      <div class="title-byline">Matt Fitzpatrick &middot; June 22, 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2: STATS - PROGRESS SO FAR -->
+<section class="slide">
+  <div class="slide-tag">Where We Stand</div>
+  <div class="slide-num">02 / 10</div>
+  <h2>What's actually been built.</h2>
+  <p class="lede">Before the offer or the funnel, here is the honest state of the build today. Pre-launch, but no longer just an idea on a page.</p>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Curriculum</span>
+      <div class="stat-number">7 / 26</div>
+      <p class="stat-body">Milestones and skills fully mapped and sequenced across 12 weeks, ready to script and record.</p>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Financial tools live</span>
+      <div class="stat-number">2</div>
+      <p class="stat-body">A free lead-magnet profit scanner, and the in-program Profit Discovery Audit for week 7, both working and tested.</p>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Clients / cohorts</span>
+      <div class="stat-number">0</div>
+      <p class="stat-body">Pre-launch by design. No Instagram page, no CRM, no cohort yet, that is what this deck proposes we fix next.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3: CURRICULUM - MODULE PAIR -->
+<section class="slide">
+  <div class="slide-tag">The Curriculum</div>
+  <div class="slide-num">03 / 10</div>
+  <h2>12 weeks, 7 milestones, one promise.</h2>
+  <p class="lede">15 hours back, plus a minimum of $50,000 in profit found. Every skill below produces a real asset, not a worksheet.</p>
+  <div class="modules">
+    <div class="module">
+      <div class="module-head"><span class="module-tag">Weeks 1-6</span><span class="module-phase">Operator Foundations</span></div>
+      <h3>Reclaim time, define direction, install truth.</h3>
+      <ul>
+        <li>M1: Reclaim the owner's time and identity</li>
+        <li>M2: Define the destination with precision</li>
+        <li>M3: Install the dashboard that tells the truth</li>
+        <li>M4: Break the binding constraint</li>
+      </ul>
+      <p class="why"><strong>Why first:</strong> nothing else sticks until the owner stops being the bottleneck.</p>
+    </div>
+    <div class="module">
+      <div class="module-head"><span class="module-tag">Weeks 7-12</span><span class="module-phase">Profit, Cash &amp; Team</span></div>
+      <h3>Find the money, secure the cash, build the bench.</h3>
+      <ul>
+        <li>M5: Discover the hidden profit ($50K+ target)</li>
+        <li>M6: Build cash confidence (13-week forecast)</li>
+        <li>M7: Build the team that builds the business</li>
+      </ul>
+      <p class="why"><strong>Why second:</strong> profit and team only compound once the owner has bandwidth and clarity to act on them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4: DELIVERY RHYTHM - PHASES -->
+<section class="slide">
+  <div class="slide-tag">Delivery</div>
+  <div class="slide-num">04 / 10</div>
+  <h2>8 teaching weeks. 4 implementation weeks.</h2>
+  <p class="lede">Mark opens and closes every milestone. Specialists go deep, then Mark brings it back to the client's own business.</p>
+  <div class="phases">
+    <div class="phase">
+      <div class="phase-num">1</div>
+      <div class="phase-when">Weeks 1-3</div>
+      <h3>Foundation</h3>
+      <ul>
+        <li>Mark teaches Milestones 1 and 2</li>
+        <li>Implementation week with live Q&amp;A</li>
+        <li>Strategy Razor and Impact Map finalized</li>
+      </ul>
+      <span class="phase-gate">No specialist needed yet</span>
+    </div>
+    <div class="phase">
+      <div class="phase-num">2</div>
+      <div class="phase-when">Weeks 4-9</div>
+      <h3>Constraint, Cash &amp; Profit</h3>
+      <ul>
+        <li>Dashboard and constraint work (M3, M4)</li>
+        <li>CFO-led sessions on M5 and M6</li>
+        <li>Profit Discovery Audit run live in week 7</li>
+      </ul>
+      <span class="phase-gate">Cam leads weeks 7-8</span>
+    </div>
+    <div class="phase">
+      <div class="phase-num">3</div>
+      <div class="phase-when">Weeks 10-12</div>
+      <h3>Team &amp; Liberation</h3>
+      <ul>
+        <li>Hiring specialist leads M7 (Hannah)</li>
+        <li>Delegation and leadership identification</li>
+        <li>Mark closes with the 90-day action plan</li>
+      </ul>
+      <span class="phase-gate">Hannah leads weeks 10-11</span>
+    </div>
+  </div>
+</section>
+
+<!-- 5: OFFER & GUARANTEE -->
+<section class="slide">
+  <div class="slide-tag">The Offer</div>
+  <div class="slide-num">05 / 10</div>
+  <h2>One tier live now, one tier ahead.</h2>
+  <p class="lede">$5,000 against a $50,000+ find is the math that sells itself, if the guarantee removes the only real objection: "what if it doesn't work for me."</p>
+  <div class="success-table">
+    <div class="success-row head">
+      <div class="success-cell">Tier</div>
+      <div class="success-cell">Price &amp; terms</div>
+      <div class="success-cell">Guarantee</div>
+    </div>
+    <div class="success-row">
+      <div class="success-cell"><strong>Tier 1</strong><br>Business Without You</div>
+      <div class="success-cell">$4,750 paid in full, or $1,800 x 3 tied to program milestones (weeks 1, 5, 9)</div>
+      <div class="success-cell">Profit-back: if we don't find $50K by week 8, we keep working free until we do</div>
+    </div>
+    <div class="success-row">
+      <div class="success-cell"><strong>Tier 2</strong><br>$10M+ owners</div>
+      <div class="success-cell">Pricing not yet set, scope includes CFO, COO, HR specialist, and weekly live community</div>
+      <div class="success-cell">To be defined once Tier 1 has its first proven cohort</div>
+    </div>
+  </div>
+  <div class="footnote">$50,000 is the curriculum's own benchmark, not yet proven on a live cohort. First cohort outcomes become the real proof on the sales page.</div>
+</section>
+
+<!-- 6: ORGANIC LEAD FUNNEL -->
+<section class="slide">
+  <div class="slide-tag">Organic Lead Flow</div>
+  <div class="slide-num">06 / 10</div>
+  <h2>Social media is the front door, not the website.</h2>
+  <p class="lede">Three steps, one ecosystem. A prospect can move from a free post to a paying client without ever leaving the funnel.</p>
+  <div class="phases">
+    <div class="phase">
+      <div class="phase-num">1</div>
+      <div class="phase-when">Free</div>
+      <h3>Instagram + Lead Magnet</h3>
+      <ul>
+        <li>New page, 2 posts a day</li>
+        <li>Hooks researched from competitor coaches</li>
+        <li>Hidden-profit scanner as the proof tool</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="phase-num">2</div>
+      <div class="phase-when">Paid community</div>
+      <h3>Community Tier</h3>
+      <ul>
+        <li>Low-cost monthly access</li>
+        <li>Live specialist calls, locked content visible</li>
+        <li>FOMO drives the upgrade naturally</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="phase-num">3</div>
+      <div class="phase-when">$5,000</div>
+      <h3>High-Ticket Program</h3>
+      <ul>
+        <li>Full 12-week classroom unlocked</li>
+        <li>Profit Discovery Audit, live coaching</li>
+        <li>GoHighLevel CRM tracks the full journey</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 7: CONTENT ENGINE CAPABILITIES -->
+<section class="slide">
+  <div class="slide-tag">The Content Engine</div>
+  <div class="slide-num">07 / 10</div>
+  <h2>What the AI build actually does for content.</h2>
+  <p class="lede">This is the leverage that makes twice-daily posting possible without Mark filming every piece.</p>
+  <div class="caps">
+    <div class="cap">
+      <div class="cap-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+      <h4>Hook research</h4>
+      <p>Scans competitor coaches and the consulting space for what is actually working right now.</p>
+    </div>
+    <div class="cap">
+      <div class="cap-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
+      <h4>On-brand drafting</h4>
+      <p>Writes captions and scripts in Cool Hollow Coaching's exact voice, never generic AI tone.</p>
+    </div>
+    <div class="cap">
+      <div class="cap-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L9 18"/></svg></div>
+      <h4>Visual generation</h4>
+      <p>Carousels, hero stills, and short reels, brand-skinned and cheap-first before any paid render.</p>
+    </div>
+    <div class="cap">
+      <div class="cap-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+      <h4>Posting calendar</h4>
+      <p>Plans and assigns every post to a date, built around launch and cohort milestones.</p>
+    </div>
+    <div class="cap">
+      <div class="cap-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      <h4>Automated publishing</h4>
+      <p>In progress: a direct connector so drafted posts go live without manual copy-paste.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8: OPEN DECISIONS FOR CFO -->
+<section class="slide">
+  <div class="slide-tag">Decisions Needed</div>
+  <div class="slide-num">08 / 10</div>
+  <h2>Three things we need your read on.</h2>
+  <p class="lede">Being straight about what is settled and what is still open.</p>
+  <div class="humans">
+    <div class="human">
+      <div class="human-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+      <div class="human-text"><strong>Platform: Skool now, own platform later, or own platform from day one?</strong> Skool gets us selling in days with built-in FOMO mechanics. Our own platform gives clean GoHighLevel separation from Cool Hollow Solutions, but costs us weeks before we can sell anything.</div>
+    </div>
+    <div class="human">
+      <div class="human-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+      <div class="human-text"><strong>$50K guarantee: how far do we go on paper?</strong> The find is plausible for a $1M-$10M business, but unproven in this self-administered format until a real cohort runs it. Recommend treating it as a working guarantee, not a marketing absolute, until we have 3-5 case studies.</div>
+    </div>
+    <div class="human">
+      <div class="human-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+      <div class="human-text"><strong>First cohort: discounted beta, or full price from the first sale?</strong> Full price protects the brand and the math in this deck. A discounted beta gets us proof and testimonials faster. This decision sets the tone for everything else on this page.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 9: 60-DAY ROADMAP -->
+<section class="slide">
+  <div class="slide-tag">The Next 60 Days</div>
+  <div class="slide-num">09 / 10</div>
+  <h2>From mapped curriculum to a live cohort.</h2>
+  <p class="lede">Quick wins early, proof by day 60.</p>
+  <div class="next-steps">
+    <div class="step"><div class="step-num">1</div><div class="step-when">Weeks 1-2</div><h4>Lock it</h4><p>Platform decision, confirmed specialists, first milestone content recorded.</p></div>
+    <div class="step"><div class="step-num">2</div><div class="step-when">Weeks 3-4</div><h4>Build the funnel</h4><p>Instagram live, posting twice daily, hidden-profit scanner deployed as the lead magnet.</p></div>
+    <div class="step"><div class="step-num">3</div><div class="step-when">Weeks 5-6</div><h4>Recruit</h4><p>3-5 owners into the first cohort, priced per the day-60 pricing decision.</p></div>
+    <div class="step"><div class="step-num">4</div><div class="step-when">Weeks 7-8</div><h4>Run &amp; prove</h4><p>Deliver weeks 1-2 live, document every dollar found in real time.</p></div>
+    <div class="step"><div class="step-num">5</div><div class="step-when">Day 60</div><h4>Review</h4><p>Real proof in hand, full-price go or no-go decision made with data, not hope.</p></div>
+  </div>
+</section>
+
+<!-- 10: CLOSE -->
+<section class="slide slide--close">
+  <div class="close-grid">
+    <div class="close-content">
+      <div class="title-eyebrow" style="margin-bottom: 16px;">Business Without You</div>
+      <h2>The curriculum is built.<br>The funnel is mapped.<br>We need your sign-off.</h2>
+      <p class="close-tagline">Three decisions, sixty days, and a real cohort to prove the number on this page.</p>
+      <div class="close-contact">
+        <div class="close-contact-row"><span><strong>Matt Fitzpatrick</strong></span><span>Owner, Cool Hollow Coaching</span></div>
+        <div class="close-contact-row"><span>Email</span><span>matthewfbuck@icloud.com</span></div>
+        <div class="close-contact-row"><span>v1</span><span>June 22, 2026</span></div>
+        <div class="close-contact-row"><span>For</span><span>Cam, CFO</span></div>
+      </div>
+    </div>
+    <div class="close-panel">
+      <div class="close-panel-meta">Cool Hollow Coaching</div>
+      <div class="close-panel-content">
+        <h3>15 hours back.<br>$50,000 found.<br>One decision away.</h3>
+        <p>Everything in this deck exists to get a real owner through a real audit and prove the number. Your read on platform, guarantee, and pricing sets the next 60 days.</p>
+      </div>
+      <div class="close-panel-meta">Business Without You &middot; v1</div>
+    </div>
+  </div>
+</section>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>
