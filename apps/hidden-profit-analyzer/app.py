@@ -1,15 +1,16 @@
 """
 Cool Hollow Coaching, the hidden-profit analyzer.
 
-A prospect uploads a P&L (CSV or Excel) and gets back a plain-English report
-of pricing gaps, cost leakage, and cash timing risk, with a headline dollar
-figure: the profit and risk found in their own numbers.
+A prospect uploads a P&L (CSV, Excel, or PDF) and gets back a plain-English
+report of pricing gaps, cost leakage, and cash timing risk, with a headline
+dollar figure: the profit and risk found in their own numbers.
 """
 
 import pandas as pd
 import streamlit as st
 
 from analysis import run_full_analysis
+from pdf_parser import parse_pdf
 
 st.set_page_config(page_title="Cool Hollow Coaching, the hidden-profit finder", page_icon="$")
 
@@ -24,18 +25,24 @@ st.divider()
 
 with st.expander("What file should I upload?"):
     st.write(
-        "A CSV or Excel export of your profit and loss. The first column should "
-        "be the line item name (Revenue, Cost of Goods Sold, Rent, Software, and "
-        "so on). If you have more than one month, add a column per month. "
-        "If you only have totals, one amount column is fine too."
+        "A CSV, Excel, or PDF export of your profit and loss. The first column "
+        "should be the line item name (Revenue, Cost of Goods Sold, Rent, "
+        "Software, and so on). If you have more than one month, add a column "
+        "per month. If you only have totals, one amount column is fine too. "
+        "PDF exports straight from QuickBooks, Xero, or similar tools work best."
     )
 
-uploaded = st.file_uploader("Upload your P&L (CSV or Excel)", type=["csv", "xlsx", "xls"])
+uploaded = st.file_uploader("Upload your P&L (CSV, Excel, or PDF)", type=["csv", "xlsx", "xls", "pdf"])
 
 if uploaded:
+    name = uploaded.name.lower()
     try:
-        if uploaded.name.lower().endswith(".csv"):
+        if name.endswith(".csv"):
             raw = pd.read_csv(uploaded)
+        elif name.endswith(".pdf"):
+            raw = parse_pdf(uploaded)
+            with st.expander("What we read from your PDF"):
+                st.dataframe(raw)
         else:
             raw = pd.read_excel(uploaded)
     except Exception as exc:
