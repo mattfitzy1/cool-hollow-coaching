@@ -1,0 +1,32 @@
+# Secrets (never commit)
+.env
+.mcp.json
+*.pem
+*.key
+service-account*.json
+token*.json
+data/publer_accounts.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node (wrangler)
+node_modules/
+
+# macOS / IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Per-user / generated
+.claude/settings.local.json
+.claude/worktrees/
+data/content.db
+data/*.json
+!data/skill_registry.json
+generated_imgs/
+outputs/creative/**/drafts/
+apps/*/dist/

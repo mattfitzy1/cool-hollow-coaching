@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>AIOS — Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F1EA; --card:#FFFFFF; --workbg:#FBFAF7;
+    --ink:#23211C; --body:#52504A; --muted:#8E8C82;
+    --clay:#CC785C; --clay-deep:#B5613F; --clay-soft:#E6D5C8; --clay-bg:#F4E9E1;
+    --border:#E5E2D8; --line:#EDEBE2;
+    --green:#5C7C5A; --green-bg:#E7EFE4;
+    --teal:#1F4E4A; --deep-teal:#0E2B2A; --sage:#A8B5A0; --bronze:#C89968; --bronze-soft:#E8CFA8; --off-white:#FAF8F3;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1920px;height:1080px;overflow:hidden;background:var(--paper);
+    font-family:'Inter',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .stage{width:1920px;height:1080px;position:relative;overflow:hidden}
+  .serif{font-family:'Newsreader',Georgia,serif}
+  .burst svg{display:block}
+
+  .topbar{position:absolute;top:0;left:0;right:0;height:88px;display:flex;align-items:center;
+    justify-content:space-between;padding:0 56px;border-bottom:1px solid var(--border);background:var(--paper);z-index:8}
+  .claude-lockup{display:flex;align-items:center;gap:14px}
+  .claude-lockup .lock-words{display:flex;flex-direction:column;line-height:1.05}
+  .claude-lockup .cw{font-family:'Newsreader',serif;font-size:32px;color:var(--ink);font-weight:500}
+  .claude-lockup .cw-sub{font-size:13px;letter-spacing:0.13em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:3px}
+  .conn{display:flex;align-items:center;gap:14px}
+  .conn-l{font-size:17px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .chip{display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--border);
+    border-radius:11px;padding:9px 14px;font-size:19px;color:var(--body);font-weight:500;position:relative}
+  .chip .ci{width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700}
+  .chip .cdot{position:absolute;top:-4px;right:-4px;width:13px;height:13px;border-radius:50%;background:var(--green);border:2px solid var(--paper)}
+
+  .narration{position:absolute;top:88px;left:0;right:0;height:132px;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:0 56px;background:var(--paper);border-bottom:1px solid var(--border);z-index:6}
+  .nar-step{font-size:20px;letter-spacing:0.14em;text-transform:uppercase;color:var(--clay-deep);font-weight:700}
+  .nar-text{font-family:'Newsreader',serif;font-size:36px;color:var(--ink);font-weight:500;line-height:1.2}
+  .main{position:absolute;top:220px;left:0;right:0;bottom:0;display:grid;grid-template-columns:1.04fr 0.96fr}
+
+  .chat{position:relative;overflow:hidden;border-right:1px solid var(--border);background:var(--paper)}
+  .turn{position:absolute;top:44px;left:56px;right:52px;display:flex;flex-direction:column;gap:22px}
+  .umsg{align-self:flex-end;max-width:80%;background:var(--card);border:1px solid var(--border);
+    border-radius:18px 18px 6px 18px;padding:15px 22px;font-size:30px;color:var(--ink);line-height:1.4;
+    box-shadow:rgba(40,38,32,.04) 0 5px 14px -7px}
+  .caret{display:inline-block;width:10px;height:22px;background:var(--clay);margin-left:2px;transform:translateY(3px)}
+  .voice{align-self:flex-end;max-width:90%;display:flex;align-items:center;gap:15px;background:var(--card);border:1px solid var(--border);border-radius:18px 18px 6px 18px;padding:14px 20px;box-shadow:rgba(40,38,32,.04) 0 5px 14px -7px}
+  .v-mic{width:40px;height:40px;border-radius:50%;background:#CFC9BB;color:#fff;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .v-mic svg{width:20px;height:20px}
+  .v-mic.live{background:var(--clay);box-shadow:0 0 0 4px rgba(204,120,92,.22), 0 0 20px 3px rgba(204,120,92,.4)}
+  .v-bars{display:flex;align-items:center;gap:3px;height:34px;flex:0 0 auto}
+  .v-bars i{width:3px;height:5px;border-radius:2px;background:var(--clay);display:block}
+  .v-text{font-size:28px;color:var(--ink);line-height:1.3}
+  .cmsg{display:flex;gap:16px;align-items:flex-start;max-width:94%}
+  .cav{flex:0 0 auto;width:32px;height:32px;margin-top:2px}
+  .cbody{display:flex;flex-direction:column;gap:14px;width:100%}
+  .ctext{font-family:'Newsreader',serif;font-size:33px;line-height:1.5;color:var(--ink);min-height:1px}
+
+  .tool{background:var(--workbg);border:1px solid var(--border);border-radius:14px;padding:14px 18px;display:flex;flex-direction:column;gap:9px;max-width:560px}
+  .tool.skill{border-left:3px solid var(--clay)}
+  .tool-head{display:flex;align-items:center;gap:12px}
+  .tool-ic{width:32px;height:32px;border-radius:9px;background:var(--clay-bg);color:var(--clay-deep);display:flex;align-items:center;justify-content:center}
+  .tool-ic svg{width:18px;height:18px}
+  .tool-ic.tg{background:#E7EFE4;color:#4A6E47}.tool-ic.tb{background:#E2EAF0;color:#456178}
+  .tool-title{font-size:22px;font-weight:600;color:var(--ink)}
+  .kbadge{font-size:14px;font-weight:700;letter-spacing:0.1em;color:var(--clay-deep);background:var(--clay-bg);padding:3px 9px;border-radius:5px}
+  .tool-stat{margin-left:auto;display:flex;align-items:center}
+  .chk{width:22px;height:22px;color:var(--green)}
+  .tool-det{font-size:22px;color:var(--muted);font-family:'SF Mono',Menlo,monospace;padding-left:44px}
+
+  .work{position:relative;background:var(--workbg);overflow:hidden}
+  .scene{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:70px}
+  .win{background:var(--card);border:1px solid var(--border);border-radius:18px;box-shadow:rgba(40,38,32,.07) 0 22px 50px -24px;width:100%;max-width:780px;overflow:hidden}
+  .win-bar{display:flex;align-items:center;gap:11px;padding:15px 22px;border-bottom:1px solid var(--line);background:var(--workbg)}
+  .win-ic{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700}
+  .win-name{font-size:20px;font-weight:600;color:var(--ink)}
+  .win-sub{margin-left:auto;font-size:17px;color:var(--muted)}
+  .win-body{padding:26px 28px}
+
+  /* call tile */
+  .call-tile{height:300px;border-radius:14px;background:linear-gradient(150deg,#2C3A38,#1C2A28);position:relative;display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+  .call-av{width:110px;height:110px;border-radius:50%;background:var(--clay);color:#fff;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:500;font-family:'Newsreader',serif}
+  .call-pill{position:absolute;top:18px;left:18px;display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.34);border-radius:22px;padding:7px 15px;font-size:19px;color:#fff;font-weight:500;z-index:2}
+  .call-pill .rdot{width:9px;height:9px;border-radius:50%;background:#E5705B}
+  .call-cut{position:absolute;inset:0;border-radius:14px;background:#0B1614;z-index:1}
+  .call-foot{display:flex;align-items:center;justify-content:space-between}
+  .call-name{font-size:25px;font-weight:600;color:var(--ink)}
+  .call-sub{font-size:19px;color:var(--muted)}
+  .call-stat{display:flex;align-items:center;gap:8px;font-size:21px;font-weight:600;color:var(--green)}
+  .call-stat svg{width:20px;height:20px}
+
+  .dline{display:flex;flex-direction:column;gap:5px;padding:14px 0;border-top:1px solid var(--line)}
+  .dline:first-of-type{border-top:none;padding-top:2px}
+  .dl-k{font-size:16px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .dl-v{font-size:31px;color:var(--ink);line-height:1.4}
+
+  .slides{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .thumb{height:118px;border-radius:11px;background:var(--card);border:1px solid var(--border);box-shadow:rgba(40,38,32,.05) 0 7px 16px -9px;overflow:hidden}
+  .thumb .tbar{height:38px;background:var(--teal);display:flex;align-items:center;padding:0 14px}
+  .thumb .tbar .pip{width:18px;height:12px;background:var(--bronze);border-radius:3px;margin-right:7px}
+  .thumb .tbar .tt{height:7px;width:90px;background:rgba(255,255,255,.5);border-radius:3px}
+  .thumb .tlines{padding:14px 16px;display:flex;flex-direction:column;gap:9px}
+  .thumb .tl{height:7px;border-radius:3px;background:var(--line)}.thumb .tl.s{width:58%}
+  .slabel{margin-top:20px;font-size:21px;color:var(--muted);text-align:center}.slabel b{color:var(--ink);font-weight:600}
+
+  .emeta{font-size:24px;color:var(--muted);padding:9px 0;border-bottom:1px solid var(--line)}.emeta b{color:var(--ink);font-weight:600}
+  .etext{font-family:'Newsreader',serif;font-size:28px;line-height:1.55;color:var(--body);margin-top:14px;min-height:1px}
+  .attach{display:inline-flex;align-items:center;gap:11px;background:var(--clay-bg);border:1px solid var(--clay-soft);border-radius:11px;padding:12px 16px;font-size:21px;color:var(--clay-deep);font-weight:600;margin-top:16px}
+  .attach svg{width:18px;height:18px}
+  .esent{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:600;color:var(--green);margin-top:16px}.esent svg{width:21px;height:21px}
+
+  .pipe{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding-top:4px}
+  .col{background:var(--workbg);border:1px solid var(--line);border-radius:12px;padding:12px 12px 60px;min-height:240px}
+  .col.hot{border-color:var(--clay-soft);background:var(--clay-bg)}
+  .col-h{font-size:16px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:12px;text-align:center}
+  .col.hot .col-h{color:var(--clay-deep)}
+  .ghost{height:54px;border-radius:9px;border:1px dashed var(--border);margin-bottom:10px}
+  .deal{position:absolute;top:46px;left:14px;width:170px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px 14px;box-shadow:rgba(40,38,32,.10) 0 10px 22px -10px;z-index:3}
+  .deal-name{font-size:23px;font-weight:600;color:var(--ink)}
+  .deal-sub{font-size:17px;color:var(--muted);margin-top:3px}
+  .deal-stage{margin-top:9px;display:inline-block;font-size:15px;font-weight:700;letter-spacing:0.04em;padding:3px 9px;border-radius:5px;background:var(--clay-bg);color:var(--clay-deep)}
+  .auto{display:flex;align-items:center;gap:14px;background:#FBF1DE;border:1px solid #E8D097;border-left:4px solid #C89968;border-radius:14px;padding:14px 18px;max-width:560px}
+  .auto-ic{width:36px;height:36px;border-radius:9px;background:#F1E1BC;color:#9A7B2E;display:flex;align-items:center;justify-content:center}
+  .auto-ic svg{width:20px;height:20px}
+  .auto-t{font-size:22px;font-weight:700;color:var(--ink)}
+  .auto-s{font-size:17px;color:var(--muted);margin-top:2px}
+  .cal-toast{display:flex;align-items:center;gap:11px;margin-top:20px;background:var(--workbg);border:1px solid var(--border);border-radius:12px;padding:13px 16px;font-size:21px;color:var(--ink);font-weight:500}
+  .cal-toast .cti{width:28px;height:28px;border-radius:7px;background:#E2EAF0;color:#456178;display:flex;align-items:center;justify-content:center}
+  .cal-toast .cti svg{width:16px;height:16px}.cal-toast b{color:var(--ink)}
+
+  /* brand overlay (intro + end) */
+  .brandcard{position:absolute;inset:0;background:var(--teal);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;z-index:30;overflow:hidden}
+  .brandcard::after{content:'';position:absolute;right:-280px;bottom:-280px;width:800px;height:800px;border-radius:50%;background:rgba(168,181,160,0.12)}
+  .bpyr{position:relative}.bpyr svg{width:150px;height:auto}
+  .bword{font-family:'Fraunces',serif;font-size:80px;color:var(--off-white);font-weight:500;letter-spacing:-0.02em;position:relative}
+  .bword b{color:var(--bronze-soft)}
+  .btag{font-family:'Fraunces',serif;font-size:38px;color:var(--sage);position:relative}
+  .bline{font-size:19px;letter-spacing:0.16em;text-transform:uppercase;color:var(--sage);font-weight:600;margin-top:14px;position:relative;opacity:.85}
+
+  /* summary interstitial (recap before the brand card) */
+  .summary{position:absolute;inset:0;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;z-index:25;padding:70px 80px}
+  .sum-title{font-family:'Fraunces',serif;font-size:60px;color:var(--ink);font-weight:500}
+  .sum-list{display:flex;flex-direction:column;gap:18px;width:100%;max-width:900px}
+  .sum-row{display:flex;align-items:center;gap:22px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:19px 26px;box-shadow:rgba(40,38,32,.05) 0 8px 20px -12px}
+  .sum-ck{flex:0 0 auto;width:40px;height:40px;border-radius:50%;background:var(--green-bg);color:var(--green);display:flex;align-items:center;justify-content:center}
+  .sum-ck svg{width:23px;height:23px}
+  .sum-k{font-size:30px;font-weight:600;color:var(--ink)}
+  .sum-d{margin-left:auto;font-size:24px;color:var(--muted)}
+  .sum-out{font-family:'Newsreader',serif;font-size:34px;color:var(--clay-deep);font-weight:500;margin-top:8px;text-align:center}
+
+  .anim{opacity:0}
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- WORKSPACE (under the intro overlay) -->
+  <div class="topbar anim" id="topbar">
+    <div class="claude-lockup"><span class="burst" id="hburst"></span><div class="lock-words"><span class="cw">AIOS</span><span class="cw-sub">AI Operating System</span></div></div>
+    <div class="conn">
+      <span class="conn-l">Connected</span>
+      <div class="chip"><span class="ci" style="background:#D44638">M</span>Gmail<span class="cdot anim" id="dotGmail"></span></div>
+      <div class="chip"><span class="ci" style="background:#4285F4">31</span>Calendar<span class="cdot anim" id="dotCal"></span></div>
+      <div class="chip"><span class="ci" style="background:#FF7A59">H</span>HubSpot<span class="cdot anim" id="dotHub"></span></div>
+      <div class="chip"><span class="ci" style="background:#1FA463">D</span>Drive<span class="cdot anim" id="dotDrive"></span></div>
+    </div>
+  </div>
+
+  <div class="narration anim" id="narWrap">
+    <div class="nar-step" id="narStep"></div>
+    <div class="nar-text" id="narText"></div>
+  </div>
+
+  <div class="main anim" id="main">
+
+    <!-- CHAT (one exchange at a time) -->
+    <div class="chat">
+
+      <div class="turn anim" id="hopMsg">
+        <div class="cmsg"><span class="cav burst" data-burst></span><div class="cbody">
+          <div class="ctext" id="hopt"></div>
+        </div></div>
+      </div>
+
+      <div class="turn anim" id="turn1">
+        <div class="voice" id="vp1"><span class="v-mic" id="vm1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor" stroke="none"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg></span><span class="v-bars" id="vb1"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="v-text" id="vt1"></span></div>
+        <div class="cmsg"><span class="cav burst" data-burst></span><div class="cbody">
+          <div class="ctext" id="c1t"></div>
+          <div class="tool skill" id="k1"><div class="tool-head"><div class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 10h16M4 15h10"/></svg></div><span class="tool-title">debrief</span><span class="kbadge">SKILL</span><div class="tool-stat"><svg class="chk anim" id="k1chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="tool-det anim" id="k1det">saved to Drive · Specter / meeting notes</div></div>
+        </div></div>
+      </div>
+
+      <div class="turn anim" id="turn2">
+        <div class="voice" id="vp2"><span class="v-mic" id="vm2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor" stroke="none"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg></span><span class="v-bars" id="vb2"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="v-text" id="vt2"></span></div>
+        <div class="cmsg"><span class="cav burst" data-burst></span><div class="cbody">
+          <div class="ctext" id="c2t"></div>
+          <div class="tool skill" id="k2"><div class="tool-head"><div class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 18h18M9 22h6"/></svg></div><span class="tool-title">build-deck</span><span class="kbadge">SKILL</span><div class="tool-stat"><svg class="chk anim" id="k2chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="tool-det anim" id="k2det">saved to Drive · Specter Proposal.pdf · 8 slides</div></div>
+        </div></div>
+      </div>
+
+      <div class="turn anim" id="turn3">
+        <div class="cmsg"><span class="cav burst" data-burst></span><div class="cbody">
+          <div class="ctext" id="c3a"></div>
+        </div></div>
+        <div class="voice anim" id="vp3"><span class="v-mic" id="vm3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor" stroke="none"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg></span><span class="v-bars" id="vb3"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="v-text" id="vt3"></span></div>
+        <div class="cmsg anim" id="c3cw"><span class="cav burst" data-burst></span><div class="cbody">
+          <div class="ctext" id="c3c"></div>
+          <div class="tool" id="k3"><div class="tool-head"><div class="tool-ic tg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div><span class="tool-title">Gmail</span><div class="tool-stat"><svg class="chk anim" id="k3chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="tool-det anim" id="k3det">proposal sent to Harvey Specter</div></div>
+        </div></div>
+      </div>
+
+      <div class="turn anim" id="turn4">
+        <div class="auto anim" id="autocard"><div class="auto-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></div><div><div class="auto-t">Automation triggered</div><div class="auto-s">Proposal sent · update CRM and calendar</div></div></div>
+        <div class="cmsg anim" id="c4w"><span class="cav burst" data-burst></span><div class="cbody">
+          <div class="ctext" id="c4t"></div>
+          <div class="tool" id="k4a"><div class="tool-head"><div class="tool-ic" style="background:#FFE7DD;color:#D2522E"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/></svg></div><span class="tool-title">HubSpot</span><div class="tool-stat"><svg class="chk anim" id="k4achk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="tool-det anim" id="k4adet">deal moved · Lead → Proposal</div></div>
+          <div class="tool" id="k4b"><div class="tool-head"><div class="tool-ic tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg></div><span class="tool-title">Google Calendar</span><div class="tool-stat"><svg class="chk anim" id="k4bchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="tool-det anim" id="k4bdet">follow-up · Tue 10:00</div></div>
+        </div></div>
+      </div>
+
+    </div>
+
+    <!-- WORKSPACE SCENES -->
+    <div class="work">
+
+      <div class="scene anim" id="sCall">
+        <div class="win">
+          <div class="win-bar"><span class="win-ic" style="background:#2C3A38">●</span><span class="win-name">Video call</span><span class="win-sub">just now</span></div>
+          <div class="win-body">
+            <div class="call-tile"><div class="call-pill"><span class="rdot" id="rdot"></span><span id="callpill">34:22</span></div><div class="call-av" id="callav">HS</div><div class="call-cut anim" id="callcut"></div></div>
+            <div class="call-foot"><div><div class="call-name">Harvey Specter</div><div class="call-sub">Strategy call</div></div>
+              <div class="call-stat anim" id="callend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Call ended</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene anim" id="sDebrief">
+        <div class="win"><div class="win-bar"><span class="win-ic" style="background:#1FA463">D</span><span class="win-name">Drive · Meeting notes</span><span class="win-sub" id="dbsub">writing…</span></div>
+          <div class="win-body">
+            <div class="dline anim" id="db1"><div class="dl-k">Discussed</div><div class="dl-v">Project scope, timeline and budget.</div></div>
+            <div class="dline anim" id="db2"><div class="dl-k">Decided</div><div class="dl-v">Move ahead with the proposed plan.</div></div>
+            <div class="dline anim" id="db3"><div class="dl-k">Actions</div><div class="dl-v">Send the proposal, move the deal, book a follow-up.</div></div>
+          </div></div>
+      </div>
+
+      <div class="scene anim" id="sDeck">
+        <div class="win"><div class="win-bar"><span class="win-ic" style="background:#1F4E4A">A</span><span class="win-name">Deck Builder</span><span class="win-sub" id="dksub">building…</span></div>
+          <div class="win-body">
+            <div class="slides">
+              <div class="thumb anim" id="th1"><div class="tbar"><span class="pip"></span><span class="tt"></span></div><div class="tlines"><div class="tl"></div><div class="tl s"></div></div></div>
+              <div class="thumb anim" id="th2"><div class="tbar"><span class="pip"></span><span class="tt"></span></div><div class="tlines"><div class="tl"></div><div class="tl s"></div></div></div>
+              <div class="thumb anim" id="th3"><div class="tbar"><span class="pip"></span><span class="tt"></span></div><div class="tlines"><div class="tl"></div><div class="tl s"></div></div></div>
+              <div class="thumb anim" id="th4"><div class="tbar"><span class="pip"></span><span class="tt"></span></div><div class="tlines"><div class="tl"></div><div class="tl s"></div></div></div>
+            </div>
+            <div class="slabel anim" id="dklabel"><b>Specter — Proposal</b> · in your branding</div>
+          </div></div>
+      </div>
+
+      <div class="scene anim" id="sEmail">
+        <div class="win"><div class="win-bar"><span class="win-ic" style="background:#D44638">M</span><span class="win-name">Gmail · New message</span><span class="win-sub" id="emsub">draft</span></div>
+          <div class="win-body">
+            <div class="emeta"><b>To</b>&nbsp; Harvey Specter</div>
+            <div class="emeta"><b>Subject</b>&nbsp; Your proposal and the next steps</div>
+            <div class="etext" id="emtext"></div>
+            <div class="attach anim" id="emattach"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11l-8.5 8.5a4 4 0 01-6-6L14 5a3 3 0 014 4l-8 8"/></svg>Specter-Proposal.pdf</div>
+            <div class="esent anim" id="emsent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Sent to Harvey Specter</div>
+          </div></div>
+      </div>
+
+      <div class="scene anim" id="sCRM">
+        <div class="win" style="max-width:840px"><div class="win-bar"><span class="win-ic" style="background:#FF7A59">H</span><span class="win-name">HubSpot · Deals</span><span class="win-sub">Pipeline</span></div>
+          <div class="win-body">
+            <div class="pipe">
+              <div class="col"><div class="col-h">Lead</div><div class="ghost"></div></div>
+              <div class="col"><div class="col-h">Contacted</div></div>
+              <div class="col" id="colProp"><div class="col-h">Proposal</div></div>
+              <div class="col"><div class="col-h">Won</div><div class="ghost"></div></div>
+              <div class="deal anim" id="deal"><div class="deal-name">Harvey Specter</div><div class="deal-sub">New proposal</div><div class="deal-stage" id="dealStage">Lead</div></div>
+            </div>
+            <div class="cal-toast anim" id="caltoast"><span class="cti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg></span><span>Follow-up call added to <b>Google Calendar</b> · Tue 10:00</span></div>
+          </div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUMMARY interstitial (recap during the closing VO) -->
+  <div class="summary" id="summary" style="opacity:0">
+    <div class="sum-title">Done. In a few minutes.</div>
+    <div class="sum-list">
+      <div class="sum-row anim" id="sr1"><span class="sum-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sum-k">Call debriefed</span><span class="sum-d">notes saved to Drive</span></div>
+      <div class="sum-row anim" id="sr2"><span class="sum-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sum-k">Proposal built</span><span class="sum-d">in your branding</span></div>
+      <div class="sum-row anim" id="sr3"><span class="sum-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sum-k">Email sent</span><span class="sum-d">to Harvey Specter</span></div>
+      <div class="sum-row anim" id="sr4"><span class="sum-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sum-k">Deal moved</span><span class="sum-d">Lead → Proposal</span></div>
+      <div class="sum-row anim" id="sr5"><span class="sum-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sum-k">Follow-up booked</span><span class="sum-d">Tue 10:00</span></div>
+    </div>
+    <div class="sum-out anim" id="srOut">A whole afternoon of admin, done in a few minutes.</div>
+  </div>
+
+  <!-- INTRO brand overlay -->
+  <div class="brandcard" id="intro">
+    <div class="bpyr anim" id="iPyr"><svg viewBox="0 0 200 152" xmlns="http://www.w3.org/2000/svg" aria-label="AIOS"><rect x="78" y="0" width="44" height="24" rx="6" fill="#C89968"/><rect x="61" y="32" width="78" height="24" rx="6" fill="#7E9389"/><rect x="44" y="64" width="112" height="24" rx="6" fill="#94A79C"/><rect x="27" y="96" width="146" height="24" rx="6" fill="#A8B5A0"/><rect x="10" y="128" width="180" height="24" rx="6" fill="#C6D1C0"/></svg></div>
+    <div class="bword anim" id="iWord">Cool Hollow <b>AIOS</b></div>
+    <div class="btag anim" id="iTag">Your AI Operating System.</div>
+    <div class="bline anim" id="iLine">The post-meeting workflow</div>
+  </div>
+
+  <!-- END brand overlay -->
+  <div class="brandcard" id="endcard" style="opacity:0">
+    <div class="bpyr anim" id="ePyr"><svg viewBox="0 0 200 152" xmlns="http://www.w3.org/2000/svg" aria-label="AIOS"><rect x="78" y="0" width="44" height="24" rx="6" fill="#C89968"/><rect x="61" y="32" width="78" height="24" rx="6" fill="#7E9389"/><rect x="44" y="64" width="112" height="24" rx="6" fill="#94A79C"/><rect x="27" y="96" width="146" height="24" rx="6" fill="#A8B5A0"/><rect x="10" y="128" width="180" height="24" rx="6" fill="#C6D1C0"/></svg></div>
+    <div class="bword anim" id="eWord">Cool Hollow <b>AIOS</b></div>
+    <div class="btag anim" id="eTag">Your AI Operating System.</div>
+    <div class="bline anim" id="eLine">It runs the work, so you get your time back.</div>
+  </div>
+
+</div>
+
+<script>
+  const BURST=(s,c)=>{let r='';for(let i=0;i<12;i++){const d=i*30,l=i%2===0,h=l?30:21,y=l?6:11;r+=`<rect x="46.5" y="${y}" width="7" height="${h}" rx="3.5" transform="rotate(${d} 50 50)"/>`;}return `<svg viewBox="0 0 100 100" width="${s}" height="${s}"><g fill="${c}">${r}</g></svg>`;};
+  document.getElementById('hburst').innerHTML=BURST(32,'#CC785C');
+  document.querySelectorAll('[data-burst]').forEach(e=>e.innerHTML=BURST(32,'#CC785C'));
+  (function(){const cols=document.querySelectorAll('#sCRM .col');const d=document.getElementById('deal');const c0=cols[0],c2=cols[2];const w=c0.getBoundingClientRect().width;d.style.left=(c0.offsetLeft+6)+'px';d.style.width=(w-12)+'px';window.__PITCH=c2.offsetLeft-c0.offsetLeft;})();
+
+  const $=id=>document.getElementById(id);
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  const lerp=(a,b,t)=>a+(b-a)*t;
+  const easeOut=t=>1-Math.pow(1-t,3);
+  const easeIO=t=>t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+  const cues=[];
+  const fade=(id,t0,t1,fo,fy,to,ty,ease=easeOut)=>cues.push({k:'fade',el:$(id),t0,t1,fo,fy,to,ty,fx:0,tx:0,ease});
+  const move=(id,t0,t1,fx,fy,tx,ty,ease=easeIO)=>cues.push({k:'fade',el:$(id),t0,t1,fo:1,fy,to:1,ty,fx,tx,ease});
+  const type=(id,txt,t0,t1)=>cues.push({k:'type',el:$(id),t0,t1,txt});
+  const caret=(id,t0,t1)=>cues.push({k:'caret',el:$(id),t0,t1});
+  const setT=(id,t0,txt)=>cues.push({k:'set',el:$(id),t0,txt});
+  const cls=(id,t0,c)=>cues.push({k:'cls',el:$(id),t0,c});
+  const clock=(id,t0,t1,startSec)=>cues.push({k:'clock',el:$(id),t0,t1,startSec});
+  const fadeIn=(id,t0,d=460,y=10)=>fade(id,t0,t0+d,0,y,1,0);
+  const fadeOut=(id,t0,d=340)=>fade(id,t0,t0+d,1,0,0,0,easeIO);
+  const wave=(id,t0,t1)=>cues.push({k:'wave',el:$(id),t0,t1});
+
+  // narration helper: swap the plain-English caption that introduces each stage
+  const nar=(t0,step,txt)=>{ fadeOut('narWrap',t0-400,300); setT('narStep',t0-80,step); setT('narText',t0-80,txt); fadeIn('narWrap',t0-60,400,0); };
+
+  // ===== INTRO ===== (carries the intro voiceover)
+  fadeIn('iPyr',500,750,16); fade('iWord',1100,1800,0,16,1,0); fadeIn('iTag',1750,800,12); fadeIn('iLine',2700,800,10);
+  fadeOut('intro',5900,1000);
+  fadeIn('topbar',6200,900,0); fadeIn('main',6400,1000,8); fadeIn('narWrap',6400,1000,8);
+
+  // ===== HOP OFF =====
+  setT('narStep',6500,'AFTER THE CALL'); setT('narText',6500,'You hop off a client call. Your AI Operating System takes it from here.');
+  fadeIn('sCall',7200,600,8);
+  clock('callpill',7200,9400,2062);            // 34:22 -> 34:24
+  setT('callpill',9800,'34:24 · Ended');
+  fadeOut('rdot',9800,250); fadeIn('callcut',9800,340,0); fadeIn('callend',10000,420,6);
+  fadeIn('hopMsg',7600,520,8);
+  type('hopt','Your call with Harvey just wrapped. I will take it from here.',7800,9600);
+
+  const S=[10200,19400,29300,37300];
+
+  // ===== STEP 1 — writes up the meeting =====
+  let t=S[0];
+  nar(t,'STEP 1 OF 4','It pulls the transcript automatically and files the decisions and actions.');
+  fadeOut('hopMsg',t-600,420); fadeOut('sCall',t-300,420);
+  fadeIn('turn1',t,440,8); cls('vm1',t+1350,'live'); wave('vb1',t+1350,t+3500); type('vt1','Debrief the call and save the notes.',t+1550,t+3500);
+  setT('c1t',t+3700,'Thinking…'); type('c1t','Done. Here are the notes.',t+4500,t+5800);
+  fadeIn('k1',t+4900,380,8);
+  fadeIn('sDebrief',t+4200,580,10);
+  fadeIn('db1',t+4800,480,8); fadeIn('db2',t+5500,480,8); fadeIn('db3',t+6200,480,8);
+  setT('dbsub',t+7000,'saved'); fadeIn('k1chk',t+7000,320,0); fadeIn('k1det',t+7150,380,4); fadeIn('dotDrive',t+7050,320,0);
+
+  // ===== STEP 2 — builds the proposal =====
+  t=S[1];
+  nar(t,'STEP 2 OF 4','It builds the proposal, in your branding.');
+  fadeOut('turn1',t-600,420); fadeOut('sDebrief',t-300,420);
+  fadeIn('turn2',t,440,8); cls('vm2',t+250,'live'); wave('vb2',t+250,t+2540); type('vt2','Build the proposal in our branding.',t+450,t+2540);
+  setT('c2t',t+2700,'Thinking…'); type('c2t','Built it. Saved to Drive.',t+3700,t+5000);
+  fadeIn('k2',t+4100,380,8);
+  fadeIn('sDeck',t+3800,580,10);
+  fadeIn('th1',t+4500,420,12); fadeIn('th2',t+5000,420,12); fadeIn('th3',t+5500,420,12); fadeIn('th4',t+6000,420,12);
+  setT('dksub',t+6900,'saved to Drive'); fadeIn('dklabel',t+7000,380,6); fadeIn('k2chk',t+6900,320,0); fadeIn('k2det',t+7050,380,4); fadeIn('dotDrive',t+6950,320,0);
+
+  // ===== STEP 3 — drafts and sends the email (one confirm) =====
+  t=S[2];
+  nar(t,'STEP 3 OF 4','It drafts the email. You just say yes, and it sends.');
+  fadeOut('turn2',t-600,420); fadeOut('sDeck',t-300,420);
+  fadeIn('turn3',t,440,8);
+  fadeIn('sEmail',t+900,580,10);
+  type('emtext','Hi Harvey, great to catch up. Your proposal is attached, with the scope and pricing we discussed.',t+1300,t+3500);
+  fadeIn('emattach',t+3700,420,8);
+  type('c3a','I have drafted the email. Send it to Harvey?',t+900,t+3000);
+  fadeIn('vp3',t+4100,380,6); cls('vm3',t+4100,'live'); wave('vb3',t+4100,t+5600); type('vt3','Yes please, send it.',t+4300,t+5600);
+  fadeIn('c3cw',t+5900,420,8); type('c3c','Sent.',t+6000,t+6400);
+  fadeIn('k3',t+6200,380,8); fadeIn('k3chk',t+6900,320,0); fadeIn('k3det',t+7050,380,4);
+  setT('emsub',t+6500,'sent'); fadeIn('emsent',t+6500,420,6); fadeIn('dotGmail',t+6600,320,0);
+
+  // ===== STEP 4 — the send updates the CRM automatically =====
+  t=S[3];
+  nar(t,'STEP 4 OF 4','Sending it updates your CRM and books the next call, automatically.');
+  fadeOut('turn3',t-600,420); fadeOut('sEmail',t-300,420);
+  fadeIn('turn4',t,440,8);
+  fadeIn('autocard',t+500,480,8);
+  fadeIn('c4w',t+1900,420,8); type('c4t','That moved the deal forward and booked the next call, automatically.',t+2100,t+3900);
+  fadeIn('sCRM',t+1100,580,10);
+  fadeIn('deal',t+1900,460,10);
+  move('deal',t+2900,t+4100,0,0,window.__PITCH||198,0);
+  cls('colProp',t+3200,'hot'); setT('dealStage',t+3600,'Proposal');
+  fadeIn('k4a',t+2400,360,8); fadeIn('k4achk',t+4300,320,0); fadeIn('k4adet',t+4450,360,4); fadeIn('dotHub',t+4350,320,0);
+  fadeIn('caltoast',t+4700,460,10);
+  fadeIn('k4b',t+4900,360,8); fadeIn('k4bchk',t+5500,320,0); fadeIn('k4bdet',t+5650,360,4); fadeIn('dotCal',t+5550,320,0);
+
+  // ===== SUMMARY ===== (recap interstitial during the closing VO, before the brand card)
+  fade('summary',48800,49600,0,0,1,0,easeOut);
+  fadeIn('sr1',49400,460,12); fadeIn('sr2',50400,460,12); fadeIn('sr3',51400,460,12); fadeIn('sr4',52400,460,12); fadeIn('sr5',53400,460,12);
+  fadeIn('srOut',54800,520,10);
+
+  // ===== END ===== (summary holds under the closing VO, then resolves to the brand card)
+  const E=57500;
+  fadeOut('main',E,800); fadeOut('topbar',E,800); fadeOut('narWrap',E,800);
+  fade('endcard',E+500,E+1400,0,0,1,0,easeOut);
+  fadeIn('ePyr',E+950,720,18); fade('eWord',E+1350,E+2100,0,18,1,0); fadeIn('eTag',E+1750,660,14); fadeIn('eLine',E+2200,620,12);
+
+  const TOTAL=63500; window.TOTAL=TOTAL;
+  function seek(tm){
+    for(const c of cues){
+      if(c.k==='fade'){
+        if(tm<c.t0) continue;
+        const p=c.t1>c.t0?clamp((tm-c.t0)/(c.t1-c.t0),0,1):1;
+        const e=c.ease(p);
+        c.el.style.opacity=lerp(c.fo,c.to,e);
+        c.el.style.transform='translate('+lerp(c.fx,c.tx,e)+'px,'+lerp(c.fy,c.ty,e)+'px)';
+      } else if(c.k==='type'){
+        if(tm<c.t0) continue;
+        const p=clamp((tm-c.t0)/(c.t1-c.t0),0,1);
+        c.el.textContent=c.txt.slice(0,Math.floor(p*c.txt.length));
+      } else if(c.k==='caret'){ c.el.style.opacity=(tm>=c.t0&&tm<=c.t1)?((Math.floor(tm/360)%2)?1:0.12):0; }
+      else if(c.k==='wave'){ const b=c.el.children,on=(tm>=c.t0&&tm<=c.t1); for(let i=0;i<b.length;i++){ b[i].style.height=(on?(5+14*Math.abs(Math.sin(tm/95+i*0.8))):5)+'px'; } }
+      else if(c.k==='set'){ if(tm>=c.t0&&c.el) c.el.textContent=c.txt; }
+      else if(c.k==='cls'){ if(c.el){ if(tm>=c.t0) c.el.classList.add(c.c); else c.el.classList.remove(c.c);} }
+      else if(c.k==='clock'){ if(tm>=c.t0){ const el=clamp((tm-c.t0)/1000,0,(c.t1-c.t0)/1000); const sec=Math.floor(c.startSec+el); const mm=Math.floor(sec/60), ss=sec%60; c.el.textContent=mm+':'+(ss<10?'0'+ss:ss); } }
+    }
+  }
+  window.seek=seek;
+  if(new URLSearchParams(location.search).get('play')){let s=null;(function loop(ts){if(s===null)s=ts;let tt=ts-s;if(tt>TOTAL)s=ts,tt=0;seek(tt);requestAnimationFrame(loop);})(performance.now());}
+  else { seek(0); }
+</script>
+</body>
+</html>

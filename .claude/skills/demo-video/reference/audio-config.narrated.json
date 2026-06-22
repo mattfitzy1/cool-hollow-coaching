@@ -1,0 +1,25 @@
+{
+  "_doc": "CANONICAL narrated-cut config (the shipped post-meeting workflow video, 2026-06-02). Copy this for a new video and change: video/out/voice_dir paths, voice_preset, the cues (text + start_ms + boop/boop_ms), and the sfx times. ALWAYS measure each cue's real duration first (see reference/AUTHORING.md) and lay out start_ms with ~1.5s gaps so nothing overlaps. start_ms values here are tuned to the timings baked into reference/post-meeting-workflow.html.",
+  "video": "outputs/videos/aios-demo/aios-demo.mp4",
+  "out": "outputs/videos/aios-demo/aios-demo-narrated-danielle.mp4",
+  "voice_preset": "danielle",
+  "normalise_numbers": true,
+  "music": "upbeat",
+  "music_volume": 0.55,
+  "duck": true,
+  "boops": true,
+  "voice_dir": "outputs/videos/aios-demo/voice",
+  "sfx": [
+    {"file": ".claude/skills/demo-video/assets/sfx/call_end.wav", "ms": 9800, "gain": 0.95},
+    {"file": ".claude/skills/demo-video/assets/sfx/mail_sent.wav", "ms": 35400, "gain": 0.9}
+  ],
+  "cues": [
+    {"text": "Let me show you how this works in practice. The moment I finish a client call, this is what I do.", "start_ms": 1500, "boop": false},
+    {"text": "I've just finished a call with Harvey, one of our newest clients.", "start_ms": 6600, "boop": false},
+    {"text": "I'll just voice note my system, asking it to debrief the meeting. It pulls the transcript automatically, takes the decisions and the action items, and saves the notes.", "start_ms": 10500, "boop": true, "boop_ms": 11550},
+    {"text": "Then I ask it to build the proposal, in our own branding, from what we just discussed. A couple of minutes later it's ready, and I can edit it right here, inside my operating system.", "start_ms": 19700, "boop": true},
+    {"text": "It even drafts the follow-up email for me, with the proposal attached. I just check it, say yes, and it sends straight to the client.", "start_ms": 29600, "boop": true, "boop_ms": 33400},
+    {"text": "And the moment it sends, everything updates on its own. The deal moves forward in my CRM, and the next call gets booked. <break time=\"0.7s\" /> What used to take me the whole afternoon, <break time=\"0.3s\" /> done in a couple of minutes.", "start_ms": 37600, "boop": false},
+    {"text": "And all of this happened without me ever switching between tools, or leaving my workspace. It was all done right here, in my AI Operating System. <break time=\"0.6s\" /> And this is just one example. It can run almost any workflow in your business.", "start_ms": 49330, "boop": false}
+  ]
+}

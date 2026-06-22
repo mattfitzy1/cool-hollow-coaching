@@ -1,0 +1,22 @@
+{
+  "_doc": "Saved voice setups for /demo-video. Each preset bundles an ElevenLabs voice_id + model + voice_settings (incl. pace) that we've auditioned and liked. An audio config can set \"voice_preset\": \"<name>\" instead of inline voice_id/voice_settings; any inline keys in the config override the preset. Add a new preset by auditioning a voice, then saving the winning setup here. `default` names the preset used when a config sets neither a preset nor an inline voice.",
+  "default": "danielle",
+  "presets": {
+    "ava": {
+      "voice_id": "x8syuETaTA9JYwAbE2JM",
+      "elevenlabs_name": "AVA - Captivating, Clear, Emotive (Pro)",
+      "model": "eleven_multilingual_v2",
+      "voice_settings": {"stability": 0.4, "similarity_boost": 0.85, "style": 0.0, "use_speaker_boost": true, "speed": 1.0},
+      "profile": "Young female, South African accent, conversational/classy. Warm and expressive.",
+      "notes": "First voice we locked (2026-06-02). Speed 1.0 read better than 1.05/0.95. Good narrated-explainer default."
+    },
+    "danielle": {
+      "voice_id": "d0NpsluCMIhcxftWaNBW",
+      "elevenlabs_name": "Danielle - Clear, Calm & Polished",
+      "model": "eleven_multilingual_v2",
+      "voice_settings": {"stability": 0.4, "similarity_boost": 0.85, "style": 0.0, "use_speaker_boost": true, "speed": 1.0},
+      "profile": "Calm, polished female, South African accent, narrative/storytelling tone.",
+      "notes": "Auditioning 2026-06-02 against ava."
+    }
+  }
+}

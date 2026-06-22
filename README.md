@@ -1,0 +1,3 @@
+# Cool Hollow Coaching AIOS
+
+Matt Fitzpatrick's personal AI workspace for Cool Hollow Coaching and its flagship program, Business Without You. It writes on-brand scripts, emails and marketing copy in his voice, builds and deploys the program website in plain English, helps shape the coaching platform and video pipeline, and keeps the everyday admin tidy, all driven by talking to it in normal English. Non-technical by design, manual-first (nothing runs on its own), and built to never dead-end: if a tool is not connected yet, it walks you through setting it up. New here? Start with `ONBOARDING.md`.

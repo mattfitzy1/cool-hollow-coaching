@@ -1,0 +1,121 @@
+{
+  "canva": {
+    "account": "Canva",
+    "bundle": "creative",
+    "optional": true,
+    "plan": "Free (Canva free account; Pro optional, not required here)",
+    "requires_bin": [],
+    "requires_runtime": [],
+    "signup": "https://www.canva.com → sign up / log in, then connect Canva inside Claude when prompted",
+    "sources": [
+      "module-installs/canva/INSTALL.md"
+    ],
+    "spend": "Free. A Canva account is all you need.",
+    "tool": "canva",
+    "type": "auth",
+    "verify": "Canva MCP responds (Claude calls a Canva tool and it returns)",
+    "where": "Browser login (OAuth). No key to paste, nothing goes in .env."
+  },
+  "cloudflare": {
+    "account": "Cloudflare",
+    "bundle": "app",
+    "optional": false,
+    "plan": "Free",
+    "requires_bin": [
+      "wrangler"
+    ],
+    "requires_runtime": [
+      "node"
+    ],
+    "signup": "https://dash.cloudflare.com/sign-up → then My Profile → API Tokens → Create Custom Token (Account / Cloudflare Pages: Edit)",
+    "sources": [
+      "skills/cloudflare-pages/SKILL.md",
+      "module-installs/cloudflare-pages/INSTALL.md"
+    ],
+    "spend": "Free tier covers everything here (500 builds/month, 100 custom domains per project)",
+    "tool": "cloudflare",
+    "type": "key",
+    "verify": "python scripts/cloudflare_pages.py verify",
+    "where": "API token into CLOUDFLARE_API_TOKEN; Account ID (right sidebar on any domain/Pages page) into CLOUDFLARE_ACCOUNT_ID, in .env"
+  },
+  "gmail-mcp": {
+    "bundle": "business",
+    "optional": true,
+    "plan": "Phase-2 capability - needs an email connection set up with your builder",
+    "requires_bin": [],
+    "requires_runtime": [],
+    "sources": [
+      "skills/inbox-triage/SKILL.md"
+    ],
+    "tool": "gmail-mcp",
+    "type": "mcp"
+  },
+  "higgsfield": {
+    "account": "Higgsfield",
+    "auth": "higgsfield account status",
+    "bundle": "creative",
+    "dormant": true,
+    "optional": true,
+    "plan": "Paid ~$59/mo (image/video credits)",
+    "requires_bin": [
+      "higgsfield",
+      "ffmpeg"
+    ],
+    "requires_runtime": [
+      "ffmpeg"
+    ],
+    "signup": "https://higgsfield.ai -> Sign up -> pick a plan -> higgsfield auth login",
+    "sources": [
+      "skills/creative/SKILL.md",
+      "skills/marketing-video/SKILL.md",
+      "module-installs/higgsfield/INSTALL.md"
+    ],
+    "spend": "Paid credits. Cheap-first defaults on. Cap: HF_MONTHLY_CAP in .env",
+    "tool": "higgsfield",
+    "type": "auth",
+    "verify": "higgsfield account status",
+    "where": "Account page, after you pick a plan"
+  },
+  "nano-banana": {
+    "account": "Google Gemini (nano-banana)",
+    "bundle": "creative",
+    "env": "GEMINI_API_KEY",
+    "optional": false,
+    "plan": "Free tier",
+    "requires_bin": [
+      "npx"
+    ],
+    "requires_runtime": [
+      "node"
+    ],
+    "signup": "https://aistudio.google.com/apikey",
+    "sources": [
+      "skills/creative/SKILL.md",
+      "module-installs/nano-banana/INSTALL.md"
+    ],
+    "spend": "Free tier. The cheapest creative tool, default for hero shots.",
+    "status_tool": "get_configuration_status",
+    "tool": "nano-banana",
+    "type": "mcp",
+    "verify": "nano-banana get_configuration_status",
+    "where": "Paste into GEMINI_API_KEY in .env"
+  },
+  "publer": {
+    "account": "Publer",
+    "bundle": "content",
+    "env": "PUBLER_API_KEY",
+    "optional": true,
+    "plan": "Free if its API and Instagram publish are free on your plan; otherwise paid",
+    "requires_bin": [],
+    "requires_runtime": [],
+    "signup": "https://publer.com → connect Instagram → Settings → Access → API key",
+    "sources": [
+      "skills/schedule/SKILL.md",
+      "module-installs/publer/INSTALL.md"
+    ],
+    "tool": "publer",
+    "type": "key",
+    "verify": "Publer API: list workspaces/accounts",
+    "where": "Settings → Access → API key"
+  }
+}

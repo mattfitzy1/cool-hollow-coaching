@@ -1,0 +1,15 @@
+{
+  "_comment": "This is the committed example. Copy it to .mcp.json (which is gitignored) so your key never lives in a tracked file. The Gemini key is read from the GEMINI_API_KEY value in your .env via the ${GEMINI_API_KEY} reference below; you never paste the key here. /setup walks you through getting the key. Alternatively, leave the env value empty and run the nano-banana configure_gemini_token step instead.",
+  "mcpServers": {
+    "nano-banana": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "nano-banana-mcp"
+      ],
+      "env": {
+        "GEMINI_API_KEY": "${GEMINI_API_KEY}"
+      }
+    }
+  }
+}
