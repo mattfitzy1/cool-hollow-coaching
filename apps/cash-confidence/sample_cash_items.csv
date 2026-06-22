@@ -1,0 +1,38 @@
+week,type,category,description,amount
+1,inflow,client revenue,recurring client payments,12000
+1,outflow,payroll,biweekly payroll,9000
+1,outflow,Underused software bundle,Underused software bundle,400
+2,inflow,client revenue,recurring client payments,12000
+2,outflow,Underused software bundle,Underused software bundle,400
+2,outflow,rent,office rent,3500
+3,inflow,client revenue,recurring client payments,9000
+3,outflow,payroll,biweekly payroll,9000
+3,outflow,Underused software bundle,Underused software bundle,400
+4,inflow,client revenue,recurring client payments,12000
+4,outflow,Underused software bundle,Underused software bundle,400
+5,inflow,client revenue,recurring client payments,8000
+5,outflow,payroll,biweekly payroll,9000
+5,outflow,rent,office rent,3500
+5,outflow,Underused software bundle,Underused software bundle,400
+6,inflow,client revenue,recurring client payments,12000
+6,outflow,Underused software bundle,Underused software bundle,400
+7,inflow,client revenue,recurring client payments,9000
+7,outflow,payroll,biweekly payroll,9000
+7,outflow,Underused software bundle,Underused software bundle,400
+8,inflow,client revenue,recurring client payments,7000
+8,outflow,rent,office rent,3500
+8,outflow,Underused software bundle,Underused software bundle,400
+9,inflow,client revenue,recurring client payments,12000
+9,outflow,payroll,biweekly payroll,9000
+9,outflow,Underused software bundle,Underused software bundle,400
+10,inflow,client revenue,recurring client payments,9000
+10,outflow,Underused software bundle,Underused software bundle,400
+11,inflow,client revenue,recurring client payments,6000
+11,outflow,payroll,biweekly payroll,9000
+11,outflow,rent,office rent,3500
+11,outflow,Underused software bundle,Underused software bundle,400
+12,inflow,client revenue,recurring client payments,12000
+12,outflow,Underused software bundle,Underused software bundle,400
+13,inflow,client revenue,recurring client payments,9000
+13,outflow,payroll,biweekly payroll,9000
+13,outflow,Underused software bundle,Underused software bundle,400

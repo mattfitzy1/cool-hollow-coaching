@@ -1,7 +1,7 @@
 """
 Core analysis logic for the Business Without You Profit Discovery Audit.
 
-This is Milestone 5, Skill 2 of the curriculum: the in-program audit a paying
+This is Milestone 4 of the curriculum: the in-program audit a paying
 client runs in week 7, covering all five areas Mark's framework defines.
 Unlike the hidden-profit-analyzer lead magnet (P&L only, three checks), this
 tool also takes a customer/service breakdown sheet so it can check
@@ -14,6 +14,22 @@ Takes:
 
 Returns five findings with plain-English explanations and a dollar estimate
 each, summed into one headline number.
+
+All revenue-scaled estimates (pricing gaps, customer profitability, service
+mix, revenue leakage) are annualized using period_months, the number of
+months the uploaded P&L actually covers. Without this, the same business
+would show a 4x bigger "profit found" number from a 12-month upload than
+from a 3-month upload of identical margins, since the benchmark-gap math
+multiplies a percentage gap by however much revenue happens to be in the
+file. The headline number is meant to be an annual figure regardless of
+how many months the client uploads.
+
+The margin benchmarks are also industry-aware (BUSINESS_TYPE_BENCHMARKS)
+rather than one fixed 50%/20% for every business. A vehicle repair shop or
+distributor running real cost of goods will never clear a 50% gross margin
+benchmark built for a services or software business, which would otherwise
+make every client in a lower-margin trade look like it has a pricing
+problem it doesn't actually have.
 """
 
 import pandas as pd
@@ -24,9 +40,16 @@ EXPENSE_KEYWORDS = ["expense", "overhead", "operating", "subscription", "softwar
                     "rent", "salaries", "payroll", "marketing", "advertising", "fees"]
 LEAKAGE_KEYWORDS = ["discount", "write-off", "writeoff", "credit memo", "bad debt", "refund"]
 
-HEALTHY_GROSS_MARGIN = 0.50
 HIGH_GROWTH_FLAG = 0.15
-HEALTHY_LINE_MARGIN = 0.20
+MONTHS_PER_YEAR = 12
+
+BUSINESS_TYPE_BENCHMARKS = {
+    "Professional services, coaching, or agency (default)": {"gross_margin": 0.50, "line_margin": 0.20},
+    "Software or other high-margin recurring revenue": {"gross_margin": 0.65, "line_margin": 0.30},
+    "Trades, field service, or repair": {"gross_margin": 0.35, "line_margin": 0.15},
+    "Retail, distribution, or resale": {"gross_margin": 0.30, "line_margin": 0.12},
+}
+DEFAULT_BUSINESS_TYPE = "Professional services, coaching, or agency (default)"
 
 
 def _classify(line_item: str) -> str:
@@ -45,7 +68,7 @@ def _classify(line_item: str) -> str:
 def load_pnl(df: pd.DataFrame) -> pd.DataFrame:
     """Normalize a raw uploaded P&L into category, line_item, amount, and month columns."""
     df = df.copy()
-    df.columns = [str(c).strip().lower() for c in df.columns]
+    df.columns = [str(c).strip().lower().replace(" ", "_") for c in df.columns]
 
     if "line_item" not in df.columns:
         first_col = df.columns[0]
@@ -70,7 +93,7 @@ def load_pnl(df: pd.DataFrame) -> pd.DataFrame:
 def load_breakdown(df: pd.DataFrame) -> pd.DataFrame:
     """Normalize the customer/service breakdown sheet into type, name, revenue, direct_cost."""
     df = df.copy()
-    df.columns = [str(c).strip().lower() for c in df.columns]
+    df.columns = [str(c).strip().lower().replace(" ", "_") for c in df.columns]
 
     required = {"type", "name", "revenue", "direct_cost"}
     missing = required - set(df.columns)
@@ -87,7 +110,7 @@ def load_breakdown(df: pd.DataFrame) -> pd.DataFrame:
     return df[["type", "name", "revenue", "direct_cost"]]
 
 
-def check_pricing_gaps(pnl: pd.DataFrame) -> dict:
+def check_pricing_gaps(pnl: pd.DataFrame, healthy_gross_margin: float, annualize_factor: float) -> dict:
     revenue = pnl[pnl["category"] == "revenue"]["amount"].sum()
     cogs = pnl[pnl["category"] == "cogs"]["amount"].sum()
 
@@ -96,23 +119,38 @@ def check_pricing_gaps(pnl: pd.DataFrame) -> dict:
 
     if revenue > 0:
         gross_margin = (revenue - cogs) / revenue
-        if gross_margin < HEALTHY_GROSS_MARGIN:
-            gap = HEALTHY_GROSS_MARGIN - gross_margin
-            estimate = round(gap * revenue, 2)
+        if gross_margin < healthy_gross_margin:
+            gap = healthy_gross_margin - gross_margin
+            estimate = round(gap * revenue * annualize_factor, 2)
             findings.append(
-                f"Gross margin is running at {gross_margin:.0%}, below the {HEALTHY_GROSS_MARGIN:.0%} "
-                f"benchmark. Closing that gap through pricing or delivery cost changes is worth "
-                f"roughly ${estimate:,.0f}."
+                f"Gross margin is running at {gross_margin:.0%}, below the {healthy_gross_margin:.0%} "
+                f"benchmark for this kind of business. Closing that gap through pricing or delivery "
+                f"cost changes is worth roughly ${estimate:,.0f} a year."
             )
         else:
             findings.append(
                 f"Gross margin is running at {gross_margin:.0%}, at or above the "
-                f"{HEALTHY_GROSS_MARGIN:.0%} benchmark. No major pricing gap found here."
+                f"{healthy_gross_margin:.0%} benchmark for this kind of business. No major pricing "
+                f"gap found here."
             )
     else:
         findings.append("No revenue line found in the P&L, so a pricing gap check could not be run.")
 
     return {"name": "Pricing gaps", "estimate": estimate, "findings": findings}
+
+
+def _chronological_months(months) -> list:
+    """Sort month labels chronologically, not alphabetically.
+
+    Alphabetical sort puts "Apr" before "Jan", which silently breaks the
+    growth-trend check for any P&L using month names instead of ISO dates.
+    Falls back to alphabetical only if the labels can't be parsed as dates.
+    """
+    months = list(months)
+    parsed = [pd.to_datetime(str(m), errors="coerce") for m in months]
+    if all(pd.notna(p) for p in parsed):
+        return [m for m, _ in sorted(zip(months, parsed), key=lambda pair: pair[1])]
+    return sorted(months)
 
 
 def check_cost_inefficiencies(pnl: pd.DataFrame) -> dict:
@@ -130,7 +168,7 @@ def check_cost_inefficiencies(pnl: pd.DataFrame) -> dict:
 
     if expenses["month"].nunique() > 1:
         pivot = expenses.pivot_table(index="line_item", columns="month", values="amount", aggfunc="sum").fillna(0)
-        months_sorted = sorted(pivot.columns)
+        months_sorted = _chronological_months(pivot.columns)
         if len(months_sorted) >= 2:
             first, last = pivot[months_sorted[0]], pivot[months_sorted[-1]]
             for line_item in pivot.index:
@@ -138,12 +176,13 @@ def check_cost_inefficiencies(pnl: pd.DataFrame) -> dict:
                 if start > 0:
                     growth = (end - start) / start
                     if growth > HIGH_GROWTH_FLAG and end > 0:
-                        risk = round(end - start, 2)
-                        estimate += risk
+                        monthly_increase = round(end - start, 2)
+                        annualized_risk = round(monthly_increase * MONTHS_PER_YEAR, 2)
+                        estimate += annualized_risk
                         findings.append(
                             f"\"{line_item}\" grew {growth:.0%} from {months_sorted[0]} to "
-                            f"{months_sorted[-1]} (${start:,.0f} to ${end:,.0f}), ${risk:,.0f} of "
-                            f"creeping cost worth a hard look."
+                            f"{months_sorted[-1]} (${start:,.0f} to ${end:,.0f}). If that pace holds, "
+                            f"it costs roughly ${annualized_risk:,.0f} a year versus where it started."
                         )
 
     top_3 = by_line.head(3)
@@ -159,7 +198,8 @@ def check_cost_inefficiencies(pnl: pd.DataFrame) -> dict:
     return {"name": "Cost structure inefficiencies", "estimate": round(estimate, 2), "findings": findings}
 
 
-def _profitability_check(breakdown: pd.DataFrame, row_type: str, label: str) -> dict:
+def _profitability_check(breakdown: pd.DataFrame, row_type: str, label: str,
+                          healthy_line_margin: float, annualize_factor: float) -> dict:
     rows = breakdown[breakdown["type"] == row_type]
 
     findings = []
@@ -174,35 +214,38 @@ def _profitability_check(breakdown: pd.DataFrame, row_type: str, label: str) -> 
 
     rows = rows.copy()
     rows["margin"] = (rows["revenue"] - rows["direct_cost"]) / rows["revenue"].replace(0, pd.NA)
-    underperformers = rows[(rows["margin"].notna()) & (rows["margin"] < HEALTHY_LINE_MARGIN)]
+    underperformers = rows[(rows["margin"].notna()) & (rows["margin"] < healthy_line_margin)]
 
     if underperformers.empty:
-        findings.append(f"Every {row_type} is at or above the {HEALTHY_LINE_MARGIN:.0%} margin benchmark. "
+        findings.append(f"Every {row_type} is at or above the {healthy_line_margin:.0%} margin benchmark. "
                          f"No major gap found here.")
         return {"name": label, "estimate": estimate, "findings": findings}
 
     for _, r in underperformers.sort_values("margin").iterrows():
-        gap = HEALTHY_LINE_MARGIN - r["margin"]
-        line_estimate = round(gap * r["revenue"], 2)
+        gap = healthy_line_margin - r["margin"]
+        line_estimate = round(gap * r["revenue"] * annualize_factor, 2)
         estimate += line_estimate
         margin_text = f"{r['margin']:.0%}" if r["margin"] >= 0 else f"-{abs(r['margin']):.0%}"
         findings.append(
-            f"\"{r['name']}\" is running at a {margin_text} margin on ${r['revenue']:,.0f} of revenue. "
-            f"Bringing it to the {HEALTHY_LINE_MARGIN:.0%} benchmark is worth roughly ${line_estimate:,.0f}."
+            f"\"{r['name']}\" is running at a {margin_text} margin on ${r['revenue']:,.0f} of revenue "
+            f"for the period uploaded. Bringing it to the {healthy_line_margin:.0%} benchmark is worth "
+            f"roughly ${line_estimate:,.0f} a year."
         )
 
     return {"name": label, "estimate": round(estimate, 2), "findings": findings}
 
 
-def check_customer_profitability(breakdown: pd.DataFrame) -> dict:
-    return _profitability_check(breakdown, "customer", "Customer profitability differences")
+def check_customer_profitability(breakdown: pd.DataFrame, healthy_line_margin: float, annualize_factor: float) -> dict:
+    return _profitability_check(breakdown, "customer", "Customer profitability differences",
+                                 healthy_line_margin, annualize_factor)
 
 
-def check_service_mix(breakdown: pd.DataFrame) -> dict:
-    return _profitability_check(breakdown, "service", "Service or product mix problems")
+def check_service_mix(breakdown: pd.DataFrame, healthy_line_margin: float, annualize_factor: float) -> dict:
+    return _profitability_check(breakdown, "service", "Service or product mix problems",
+                                 healthy_line_margin, annualize_factor)
 
 
-def check_revenue_leakage(pnl: pd.DataFrame) -> dict:
+def check_revenue_leakage(pnl: pd.DataFrame, annualize_factor: float) -> dict:
     leakage = pnl[pnl["category"] == "leakage"]
 
     findings = []
@@ -217,9 +260,11 @@ def check_revenue_leakage(pnl: pd.DataFrame) -> dict:
         return {"name": "Revenue leakage points", "estimate": estimate, "findings": findings}
 
     by_line = leakage.groupby("line_item")["amount"].sum().sort_values(ascending=False)
-    estimate = round(by_line.sum(), 2)
+    estimate = round(by_line.sum() * annualize_factor, 2)
     findings.append(
-        "Flagged leakage lines: " + ", ".join(f"\"{k}\" (${v:,.0f})" for k, v in by_line.items()) + "."
+        "Flagged leakage lines for the period uploaded: " +
+        ", ".join(f"\"{k}\" (${v:,.0f})" for k, v in by_line.items()) +
+        f", roughly ${estimate:,.0f} a year at that pace."
     )
     findings.append(
         "This only catches what is already recorded as a discount, write-off, or refund. Unbilled "
@@ -229,16 +274,31 @@ def check_revenue_leakage(pnl: pd.DataFrame) -> dict:
     return {"name": "Revenue leakage points", "estimate": estimate, "findings": findings}
 
 
-def run_full_audit(pnl_raw: pd.DataFrame, breakdown_raw: pd.DataFrame) -> dict:
+def run_full_audit(pnl_raw: pd.DataFrame, breakdown_raw: pd.DataFrame,
+                    business_type: str = DEFAULT_BUSINESS_TYPE, period_months: float = 12.0) -> dict:
+    """Run all five checks, annualized to a consistent yearly figure.
+
+    period_months is how many months the uploaded P&L and breakdown sheet
+    actually cover (the client states this, it is not inferred from column
+    headers, since labels like "Q1" or "Period 1" can't be parsed reliably).
+    Every revenue-scaled estimate is annualized to 12/period_months so the
+    headline number means the same thing whether a client uploads 3 months
+    or a full year, and reflects the actual benchmarks for their kind of
+    business rather than one fixed margin for everyone.
+    """
     pnl = load_pnl(pnl_raw)
     breakdown = load_breakdown(breakdown_raw)
 
+    benchmarks = BUSINESS_TYPE_BENCHMARKS.get(business_type, BUSINESS_TYPE_BENCHMARKS[DEFAULT_BUSINESS_TYPE])
+    annualize_factor = MONTHS_PER_YEAR / period_months if period_months > 0 else 1.0
+
     checks = [
-        check_pricing_gaps(pnl),
+        check_pricing_gaps(pnl, benchmarks["gross_margin"], annualize_factor),
         check_cost_inefficiencies(pnl),
-        check_customer_profitability(breakdown),
-        check_service_mix(breakdown),
-        check_revenue_leakage(pnl),
+        check_customer_profitability(breakdown, benchmarks["line_margin"], annualize_factor),
+        check_service_mix(breakdown, benchmarks["line_margin"], annualize_factor),
+        check_revenue_leakage(pnl, annualize_factor),
     ]
     total = round(sum(c["estimate"] for c in checks), 2)
-    return {"checks": checks, "total_found": total}
+    return {"checks": checks, "total_found": total, "business_type": business_type,
+            "period_months": period_months}

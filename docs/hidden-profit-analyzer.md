@@ -91,3 +91,5 @@ with open('sample_pnl.pdf', 'rb') as f:
 |------|--------|
 | 2026-06-22 | Initial build and documentation |
 | 2026-06-22 | Added PDF upload support (table + text-line extraction) |
+
+Note: this doc covers the lead-magnet tool. For the in-program Milestone 4 tool, see `docs/profit-discovery-audit.md`.

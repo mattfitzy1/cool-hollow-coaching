@@ -1,0 +1,8 @@
+constraint_name,process,frequency_per_week,hours_lost_per_occurrence,downstream_impact,automatable,automation_effort
+Owner approves every quote before it goes out,Sales,15,0.5,5,yes,2
+Manual data entry from leads form into CRM,Sales,20,0.25,3,yes,1
+Only one person knows how to run delivery scheduling,Delivery,5,2,5,no,5
+Invoices typed by hand from job sheets,Delivery,10,0.5,2,yes,1
+Owner reviews every piece of client-facing work before it ships,Delivery,8,1.5,5,no,4
+Weekly report built manually from three spreadsheets,Operations,1,4,2,yes,2
+No backup for payroll processing,Operations,1,1,4,no,3

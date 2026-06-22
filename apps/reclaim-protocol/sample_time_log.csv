@@ -1,0 +1,13 @@
+task,hours_per_week,category,documented,trained_replacement,risk
+Approve every invoice before it's paid,3,delegate,yes,yes,low
+Weekly payroll run,2,delegate,yes,no,medium
+Respond to every customer support email personally,6,delegate,no,no,medium
+Schedule social media posts,2,automate,yes,yes,low
+Reconcile bank statements,2,eliminate,no,no,low
+Set next quarter's pricing strategy,3,owner_only,no,no,high
+Pull weekly sales report into a spreadsheet,1,automate,yes,no,low
+Sit in on every new hire interview,4,delegate,no,no,high
+Final review of every client deliverable before it ships,5,delegate,yes,no,high
+Negotiate with key vendors,2,owner_only,no,no,medium
+Manually chase overdue invoices,2,automate,no,no,medium
+Write the weekly team update email,1,delegate,yes,yes,low

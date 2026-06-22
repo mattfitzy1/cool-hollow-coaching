@@ -1,0 +1,11 @@
+category,metric_name,current_value,target_value,direction,leading,impact
+cash,13-week cash runway (weeks),9,13,higher_better,yes,5
+cash,days sales outstanding,52,30,lower_better,no,3
+sales,qualified leads per week,18,25,higher_better,yes,4
+sales,monthly revenue,42000,50000,higher_better,no,5
+delivery,on-time delivery rate,88,95,higher_better,no,4
+delivery,open support tickets,14,5,lower_better,yes,3
+customer,client retention rate,91,95,higher_better,no,4
+customer,net promoter score,42,50,higher_better,yes,3
+team,voluntary turnover rate,18,8,lower_better,no,4
+team,roles with a documented backup,2,5,higher_better,yes,5

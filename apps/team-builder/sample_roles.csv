@@ -1,0 +1,4 @@
+role_name,current_delegation_level,target_delegation_level,key_outcome_1,key_outcome_2,key_outcome_3,decision_rights,success_metric
+Operations Manager,2,5,Keeps delivery on schedule across all active clients,Owns vendor relationships and renewals,Runs the weekly team check-in,Can approve spend up to $2000 without sign-off,On-time delivery rate at or above 95%
+Sales Lead,3,5,Owns the full sales pipeline from lead to close,Sets and adjusts pricing within approved bands,Reports pipeline health weekly,Can approve discounts up to 10% without sign-off,Monthly revenue at or above target
+Bookkeeper,4,5,Reconciles accounts weekly,Manages AR and AP follow-up,Prepares the monthly close packet,Can release payments under $500 without sign-off,Books closed within 5 business days of month end
