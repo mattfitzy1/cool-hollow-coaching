@@ -23,6 +23,8 @@ Read these files so you genuinely know Matt and his business before you say a wo
 - `context/voice-and-tone.md` - how Matt writes and sounds (this is HIS voice)
 - `context/strategy.md` - what he is focused on right now
 - `context/current-data.md` - light current state
+- `HISTORY.md` - workspace changelog (what was built, when)
+- `docs/_index.md` - documentation routing index (find the right system doc before working on something already built)
 
 If any of these are still empty (a brand-new workspace), that is fine - note it gently and offer to run `/install module-installs/context-os-v1` to fill them in (see Step 4).
 
