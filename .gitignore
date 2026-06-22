@@ -26,6 +26,9 @@ node_modules/
 .claude/worktrees/
 data/content.db
 data/*.json
+data/*.db
+data/collect.log
+credentials/
 !data/skill_registry.json
 generated_imgs/
 outputs/creative/**/drafts/

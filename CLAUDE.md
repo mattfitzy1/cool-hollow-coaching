@@ -111,12 +111,14 @@ This system was built for you free of charge. In return, you signed an NDA and a
 
 Your daily rhythm is small and manual. There is **no overnight automation** in this first version, no jobs running while you sleep, no surprise activity. You drive it, in four little moves:
 
-1. **Start:** say `/prime` for a full catch-up, or `/prime-task` to pick straight back up where you left off.
+1. **Start:** say `/prime` for a full catch-up, or `/prime-task` to pick straight back up where you left off. `/prime` now also loads your latest numbers automatically (see "Your Data" below).
 2. **Work:** create (write me a script for milestone three in Mark's voice), build (draft the program website, then put it live when I say so), or plan (help me map the video pipeline).
 3. **Capture:** drop any idea the moment it hits you, so the bursts have a home.
 4. **Save:** say `/save` for a quick 10-second snapshot before closing, or `/commit` at the end of a real session to save and back up. Then open a fresh window for a clean start that still remembers you.
 
 There is also one small safety net: a quiet daily backup that saves your work to your private repository so a forgotten `/commit` never loses a day. It only ever saves your own files. It never posts, never emails, never touches anyone. The bigger automations on your roadmap (Plaud to client summaries, the video pipeline) come later, once the core is solid.
+
+**`/update-data`** refreshes your numbers on demand: it runs the data collection pipeline and rebuilds `key-metrics.md`. Once the daily automation is on, this happens by itself every morning, so you would only run it manually if you want a number checked right now.
 
 **If something looks wrong (your panic line):** you have no approval box to cancel at, so this is your stop button. Just say **"stop"**, or close the window. Nothing you have committed is ever lost. If you are unsure whether you have saved, ask **"have I saved?"** If you are about to close the laptop and feel nervous, ask **"am I clear to close?"** and I will check for you. It is genuinely hard to break, and there are safety rails underneath everything.
 
@@ -149,6 +151,16 @@ Your areas are: **Cool Hollow Coaching, Content, Creative, Platform & Web, Busin
 ## Memory
 
 The system remembers across sessions. You never have to re-upload your brand, your voice, or what you decided last week. Your context files (in `context/`) are living: when something changes, I update them. Meetings, decisions, ideas and feedback get saved into memory as we go. Start with `/prime` and end with `/commit`, and the next session picks up knowing everything.
+
+---
+
+## Your Data
+
+DataOS is your business data warehouse: a local database (`data/data.db`, on your machine only, never uploaded) that collects daily snapshots from whichever tools you connect. Every `/prime` loads `context/group/key-metrics.md`, a plain-English summary of your latest numbers auto-generated from that database, so I always start a session knowing how things stand.
+
+Right now only the starter collector is live (exchange rates, just to prove the pipeline works). Cool Hollow Coaching is pre-launch, so there is nothing real to track yet. The moment you have a live data source, just say so, e.g. "connect Stripe" or "connect Instagram", and I will set up that connector the same way.
+
+For anything beyond what's in `key-metrics.md`, I can query the database directly (`data/data.db`, full schema and example queries in `reference/data-access.md`) for deeper questions like trends or comparisons.
 
 ---
 

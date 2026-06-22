@@ -23,12 +23,19 @@ Read these files so you genuinely know Matt and his business before you say a wo
 - `context/voice-and-tone.md` - how Matt writes and sounds (this is HIS voice)
 - `context/strategy.md` - what he is focused on right now
 - `context/current-data.md` - light current state
+- `context/group/key-metrics.md` - current business metrics (auto-generated from the database by DataOS)
 - `HISTORY.md` - workspace changelog (what was built, when)
 - `docs/_index.md` - documentation routing index (find the right system doc before working on something already built)
 
 If any of these are still empty (a brand-new workspace), that is fine - note it gently and offer to run `/install module-installs/context-os-v1` to fill them in (see Step 4).
 
 Read the last 30 lines of `HISTORY.md` if it exists, to see what was last worked on.
+
+### On-Demand Loading
+
+These files are NOT read during `/prime` but should be loaded when a task needs deep detail:
+
+- `reference/data-access.md` - full database table schemas, SQL query examples, and collection script details (load this before running any direct query against `data/data.db`)
 
 ## Step 2: Check last session
 
@@ -68,6 +75,8 @@ Now greet Matt warmly and briefly. This is a welcome, not a briefing. Keep it hu
 4. **I know your brand.** Reflect the brand back to him in one short, warm sentence drawn from `brand.md` and `voice-and-tone.md` - the palette, type, and voice. This is how he knows the context loaded properly. Keep it in his register, not salesy.
 
 5. **Where things stand.** If there was a last session (Step 2), one line on what he was doing and any next step. If there is unsaved work (Step 3), the gentle save offer. If it is a fresh workspace (Step 4), the `/setup` and context-os offer.
+
+5a. **Data status.** If `key-metrics.md` exists, note its Data Freshness section. Flag anything stale (more than 2 days old) gently, in plain English (e.g. "your numbers were last refreshed a few days back"). Mention in passing that deeper questions can be answered with a live look at the database (`data/data.db`), without making this sound technical.
 
 6. **Ready.** End with a short, encouraging "What would you like to work on?" Keep it open and easy.
 
