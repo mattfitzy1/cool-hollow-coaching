@@ -1,0 +1,14 @@
+task,hours_per_week,category,documented,trained_replacement,risk
+Approve every quote over $500,6,delegate,no,no,medium
+Negotiate parts vendor pricing and contracts,4,owner_only,no,no,high
+Build technician schedule for big jobs,5,delegate,no,no,medium
+Review every outgoing invoice before it ships,3,delegate,yes,no,low
+Sit in on every technician hire interview,3,delegate,no,no,medium
+Personally chase the two big fleet accounts for late payment,4,delegate,no,no,high
+Set next quarter's pricing strategy,2,owner_only,no,no,high
+Reconcile the parts inventory count,2,eliminate,no,no,low
+Respond to every customer complaint call personally,5,delegate,no,no,medium
+Run weekly payroll,2,delegate,yes,no,medium
+Write the weekly shop update for the team,1,automate,yes,yes,low
+Manually re-key completed job tickets into the invoicing system,3,automate,no,no,low
+Decide which long-term initiative to work on this month,2,owner_only,no,no,high

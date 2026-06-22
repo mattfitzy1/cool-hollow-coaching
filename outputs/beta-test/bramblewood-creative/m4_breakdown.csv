@@ -1,0 +1,9 @@
+type,name,revenue,direct_cost
+customer,Anchor Retainer A,260000,95000
+customer,Anchor Retainer B,210000,88000
+customer,Shrinking Retainer C,95000,68000
+customer,"Smaller retainers (combined, 5 accounts)",540000,210000
+customer,Project work (combined),1076000,420000
+service,Retainer Strategy and Design,890000,330000
+service,Project-Based Rebrand Work,720000,300000
+service,Add-on Production Work,571000,251000

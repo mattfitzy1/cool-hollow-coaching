@@ -1,0 +1,13 @@
+task,hours_per_week,category,documented,trained_replacement,risk
+Approve every creative deliverable before it ships,8,delegate,no,no,medium
+Run every new client onboarding call,3,delegate,yes,no,medium
+Be the sole point of contact for the 3 largest retainers,6,owner_only,no,no,high
+Set every retainer's pricing personally,2,owner_only,no,no,high
+Run new business strategy calls instead of handing to biz dev,4,delegate,no,no,medium
+Approve every software/tool purchase request,1,automate,no,no,low
+Review the monthly retainer utilization report,2,delegate,yes,yes,low
+Write the weekly team standup agenda,1,automate,yes,yes,low
+Manually re-key timesheets into the invoicing system,2,automate,no,no,low
+Sit in on every designer hire interview,2,delegate,no,no,medium
+Decide which growth idea to chase this month,2,owner_only,no,no,high
+Reconcile the agency credit card statement,2,eliminate,no,no,low

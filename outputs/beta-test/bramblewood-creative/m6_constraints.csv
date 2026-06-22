@@ -1,0 +1,8 @@
+constraint_name,process,frequency_per_week,hours_lost_per_occurrence,downstream_impact,automatable,automation_effort
+Owner approves every creative deliverable,Delivery,20,0.4,5,no,5
+Owner is the sole contact for the 3 biggest retainers,Sales,3,2,5,no,5
+Owner sets every retainer price personally,Sales,1,2,4,no,4
+Manual re-keying of timesheets into invoicing,Operations,15,0.15,2,yes,1
+Owner runs new business calls instead of biz dev,Sales,2,1.5,3,no,3
+No second point of contact on any large retainer,Sales,1,1,5,no,4
+Weekly utilization report pulled by hand from 3 tools,Operations,1,2,2,yes,2

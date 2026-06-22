@@ -1,0 +1,9 @@
+constraint_name,process,frequency_per_week,hours_lost_per_occurrence,downstream_impact,automatable,automation_effort
+Owner approves every quote over $500,Sales,18,0.4,5,yes,2
+Owner negotiates all parts vendor pricing,Procurement,2,2,4,no,5
+Owner builds the schedule for big jobs,Delivery,5,1.5,5,no,4
+Manual re-keying of job tickets into invoicing,Delivery,25,0.2,2,yes,1
+Owner personally chases late fleet payments,Operations,3,1.5,4,no,3
+No backup for the parts manager role,Procurement,1,1,5,no,4
+Weekly shop report built by hand from three systems,Operations,1,3,2,yes,2
+Owner sits in on every technician hire,Operations,1,2,3,no,3

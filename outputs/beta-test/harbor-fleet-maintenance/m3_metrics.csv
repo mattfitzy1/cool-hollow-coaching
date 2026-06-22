@@ -1,0 +1,11 @@
+category,metric_name,current_value,target_value,direction,leading,impact
+cash,days sales outstanding (big fleet accounts),52,30,lower_better,no,5
+cash,13-week cash runway (weeks),7,13,higher_better,yes,5
+sales,quote-to-win rate,38,55,higher_better,yes,4
+sales,monthly revenue,283000,300000,higher_better,no,4
+delivery,on-time job completion rate,81,95,higher_better,no,5
+delivery,rework rate (jobs redone within 30 days),6,2,lower_better,yes,4
+customer,fleet account retention rate,92,97,higher_better,no,5
+customer,local account repeat rate,54,70,higher_better,yes,3
+team,technician voluntary turnover (annualized),34,15,lower_better,no,5
+team,roles with a documented trained backup,1,4,higher_better,yes,4

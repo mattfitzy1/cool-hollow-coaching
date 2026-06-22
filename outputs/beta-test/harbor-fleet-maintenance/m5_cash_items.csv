@@ -1,0 +1,44 @@
+week,type,category,description,amount
+1,inflow,local accounts,walk-in and local job payments,22000
+1,outflow,payroll,biweekly payroll,21000
+1,outflow,Underused fleet-tracking software add-on,Underused fleet-tracking software add-on,350
+2,inflow,fleet account,Regional Courier Co payment (net-45),43000
+2,outflow,parts vendor,parts restock,18000
+2,outflow,Underused fleet-tracking software add-on,Underused fleet-tracking software add-on,350
+2,outflow,rent,shop rent,7000
+3,inflow,local accounts,walk-in and local job payments,19000
+3,outflow,payroll,biweekly payroll,21000
+3,outflow,Underused fleet-tracking software add-on,Underused fleet-tracking software add-on,350
+4,inflow,local accounts,walk-in and local job payments,17000
+4,outflow,parts vendor,parts restock,16000
+4,outflow,Underused fleet-tracking software add-on,Underused fleet-tracking software add-on,350
+5,inflow,fleet account,Beverage Distributor payment (net-45),38000
+5,outflow,payroll,biweekly payroll,21000
+5,outflow,rent,shop rent,7000
+5,outflow,Underused fleet-tracking software add-on,Underused fleet-tracking software add-on,350
+6,inflow,local accounts,walk-in and local job payments,15000
+6,outflow,parts vendor,parts restock,19000
+6,outflow,Underused fleet-tracking software add-on,Underused fleet-tracking software add-on,350
+7,inflow,local accounts,walk-in and local job payments,14000
+7,outflow,payroll,biweekly payroll,21000
+7,outflow,Underused fleet-tracking software add-on,Underused fleet-tracking software add-on,350
+8,inflow,fleet account,Regional Courier Co payment (net-45),41000
+8,outflow,parts vendor,parts restock,17000
+8,outflow,rent,shop rent,7000
+8,outflow,Underused fleet-tracking software add-on,Underused fleet-tracking software add-on,350
+9,inflow,local accounts,walk-in and local job payments,13000
+9,outflow,payroll,biweekly payroll,21000
+9,outflow,Underused fleet-tracking software add-on,Underused fleet-tracking software add-on,350
+10,inflow,local accounts,walk-in and local job payments,16000
+10,outflow,parts vendor,parts restock,18000
+10,outflow,Underused fleet-tracking software add-on,Underused fleet-tracking software add-on,350
+11,inflow,fleet account,Beverage Distributor payment (net-45),36000
+11,outflow,payroll,biweekly payroll,21000
+11,outflow,rent,shop rent,7000
+11,outflow,Underused fleet-tracking software add-on,Underused fleet-tracking software add-on,350
+12,inflow,local accounts,walk-in and local job payments,14000
+12,outflow,parts vendor,parts restock,15000
+12,outflow,Underused fleet-tracking software add-on,Underused fleet-tracking software add-on,350
+13,inflow,local accounts,walk-in and local job payments,12000
+13,outflow,payroll,biweekly payroll,21000
+13,outflow,Underused fleet-tracking software add-on,Underused fleet-tracking software add-on,350

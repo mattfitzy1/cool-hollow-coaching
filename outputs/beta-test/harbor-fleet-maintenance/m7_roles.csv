@@ -1,0 +1,4 @@
+role_name,current_delegation_level,target_delegation_level,key_outcome_1,key_outcome_2,key_outcome_3,decision_rights,success_metric
+Service Manager,1,5,Owns the technician schedule for all jobs over $500,Approves standard quotes without owner sign-off,Runs the daily shop floor check-in,Can approve quotes up to $3000 and schedule changes without sign-off,On-time job completion rate at or above 95%
+Parts Manager,3,5,Owns vendor relationships and pricing negotiation,Manages inventory counts and reorder points,Flags margin-eroding part costs monthly,Can commit to vendor contracts under $10000 without sign-off,Parts cost as a percent of job revenue stays under 35%
+Lead Technician,3,5,Trains and certifies new technicians,Reviews complex diagnostic jobs before they ship,Acts as backup scheduler when the Service Manager is out,Can sign off on diagnostic accuracy without owner review,Rework rate at or below 2%

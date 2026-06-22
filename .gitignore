@@ -20,6 +20,11 @@ node_modules/
 .DS_Store
 .vscode/
 .idea/
+~$*.xlsx
+~$*.docx
+
+# Local app logs
+apps/*/streamlit.log
 
 # Per-user / generated
 .claude/settings.local.json

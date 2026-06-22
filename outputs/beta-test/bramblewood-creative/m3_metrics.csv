@@ -1,0 +1,11 @@
+category,metric_name,current_value,target_value,direction,leading,impact
+cash,days sales outstanding,38,30,lower_better,no,4
+cash,13-week cash runway (weeks),11,13,higher_better,yes,4
+sales,retainer renewal rate,82,95,higher_better,yes,5
+sales,monthly new business pipeline value,45000,80000,higher_better,yes,4
+delivery,on-time deliverable rate,90,97,higher_better,no,4
+delivery,designer utilization rate,68,80,higher_better,yes,4
+customer,retainer client retention rate,88,95,higher_better,no,5
+customer,net promoter score,46,60,higher_better,yes,3
+team,strategist voluntary turnover (annualized),22,10,lower_better,no,4
+team,client relationships with a second point of contact,1,5,higher_better,yes,5

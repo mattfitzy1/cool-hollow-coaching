@@ -1,0 +1,57 @@
+week,type,category,description,amount
+1,inflow,retainer billing,monthly retainer invoices,72000
+1,outflow,payroll,biweekly payroll,42000
+1,outflow,Unused stock photo subscription,Unused stock photo subscription,300
+1,outflow,Unused second project management tool,Unused second project management tool,180
+2,inflow,project billing,project milestone payments,18000
+2,outflow,contractor costs,freelance design contractors,9000
+2,outflow,Unused stock photo subscription,Unused stock photo subscription,300
+2,outflow,Unused second project management tool,Unused second project management tool,180
+3,inflow,retainer billing,monthly retainer invoices,70000
+3,outflow,payroll,biweekly payroll,42000
+3,outflow,rent,office rent,5500
+3,outflow,Unused stock photo subscription,Unused stock photo subscription,300
+3,outflow,Unused second project management tool,Unused second project management tool,180
+4,inflow,project billing,project milestone payments,12000
+4,outflow,contractor costs,freelance design contractors,7000
+4,outflow,Unused stock photo subscription,Unused stock photo subscription,300
+4,outflow,Unused second project management tool,Unused second project management tool,180
+5,inflow,retainer billing,monthly retainer invoices,71000
+5,outflow,payroll,biweekly payroll,42000
+5,outflow,Unused stock photo subscription,Unused stock photo subscription,300
+5,outflow,Unused second project management tool,Unused second project management tool,180
+6,inflow,project billing,project milestone payments,15000
+6,outflow,contractor costs,freelance design contractors,8000
+6,outflow,rent,office rent,5500
+6,outflow,Unused stock photo subscription,Unused stock photo subscription,300
+6,outflow,Unused second project management tool,Unused second project management tool,180
+7,inflow,retainer billing,monthly retainer invoices,68000
+7,outflow,payroll,biweekly payroll,42000
+7,outflow,Unused stock photo subscription,Unused stock photo subscription,300
+7,outflow,Unused second project management tool,Unused second project management tool,180
+8,inflow,project billing,project milestone payments,10000
+8,outflow,contractor costs,freelance design contractors,6000
+8,outflow,Unused stock photo subscription,Unused stock photo subscription,300
+8,outflow,Unused second project management tool,Unused second project management tool,180
+9,inflow,retainer billing,monthly retainer invoices,67000
+9,outflow,payroll,biweekly payroll,42000
+9,outflow,rent,office rent,5500
+9,outflow,Unused stock photo subscription,Unused stock photo subscription,300
+9,outflow,Unused second project management tool,Unused second project management tool,180
+10,inflow,project billing,project milestone payments,14000
+10,outflow,contractor costs,freelance design contractors,7500
+10,outflow,Unused stock photo subscription,Unused stock photo subscription,300
+10,outflow,Unused second project management tool,Unused second project management tool,180
+11,inflow,retainer billing,monthly retainer invoices,66000
+11,outflow,payroll,biweekly payroll,42000
+11,outflow,Unused stock photo subscription,Unused stock photo subscription,300
+11,outflow,Unused second project management tool,Unused second project management tool,180
+12,inflow,project billing,project milestone payments,9000
+12,outflow,contractor costs,freelance design contractors,5000
+12,outflow,rent,office rent,5500
+12,outflow,Unused stock photo subscription,Unused stock photo subscription,300
+12,outflow,Unused second project management tool,Unused second project management tool,180
+13,inflow,retainer billing,monthly retainer invoices,65000
+13,outflow,payroll,biweekly payroll,42000
+13,outflow,Unused stock photo subscription,Unused stock photo subscription,300
+13,outflow,Unused second project management tool,Unused second project management tool,180

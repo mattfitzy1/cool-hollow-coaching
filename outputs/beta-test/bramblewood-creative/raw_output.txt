@@ -1,0 +1,597 @@
+
+======================================================================
+MILESTONE 1 — Reclaim the Owner's Time and Identity
+======================================================================
+{
+  "owner_only_hours": "10",
+  "reclaimable_hours": "25",
+  "items": [
+    {
+      "task": "Approve every creative deliverable before it ships",
+      "action": "Delegate",
+      "hours_per_week": 8,
+      "deadline": "This week",
+      "reasoning": "Not documented and no replacement trained yet, this needs prep before it moves."
+    },
+    {
+      "task": "Review the monthly retainer utilization report",
+      "action": "Delegate",
+      "hours_per_week": 2,
+      "deadline": "This week",
+      "reasoning": "Already documented with a trained replacement ready, no reason to wait; low risk if it's dropped, safe to hand off cleanly."
+    },
+    {
+      "task": "Write the weekly team standup agenda",
+      "action": "Automate",
+      "hours_per_week": 1,
+      "deadline": "This week",
+      "reasoning": "Already documented with a trained replacement ready, no reason to wait; low risk if it's dropped, safe to hand off cleanly."
+    },
+    {
+      "task": "Run every new client onboarding call",
+      "action": "Delegate",
+      "hours_per_week": 3,
+      "deadline": "Within 2 weeks",
+      "reasoning": "Documented but no trained replacement yet, train someone on this first."
+    },
+    {
+      "task": "Run new business strategy calls instead of handing to biz dev",
+      "action": "Delegate",
+      "hours_per_week": 4,
+      "deadline": "Within 2 weeks",
+      "reasoning": "Not documented and no replacement trained yet, this needs prep before it moves."
+    },
+    {
+      "task": "Reconcile the agency credit card statement",
+      "action": "Eliminate",
+      "hours_per_week": 2,
+      "deadline": "Within 2 weeks",
+      "reasoning": "Not documented and no replacement trained yet, this needs prep before it moves; low risk if it's dropped, safe to hand off cleanly."
+    },
+    {
+      "task": "Manually re-key timesheets into the invoicing system",
+      "action": "Automate",
+      "hours_per_week": 2,
+      "deadline": "Within 30 days",
+      "reasoning": "Not documented and no replacement trained yet, this needs prep before it moves; low risk if it's dropped, safe to hand off cleanly."
+    },
+    {
+      "task": "Approve every software/tool purchase request",
+      "action": "Automate",
+      "hours_per_week": 1,
+      "deadline": "Within 30 days",
+      "reasoning": "Not documented and no replacement trained yet, this needs prep before it moves; low risk if it's dropped, safe to hand off cleanly."
+    },
+    {
+      "task": "Sit in on every designer hire interview",
+      "action": "Delegate",
+      "hours_per_week": 2,
+      "deadline": "Within 30 days",
+      "reasoning": "Not documented and no replacement trained yet, this needs prep before it moves."
+    }
+  ]
+}
+
+======================================================================
+MILESTONE 2 — Define the Destination with Precision
+======================================================================
+{
+  "total_initiatives": 10,
+  "focus_score": 0.5,
+  "kept": [
+    {
+      "initiative": "Build a productized brand-sprint service tier",
+      "impact": 5,
+      "effort": 3,
+      "reasoning": "Serves the core customer (5/5), leverages the unfair advantage (4/5), impact 5/5 for 3/5 effort."
+    },
+    {
+      "initiative": "Hire a senior strategist to take the 3 big retainer relationships",
+      "impact": 5,
+      "effort": 3,
+      "reasoning": "Serves the core customer (5/5), leverages the unfair advantage (4/5), impact 5/5 for 3/5 effort."
+    },
+    {
+      "initiative": "Run a quarterly subscription/software audit",
+      "impact": 3,
+      "effort": 1,
+      "reasoning": "Serves the core customer (4/5), leverages the unfair advantage (3/5), impact 3/5 for 1/5 effort."
+    },
+    {
+      "initiative": "Launch a referral partner program",
+      "impact": 3,
+      "effort": 2,
+      "reasoning": "Serves the core customer (4/5), leverages the unfair advantage (3/5), impact 3/5 for 2/5 effort."
+    },
+    {
+      "initiative": "Add a paid quarterly brand-health workshop for retainer clients",
+      "impact": 3,
+      "effort": 2,
+      "reasoning": "Serves the core customer (4/5), leverages the unfair advantage (4/5), impact 3/5 for 2/5 effort."
+    }
+  ],
+  "cut": [
+    {
+      "initiative": "Expand into a new industry vertical",
+      "reasoning": "Cut by the razor: core customer fit only 2/5, unfair advantage fit only 2/5."
+    },
+    {
+      "initiative": "Build an internal AI content tool",
+      "reasoning": "Cut by the razor: core customer fit only 2/5."
+    },
+    {
+      "initiative": "Redesign the agency's own website",
+      "reasoning": "Cut by the razor: core customer fit only 2/5, unfair advantage fit only 2/5, impact only 2/5."
+    },
+    {
+      "initiative": "Move project management to a new tool",
+      "reasoning": "Cut by the razor: core customer fit only 2/5, unfair advantage fit only 2/5, impact only 2/5."
+    },
+    {
+      "initiative": "Sponsor a local design awards event",
+      "reasoning": "Cut by the razor: core customer fit only 1/5, unfair advantage fit only 2/5, impact only 1/5."
+    }
+  ]
+}
+
+======================================================================
+MILESTONE 3 — Install the Dashboard That Tells the Truth
+======================================================================
+{
+  "dashboard": [
+    {
+      "category": "cash",
+      "metric_name": "13-week cash runway (weeks)",
+      "current_value": "11",
+      "target_value": "13",
+      "status": "red",
+      "leading": true,
+      "impact": 4.0,
+      "flagged_leading": false
+    },
+    {
+      "category": "sales",
+      "metric_name": "retainer renewal rate",
+      "current_value": "82",
+      "target_value": "95",
+      "status": "red",
+      "leading": true,
+      "impact": 5.0,
+      "flagged_leading": true
+    },
+    {
+      "category": "delivery",
+      "metric_name": "designer utilization rate",
+      "current_value": "68",
+      "target_value": "80",
+      "status": "red",
+      "leading": true,
+      "impact": 4.0,
+      "flagged_leading": false
+    },
+    {
+      "category": "customer",
+      "metric_name": "retainer client retention rate",
+      "current_value": "88",
+      "target_value": "95",
+      "status": "yellow",
+      "leading": false,
+      "impact": 5.0,
+      "flagged_leading": false
+    },
+    {
+      "category": "team",
+      "metric_name": "client relationships with a second point of contact",
+      "current_value": "1",
+      "target_value": "5",
+      "status": "red",
+      "leading": true,
+      "impact": 5.0,
+      "flagged_leading": true
+    }
+  ],
+  "missing_categories": []
+}
+
+======================================================================
+MILESTONE 4 — Discover the Hidden Profit
+======================================================================
+{
+  "checks": [
+    {
+      "name": "Pricing gaps",
+      "estimate": 85300.0,
+      "findings": [
+        "Gross margin is running at 61%, below the 65% benchmark for this kind of business. Closing that gap through pricing or delivery cost changes is worth roughly $85,300 a year."
+      ]
+    },
+    {
+      "name": "Cost structure inefficiencies",
+      "estimate": 0.0,
+      "findings": [
+        "Largest recurring costs: \"Payroll (salaried staff)\" ($552,000), \"Software and design tool subscriptions\" ($42,700), \"Rent\" ($33,000), out of $651,700 total expense.",
+        "No clear runaway cost trend found across the months provided. Worth a manual look at vendor contracts and subscriptions even so."
+      ]
+    },
+    {
+      "name": "Customer profitability differences",
+      "estimate": 3000.0,
+      "findings": [
+        "\"Shrinking Retainer C\" is running at a 28% margin on $95,000 of revenue for the period uploaded. Bringing it to the 30% benchmark is worth roughly $3,000 a year."
+      ]
+    },
+    {
+      "name": "Service or product mix problems",
+      "estimate": 0.0,
+      "findings": [
+        "Every service is at or above the 30% margin benchmark. No major gap found here."
+      ]
+    },
+    {
+      "name": "Revenue leakage points",
+      "estimate": 30800.0,
+      "findings": [
+        "Flagged leakage lines for the period uploaded: \"Discounts given\" ($12,200), \"Bad debt write-off\" ($3,200), roughly $30,800 a year at that pace.",
+        "This only catches what is already recorded as a discount, write-off, or refund. Unbilled work and missed upsells will not appear here, so still worth a manual look at invoicing."
+      ]
+    }
+  ],
+  "total_found": 119100.0,
+  "business_type": "Software or other high-margin recurring revenue",
+  "period_months": 6
+}
+
+======================================================================
+MILESTONE 5 — Build Cash Confidence
+======================================================================
+{
+  "starting_balance": 20000,
+  "baseline_forecast": [
+    {
+      "week": 1,
+      "net": 29520.0,
+      "balance": 49520.0
+    },
+    {
+      "week": 2,
+      "net": 8520.0,
+      "balance": 58040.0
+    },
+    {
+      "week": 3,
+      "net": 22020.0,
+      "balance": 80060.0
+    },
+    {
+      "week": 4,
+      "net": 4520.0,
+      "balance": 84580.0
+    },
+    {
+      "week": 5,
+      "net": 28520.0,
+      "balance": 113100.0
+    },
+    {
+      "week": 6,
+      "net": 1020.0,
+      "balance": 114120.0
+    },
+    {
+      "week": 7,
+      "net": 25520.0,
+      "balance": 139640.0
+    },
+    {
+      "week": 8,
+      "net": 3520.0,
+      "balance": 143160.0
+    },
+    {
+      "week": 9,
+      "net": 19020.0,
+      "balance": 162180.0
+    },
+    {
+      "week": 10,
+      "net": 6020.0,
+      "balance": 168200.0
+    },
+    {
+      "week": 11,
+      "net": 23520.0,
+      "balance": 191720.0
+    },
+    {
+      "week": 12,
+      "net": -1980.0,
+      "balance": 189740.0
+    },
+    {
+      "week": 13,
+      "net": 22520.0,
+      "balance": 212260.0
+    }
+  ],
+  "adjusted_forecast": [
+    {
+      "week": 1,
+      "net": 29520.0,
+      "balance": 49520.0
+    },
+    {
+      "week": 2,
+      "net": 9000.0,
+      "balance": 58520.0
+    },
+    {
+      "week": 3,
+      "net": 22500.0,
+      "balance": 81020.0
+    },
+    {
+      "week": 4,
+      "net": 5000.0,
+      "balance": 86020.0
+    },
+    {
+      "week": 5,
+      "net": 29000.0,
+      "balance": 115020.0
+    },
+    {
+      "week": 6,
+      "net": 1500.0,
+      "balance": 116520.0
+    },
+    {
+      "week": 7,
+      "net": 26000.0,
+      "balance": 142520.0
+    },
+    {
+      "week": 8,
+      "net": 4000.0,
+      "balance": 146520.0
+    },
+    {
+      "week": 9,
+      "net": 19500.0,
+      "balance": 166020.0
+    },
+    {
+      "week": 10,
+      "net": 6500.0,
+      "balance": 172520.0
+    },
+    {
+      "week": 11,
+      "net": 24000.0,
+      "balance": 196520.0
+    },
+    {
+      "week": 12,
+      "net": -1500.0,
+      "balance": 195020.0
+    },
+    {
+      "week": 13,
+      "net": 23000.0,
+      "balance": 218020.0
+    }
+  ],
+  "baseline_negative_weeks": [],
+  "adjusted_negative_weeks": [],
+  "decision_filter": {
+    "keep": [
+      {
+        "expense_name": "rent",
+        "weekly_amount": 5500,
+        "composite": 3.2,
+        "reasoning": "Clears the filter, the case to keep it holds up."
+      },
+      {
+        "expense_name": "contractor costs",
+        "weekly_amount": 7500,
+        "composite": 4.2,
+        "reasoning": "Clears the filter, the case to keep it holds up."
+      },
+      {
+        "expense_name": "payroll",
+        "weekly_amount": 42000,
+        "composite": 4.8,
+        "reasoning": "Clears the filter, the case to keep it holds up."
+      }
+    ],
+    "cut_candidates": [
+      {
+        "expense_name": "Unused stock photo subscription",
+        "weekly_amount": 300,
+        "composite": 1.0,
+        "reasoning": "Weak case on: core customer fit, revenue risk if cut, roi clarity, no cheaper alternative, would approve today."
+      },
+      {
+        "expense_name": "Unused second project management tool",
+        "weekly_amount": 180,
+        "composite": 1.2,
+        "reasoning": "Weak case on: core customer fit, revenue risk if cut, roi clarity, no cheaper alternative, would approve today."
+      }
+    ],
+    "weekly_savings_if_cut": 480
+  }
+}
+
+======================================================================
+MILESTONE 6 — Break the Binding Constraint
+======================================================================
+{
+  "binding_constraint": {
+    "rank": 1,
+    "constraint_name": "Owner approves every creative deliverable",
+    "process": "Delivery",
+    "weekly_hours_lost": 8.0,
+    "downstream_impact": 5,
+    "constraint_score": 40.0
+  },
+  "ranked_constraints": [
+    {
+      "rank": 1,
+      "constraint_name": "Owner approves every creative deliverable",
+      "process": "Delivery",
+      "weekly_hours_lost": 8.0,
+      "downstream_impact": 5,
+      "constraint_score": 40.0
+    },
+    {
+      "rank": 2,
+      "constraint_name": "Owner is the sole contact for the 3 biggest retainers",
+      "process": "Sales",
+      "weekly_hours_lost": 6.0,
+      "downstream_impact": 5,
+      "constraint_score": 30.0
+    },
+    {
+      "rank": 3,
+      "constraint_name": "Owner runs new business calls instead of biz dev",
+      "process": "Sales",
+      "weekly_hours_lost": 3.0,
+      "downstream_impact": 3,
+      "constraint_score": 9.0
+    },
+    {
+      "rank": 4,
+      "constraint_name": "Owner sets every retainer price personally",
+      "process": "Sales",
+      "weekly_hours_lost": 2.0,
+      "downstream_impact": 4,
+      "constraint_score": 8.0
+    },
+    {
+      "rank": 5,
+      "constraint_name": "No second point of contact on any large retainer",
+      "process": "Sales",
+      "weekly_hours_lost": 1.0,
+      "downstream_impact": 5,
+      "constraint_score": 5.0
+    },
+    {
+      "rank": 6,
+      "constraint_name": "Manual re-keying of timesheets into invoicing",
+      "process": "Operations",
+      "weekly_hours_lost": 2.2,
+      "downstream_impact": 2,
+      "constraint_score": 4.5
+    },
+    {
+      "rank": 7,
+      "constraint_name": "Weekly utilization report pulled by hand from 3 tools",
+      "process": "Operations",
+      "weekly_hours_lost": 2.0,
+      "downstream_impact": 2,
+      "constraint_score": 4.0
+    }
+  ],
+  "automation_hit_list": [
+    {
+      "constraint_name": "Manual re-keying of timesheets into invoicing",
+      "weekly_hours_lost": 2.2,
+      "automation_effort": 1,
+      "automation_roi": 2.2
+    },
+    {
+      "constraint_name": "Weekly utilization report pulled by hand from 3 tools",
+      "weekly_hours_lost": 2.0,
+      "automation_effort": 2,
+      "automation_roi": 1.0
+    }
+  ]
+}
+
+======================================================================
+MILESTONE 7 — Build the Team That Builds the Business
+======================================================================
+{
+  "delegation_scores": [
+    {
+      "rank": 1,
+      "role_name": "Senior Strategist",
+      "current_delegation_level": 1,
+      "target_delegation_level": 5,
+      "delegation_gap": 4
+    },
+    {
+      "rank": 2,
+      "role_name": "Studio Director",
+      "current_delegation_level": 2,
+      "target_delegation_level": 5,
+      "delegation_gap": 3
+    },
+    {
+      "rank": 3,
+      "role_name": "Biz Dev Lead",
+      "current_delegation_level": 3,
+      "target_delegation_level": 5,
+      "delegation_gap": 2
+    }
+  ],
+  "hiring_templates": [
+    {
+      "role_name": "Senior Strategist",
+      "template": "Role: Senior Strategist\nKey outcomes (what this role owns, not just what it does):\n  1. Owns the relationship for the 2 largest retainer accounts\n  2. Approves standard creative without owner review\n  3. Sets renewal and upsell conversations independently\nDecision rights: Can approve scope changes up to $5000 without sign-off\nSuccess metric: Retainer renewal rate at or above 95%\n"
+    },
+    {
+      "role_name": "Studio Director",
+      "template": "Role: Studio Director\nKey outcomes (what this role owns, not just what it does):\n  1. Owns day-to-day creative review and approval\n  2. Manages designer workload and utilization\n  3. Runs the weekly studio standup\nDecision rights: Can approve creative output without owner sign-off\nSuccess metric: Designer utilization rate at or above 80%\n"
+    },
+    {
+      "role_name": "Biz Dev Lead",
+      "template": "Role: Biz Dev Lead\nKey outcomes (what this role owns, not just what it does):\n  1. Runs new business strategy calls independently\n  2. Owns the pipeline from first call to signed contract\n  3. Reports pipeline health weekly\nDecision rights: Can quote standard project pricing without sign-off\nSuccess metric: Monthly new pipeline value at or above target\n"
+    }
+  ],
+  "leadership_scorecard": {
+    "Senior Strategist": [
+      {
+        "rank": 1,
+        "candidate_name": "Olivia Tran",
+        "composite": 4.4,
+        "is_top_candidate": true,
+        "traits": {
+          "ownership": 5,
+          "communication": 4,
+          "judgment": 5,
+          "coachability": 3,
+          "results_track_record": 5
+        }
+      },
+      {
+        "rank": 2,
+        "candidate_name": "Devon Marsh",
+        "composite": 4.2,
+        "is_top_candidate": false,
+        "traits": {
+          "ownership": 4,
+          "communication": 5,
+          "judgment": 4,
+          "coachability": 4,
+          "results_track_record": 4
+        }
+      }
+    ],
+    "Studio Director": [
+      {
+        "rank": 1,
+        "candidate_name": "Jamal Reed",
+        "composite": 4.0,
+        "is_top_candidate": true,
+        "traits": {
+          "ownership": 4,
+          "communication": 4,
+          "judgment": 4,
+          "coachability": 5,
+          "results_track_record": 3
+        }
+      }
+    ]
+  },
+  "unmatched_roles": []
+}

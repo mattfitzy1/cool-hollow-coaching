@@ -1,0 +1,608 @@
+
+======================================================================
+MILESTONE 1 — Reclaim the Owner's Time and Identity
+======================================================================
+{
+  "owner_only_hours": "8",
+  "reclaimable_hours": "34",
+  "items": [
+    {
+      "task": "Approve every quote over $500",
+      "action": "Delegate",
+      "hours_per_week": 6,
+      "deadline": "This week",
+      "reasoning": "Not documented and no replacement trained yet, this needs prep before it moves."
+    },
+    {
+      "task": "Review every outgoing invoice before it ships",
+      "action": "Delegate",
+      "hours_per_week": 3,
+      "deadline": "This week",
+      "reasoning": "Documented but no trained replacement yet, train someone on this first; low risk if it's dropped, safe to hand off cleanly."
+    },
+    {
+      "task": "Write the weekly shop update for the team",
+      "action": "Automate",
+      "hours_per_week": 1,
+      "deadline": "This week",
+      "reasoning": "Already documented with a trained replacement ready, no reason to wait; low risk if it's dropped, safe to hand off cleanly."
+    },
+    {
+      "task": "Build technician schedule for big jobs",
+      "action": "Delegate",
+      "hours_per_week": 5,
+      "deadline": "This week",
+      "reasoning": "Not documented and no replacement trained yet, this needs prep before it moves."
+    },
+    {
+      "task": "Respond to every customer complaint call personally",
+      "action": "Delegate",
+      "hours_per_week": 5,
+      "deadline": "Within 2 weeks",
+      "reasoning": "Not documented and no replacement trained yet, this needs prep before it moves."
+    },
+    {
+      "task": "Run weekly payroll",
+      "action": "Delegate",
+      "hours_per_week": 2,
+      "deadline": "Within 2 weeks",
+      "reasoning": "Documented but no trained replacement yet, train someone on this first."
+    },
+    {
+      "task": "Manually re-key completed job tickets into the invoicing system",
+      "action": "Automate",
+      "hours_per_week": 3,
+      "deadline": "Within 2 weeks",
+      "reasoning": "Not documented and no replacement trained yet, this needs prep before it moves; low risk if it's dropped, safe to hand off cleanly."
+    },
+    {
+      "task": "Reconcile the parts inventory count",
+      "action": "Eliminate",
+      "hours_per_week": 2,
+      "deadline": "Within 30 days",
+      "reasoning": "Not documented and no replacement trained yet, this needs prep before it moves; low risk if it's dropped, safe to hand off cleanly."
+    },
+    {
+      "task": "Sit in on every technician hire interview",
+      "action": "Delegate",
+      "hours_per_week": 3,
+      "deadline": "Within 30 days",
+      "reasoning": "Not documented and no replacement trained yet, this needs prep before it moves."
+    },
+    {
+      "task": "Personally chase the two big fleet accounts for late payment",
+      "action": "Delegate",
+      "hours_per_week": 4,
+      "deadline": "Within 30 days",
+      "reasoning": "Not documented and no replacement trained yet, this needs prep before it moves; flagged high risk if it's dropped, hand off with a check-in built in, not a clean cutover."
+    }
+  ]
+}
+
+======================================================================
+MILESTONE 2 — Define the Destination with Precision
+======================================================================
+{
+  "total_initiatives": 10,
+  "focus_score": 0.5,
+  "kept": [
+    {
+      "initiative": "Hire a service manager to take over scheduling and quote approval",
+      "impact": 5,
+      "effort": 3,
+      "reasoning": "Serves the core customer (5/5), leverages the unfair advantage (4/5), impact 5/5 for 3/5 effort."
+    },
+    {
+      "initiative": "Sign a fleet leasing referral partnership",
+      "impact": 4,
+      "effort": 2,
+      "reasoning": "Serves the core customer (4/5), leverages the unfair advantage (4/5), impact 4/5 for 2/5 effort."
+    },
+    {
+      "initiative": "Buy a diagnostic rig for newer electric delivery vans",
+      "impact": 4,
+      "effort": 3,
+      "reasoning": "Serves the core customer (4/5), leverages the unfair advantage (5/5), impact 4/5 for 3/5 effort."
+    },
+    {
+      "initiative": "Build a simple online booking page",
+      "impact": 3,
+      "effort": 2,
+      "reasoning": "Serves the core customer (5/5), leverages the unfair advantage (3/5), impact 3/5 for 2/5 effort."
+    },
+    {
+      "initiative": "Switch parts suppliers for a better volume rate",
+      "impact": 3,
+      "effort": 2,
+      "reasoning": "Serves the core customer (4/5), leverages the unfair advantage (4/5), impact 3/5 for 2/5 effort."
+    }
+  ],
+  "cut": [
+    {
+      "initiative": "Open a second bay location across town",
+      "reasoning": "Cut by the razor: unfair advantage fit only 2/5."
+    },
+    {
+      "initiative": "Add a 24-hour emergency roadside tow service",
+      "reasoning": "Serves the core customer (3/5), leverages the unfair advantage (3/5), impact 3/5 for 4/5 effort."
+    },
+    {
+      "initiative": "Launch a loyalty program for local accounts",
+      "reasoning": "Cut by the razor: unfair advantage fit only 2/5, impact only 2/5."
+    },
+    {
+      "initiative": "Repaint and rebrand the shop signage",
+      "reasoning": "Cut by the razor: core customer fit only 2/5, unfair advantage fit only 1/5, impact only 1/5."
+    },
+    {
+      "initiative": "Sponsor a local logistics industry trade event",
+      "reasoning": "Cut by the razor: core customer fit only 2/5, unfair advantage fit only 2/5, impact only 1/5."
+    }
+  ]
+}
+
+======================================================================
+MILESTONE 3 — Install the Dashboard That Tells the Truth
+======================================================================
+{
+  "dashboard": [
+    {
+      "category": "cash",
+      "metric_name": "13-week cash runway (weeks)",
+      "current_value": "7",
+      "target_value": "13",
+      "status": "red",
+      "leading": true,
+      "impact": 5.0,
+      "flagged_leading": true
+    },
+    {
+      "category": "sales",
+      "metric_name": "quote-to-win rate",
+      "current_value": "38",
+      "target_value": "55",
+      "status": "red",
+      "leading": true,
+      "impact": 4.0,
+      "flagged_leading": true
+    },
+    {
+      "category": "delivery",
+      "metric_name": "on-time job completion rate",
+      "current_value": "81",
+      "target_value": "95",
+      "status": "red",
+      "leading": false,
+      "impact": 5.0,
+      "flagged_leading": false
+    },
+    {
+      "category": "customer",
+      "metric_name": "fleet account retention rate",
+      "current_value": "92",
+      "target_value": "97",
+      "status": "yellow",
+      "leading": false,
+      "impact": 5.0,
+      "flagged_leading": false
+    },
+    {
+      "category": "team",
+      "metric_name": "technician voluntary turnover (annualized)",
+      "current_value": "34",
+      "target_value": "15",
+      "status": "red",
+      "leading": false,
+      "impact": 5.0,
+      "flagged_leading": false
+    }
+  ],
+  "missing_categories": []
+}
+
+======================================================================
+MILESTONE 4 — Discover the Hidden Profit
+======================================================================
+{
+  "checks": [
+    {
+      "name": "Pricing gaps",
+      "estimate": 152000.0,
+      "findings": [
+        "Gross margin is running at 32%, below the 50% benchmark. Closing that gap through pricing or delivery cost changes is worth roughly $152,000."
+      ]
+    },
+    {
+      "name": "Cost structure inefficiencies",
+      "estimate": 300.0,
+      "findings": [
+        "\"Software and shop management subscriptions\" grew 17% from apr to may ($1,800 to $2,100), $300 of creeping cost worth a hard look.",
+        "Largest recurring costs: \"Payroll (admin and management)\" ($144,000), \"Rent\" ($21,000), \"Marketing\" ($9,000), out of $180,600 total expense."
+      ]
+    },
+    {
+      "name": "Customer profitability differences",
+      "estimate": 0.0,
+      "findings": [
+        "Every customer is at or above the 20% margin benchmark. No major gap found here."
+      ]
+    },
+    {
+      "name": "Service or product mix problems",
+      "estimate": 32000.0,
+      "findings": [
+        "\"Parts Markup\" is running at a 15% margin on $610,000 of revenue. Bringing it to the 20% benchmark is worth roughly $32,000."
+      ]
+    },
+    {
+      "name": "Revenue leakage points",
+      "estimate": "12300",
+      "findings": [
+        "Flagged leakage lines: \"Discounts given\" ($8,200), \"Bad debt write-off\" ($4,100).",
+        "This only catches what is already recorded as a discount, write-off, or refund. Unbilled work and missed upsells will not appear here, so still worth a manual look at invoicing."
+      ]
+    }
+  ],
+  "total_found": 196600.0
+}
+
+======================================================================
+MILESTONE 5 — Build Cash Confidence
+======================================================================
+{
+  "starting_balance": 15000,
+  "baseline_forecast": [
+    {
+      "week": 1,
+      "net": 650.0,
+      "balance": 15650.0
+    },
+    {
+      "week": 2,
+      "net": 17650.0,
+      "balance": 33300.0
+    },
+    {
+      "week": 3,
+      "net": -2350.0,
+      "balance": 30950.0
+    },
+    {
+      "week": 4,
+      "net": 650.0,
+      "balance": 31600.0
+    },
+    {
+      "week": 5,
+      "net": 9650.0,
+      "balance": 41250.0
+    },
+    {
+      "week": 6,
+      "net": -4350.0,
+      "balance": 36900.0
+    },
+    {
+      "week": 7,
+      "net": -7350.0,
+      "balance": 29550.0
+    },
+    {
+      "week": 8,
+      "net": 16650.0,
+      "balance": 46200.0
+    },
+    {
+      "week": 9,
+      "net": -8350.0,
+      "balance": 37850.0
+    },
+    {
+      "week": 10,
+      "net": -2350.0,
+      "balance": 35500.0
+    },
+    {
+      "week": 11,
+      "net": 7650.0,
+      "balance": 43150.0
+    },
+    {
+      "week": 12,
+      "net": -1350.0,
+      "balance": 41800.0
+    },
+    {
+      "week": 13,
+      "net": -9350.0,
+      "balance": 32450.0
+    }
+  ],
+  "adjusted_forecast": [
+    {
+      "week": 1,
+      "net": 650.0,
+      "balance": 15650.0
+    },
+    {
+      "week": 2,
+      "net": 18000.0,
+      "balance": 33650.0
+    },
+    {
+      "week": 3,
+      "net": -2000.0,
+      "balance": 31650.0
+    },
+    {
+      "week": 4,
+      "net": 1000.0,
+      "balance": 32650.0
+    },
+    {
+      "week": 5,
+      "net": 10000.0,
+      "balance": 42650.0
+    },
+    {
+      "week": 6,
+      "net": -4000.0,
+      "balance": 38650.0
+    },
+    {
+      "week": 7,
+      "net": -7000.0,
+      "balance": 31650.0
+    },
+    {
+      "week": 8,
+      "net": 17000.0,
+      "balance": 48650.0
+    },
+    {
+      "week": 9,
+      "net": -8000.0,
+      "balance": 40650.0
+    },
+    {
+      "week": 10,
+      "net": -2000.0,
+      "balance": 38650.0
+    },
+    {
+      "week": 11,
+      "net": 8000.0,
+      "balance": 46650.0
+    },
+    {
+      "week": 12,
+      "net": -1000.0,
+      "balance": 45650.0
+    },
+    {
+      "week": 13,
+      "net": -9000.0,
+      "balance": 36650.0
+    }
+  ],
+  "baseline_negative_weeks": [],
+  "adjusted_negative_weeks": [],
+  "decision_filter": {
+    "keep": [
+      {
+        "expense_name": "rent",
+        "weekly_amount": 7000,
+        "composite": 3.4,
+        "reasoning": "Clears the filter, the case to keep it holds up."
+      },
+      {
+        "expense_name": "parts vendor",
+        "weekly_amount": 17500,
+        "composite": 4.4,
+        "reasoning": "Clears the filter, the case to keep it holds up."
+      },
+      {
+        "expense_name": "payroll",
+        "weekly_amount": 21000,
+        "composite": 4.8,
+        "reasoning": "Clears the filter, the case to keep it holds up."
+      }
+    ],
+    "cut_candidates": [
+      {
+        "expense_name": "Underused fleet-tracking software add-on",
+        "weekly_amount": 350,
+        "composite": 1.0,
+        "reasoning": "Weak case on: core customer fit, revenue risk if cut, roi clarity, no cheaper alternative, would approve today."
+      }
+    ],
+    "weekly_savings_if_cut": 350
+  }
+}
+
+======================================================================
+MILESTONE 6 — Break the Binding Constraint
+======================================================================
+{
+  "binding_constraint": {
+    "rank": 1,
+    "constraint_name": "Owner builds the schedule for big jobs",
+    "process": "Delivery",
+    "weekly_hours_lost": 7.5,
+    "downstream_impact": 5,
+    "constraint_score": 37.5
+  },
+  "ranked_constraints": [
+    {
+      "rank": 1,
+      "constraint_name": "Owner builds the schedule for big jobs",
+      "process": "Delivery",
+      "weekly_hours_lost": 7.5,
+      "downstream_impact": 5,
+      "constraint_score": 37.5
+    },
+    {
+      "rank": 2,
+      "constraint_name": "Owner approves every quote over $500",
+      "process": "Sales",
+      "weekly_hours_lost": 7.2,
+      "downstream_impact": 5,
+      "constraint_score": 36.0
+    },
+    {
+      "rank": 3,
+      "constraint_name": "Owner personally chases late fleet payments",
+      "process": "Operations",
+      "weekly_hours_lost": 4.5,
+      "downstream_impact": 4,
+      "constraint_score": 18.0
+    },
+    {
+      "rank": 4,
+      "constraint_name": "Owner negotiates all parts vendor pricing",
+      "process": "Procurement",
+      "weekly_hours_lost": 4.0,
+      "downstream_impact": 4,
+      "constraint_score": 16.0
+    },
+    {
+      "rank": 5,
+      "constraint_name": "Manual re-keying of job tickets into invoicing",
+      "process": "Delivery",
+      "weekly_hours_lost": 5.0,
+      "downstream_impact": 2,
+      "constraint_score": 10.0
+    },
+    {
+      "rank": 6,
+      "constraint_name": "Weekly shop report built by hand from three systems",
+      "process": "Operations",
+      "weekly_hours_lost": 3.0,
+      "downstream_impact": 2,
+      "constraint_score": 6.0
+    },
+    {
+      "rank": 7,
+      "constraint_name": "Owner sits in on every technician hire",
+      "process": "Operations",
+      "weekly_hours_lost": 2.0,
+      "downstream_impact": 3,
+      "constraint_score": 6.0
+    },
+    {
+      "rank": 8,
+      "constraint_name": "No backup for the parts manager role",
+      "process": "Procurement",
+      "weekly_hours_lost": 1.0,
+      "downstream_impact": 5,
+      "constraint_score": 5.0
+    }
+  ],
+  "automation_hit_list": [
+    {
+      "constraint_name": "Manual re-keying of job tickets into invoicing",
+      "weekly_hours_lost": 5.0,
+      "automation_effort": 1,
+      "automation_roi": 5.0
+    },
+    {
+      "constraint_name": "Owner approves every quote over $500",
+      "weekly_hours_lost": 7.2,
+      "automation_effort": 2,
+      "automation_roi": 3.6
+    },
+    {
+      "constraint_name": "Weekly shop report built by hand from three systems",
+      "weekly_hours_lost": 3.0,
+      "automation_effort": 2,
+      "automation_roi": 1.5
+    }
+  ]
+}
+
+======================================================================
+MILESTONE 7 — Build the Team That Builds the Business
+======================================================================
+{
+  "delegation_scores": [
+    {
+      "rank": 1,
+      "role_name": "Service Manager",
+      "current_delegation_level": 1,
+      "target_delegation_level": 5,
+      "delegation_gap": 4
+    },
+    {
+      "rank": 2,
+      "role_name": "Parts Manager",
+      "current_delegation_level": 3,
+      "target_delegation_level": 5,
+      "delegation_gap": 2
+    },
+    {
+      "rank": 3,
+      "role_name": "Lead Technician",
+      "current_delegation_level": 3,
+      "target_delegation_level": 5,
+      "delegation_gap": 2
+    }
+  ],
+  "hiring_templates": [
+    {
+      "role_name": "Service Manager",
+      "template": "Role: Service Manager\nKey outcomes (what this role owns, not just what it does):\n  1. Owns the technician schedule for all jobs over $500\n  2. Approves standard quotes without owner sign-off\n  3. Runs the daily shop floor check-in\nDecision rights: Can approve quotes up to $3000 and schedule changes without sign-off\nSuccess metric: On-time job completion rate at or above 95%\n"
+    },
+    {
+      "role_name": "Parts Manager",
+      "template": "Role: Parts Manager\nKey outcomes (what this role owns, not just what it does):\n  1. Owns vendor relationships and pricing negotiation\n  2. Manages inventory counts and reorder points\n  3. Flags margin-eroding part costs monthly\nDecision rights: Can commit to vendor contracts under $10000 without sign-off\nSuccess metric: Parts cost as a percent of job revenue stays under 35%\n"
+    },
+    {
+      "role_name": "Lead Technician",
+      "template": "Role: Lead Technician\nKey outcomes (what this role owns, not just what it does):\n  1. Trains and certifies new technicians\n  2. Reviews complex diagnostic jobs before they ship\n  3. Acts as backup scheduler when the Service Manager is out\nDecision rights: Can sign off on diagnostic accuracy without owner review\nSuccess metric: Rework rate at or below 2%\n"
+    }
+  ],
+  "leadership_scorecard": {
+    "Service Manager": [
+      {
+        "rank": 1,
+        "candidate_name": "Marcus Doyle",
+        "composite": 4.4,
+        "is_top_candidate": true,
+        "traits": {
+          "ownership": 5,
+          "communication": 4,
+          "judgment": 4,
+          "coachability": 4,
+          "results_track_record": 5
+        }
+      },
+      {
+        "rank": 2,
+        "candidate_name": "Renee Castillo",
+        "composite": 4.0,
+        "is_top_candidate": false,
+        "traits": {
+          "ownership": 3,
+          "communication": 5,
+          "judgment": 4,
+          "coachability": 5,
+          "results_track_record": 3
+        }
+      },
+      {
+        "rank": 3,
+        "candidate_name": "Tom Whitfield",
+        "composite": 3.8,
+        "is_top_candidate": false,
+        "traits": {
+          "ownership": 4,
+          "communication": 3,
+          "judgment": 5,
+          "coachability": 3,
+          "results_track_record": 4
+        }
+      }
+    ]
+  },
+  "unmatched_roles": []
+}

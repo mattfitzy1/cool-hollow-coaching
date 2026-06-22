@@ -1,0 +1,4 @@
+role_name,current_delegation_level,target_delegation_level,key_outcome_1,key_outcome_2,key_outcome_3,decision_rights,success_metric
+Senior Strategist,1,5,Owns the relationship for the 2 largest retainer accounts,Approves standard creative without owner review,Sets renewal and upsell conversations independently,Can approve scope changes up to $5000 without sign-off,Retainer renewal rate at or above 95%
+Studio Director,2,5,Owns day-to-day creative review and approval,Manages designer workload and utilization,Runs the weekly studio standup,Can approve creative output without owner sign-off,Designer utilization rate at or above 80%
+Biz Dev Lead,3,5,Runs new business strategy calls independently,Owns the pipeline from first call to signed contract,Reports pipeline health weekly,Can quote standard project pricing without sign-off,Monthly new pipeline value at or above target

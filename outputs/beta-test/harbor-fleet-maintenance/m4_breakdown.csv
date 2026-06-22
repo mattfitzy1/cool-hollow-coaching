@@ -1,0 +1,7 @@
+type,name,revenue,direct_cost
+customer,Regional Courier Co (fleet),520000,410000
+customer,Beverage Distributor (fleet),460000,355000
+customer,Local commercial accounts (combined),870000,540000
+service,Scheduled Maintenance,640000,380000
+service,Emergency Repair,610000,400000
+service,Parts Markup,610000,520000
