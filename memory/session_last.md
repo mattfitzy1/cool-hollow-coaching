@@ -6,22 +6,21 @@ description: What was worked on, decisions made, and next steps from the most re
 **Date:** 2026-06-23
 
 **What was worked on:**
-- Shipped the first Instagram post: the "two-week vacation" carousel went live on the new coolhollow.os page via the free Publer path. Built the complete unit (5 slides + 3 quote graphics as on-brand JPGs, caption, hashtags, LinkedIn rewrite) in `outputs/content/cool-hollow-coaching/`. Rendered images for free with a local Playwright/Chromium setup.
-- Reviewed the two Mark videos Matt also posted (StartingOut, Hiring): both carry Cool Hollow *Solutions* branding baked in, wrong brand for the Coaching page. Matt has access to a large archive of Mark's footage.
-- Rebuilt the hidden-profit analyzer math for honesty (separate margin/cost-creep/cash figures, subtotal exclusion, transparency table, no false promises) and added a passing backtest (5 cases). Then tested on two REAL P&Ls and both broke it.
+- Rebuilt the hidden-profit analyzer's P&L reader to be SECTION-AWARE: it classifies each line by the section header it sits under (Income / Cost of Goods Sold / Expenses) instead of guessing from line names. This fixed the earlier failure (100% and -2368% margins on real files).
+- Validated against four real P&Ls (two garage-door PDFs, Precision Trades PDF, Elite Restoration Excel): computed revenue/COGS/gross profit match each file's own stated totals to the cent.
+- Text-first PDF parsing (account codes stay in labels, not counted as money); new `excel_parser.py` makes Excel uploads robust (title rows, sheet pick, amount columns).
+- Expanded the report into richer, still-honest insights: profit snapshot (gross + operating margin, "keep X cents per dollar"), where the money goes (top costs vs revenue, biggest lever), and levers (price/margin what-ifs, breakeven revenue). Nudges owners to upload monthly columns.
+- Backtest is now 7/7 (added two cases mirroring the real-file structure). Everything committed and pushed.
 
-**Key decisions (now standing rules, saved to memory):**
-- Default to "founder thinking mode" (first-principles operator answers, open with "Here's what I'd actually do").
-- Zero budget right now: free/manual paths only, flag anything paid before suggesting it.
-- Never advertise/promise/sell anything not yet built. Pre-launch copy = problem + authority only, no buy/waitlist CTAs. Bio drafted on this basis (no product promise).
-- Brand separation is firm: do not post Cool Hollow Solutions-branded content on the Coaching page.
+**Key decisions / framing:**
+- The tool SURFACES signals and opens the conversation; it does NOT manufacture a "found $50,000" number. That headline is the CFO's work inside the program. Keep the copy honest about this (ties to the no-advertising-unbuilt-product and never-invent-a-number rules).
+- Real client P&Ls are NOT committed to the repo (privacy); their structure lives in synthetic backtest cases instead.
 
 **Open / unfinished:**
-- Hidden-profit analyzer is NOT prospect-ready. Real P&Ls (door company PDF, Elite Restoration Excel) broke it: keyword classification reported 100% and -2368% margins because it cannot read hierarchical P&Ls. Both real files are in Matt's Downloads.
-- Mark "Hiring" video: Matt says he edited the Solutions branding out; that edit was never verified frame-by-frame. The raw unbranded footage for a proper Coaching rebuild is still to come.
-- Bio not yet pasted into Instagram; no link in bio (analyzer not deployed). Carousel quote graphics and StartingOut video still up as posted.
+- Analyzer is now trustworthy on real data but NOT yet deployed. Remaining before it can go in the IG bio: (1) deploy to a free public host (Streamlit Community Cloud) - this is the "put it live" step needing Matt's explicit yes and a guided setup; (2) a final read of the privacy wording.
+- Cosmetic: doubled account-code prefixes (e.g. "66026 66026-Payroll...") still show in some line labels; could tidy display.
+- Still floating from before: raw unbranded Mark footage for a Coaching Reel; pasting the new bio; the Mark "Hiring" video edit was never verified frame-by-frame.
 
 **Next steps:**
-- FIRST: rebuild the analyzer's P&L reader to classify by section header (Income / Cost of Goods Sold / Expenses) instead of line-name keywords, handle account-number columns/prefixes, and lock both real P&Ls in as test fixtures. Re-verify, then revisit going live (needs a free host + privacy wording before any bio link).
-- Get raw, unbranded Mark footage from the archive and rebuild a Reel in Coaching's black/gold brand.
-- Optional: archive the Solutions-branded video on the page if not already fixed; paste the new bio.
+- Deploy the analyzer to the free host (the actual go-live), walk Matt through it slowly, then add the link to the IG bio.
+- Optional polish: strip doubled account codes from displayed line names; test a couple more P&L formats.
