@@ -25,7 +25,7 @@ The plan: take what already works in the 1:1 advisory (the expertise, the team, 
 - **What it is:** a 12-week coaching program.
 - **Price:** $5,000.
 - **Who it is for:** owner-operators of companies doing **$1M to $10M a year** in revenue, where the owner is still the single point of failure and is stretched thin.
-- **The promise:** **15 hours back, plus at least $50,000 in profit found.** When the program surfaces $50,000 the owner did not know they had, a $5,000 fee is an obvious yes.
+- **The promise:** **15 hours back, plus up to $50,000 in profit found.** Backed by a strong in-house CFO who almost always finds real hidden profit in a client's books. When the program surfaces profit the owner did not know they had, a $5,000 fee is an obvious yes.
 
 **The seven milestones:**
 1. Reclaim the owner's time and identity.

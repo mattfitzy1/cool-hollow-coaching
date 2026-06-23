@@ -37,7 +37,7 @@ So: respect their intelligence, speak to the pain they actually feel (no time, c
 
 ## Words and moves we use
 
-- Outcomes first: "15 hours back," "$50,000 in profit you didn't know you had," "a business that runs without you."
+- Outcomes first: "15 hours back," "up to $50,000 in profit you didn't know you had," "a business that runs without you."
 - Owner-to-owner language: "you're the bottleneck," "it all runs through you," "get out of your own way."
 - The signature frame: profit found versus price paid. "We typically find at least $50,000. The program is $5,000. You do the math."
 - Plain, confident statements. Short paragraphs. White space.
@@ -69,7 +69,7 @@ Matt is American and the audience is American. Use US spelling and usage: optimi
   Us: "We find the one thing holding you back, and we fix it."
 
 - Vague: "Unlock hidden value in your company."
-  Us: "We typically find at least $50,000 in profit already sitting in the business. The program costs $5,000."
+  Us: "We typically find up to $50,000 in profit already sitting in the business. The program costs $5,000."
 
 ---
 

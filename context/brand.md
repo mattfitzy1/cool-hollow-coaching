@@ -22,9 +22,9 @@ It is grounded, practical, and results-first. This is not motivational fluff or 
 
 ## The promise
 
-**15 hours back, plus at least $50,000 in profit found.**
+**15 hours back, plus up to $50,000 in profit found.**
 
-That is the headline. The profit-found framing ("$50,000 found versus a $5,000 price") is the brand's signature move: it makes the program feel like a discovery, not a cost.
+That is the headline. The profit-found framing ("up to $50,000 found versus a $5,000 price") is the brand's signature move: it makes the program feel like a discovery, not a cost. Backed by a strong CFO on the team who reliably finds hidden profit in client books, this isn't a guess, it's a track record.
 
 ---
 

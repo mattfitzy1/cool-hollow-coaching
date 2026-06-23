@@ -28,7 +28,7 @@ A light snapshot of where things actually are right now. Where we do not have a 
 - **Length:** 12 weeks.
 - **Milestones:** 7 (reclaim time and identity, define the destination, install the dashboard, break the constraint, discover the hidden product, cash-flow confidence, build the team).
 - **Target buyer:** owner-operators of companies doing **$1M to $10M a year** in revenue.
-- **Core promise:** 15 hours back, plus at least $50,000 in profit found.
+- **Core promise:** 15 hours back, plus up to $50,000 in profit found.
 
 ### Tier 2: $10M+ owners
 - Focus: tax strategy, investment, scaling.

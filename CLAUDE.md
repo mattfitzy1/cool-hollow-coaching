@@ -23,7 +23,7 @@ You move fast and you are willing to put in the hours. You want this system "wax
 - **Tier 1:** a 12-week program priced at **$5,000**, built for companies doing **$1M to $10M a year** where the owner is still the single point of failure.
 - **Tier 2:** for owners doing **$10M and above** — tax strategy, investment, and scaling, with a community and 1-2 live sessions a week, and the full team involved (CFO, COO, an HR/people specialist, plus Mark on strategy).
 
-The promise on Tier 1 is the spine of everything: **15 hours back, plus at least $50,000 in profit found.** When the program turns up $50,000 the owner did not know was there, the $5,000 price stops being a question. The guiding philosophy on Tier 2 is **"10x is easier than 2x."**
+The promise on Tier 1 is the spine of everything: **15 hours back, plus up to $50,000 in profit found.** When the program turns up profit the owner did not know was there, the $5,000 price stops being a question. The guiding philosophy on Tier 2 is **"10x is easier than 2x."**
 
 **The seven milestones of Business Without You (Tier 1):**
 

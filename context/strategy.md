@@ -16,7 +16,7 @@ Everything below serves those dates. I will flag when work is drifting off the p
 
 ## The worldview that runs through everything
 
-**Business Without You.** The owner is the single point of failure, and that is the problem we solve. We lead with outcomes — **15 hours back and at least $50,000 in profit found** — never with features or jargon. "10x is easier than 2x" is the philosophy underneath the higher tier: push for structural change, not incremental tweaks.
+**Business Without You.** The owner is the single point of failure, and that is the problem we solve. We lead with outcomes — **15 hours back and up to $50,000 in profit found** — never with features or jargon. "10x is easier than 2x" is the philosophy underneath the higher tier: push for structural change, not incremental tweaks.
 
 ---
 

@@ -18,7 +18,7 @@ Reordered from the original sequence so the dashboard goes in before the profit 
 | 6 | Break the Binding Constraint | 4 |
 | 7 | Build the Team That Builds the Business | 7 |
 
-The promise stays the same regardless of order: **15 hours back, plus a minimum of $50,000 in profit found.**
+The promise stays the same regardless of order: **15 hours back, plus up to $50,000 in profit found.**
 
 ---
 
