@@ -14,11 +14,19 @@ Fallbacks if taken:
 `Mark · Business Without You`
 (swap in Mark's surname if preferred)
 
-## Bio (150 char max, this draft is ~119)
-Helping $1M-$10M owners escape the day-to-day. Time back + profit you didn't know you had. Try the free Profit Finder ↓
+## Bio (150 char max, this version is ~137, chosen 2026-06-23)
+The same team behind Cool Hollow Solutions, now helping you step back.
+Discover hidden profit and buy back your time.
+Free Profit Finder ↓
 
 ## Bio link
-TODO: points to the free Profit Finder once it's deployed (Streamlit free cloud).
-Use a free link-in-bio page (Linktree free or a small branded page) if more than one
-destination is needed later (finder + community + landing page).
+Use the branded link-in-bio page (link-in-bio/index.html) once it's deployed to
+Cloudflare Pages. That page holds all destinations in one place.
+
+Live destinations as of 2026-06-23:
+- Free Profit Finder: https://profit-finder-coolhollow.streamlit.app
+- Explore Cool Hollow: https://coolhollowsolutions.com
+- Cool Hollow Solutions (IG): https://www.instagram.com/coolhollowsolutions
+- Cool Hollow Mastermind (IG): https://www.instagram.com/coolhollowmastermind
+- Join the Community: coming soon (Skool link pending)
 </content>
