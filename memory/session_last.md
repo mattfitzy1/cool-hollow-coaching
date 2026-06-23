@@ -6,26 +6,29 @@ description: What was worked on, decisions made, and next steps from the most re
 **Date:** 2026-06-23
 
 **What was worked on:**
-- Reviewed about a dozen GitHub repos Matt asked about for "upgrading Claude" (Ruflo, addyosmani/agent-skills, system-prompts-leaks, Canopy, an unfiltered AI video studio, stop-slop, superpowers, an agent-context-engineering skill, and others). Talked through why most don't fit a one-person coaching business and a couple carry real risk.
-- Saved one exception, `ui-ux-pro-max` (a generic design-pattern reference skill), into `.claude/skills/ui-ux-pro-max/`, to use for layout/conversion-flow structure next time we work on the funnel site or landing pages. Locked brand colors and voice always override its own suggestions.
-- Ran a functional test of all seven Business Without You milestone tools against their sample data. All passed. Added a missing `sample_receivables.csv` to Cash Confidence so its optional receivables-timing check is actually covered.
-- Looked up real 2026 pricing for HeyGen, Higgsfield, and ElevenLabs for the Mark AI clone project.
-- Committed and pushed: the new skill, the test data fix, site logo assets (`site/logos/`), and in-progress edits to `site/discovery.html` and `site/index.html`.
+- Stood up the Business Without You funnel live on Cloudflare Pages: https://cool-hollow-coaching-funnel.pages.dev
+- Rebuilt the homepage and merged the old separate VSL/apply pages into one `discovery.html` (video up top, then the qualifying application form)
+- Pulled in real client logos for the trust strip (Premier HVAC, Cline Collision, CS Stoneworks, Willoughby Commercial, CertaPro, Laurel Asphalt, Luxus Property Group); Gene Latta Ford, ADC Wastewater Engineering, DeLeon Painting, and JW Mechanicals are still text-only, their sites block automated logo fetching
+- Locked the brand palette to black/gold/white and the type pairing to Fraunces + Inter (matching Mark's Lovable draft)
+- Did a full visual upgrade pass: full-bleed dark hero, animated count-up stats, scroll-reveal animations, glossy gold CTA buttons, grain texture overlay
+- Added a "Hidden Profit Analyzer" section to both pages describing the planned P&L upload tool (not built yet, no working link)
+- Added a combined guarantee section (10 hours back OR real profit found, either trigger refunds) and a click-to-expand FAQ section
+- Locked the real numbers everywhere: 200+ business owners, $500K–$10M revenue range, 20 years
 
 **Key decisions:**
-- Standing rule: always self-review code for bugs/data leaks before calling a task done, instead of installing third-party engineering-workflow plugins for that purpose.
-- For Mark's AI clone: keep Higgsfield for general creative content, add ElevenLabs (~$22/mo, Creator plan) specifically for voice, since voice realism was HeyGen's actual weak point, not video quality.
-- Declined to install Ruflo, agent-skills, Canopy, the unfiltered video studio, stop-slop, superpowers, and the context-engineering skill repo. None solve a real gap; a couple (autonomous agents, no-content-filter media gen) are actual risks for a client-facing brand.
+- Single $5,000 offer stays; the three-tier pricing idea ($1,500/$5,000/custom) was discussed and intentionally NOT built, holding the Private Intensive tier back as a future upsell once results exist
+- Track-record numbers (200+ clients, $500K–$10M, 20 years) are explicitly Cool Hollow Solutions' real history, being used honestly to back the new Business Without You offer, not fabricated for the new entity
+- Fixed a real Cloudflare API token bug: the token's IP filter had accidentally excluded the owner's own home IP, blocking every deploy; removed it
 
 **Open / unfinished:**
-- The compass logo still needs a proper redraw (designer brief vs. Canva, still undecided), carried over from prior sessions.
-- The seven milestone tools and analyzer are still local only, not deployed publicly.
-- Nothing deployed to Cloudflare Pages yet, even though it's connected.
-- ElevenLabs not yet set up (`ELEVENLABS_API_KEY` empty) — this is the concrete next step for Mark's voice clone.
-- `site/discovery.html` and `site/index.html` have in-progress edits that were committed as-is; worth a look together to confirm where that draft stands.
+- User's last message cut off mid-sentence ("also turn the home page back to.") — asked for clarification, no answer yet. Don't revert anything on the homepage until they specify what they meant.
+- DeLeon Painting's real logo still not pulled in (their site blocks automated fetching); needs Matt to screenshot/save it directly
+- No backend wired on the discovery.html application form yet (submissions currently go nowhere)
+- The Hidden Profit Analyzer tool itself doesn't exist yet, only described on the page
+- Get explicit sign-off from each client business before the logo strip goes anywhere public
 
 **Next steps:**
-- Set up ElevenLabs (Creator plan, ~$22/mo) to unblock Mark's voice clone.
-- Decide on the logo redraw path and execute it.
-- Pick a first thing to deploy to Cloudflare Pages.
-- Get well-lit reference photos of Mark for any future likeness/voice work.
+- Get the homepage rollback clarification from Matt
+- Decide and wire up a form backend (Cloudflare Pages Function + email, or a third-party form service) for discovery.html
+- Record the actual VSL/walkthrough video for the discovery page
+- Build the actual Hidden Profit Analyzer tool if it's still the priority front door
