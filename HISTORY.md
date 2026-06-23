@@ -10,6 +10,13 @@
 
 ## 2026-06-23
 
+### First IG Post Live, Carousel Built, Hidden-Profit Analyzer Rebuilt for Honesty
+- Went live with the first Instagram post (the "two-week vacation" carousel) on the new coolhollow.os page, on the free Publer path. Built it into a complete, paste-ready unit: 5 slides plus 3 quote graphics rendered as on-brand JPGs (black/gold/Poppins), caption, hashtags, and a LinkedIn rewrite. Saved to `outputs/content/cool-hollow-coaching/`.
+- Set three standing rules from Matt: (1) default to "founder thinking mode" first-principles answers; (2) zero budget right now, free/manual paths only, flag anything paid; (3) never advertise, promise, or sell anything not yet built. Pre-launch copy stays problem/authority only, no buy or waitlist CTAs.
+- Reviewed the two Mark video clips Matt posted: both carry Cool Hollow *Solutions* branding baked in (wrong brand for the Coaching page). Path agreed: get raw unbranded footage from Mark's archive and rebuild in Coaching's brand. Drafted a new honest bio (no product promise).
+- Rebuilt the hidden-profit analyzer's math to be honest: reports margin, cost creep, and cash timing separately instead of one inflated "profit found" total; excludes subtotal/total rows so real P&Ls do not double count; removed the unbacked "$50k" promise and the unbuilt-$5k-program sell from the app copy; added a privacy line and a "how we read your file" transparency table. Added `backtest.py` (5 hand-checked P&Ls, all passing) and a README.
+- Tested the analyzer on two real P&Ls (a door company PDF, a restoration company Excel). Both broke it: keyword classification cannot read real hierarchical P&Ls (reported 100% and -2368% margins). Diagnosis: it must read by section header (Income/COGS/Expenses), not line-name keywords. NOT ready for prospects; reader rebuild is the next session's first task, with both files locked in as tests.
+
 ### Reviewed Third-Party Repos, Verified Milestone Tools, Saved UI/UX Reference Skill
 - Reviewed about a dozen GitHub repos Matt considered adding (Ruflo, addyosmani/agent-skills, system-prompts-leaks, Canopy, an unfiltered AI video studio, stop-slop, superpowers, and others). Recommended against nearly all of them: most were software-engineering tooling aimed at dev teams, not a fit for a one-person coaching business, and a couple (the no-content-filter video studio, the autonomous-agent infrastructure) carried real brand or operational risk.
 - Saved one exception, `ui-ux-pro-max` (a design-pattern reference skill), into `.claude/skills/ui-ux-pro-max/`, for layout and conversion-flow reasoning on future site/landing page work, with locked brand colors and voice always overriding its generic suggestions.
