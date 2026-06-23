@@ -10,6 +10,13 @@
 
 ## 2026-06-23
 
+### Hidden-Profit Analyzer: Section-Aware Reader, Validated on Real P&Ls, Richer Insights
+- Rebuilt the analyzer's P&L reader to classify lines by their section header (Income / Cost of Goods Sold / Expenses), the way an accountant reads a P&L, instead of guessing from line names. This fixes the failure found earlier (it had reported 100% and -2368% margins on real files).
+- Validated against four real QuickBooks/Xero exports (two garage-door PDFs, a trades-company PDF, a restoration-company Excel). Computed revenue, COGS, and gross profit match each file's own stated totals to the cent. Real files are not stored; their structure is captured as synthetic backtest cases 6 and 7. Backtest now 7/7.
+- Text-first PDF parsing keeps account codes ("40200 Sales") in the label instead of counting them as money. New `excel_parser.py` handles title rows, sheet selection, and amount-column detection so Excel uploads are robust.
+- Expanded the report into genuinely useful, still-honest insights: profit snapshot (gross + operating margin, "you keep X cents per dollar"), where the money goes (top costs as a share of revenue, biggest lever), and levers (what a 1% price rise or 5 margin points is worth, plus breakeven revenue). All what-ifs labeled as what-ifs; no invented numbers.
+- Established the honest framing: the tool surfaces signals and opens the conversation; it does not manufacture a "found $50,000" figure (that is the CFO's work inside the program). Nudged owners to upload monthly columns so cost-creep and cash-timing checks can run.
+
 ### First IG Post Live, Carousel Built, Hidden-Profit Analyzer Rebuilt for Honesty
 - Went live with the first Instagram post (the "two-week vacation" carousel) on the new coolhollow.os page, on the free Publer path. Built it into a complete, paste-ready unit: 5 slides plus 3 quote graphics rendered as on-brand JPGs (black/gold/Poppins), caption, hashtags, and a LinkedIn rewrite. Saved to `outputs/content/cool-hollow-coaching/`.
 - Set three standing rules from Matt: (1) default to "founder thinking mode" first-principles answers; (2) zero budget right now, free/manual paths only, flag anything paid; (3) never advertise, promise, or sell anything not yet built. Pre-launch copy stays problem/authority only, no buy or waitlist CTAs.
