@@ -10,6 +10,13 @@
 
 ## 2026-06-23
 
+### Instagram Front Door Live: Profile, Bio, and Branded Link Hub
+- Set the Instagram identity: handle `@businesswithoutyou`, name field `Mark · Business Without You`, all saved to `outputs/content/cool-hollow-coaching/instagram-profile.md`.
+- Built a self-hosted, branded link-in-bio page (`link-in-bio/index.html`, black/gold/Poppins) instead of Linktree, so it carries no third-party branding or fee. Deployed it free to Cloudflare Pages, live at `business-without-you.pages.dev`.
+- Wired the page buttons: Free Profit Finder (the deployed tool), Explore Cool Hollow (coolhollowsolutions.com), Cool Hollow Solutions + Mastermind Instagram (credibility), and a "Coming soon" Skool community button (parked until the link is ready).
+- Finalized the bio after several rounds: "The same team behind Cool Hollow Solutions, now helping you step back. / Discover hidden profit and buy back your time. / Free Profit Finder ↓" (137 chars). Leads with credibility, keeps it honest (no selling the unbuilt program).
+- Strategy decided: cross-promote from Cool Hollow Solutions and the Mastermind Instagram accounts to borrow credibility for the cold-start page; keep comment-to-DM manual for now to respect the no-automation-messaging rule. Skool link still outstanding.
+
 ### Hidden-Profit Analyzer Deployed Live
 - Deployed the hidden-profit analyzer to Streamlit Community Cloud (free host), connected to the private GitHub repo. It is now public and working at `profit-finder-coolhollow.streamlit.app`.
 - Verified end to end in the cloud with a real P&L: numbers match local exactly (e.g. Elite Restoration: revenue $1,435,139, gross margin 53%, operating margin -5%, costs at 105% of revenue).
