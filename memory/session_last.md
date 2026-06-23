@@ -6,23 +6,27 @@ description: What was worked on, decisions made, and next steps from the most re
 **Date:** 2026-06-23
 
 **What was worked on:**
-- DEPLOYED the hidden-profit analyzer LIVE to Streamlit Community Cloud (free host, connected to the private GitHub repo). Public and working at **profit-finder-coolhollow.streamlit.app**.
-- Verified in the cloud with a real P&L: numbers match local exactly (Elite Restoration: revenue $1,435,139, gross margin 53%, operating margin -5%).
-- Fixed a display bug (Streamlit read "$" as LaTeX math, so amounts rendered in italics with no dollar sign); escaped them, auto-redeployed.
-- Renamed the app URL to the clean profit-finder-coolhollow.streamlit.app.
-- Earlier in the session: rebuilt the analyzer's reader to be section-aware (validated to the cent on 4 real P&Ls), added richer owner insights (profit snapshot, where money goes, levers), made Excel uploads robust, backtest 7/7. All committed and pushed.
+- Stood up the full Instagram front door for Cool Hollow Coaching: profile identity, branded link hub, and a finalized bio.
+- Instagram identity set: handle `@businesswithoutyou`, name field `Mark · Business Without You`. Saved to `outputs/content/cool-hollow-coaching/instagram-profile.md`.
+- Built a self-hosted branded link-in-bio page (`link-in-bio/index.html`, black/gold/Poppins, no Linktree branding or fee) and deployed it free to Cloudflare Pages, live at `business-without-you.pages.dev`.
+- Wired the link page buttons: Free Profit Finder (the deployed Streamlit tool at profit-finder-coolhollow.streamlit.app), Explore Cool Hollow (coolhollowsolutions.com), Cool Hollow Solutions + Mastermind Instagram for credibility, and a parked "Coming soon" Skool community button.
+- Finalized the bio after several rounds (Matt chose his own credibility-led version): "The same team behind Cool Hollow Solutions, now helping you step back. / Discover hidden profit and buy back your time. / Free Profit Finder ↓"
+- (Earlier same day, separate session: deployed and polished the hidden-profit analyzer itself.)
 
 **Key decisions:**
-- The analyzer is now a real, built, free value tool, so linking it in the IG bio breaks no "don't sell what isn't built" rule. It is the honest front-door lead magnet.
-- Deployment clicks (account, GitHub auth, deploy) are Matt's to do; Claude cannot click inside the browser (Safari is view-only). Claude guides and watches.
+- Self-host the link hub instead of Linktree, so it stays on-brand and free.
+- Cross-promote the new page from Cool Hollow Solutions and the Mastermind Instagram accounts to borrow credibility for a cold-start page (run past Mark first; point at the free tool/content, not a program sale).
+- Keep comment-to-DM funnel MANUAL for now (Matt replies himself) to respect the no-automation-messaging house rule and zero-budget constraint. Automate later once posting daily.
+- Bio leads with the Cool Hollow credibility and stays honest (no selling the unbuilt program; CTA is the free tool only).
 
 **Open / unfinished:**
-- Paste the live link into the Instagram bio. Draft bio line ready: "Find the profit hiding in your business. Free, 2-minute read of your own numbers 👇 profit-finder-coolhollow.streamlit.app". The bio draft doc (instagram-profile.md) still says "link pending" and should be updated with the live link.
-- Tidy negative-number formatting in the report ("$-69,707" -> "-$69,707"). Cosmetic.
-- Cosmetic: doubled account-code prefixes still show in some line labels.
-- Still floating from earlier: raw unbranded Mark footage for a Coaching Reel; the Mark "Hiring" video edit was never verified frame-by-frame.
-- Note: link-in-bio/index.html was edited to link to coolhollowsolutions.com (the Solutions site) - worth checking that does not muddy the Coaching/Solutions brand separation.
+- Matt to finish entering the profile fields on Instagram and paste `business-without-you.pages.dev` into the bio website field. (Mac clipboard does not carry to phone; fields are in the profile file to type across.)
+- Skool community link still outstanding. Once Matt sends it, switch the "Coming soon" button on (quick edit + redeploy).
+- Two buttons both point to Cool Hollow Solutions (the site and the IG); flagged to Matt, his call whether to keep both. Also worth a sanity check this doesn't muddy the Coaching/Solutions brand separation.
+- Profit Finder cosmetic polish (carried over): negative-number formatting ("$-69,707" -> "-$69,707"); doubled account-code prefixes in some line labels.
+- Content backlog: first carousel into a complete paste-ready post; Publer free-plan API key check; raw unbranded Mark footage for a Coaching Reel; the Mark "Hiring" video edit never verified frame-by-frame; weekly time-commitment number + guarantee to confirm with Mark; compass logo redraw.
 
 **Next steps:**
-- Update instagram-profile.md with the live analyzer link and paste the bio into Instagram.
-- Optional polish on the analyzer: negative-number formatting, strip doubled account codes, test more P&L formats.
+- Get the Skool link and flip the community button live.
+- Turn the approved carousel into a finished, paste-ready post so Matt can start posting on the new page.
+- Run the Cool Hollow Solutions / Mastermind cross-promo intro (after Mark signs off).
