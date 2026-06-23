@@ -1,13 +1,13 @@
 """
 Cool Hollow Coaching, the hidden-profit analyzer.
 
-A business owner uploads a P&L (CSV, Excel, or PDF) and gets back a plain-English
-first look at three things, read straight from their own numbers: gross margin,
-costs that crept up, and any months where money went out faster than it came in.
+An owner uploads a P&L (CSV, Excel, or PDF) and gets a plain-English first look at
+their numbers: the profit picture, where the money goes, the levers worth pulling,
+and (if they upload monthly columns) costs that crept up and months that ran short.
 
-Honesty rules baked in: every figure points back to a line in the uploaded file,
-the three findings are kept separate (never summed into one inflated "profit found"
-number), and the page does not sell or promise anything that is not built.
+Honesty rules baked in: every figure points back to a line in the uploaded file, the
+findings are kept separate (never one inflated "profit found" number), and the page
+does not sell or promise anything that is not built.
 """
 
 import pandas as pd
@@ -15,30 +15,32 @@ import streamlit as st
 
 from analysis import run_full_analysis
 from pdf_parser import parse_pdf
+from excel_parser import parse_excel
 
 st.set_page_config(page_title="Cool Hollow Coaching, the hidden-profit finder", page_icon="$")
 
 st.title("See what your own numbers are telling you")
 st.write(
-    "Upload your profit and loss and this reads three things straight from it: your "
-    "gross margin, any costs that have crept up, and any months where more went out "
-    "than came in. It is a first look, not a full audit, and every number it shows "
-    "points back to a line in your file."
+    "Upload your profit and loss and get a plain-English read of your margins, where "
+    "your money actually goes, and the levers worth pulling. It is a first look, not a "
+    "full audit, and every number points back to a line in your file."
 )
-st.caption(
-    "Your file is read only to produce this report, in this session. It is not saved "
-    "or stored anywhere."
+st.info(
+    "Best results: upload a P&L with a **column for each month** (not just a single "
+    "annual total). With monthly columns it can also spot costs that crept up and "
+    "months where cash ran short."
 )
+st.caption("Your file is read only to produce this report, in this session. It is not "
+           "saved or stored anywhere.")
 
 st.divider()
 
 with st.expander("What file should I upload?"):
     st.write(
-        "A CSV, Excel, or PDF export of your profit and loss. The first column should "
-        "be the line item name (Revenue, Cost of Goods Sold, Rent, Software, and so "
-        "on). If you have more than one month, add a column per month, in date order. "
-        "If you only have totals, a single amount column is fine. PDF exports straight "
-        "from QuickBooks, Xero, or similar tools work best."
+        "A CSV, Excel, or PDF export of your profit and loss. The first column should be "
+        "the line item name, with your usual section headers (Income, Cost of Goods Sold, "
+        "Expenses). Add a column per month for the richest read; a single total column "
+        "works too. PDF and Excel exports straight from QuickBooks or Xero work well."
     )
 
 uploaded = st.file_uploader("Upload your P&L (CSV, Excel, or PDF)", type=["csv", "xlsx", "xls", "pdf"])
@@ -54,7 +56,7 @@ try:
     elif name.endswith(".pdf"):
         raw = parse_pdf(uploaded)
     else:
-        raw = pd.read_excel(uploaded)
+        raw = parse_excel(uploaded)
 except Exception as exc:
     st.error(f"Could not read that file. Double-check it is a plain P&L export. ({exc})")
     st.stop()
@@ -67,22 +69,43 @@ except Exception as exc:
 
 st.divider()
 
-# Transparency first: show how every line was read, so the numbers can be trusted.
 with st.expander("How we read your file (check this first)"):
-    st.write(
-        "Here is how each line was classified. If anything looks misread, your export "
-        "may use unusual labels. The numbers below are built only from these."
-    )
+    st.write("Here is how each line was classified. If anything looks misread, your "
+             "export may use unusual labels. Everything below is built only from these.")
     st.dataframe(result["breakdown"], use_container_width=True)
 
-margin = result["margin"]
+snapshot = result["snapshot"]
+where = result["where"]
+lev = result["leverage"]
 creep = result["creep"]
 cash = result["cash"]
 
-st.header("Pricing and margin")
-if margin["gross_margin"] is not None:
-    st.metric("Your gross margin", f"{margin['gross_margin']:.0%}")
-for line in margin["findings"]:
+st.header("Your profit snapshot")
+cols = st.columns(2)
+if snapshot["gross_margin"] is not None:
+    cols[0].metric("Gross margin", f"{snapshot['gross_margin']:.0%}")
+if snapshot["operating_margin"] is not None:
+    cols[1].metric("Operating margin", f"{snapshot['operating_margin']:.0%}")
+for line in snapshot["findings"]:
+    st.write(f"- {line}")
+
+st.header("Where the money goes")
+if where.get("rows"):
+    table = pd.DataFrame([
+        {
+            "Cost line": r["line_item"],
+            "Amount": f"${r['amount']:,.0f}",
+            "Share of revenue": (f"{r['share_of_revenue']:.0%}"
+                                 if r["share_of_revenue"] is not None else "n/a"),
+        }
+        for r in where["rows"]
+    ])
+    st.table(table)
+for line in where["findings"]:
+    st.write(f"- {line}")
+
+st.header("Your levers")
+for line in lev["findings"]:
     st.write(f"- {line}")
 
 st.header("Cost creep")
@@ -99,8 +122,8 @@ for line in cash["findings"]:
 
 st.divider()
 st.write(
-    "This is a first look at your own numbers, not a full audit. The real work is "
-    "going through each of these line by line: where the margin is leaking, which "
-    "costs are worth a hard look, and how to see a cash gap coming before it lands. "
-    "That is exactly the kind of thing Cool Hollow works on with owners."
+    "This is a first look at your own numbers, not a full audit. The real work is going "
+    "through each of these line by line: where the margin is leaking, which costs are "
+    "worth a hard look, and how to see a cash gap coming before it lands. That is exactly "
+    "the kind of thing Cool Hollow works on with owners."
 )

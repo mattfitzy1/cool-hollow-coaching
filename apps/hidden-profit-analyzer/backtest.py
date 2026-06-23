@@ -81,6 +81,49 @@ CASES.append({
 })
 
 
+# 6. QuickBooks shape: section headers, account-code prefixes, sub-headers, and
+#    "Total for ..." rows. The category must come from the SECTION, and the totals
+#    must be excluded. Revenue must read 100k (not 300k from also counting totals).
+CASES.append({
+    "name": "QuickBooks sections + account codes + subtotals",
+    "df": pd.DataFrame({
+        "line_item": [
+            "Income", "40000 Sales", "40200 Product Sales", "Total for 40000 Sales",
+            "Total for Income",
+            "Cost of Goods Sold", "51100 Materials", "51101 Vendor A", "51102 Vendor B",
+            "Total for 51100 Materials", "Total for Cost of Goods Sold", "Gross Profit",
+            "Expenses", "62000 Advertising", "63000 Rent", "Total Expenses", "Net Income",
+        ],
+        "amount": [
+            None, None, 100000, 100000, 100000,
+            None, None, 30000, 10000, 40000, 40000, 60000,
+            None, 5000, 8000, 13000, 47000,
+        ],
+    }),
+    "expect": {"margin_pct": 0.60, "opportunity": 5000.0, "creep": 0.0, "shortfall": 0.0},
+})
+
+# 7. The case that broke the old version: revenue named by service and COGS named by
+#    category, so name-based keywords would misread both. Sections must win.
+CASES.append({
+    "name": "Section beats line names (services / cost categories)",
+    "df": pd.DataFrame({
+        "line_item": [
+            "Income", "Fire/Smoke Restoration", "Water Remediation", "Total for Income",
+            "Cost of Goods Sold", "Auto Gas & Tolls", "Subcontractors", "Direct Labor",
+            "Total for Cost of Goods Sold", "Gross Profit",
+            "Expenses", "Google Ads", "Office Rent",
+        ],
+        "amount": [
+            None, 60000, 40000, 100000,
+            None, 5000, 25000, 20000, 50000, 50000,
+            None, 3000, 7000,
+        ],
+    }),
+    "expect": {"margin_pct": 0.50, "opportunity": 5000.0, "creep": 0.0, "shortfall": 0.0},
+})
+
+
 def run():
     passed = 0
     failed = 0
@@ -88,8 +131,8 @@ def run():
         result = run_full_analysis(case["df"])
         exp = case["expect"]
         checks = {
-            "margin %": approx(result["margin"]["gross_margin"], exp["margin_pct"]),
-            "opportunity $": approx(result["margin"]["opportunity"], exp["opportunity"]),
+            "margin %": approx(result["snapshot"]["gross_margin"], exp["margin_pct"]),
+            "opportunity $": approx(result["leverage"]["opportunity"], exp["opportunity"]),
             "cost creep $": approx(result["creep"]["creep"], exp["creep"]),
             "cash shortfall $": approx(result["cash"]["shortfall"], exp["shortfall"]),
         }
@@ -100,8 +143,8 @@ def run():
         print(f"[{flag}] {case['name']}")
         if not ok:
             got = {
-                "margin %": result["margin"]["gross_margin"],
-                "opportunity $": result["margin"]["opportunity"],
+                "margin %": result["snapshot"]["gross_margin"],
+                "opportunity $": result["leverage"]["opportunity"],
                 "cost creep $": result["creep"]["creep"],
                 "cash shortfall $": result["cash"]["shortfall"],
             }
