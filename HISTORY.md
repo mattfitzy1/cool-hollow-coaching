@@ -8,6 +8,15 @@
 
 ---
 
+## 2026-06-23
+
+### Reviewed Third-Party Repos, Verified Milestone Tools, Saved UI/UX Reference Skill
+- Reviewed about a dozen GitHub repos Matt considered adding (Ruflo, addyosmani/agent-skills, system-prompts-leaks, Canopy, an unfiltered AI video studio, stop-slop, superpowers, and others). Recommended against nearly all of them: most were software-engineering tooling aimed at dev teams, not a fit for a one-person coaching business, and a couple (the no-content-filter video studio, the autonomous-agent infrastructure) carried real brand or operational risk.
+- Saved one exception, `ui-ux-pro-max` (a design-pattern reference skill), into `.claude/skills/ui-ux-pro-max/`, for layout and conversion-flow reasoning on future site/landing page work, with locked brand colors and voice always overriding its generic suggestions.
+- Ran a functional test across all seven Business Without You milestone tools against their sample data. All passed; added a missing `sample_receivables.csv` to Cash Confidence so its optional receivables-timing check (added last session) is actually covered by a test.
+- Compared HeyGen, Higgsfield, and ElevenLabs pricing for Mark's AI video/voice clone. Recommendation: keep Higgsfield for general creative content, add ElevenLabs (~$22/mo) specifically for voice quality, since that was HeyGen's actual weak point.
+- Set a standing rule: always self-review code for bugs and data leaks before calling a task done, instead of installing third-party engineering-workflow plugins for that purpose.
+
 ## 2026-06-22
 
 ### Brand Color Swap, Mark's Voice Profile, Funnel Site Draft, Meeting Prep
