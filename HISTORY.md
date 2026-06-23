@@ -10,6 +10,13 @@
 
 ## 2026-06-23
 
+### Hidden-Profit Analyzer Deployed Live
+- Deployed the hidden-profit analyzer to Streamlit Community Cloud (free host), connected to the private GitHub repo. It is now public and working at `profit-finder-coolhollow.streamlit.app`.
+- Verified end to end in the cloud with a real P&L: numbers match local exactly (e.g. Elite Restoration: revenue $1,435,139, gross margin 53%, operating margin -5%, costs at 105% of revenue).
+- Fixed a display bug where Streamlit read the `$` in findings as LaTeX math (amounts showed in italics with no dollar sign); escaped them so dollar amounts render correctly. Auto-redeployed on push.
+- Renamed the app URL to the clean `profit-finder-coolhollow.streamlit.app`.
+- Tool is now genuinely bio-ready (it is a real, free value tool, so linking it breaks no "don't sell what isn't built" rule). Remaining: paste the live link into the IG bio; tidy negative-number formatting ("$-69,707" -> "-$69,707").
+
 ### Hidden-Profit Analyzer: Section-Aware Reader, Validated on Real P&Ls, Richer Insights
 - Rebuilt the analyzer's P&L reader to classify lines by their section header (Income / Cost of Goods Sold / Expenses), the way an accountant reads a P&L, instead of guessing from line names. This fixes the failure found earlier (it had reported 100% and -2368% margins on real files).
 - Validated against four real QuickBooks/Xero exports (two garage-door PDFs, a trades-company PDF, a restoration-company Excel). Computed revenue, COGS, and gross profit match each file's own stated totals to the cent. Real files are not stored; their structure is captured as synthetic backtest cases 6 and 7. Backtest now 7/7.
