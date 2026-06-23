@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discovery — Business Without You | Cool Hollow Coaching</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAF8F3; --card: #F1EDE2; --ink: #0E4643; --body-ink: #283835;
+    --accent: #589BA8; --accent2: #B4D351; --amber: #D97742; --dark: #0E2C2A;
+  }
+  body { background: var(--paper); color: var(--body-ink); }
+  .font-display { font-family: 'Fraunces', serif; }
+  .font-body { font-family: 'Manrope', sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); opacity: 0.6; }
+  .hairline { height: 1px; background: var(--ink); opacity: 0.12; }
+  .amber { color: var(--amber); }
+  .pill-primary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    background: var(--amber); color: #fff; padding: 18px 34px; border-radius: 999px;
+    font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 15px; border: none; cursor: pointer; width: 100%;
+    transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 8px 24px rgba(217,119,66,0.35);
+  }
+  .pill-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(217,119,66,0.45); }
+  .video-frame {
+    aspect-ratio: 16/9; border-radius: 16px; background: var(--dark);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+    position: relative; overflow: hidden;
+  }
+  .video-frame::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(250,248,243,0.07) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  .play-ring {
+    width: 76px; height: 76px; border-radius: 999px; background: var(--amber);
+    display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;
+    box-shadow: 0 8px 28px rgba(217,119,66,0.5);
+  }
+  .field label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); opacity: 0.7; display: block; margin-bottom: 8px; }
+  .field input, .field select, .field textarea {
+    width: 100%; background: #fff; border: 1.5px solid rgba(14,70,67,0.18); border-radius: 8px;
+    padding: 12px 14px; font-family: 'Manrope', sans-serif; font-size: 15px; color: var(--ink);
+    transition: border-color 0.3s;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--ink); }
+  .choice-pair { display: flex; gap: 12px; }
+  .choice-pill { flex: 1; }
+  .choice-pill input { position: absolute; opacity: 0; }
+  .choice-pill label {
+    display: block; text-align: center; padding: 14px; border-radius: 999px;
+    border: 1.5px solid rgba(14,70,67,0.25); font-family: 'Manrope', sans-serif; font-weight: 600;
+    font-size: 14px; color: var(--ink); cursor: pointer; transition: all 0.2s; text-transform: none; opacity: 0.8;
+  }
+  .choice-pill input:checked + label { background: var(--ink); color: var(--paper); border-color: var(--ink); opacity: 1; }
+  .reason-card { border: 1.5px solid var(--ink); border-radius: 14px; padding: 24px; }
+  .step-num {
+    width: 36px; height: 36px; border-radius: 999px; background: var(--amber); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 700; font-size: 15px; flex-shrink: 0;
+  }
+</style>
+</head>
+<body class="font-body antialiased selection:bg-[#0E4643] selection:text-[#FAF8F3]">
+
+<nav class="w-full px-6 md:px-12 py-7 flex justify-between items-center max-w-screen-2xl mx-auto sticky top-0 z-30 backdrop-blur-md" style="background:rgba(250,248,243,0.85)">
+  <a href="index.html" class="font-display italic text-lg tracking-tight" style="color:var(--ink)">Cool Hollow Coaching</a>
+  <a href="#apply" class="pill-primary !py-3 !px-6 !text-sm !w-auto">Apply Now</a>
+</nav>
+
+<header class="px-6 md:px-12 pt-10 pb-12 max-w-screen-2xl mx-auto text-center">
+  <span class="label block mb-6">Discovery</span>
+  <h1 class="font-display text-4xl md:text-6xl leading-[0.95] tracking-tight max-w-3xl mx-auto mb-6" style="color:var(--ink)">
+    Watch this first.<br><span class="italic">Then apply.</span>
+  </h1>
+  <p class="opacity-80 max-w-xl mx-auto text-base leading-relaxed">A 14-minute walkthrough of exactly what we install, who it's for, and what changes in your business in 12 weeks.</p>
+</header>
+
+<section class="px-6 md:px-12 max-w-screen-2xl mx-auto mb-10">
+  <div class="video-frame">
+    <div class="play-ring"><i data-lucide="play" class="w-7 h-7" style="color:#fff"></i></div>
+    <p class="font-mono text-xs tracking-widest uppercase relative z-10" style="color:rgba(250,248,243,0.5)">14-minute walkthrough goes here once recorded</p>
+  </div>
+</section>
+
+<section class="px-6 md:px-12 max-w-screen-2xl mx-auto mb-24 text-center">
+  <a href="#apply" class="font-mono text-xs tracking-widest uppercase opacity-60 hover:opacity-100 transition-opacity" style="color:var(--ink)">The product &middot; the promise &middot; what happens next ↓</a>
+</section>
+
+<section class="px-6 md:px-12 py-20" style="border-top:1px solid rgba(14,70,67,0.12)">
+  <div class="max-w-screen-2xl mx-auto">
+    <div class="flex items-center gap-4 mb-4">
+      <span class="label">The core problem</span>
+      <div class="hairline flex-1"></div>
+    </div>
+    <h2 class="font-display text-3xl md:text-5xl tracking-tight mb-16 max-w-2xl" style="color:var(--ink)">You did not build a business. You built a job.</h2>
+    <p class="opacity-80 max-w-xl mb-12 text-base">The harder you work, the worse the problem gets.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="reason-card">
+        <span class="label block mb-3 amber">Bottleneck</span>
+        <p class="font-display text-lg" style="color:var(--ink)">Every decision routes through you.</p>
+      </div>
+      <div class="reason-card">
+        <span class="label block mb-3 amber">Fragile</span>
+        <p class="font-display text-lg" style="color:var(--ink)">Every process lives only in your head.</p>
+      </div>
+      <div class="reason-card">
+        <span class="label block mb-3 amber">Capped</span>
+        <p class="font-display text-lg" style="color:var(--ink)">You are the ceiling, growth stops where you stop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24" style="background:var(--dark)">
+  <div class="px-6 md:px-12 max-w-screen-2xl mx-auto">
+    <div class="flex items-center gap-4 mb-4">
+      <span class="label" style="color:var(--accent2); opacity:0.85">The opportunity</span>
+      <div class="hairline flex-1" style="background:var(--paper); opacity:0.15"></div>
+    </div>
+    <h2 class="font-display text-3xl md:text-5xl tracking-tight mb-10 max-w-2xl" style="color:var(--paper)">The operating system that sets you free.</h2>
+    <p class="opacity-75 max-w-2xl text-base leading-relaxed mb-6" style="color:var(--paper)">Not a theory. Not a framework from a book. An actual operating system, the same one used to run a wealth management and consulting firm for 20 years, managing 2,000+ accounts and working alongside 200 business owners generating $500K to $5M a year.</p>
+    <p class="opacity-75 max-w-2xl text-base leading-relaxed mb-6" style="color:var(--paper)">It's not about working less. It's about building the architecture so the business no longer needs you to make every call. Decisions get made by a dashboard, not your gut. Responsibilities move to your team through a structured transfer, not a dump. The hidden profit sitting inside your business right now gets found and returned to you.</p>
+    <p class="opacity-75 max-w-2xl text-base leading-relaxed mb-10" style="color:var(--paper)">Imagine walking into Monday knowing the business is moving without you pushing it. A vacation that's actually a vacation. Leading your company instead of being consumed by it. In 12 weeks, we rebuild that architecture together, and you come out the other side with 15 hours back in your week and up to $50,000 in found profit.</p>
+    <a href="#apply" class="pill-primary !w-auto">Apply Now <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+  </div>
+</section>
+
+<section id="apply" class="px-6 md:px-12 max-w-screen-2xl mx-auto py-24">
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-16">
+
+    <div class="md:col-span-4">
+      <span class="label block mb-6">Tell us about your business</span>
+      <h2 class="font-display text-3xl md:text-4xl tracking-tight mb-6" style="color:var(--ink)">We accept a small number of operators per cohort.</h2>
+      <p class="opacity-80 text-[15px] leading-relaxed mb-10">This short application helps us qualify fit before we book a call.</p>
+
+      <div class="flex flex-col gap-6">
+        <div class="flex items-start gap-4">
+          <div class="step-num">1</div>
+          <p class="text-[15px] opacity-85 pt-1">We review your application within 24 hours.</p>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="step-num">2</div>
+          <p class="text-[15px] opacity-85 pt-1">If we're a fit, we book a 45-minute strategy call.</p>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="step-num">3</div>
+          <p class="text-[15px] opacity-85 pt-1">You leave with a custom roadmap, yours to keep, even if we never work together.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:col-span-8">
+      <!--
+        Submission backend not wired yet. This form currently has no
+        working action. Needs a decision: a Cloudflare Pages Function with
+        an email API key, or a simple third-party form service, before
+        this goes live. Destination once wired: office@coolhollowsolutions.com
+      -->
+      <form method="POST" action="#" onsubmit="return false;" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="field"><label for="first">First name *</label><input type="text" id="first" name="first" required></div>
+        <div class="field"><label for="last">Last name *</label><input type="text" id="last" name="last" required></div>
+        <div class="field"><label for="email">Email *</label><input type="email" id="email" name="email" required></div>
+        <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="phone"></div>
+        <div class="field"><label for="company">Company</label><input type="text" id="company" name="company"></div>
+        <div class="field">
+          <label for="revenue">Annual revenue *</label>
+          <select id="revenue" name="revenue" required>
+            <option value="">Select one</option>
+            <option>Under $500K</option>
+            <option>$500K to $1M</option>
+            <option>$1M to $3M</option>
+            <option>$3M to $5M</option>
+            <option>Over $5M</option>
+          </select>
+        </div>
+        <div class="field md:col-span-2">
+          <label for="team">Team size *</label>
+          <select id="team" name="team" required>
+            <option value="">Select one</option>
+            <option>Just me</option>
+            <option>2 to 5</option>
+            <option>6 to 15</option>
+            <option>16 to 30</option>
+            <option>30+</option>
+          </select>
+        </div>
+        <div class="field md:col-span-2">
+          <label>Are you ready to invest $5,000 in solving this? *</label>
+          <div class="choice-pair">
+            <div class="choice-pill"><input type="radio" id="invest-yes" name="invest" value="yes" required><label for="invest-yes">Yes</label></div>
+            <div class="choice-pill"><input type="radio" id="invest-no" name="invest" value="no"><label for="invest-no">Not yet</label></div>
+          </div>
+        </div>
+        <div class="field md:col-span-2">
+          <label for="bottleneck">Where are you the bottleneck in your business right now? *</label>
+          <textarea id="bottleneck" name="bottleneck" rows="3" required></textarea>
+        </div>
+        <div class="field">
+          <label>Which best describes you?</label>
+          <div class="choice-pair">
+            <div class="choice-pill"><input type="radio" id="extrovert" name="personality" value="extrovert"><label for="extrovert">Extrovert</label></div>
+            <div class="choice-pill"><input type="radio" id="introvert" name="personality" value="introvert"><label for="introvert">Introvert</label></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>And which are you more of?</label>
+          <div class="choice-pair">
+            <div class="choice-pill"><input type="radio" id="task" name="work-style" value="task"><label for="task">Task-oriented</label></div>
+            <div class="choice-pill"><input type="radio" id="people" name="work-style" value="people"><label for="people">People-oriented</label></div>
+          </div>
+        </div>
+        <p class="md:col-span-2 text-[13px] opacity-50 -mt-2">This helps us coach you the way you actually work.</p>
+        <div class="md:col-span-2 mt-4">
+          <button type="submit" class="pill-primary">Submit application <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+        </div>
+        <p class="md:col-span-2 label !opacity-50 text-center">We review every application within 24 hours.</p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<footer class="px-6 md:px-12 py-10 max-w-screen-2xl mx-auto">
+  <div class="hairline mb-8"></div>
+  <div class="flex justify-between items-center">
+    <span class="label">Cool Hollow Coaching</span>
+    <span class="label">© 2026 Cool Hollow Solutions. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

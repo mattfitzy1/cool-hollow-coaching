@@ -15,6 +15,7 @@ venv/
 
 # Node (wrangler)
 node_modules/
+.wrangler/
 
 # macOS / IDE
 .DS_Store

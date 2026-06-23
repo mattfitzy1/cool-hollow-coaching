@@ -75,4 +75,4 @@ Matt is American and the audience is American. Use US spelling and usage: optimi
 
 ## Mark's voice (separate, for his video scripts)
 
-Mark fronts the teaching videos. Once we capture his voice from his recordings, his scripts get written in **his** voice, which may differ from the general Cool Hollow Coaching brand voice above. Until that is captured, scripts for Mark follow this brand voice as the default. When his profile is ready, I will note it here and use it for anything he delivers on camera.
+Mark fronts the teaching videos. His actual speaking voice is now captured in `context/mark-voice-profile.md`, pulled from real unscripted clips, not guessed. Use that file, not this one, for anything Mark will say on camera: hook scripts, video lessons, the VSL. This brand voice guide still governs everything written: captions, emails, web copy, the analyzer's report text.

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Funnel Plan - Cool Hollow Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  :root {
+    --deep-teal: #1F4E4A;
+    --sage: #A8B5A0;
+    --sage-soft: #D6DED0;
+    --sage-faint: #ECEFE7;
+    --off-white: #FAF8F3;
+    --surface-raised: #FFFDF7;
+    --ink: #0E2B2A;
+    --body: #4A5957;
+    --muted: #7A8583;
+    --label: #2B4644;
+    --gold: #C89968;
+    --border: #E3DFD3;
+    --callout-warning-bg: #FDF4C4;
+    --callout-warning-text: #6B5A1F;
+    --shadow-std: rgba(42,60,58,0.10) 0px 8px 24px -8px, rgba(31,78,74,0.06) 0px 2px 8px 0px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Inter', -apple-system, 'SF Pro Display', system-ui, sans-serif;
+    color: var(--ink);
+    background: #d8d2c2;
+    font-feature-settings: "ss01" on;
+    -webkit-font-smoothing: antialiased;
+  }
+  body { scroll-snap-type: y mandatory; overflow-y: scroll; height: 100vh; }
+  .slide {
+    width: 100vw; height: 100vh; scroll-snap-align: start;
+    padding: 64px 96px 88px; position: relative; background: var(--off-white);
+    display: flex; flex-direction: column; justify-content: center; overflow: hidden;
+  }
+  .slide-num { position: absolute; top: 36px; right: 48px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .slide-tag { position: absolute; top: 36px; left: 96px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--deep-teal); font-weight: 600; }
+  .footnote { position: absolute; bottom: 32px; left: 96px; right: 96px; font-size: 11px; line-height: 1.5; color: var(--muted); font-style: italic; }
+  h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; color: var(--ink); }
+  h1 { font-size: 80px; line-height: 1.04; }
+  h2 { font-size: 46px; line-height: 1.12; margin-bottom: 16px; }
+  h3 { font-size: 23px; line-height: 1.2; }
+  .lede { font-size: 18px; line-height: 1.55; color: var(--body); max-width: 920px; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  .slide--title { padding: 0; }
+  .title-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; height: 100%; }
+  .title-panel { background: var(--deep-teal); display: flex; flex-direction: column; justify-content: space-between; padding: 80px; color: var(--off-white); position: relative; overflow: hidden; }
+  .title-panel::before { content: ''; position: absolute; right: -180px; bottom: -180px; width: 480px; height: 480px; border-radius: 50%; background: rgba(168,181,160,0.18); }
+  .wordmark { font-family: 'Fraunces', serif; font-size: 56px; font-weight: 500; line-height: 1.15; letter-spacing: -0.02em; }
+  .wordmark .accent { color: var(--sage); }
+  .title-meta { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sage); font-weight: 500; }
+  .title-content { padding: 80px; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+  .title-eyebrow { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--deep-teal); font-weight: 600; }
+  .title-content h1 { font-size: 62px; }
+  .title-tagline { font-family: 'Fraunces', serif; font-size: 24px; line-height: 1.35; color: var(--body); font-weight: 300; max-width: 560px; }
+  .title-byline { font-size: 14px; color: var(--muted); margin-top: auto; padding-top: 32px; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 36px; }
+  .stat { background: var(--surface-raised); border: 1px solid var(--border); border-radius: 14px; padding: 30px; box-shadow: var(--shadow-std); display: flex; flex-direction: column; gap: 9px; }
+  .stat-number { font-family: 'Fraunces', serif; font-size: 56px; line-height: 1; font-weight: 400; color: var(--deep-teal); letter-spacing: -0.02em; }
+  .stat-label { font-size: 12.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--label); }
+  .stat-body { font-size: 13.5px; line-height: 1.5; color: var(--body); }
+
+  .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
+  .phase { background: var(--surface-raised); border: 1px solid var(--border); border-radius: 12px; padding: 26px 28px; box-shadow: var(--shadow-std); display: flex; flex-direction: column; gap: 11px; }
+  .phase-num { width: 40px; height: 40px; border-radius: 50%; background: var(--deep-teal); color: var(--off-white); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 20px; font-weight: 500; }
+  .phase h3 { font-size: 19px; font-weight: 500; }
+  .phase .phase-when { font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+  .phase ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .phase li { font-size: 12.5px; line-height: 1.5; color: var(--body); padding-left: 16px; position: relative; }
+  .phase li::before { content: ''; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); }
+  .phase-gate { font-size: 10.5px; color: var(--callout-warning-text); background: var(--callout-warning-bg); padding: 5px 9px; border-radius: 4px; font-weight: 500; align-self: flex-start; }
+
+  .success-table { margin-top: 26px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-std); }
+  .success-row { display: grid; grid-template-columns: 1.6fr 1fr 1.8fr; gap: 0; }
+  .success-row.head { background: var(--deep-teal); color: var(--off-white); }
+  .success-row.head .success-cell { color: var(--off-white); font-weight: 600; font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .success-cell { padding: 13px 20px; border-right: 1px solid var(--border); font-size: 12.5px; line-height: 1.5; color: var(--body); }
+  .success-cell:last-child { border-right: none; }
+  .success-row:nth-child(odd):not(.head) { background: var(--sage-faint); }
+  .success-row strong { color: var(--ink); }
+
+  .humans { display: grid; grid-template-columns: 1fr; gap: 4px; margin-top: 26px; }
+  .human { display: grid; grid-template-columns: 32px 1fr; gap: 16px; align-items: start; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .human:last-child { border-bottom: none; }
+  .human-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .human-icon.ok { background: var(--sage-soft); color: var(--deep-teal); }
+  .human-icon.warn { background: var(--callout-warning-bg); color: var(--callout-warning-text); }
+  .human-icon svg { width: 16px; height: 16px; }
+  .human-text { font-size: 14px; line-height: 1.5; color: var(--body); }
+  .human-text strong { color: var(--ink); }
+
+  .next-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; align-items: stretch; }
+  .step { background: var(--surface-raised); border: 1px solid var(--border); border-radius: 12px; padding: 22px 20px; box-shadow: var(--shadow-std); display: flex; flex-direction: column; gap: 9px; }
+  .step-num { width: 30px; height: 30px; border-radius: 50%; background: var(--sage-soft); color: var(--deep-teal); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+  .step h4 { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 500; }
+  .step p { font-size: 12.5px; line-height: 1.45; color: var(--body); }
+  .step-when { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+
+  .slide--close { padding: 0; }
+  .close-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; height: 100%; }
+  .close-content { padding: 72px 80px; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+  .close-content h2 { font-size: 52px; line-height: 1.08; }
+  .close-tagline { font-family: 'Fraunces', serif; font-size: 23px; line-height: 1.4; color: var(--body); font-weight: 300; max-width: 520px; }
+  .close-contact { background: var(--sage-faint); border-radius: 12px; padding: 26px 32px; max-width: 520px; }
+  .close-contact-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--body); }
+  .close-contact-row:last-child { border-bottom: none; }
+  .close-contact-row strong { color: var(--ink); font-weight: 600; }
+  .close-panel { background: var(--deep-teal); display: flex; flex-direction: column; justify-content: space-between; padding: 72px 80px; color: var(--off-white); position: relative; overflow: hidden; }
+  .close-panel::before { content: ''; position: absolute; right: -160px; bottom: -160px; width: 420px; height: 420px; border-radius: 50%; background: rgba(168,181,160,0.18); }
+  .close-panel-content { position: relative; z-index: 1; }
+  .close-panel h3 { font-family: 'Fraunces', serif; font-size: 28px; line-height: 1.25; color: var(--off-white); font-weight: 400; margin-bottom: 16px; }
+  .close-panel p { font-size: 14px; line-height: 1.55; color: var(--sage); max-width: 360px; }
+  .close-panel-meta { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sage); font-weight: 500; position: relative; z-index: 1; }
+
+  @media print { body { overflow: visible; } .slide { page-break-after: always; } }
+</style>
+</head>
+<body>
+
+<!-- 1: TITLE -->
+<section class="slide slide--title">
+  <div class="title-grid">
+    <div class="title-panel">
+      <div><div class="title-meta">For the team</div></div>
+      <div class="wordmark">Cool Hollow<br>Coaching<span class="accent">.</span></div>
+      <div class="title-meta">The Funnel Plan</div>
+    </div>
+    <div class="title-content">
+      <div class="title-eyebrow">Lead &amp; Marketing Plan &middot; v1</div>
+      <h1>From zero followers<br>to a paying client.</h1>
+      <p class="title-tagline">One free community, three tiers, and a clear path to the $5,000 program.</p>
+      <div class="title-byline">Matt Fitzpatrick &middot; June 22, 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2: WHERE WE STAND -->
+<section class="slide">
+  <div class="slide-tag">Where We Stand</div>
+  <div class="slide-num">02 / 08</div>
+  <h2>The product is built. The funnel isn't, yet.</h2>
+  <p class="lede">Before mapping the plan, here's the honest gap: a strong curriculum and working tools, but no audience and no door for anyone to walk through.</p>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Program tools live</span>
+      <div class="stat-number">7 / 7</div>
+      <p class="stat-body">All seven milestone tools built and working, plus the free hidden-profit lead magnet.</p>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Instagram followers</span>
+      <div class="stat-number">0</div>
+      <p class="stat-body">Page not created yet. This is the volume engine we still need to switch on.</p>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Free community</span>
+      <div class="stat-number">0</div>
+      <p class="stat-body">No Skool group yet. This is the actual container the funnel below depends on.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3: THE THREE TIERS -->
+<section class="slide">
+  <div class="slide-tag">The Structure</div>
+  <div class="slide-num">03 / 08</div>
+  <h2>One Skool group, three tiers.</h2>
+  <p class="lede">Free builds the audience. Paid community builds trust and recurring revenue. The locked classroom is the $5,000 program itself.</p>
+  <div class="phases">
+    <div class="phase">
+      <div class="phase-num">1</div>
+      <div class="phase-when">Free</div>
+      <h3>The Open Door</h3>
+      <ul>
+        <li>Anyone joins, no payment</li>
+        <li>Open discussion feed, Mark engages directly</li>
+        <li>1-2 teaser lessons visible, rest locked</li>
+        <li>Hidden-profit analyzer pinned as the proof tool</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="phase-num">2</div>
+      <div class="phase-when">$39-49 / mo</div>
+      <h3>The Paid Community</h3>
+      <ul>
+        <li>Unlocks live specialist calls (Cam, Hannah)</li>
+        <li>Community chat, direct access to ask questions</li>
+        <li>Classroom stays locked, this is "be in the room"</li>
+        <li>Near-term recurring revenue while $5K proves out</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="phase-num">3</div>
+      <div class="phase-when">$5,000</div>
+      <h3>The Program</h3>
+      <ul>
+        <li>Unlocks the full 7-milestone classroom</li>
+        <li>Every lesson links to its matching live tool</li>
+        <li>Keeps all paid-community perks too</li>
+        <li>The actual Business Without You offer</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 4: WHAT'S ALREADY BUILT, MAPPED TO THE CLASSROOM -->
+<section class="slide">
+  <div class="slide-tag">The Classroom</div>
+  <div class="slide-num">04 / 08</div>
+  <h2>Every locked module already has its tool.</h2>
+  <p class="lede">The curriculum isn't theoretical. Each milestone's lesson sits next to a real, working tool a client uses live.</p>
+  <div class="success-table">
+    <div class="success-row head">
+      <div class="success-cell">Module</div>
+      <div class="success-cell">Tool status</div>
+      <div class="success-cell">What's still needed</div>
+    </div>
+    <div class="success-row">
+      <div class="success-cell"><strong>1. Reclaim Time &amp; Identity</strong></div>
+      <div class="success-cell">Live &middot; reclaim-protocol</div>
+      <div class="success-cell">Lesson video</div>
+    </div>
+    <div class="success-row">
+      <div class="success-cell"><strong>2. Define the Destination</strong></div>
+      <div class="success-cell">Live &middot; impact-map</div>
+      <div class="success-cell">Lesson video</div>
+    </div>
+    <div class="success-row">
+      <div class="success-cell"><strong>3. Install the Dashboard</strong></div>
+      <div class="success-cell">Live &middot; dashboard-selector</div>
+      <div class="success-cell">Lesson video</div>
+    </div>
+    <div class="success-row">
+      <div class="success-cell"><strong>4. Discover the Hidden Profit</strong></div>
+      <div class="success-cell">Live &middot; profit-discovery-audit</div>
+      <div class="success-cell">Lesson video (Cam)</div>
+    </div>
+    <div class="success-row">
+      <div class="success-cell"><strong>5. Build Cash Confidence</strong></div>
+      <div class="success-cell">Live &middot; cash-confidence</div>
+      <div class="success-cell">Lesson video (Cam)</div>
+    </div>
+    <div class="success-row">
+      <div class="success-cell"><strong>6. Break the Binding Constraint</strong></div>
+      <div class="success-cell">Live &middot; bottleneck-breakthrough</div>
+      <div class="success-cell">Lesson video</div>
+    </div>
+    <div class="success-row">
+      <div class="success-cell"><strong>7. Build the Team</strong></div>
+      <div class="success-cell">Live &middot; team-builder</div>
+      <div class="success-cell">Lesson video (Hannah)</div>
+    </div>
+  </div>
+  <div class="footnote">All seven tools run locally today. They need a public web address before Skool can link or embed them, see slide 6.</div>
+</section>
+
+<!-- 5: THE FOMO MECHANIC -->
+<section class="slide">
+  <div class="slide-tag">Why It Converts</div>
+  <div class="slide-num">05 / 08</div>
+  <h2>Free members see what they're missing, on purpose.</h2>
+  <p class="lede">The upgrade pressure is built into the platform, not a sales pitch.</p>
+  <div class="humans">
+    <div class="human">
+      <div class="human-icon ok"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <div class="human-text"><strong>The classroom shows locked titles to free members.</strong> They see all seven module names with a lock icon, not just a vague "upgrade" message.</div>
+    </div>
+    <div class="human">
+      <div class="human-icon ok"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <div class="human-text"><strong>Live calls sit on the shared calendar, visible to everyone.</strong> Free members watch a call happening they can't click into, every single week.</div>
+    </div>
+    <div class="human">
+      <div class="human-icon ok"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <div class="human-text"><strong>One group, not three separate communities.</strong> Upgrading feels like unlocking a door already in the room, not joining somewhere new.</div>
+    </div>
+    <div class="human">
+      <div class="human-icon ok"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <div class="human-text"><strong>Wins get shared publicly in the free feed.</strong> A real member's result (with their permission) is worth more than any ad copy we could write.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 6: WHAT'S MISSING BEFORE LIVE -->
+<section class="slide">
+  <div class="slide-tag">Before This Goes Live</div>
+  <div class="slide-num">06 / 08</div>
+  <h2>Three real gaps, nothing theoretical.</h2>
+  <p class="lede">Being straight about what's actually standing between this plan and a live funnel.</p>
+  <div class="humans">
+    <div class="human">
+      <div class="human-icon warn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+      <div class="human-text"><strong>The seven tools need a public web address.</strong> They only run locally today. Skool can't embed or link to something that isn't reachable on the internet. This is the one real technical gate, and it's a known, free fix (e.g. Streamlit Community Cloud).</div>
+    </div>
+    <div class="human">
+      <div class="human-icon warn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+      <div class="human-text"><strong>The teaser and Module 1 videos need filming.</strong> Mark on camera directly, or the AI avatar clone once it's ready, whichever is faster. Don't wait on the clone to start.</div>
+    </div>
+    <div class="human">
+      <div class="human-icon warn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+      <div class="human-text"><strong>The $50,000 guarantee language needs to stay a working guarantee, not an absolute.</strong> Already softened across the analyzer and the deck. Real proof comes from the first cohort, not before.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 7: ROADMAP -->
+<section class="slide">
+  <div class="slide-tag">The Build Order</div>
+  <div class="slide-num">07 / 08</div>
+  <h2>Four steps, in order.</h2>
+  <p class="lede">Each step only depends on the one before it. Nothing here waits on anything outside our control.</p>
+  <div class="next-steps">
+    <div class="step"><div class="step-num">1</div><div class="step-when">This week</div><h4>Create the Skool group</h4><p>Free, 5 minutes to set up. Freemium setting on, three tiers configured.</p></div>
+    <div class="step"><div class="step-num">2</div><div class="step-when">Next</div><h4>Deploy the tools</h4><p>Public URLs for all seven, so the classroom can actually link to them.</p></div>
+    <div class="step"><div class="step-num">3</div><div class="step-when">In parallel</div><h4>Film the teasers</h4><p>Module 1 plus 1-2 free preview clips, Mark on camera or the avatar clone.</p></div>
+    <div class="step"><div class="step-num">4</div><div class="step-when">Launch</div><h4>Open Instagram</h4><p>Bio links straight to the free community and the hidden-profit analyzer.</p></div>
+  </div>
+</section>
+
+<!-- 8: CLOSE -->
+<section class="slide slide--close">
+  <div class="close-grid">
+    <div class="close-content">
+      <div class="title-eyebrow" style="margin-bottom: 16px;">Business Without You</div>
+      <h2>The product works.<br>The funnel is four<br>steps from live.</h2>
+      <p class="close-tagline">No new tools to build, no new content to invent. Just sequencing what already exists.</p>
+      <div class="close-contact">
+        <div class="close-contact-row"><span><strong>Matt Fitzpatrick</strong></span><span>Owner, Cool Hollow Coaching</span></div>
+        <div class="close-contact-row"><span>Email</span><span>matthewfbuck@icloud.com</span></div>
+        <div class="close-contact-row"><span>v1</span><span>June 22, 2026</span></div>
+        <div class="close-contact-row"><span>For</span><span>The team</span></div>
+      </div>
+    </div>
+    <div class="close-panel">
+      <div class="close-panel-meta">Cool Hollow Coaching</div>
+      <div class="close-panel-content">
+        <h3>Free door.<br>Paid room.<br>Locked program.</h3>
+        <p>Every piece of this plan points at something that already exists. The work left is sequencing, not inventing.</p>
+      </div>
+      <div class="close-panel-meta">The Funnel Plan &middot; v1</div>
+    </div>
+  </div>
+</section>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

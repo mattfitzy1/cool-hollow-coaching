@@ -3,21 +3,21 @@
   "display_name": "Cool Hollow Coaching",
   "status": "draft - awaiting owner approval",
   "palette": {
-    "ink": "#0E4643",
-    "paper": "#FAF8F3",
-    "accent": "#589BA8",
-    "accent2": "#B4D351",
-    "dark_panel": "#14313A"
+    "ink": "#1A1A1A",
+    "paper": "#FFFFFF",
+    "accent": "#C8A227",
+    "accent2": "#E8C766",
+    "dark_panel": "#0D0D0D"
   },
   "fonts": {
     "primary": "Poppins",
     "note": "Matches Cool Hollow Solutions' real site font (Google Fonts, weights 300-700). No Coaching-specific font chosen yet, inherited as the starting point."
   },
   "logo": null,
-  "logo_note": "No Cool Hollow Coaching mark exists yet. Cool Hollow Solutions' real compass/needle icon (refs/chs-logo-white-reference.png) is kept as visual-DNA reference only, not for direct reuse. Confirm with owner whether Coaching gets its own mark or inherits a variant of the compass icon.",
-  "devices": false,
-  "devices_note": "Solutions uses a compass/needle icon motif. Not confirmed yet whether Coaching shares this device. Flagged for owner decision.",
-  "style_block": "Grounded, financial-advisory photography and illustration style. Deep teal and forest-green tones (#0E4643, #14313A) paired with a fresh sage-blue (#589BA8) and a lime-green energy accent (#B4D351). Clean, minimal compositions with soft natural light. Real business settings: a desk, a P&L on a screen, an owner mid-decision, not generic stock-photo gloss. Leave negative space for text overlay. No corporate clip-art, no fake smiling stock photography.",
+  "logo_note": "Decided: Coaching keeps the compass/needle device from Cool Hollow Solutions (refs/chs-logo-white-reference.png), recolored to gold (#C8A227) and black (#1A1A1A). Not yet drawn cleanly, the exploratory draft (cool-hollow-coaching-logo-draft.svg) has real rendering bugs (broken arc geometry, wordmark clips off the canvas) and is not an approved file. Still set to null until a properly executed version exists.",
+  "devices": true,
+  "devices_note": "Decided: Coaching shares the compass/needle device with Cool Hollow Solutions, on purpose, reinforcing the shared lineage. Recolored to the Coaching palette (gold and black), not reused as-is.",
+  "style_block": "Grounded, financial-advisory photography and illustration style. Black (#1A1A1A) and white, with a single gold accent (#C8A227) used sparingly for emphasis, not decoration. Clean, minimal, high-contrast compositions with soft natural light. Real business settings: a desk, a P&L on a screen, an owner mid-decision, not generic stock-photo gloss. Leave negative space for text overlay. No corporate clip-art, no fake smiling stock photography, no other colors introduced.",
   "campaign": {
     "formula": "Lead with the outcome, then the proof. [Pain point]. [The number/result]. [Plain next step.]",
     "endcard": "Cool Hollow Coaching · Business Without You"

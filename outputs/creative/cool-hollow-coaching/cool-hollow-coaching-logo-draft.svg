@@ -1,0 +1,17 @@
+<svg width="1500" height="320" viewBox="0 0 1500 320" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Cool Hollow Coaching logo, draft</title>
+<desc>Compass needle mark in black and gold, with the wordmark Cool Hollow Coaching in black, on a light grey background.</desc>
+<rect x="0" y="0" width="1500" height="320" fill="#EDEDED"/>
+
+<path d="M105 4 L158 178 L122 178 Z" fill="#C8A227"/>
+<path d="M118 178 L158 178 L121 316 Z" fill="#C8A227"/>
+<circle cx="155" cy="185" r="20" fill="#C8A227"/>
+
+<path d="M168 30 A148 148 0 0 1 168 150" fill="none" stroke="#1A1A1A" stroke-width="20" stroke-linecap="round"/>
+<path d="M168 218 A148 148 0 0 0 168 338" fill="none" stroke="#1A1A1A" stroke-width="20" stroke-linecap="round" transform="translate(0,-100)"/>
+<rect x="232" y="65" width="20" height="240" fill="#1A1A1A"/>
+<rect x="168" y="175" width="84" height="20" fill="#1A1A1A"/>
+
+<text x="330" y="155" font-family="Poppins, sans-serif" font-weight="800" font-size="92" fill="#1A1A1A" letter-spacing="2">COOL HOLLOW</text>
+<text x="330" y="255" font-family="Poppins, sans-serif" font-weight="500" font-size="92" fill="#1A1A1A" letter-spacing="2">COACHING</text>
+</svg>

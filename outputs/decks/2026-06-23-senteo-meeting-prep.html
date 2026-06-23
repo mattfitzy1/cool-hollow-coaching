@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Plan Review - Meeting Prep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  :root {
+    --deep-teal: #1F4E4A;
+    --sage: #A8B5A0;
+    --sage-soft: #D6DED0;
+    --sage-faint: #ECEFE7;
+    --off-white: #FAF8F3;
+    --surface-raised: #FFFDF7;
+    --ink: #0E2B2A;
+    --body: #4A5957;
+    --muted: #7A8583;
+    --label: #2B4644;
+    --gold: #C89968;
+    --border: #E3DFD3;
+    --callout-warning-bg: #FDF4C4;
+    --callout-warning-text: #6B5A1F;
+    --shadow-std: rgba(42,60,58,0.10) 0px 8px 24px -8px, rgba(31,78,74,0.06) 0px 2px 8px 0px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Inter', -apple-system, 'SF Pro Display', system-ui, sans-serif;
+    color: var(--ink);
+    background: #d8d2c2;
+    font-feature-settings: "ss01" on;
+    -webkit-font-smoothing: antialiased;
+  }
+  body { scroll-snap-type: y mandatory; overflow-y: scroll; height: 100vh; }
+  .slide {
+    width: 100vw; height: 100vh; scroll-snap-align: start;
+    padding: 60px 90px 80px; position: relative; background: var(--off-white);
+    display: flex; flex-direction: column; justify-content: center; overflow: hidden;
+  }
+  .slide-num { position: absolute; top: 34px; right: 46px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .slide-tag { position: absolute; top: 34px; left: 90px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--deep-teal); font-weight: 600; }
+  .footnote { position: absolute; bottom: 30px; left: 90px; right: 90px; font-size: 12px; line-height: 1.5; color: var(--muted); font-style: italic; }
+  h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; color: var(--ink); }
+  h1 { font-size: 78px; line-height: 1.04; }
+  h2 { font-size: 50px; line-height: 1.12; margin-bottom: 18px; }
+  h3 { font-size: 24px; line-height: 1.2; }
+  .lede { font-size: 21px; line-height: 1.55; color: var(--body); max-width: 940px; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  .slide--title { padding: 0; }
+  .title-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; height: 100%; }
+  .title-panel { background: var(--deep-teal); display: flex; flex-direction: column; justify-content: space-between; padding: 80px; color: var(--off-white); position: relative; overflow: hidden; }
+  .title-panel::before { content: ''; position: absolute; right: -180px; bottom: -180px; width: 480px; height: 480px; border-radius: 50%; background: rgba(168,181,160,0.18); }
+  .wordmark { font-family: 'Fraunces', serif; font-size: 56px; font-weight: 500; line-height: 1.15; letter-spacing: -0.02em; }
+  .wordmark .accent { color: var(--sage); }
+  .title-meta { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sage); font-weight: 500; }
+  .title-content { padding: 80px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+  .title-eyebrow { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--deep-teal); font-weight: 600; }
+  .title-content h1 { font-size: 64px; }
+  .title-tagline { font-family: 'Fraunces', serif; font-size: 26px; line-height: 1.35; color: var(--body); font-weight: 300; max-width: 560px; }
+  .title-byline { font-size: 14px; color: var(--muted); margin-top: auto; padding-top: 32px; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 40px; }
+  .stat { background: var(--surface-raised); border: 1px solid var(--border); border-radius: 14px; padding: 34px; box-shadow: var(--shadow-std); display: flex; flex-direction: column; gap: 11px; }
+  .stat-number { font-family: 'Fraunces', serif; font-size: 60px; line-height: 1; font-weight: 400; color: var(--deep-teal); letter-spacing: -0.02em; }
+  .stat-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--label); }
+  .stat-body { font-size: 15px; line-height: 1.5; color: var(--body); }
+
+  .modules { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 30px; }
+  .module { background: var(--surface-raised); border: 1px solid var(--border); border-left: 4px solid var(--deep-teal); border-radius: 10px; padding: 28px 32px; box-shadow: var(--shadow-std); display: flex; flex-direction: column; gap: 12px; }
+  .module-head { display: flex; align-items: center; gap: 12px; }
+  .module-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--deep-teal); background: var(--sage-faint); padding: 4px 10px; border-radius: 4px; }
+  .module h3 { font-size: 22px; font-weight: 500; }
+  .module ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .module li { font-size: 14px; line-height: 1.5; color: var(--body); padding-left: 15px; position: relative; }
+  .module li::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--sage); }
+
+  .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 32px; }
+  .phase { background: var(--surface-raised); border: 1px solid var(--border); border-radius: 12px; padding: 28px; box-shadow: var(--shadow-std); display: flex; flex-direction: column; gap: 12px; }
+  .phase-num { width: 42px; height: 42px; border-radius: 50%; background: var(--deep-teal); color: var(--off-white); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 21px; font-weight: 500; }
+  .phase h3 { font-size: 20px; font-weight: 500; }
+  .phase .phase-when { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+  .phase ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .phase li { font-size: 13.5px; line-height: 1.5; color: var(--body); padding-left: 16px; position: relative; }
+  .phase li::before { content: ''; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); }
+
+  .humans { display: grid; grid-template-columns: 1fr; gap: 4px; margin-top: 30px; }
+  .human { display: grid; grid-template-columns: 34px 1fr; gap: 18px; align-items: start; padding: 16px 0; border-bottom: 1px solid var(--border); }
+  .human:last-child { border-bottom: none; }
+  .human-icon { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .human-icon.ok { background: var(--sage-soft); color: var(--deep-teal); }
+  .human-icon.warn { background: var(--callout-warning-bg); color: var(--callout-warning-text); }
+  .human-icon svg { width: 17px; height: 17px; }
+  .human-text { font-size: 16px; line-height: 1.5; color: var(--body); }
+  .human-text strong { color: var(--ink); }
+
+  .qlist { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 28px; }
+  .qitem { display: grid; grid-template-columns: 40px 1fr; gap: 16px; align-items: start; background: var(--surface-raised); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; box-shadow: var(--shadow-std); }
+  .qnum { width: 32px; height: 32px; border-radius: 50%; background: var(--sage-soft); color: var(--deep-teal); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+  .qtext { font-size: 15.5px; line-height: 1.5; color: var(--body); }
+
+  .callout { margin-top: 36px; background: var(--callout-warning-bg); border-left: 5px solid var(--gold); border-radius: 10px; padding: 28px 32px; }
+  .callout p { font-size: 18px; line-height: 1.55; color: var(--ink); }
+  .callout strong { color: var(--ink); }
+
+  .slide--close { padding: 0; }
+  .close-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; height: 100%; }
+  .close-content { padding: 72px 80px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+  .close-content h2 { font-size: 56px; line-height: 1.08; }
+  .close-tagline { font-family: 'Fraunces', serif; font-size: 25px; line-height: 1.4; color: var(--body); font-weight: 300; max-width: 520px; }
+  .close-contact { background: var(--sage-faint); border-radius: 12px; padding: 28px 32px; max-width: 520px; }
+  .close-contact-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--body); }
+  .close-contact-row:last-child { border-bottom: none; }
+  .close-contact-row strong { color: var(--ink); font-weight: 600; }
+  .close-panel { background: var(--deep-teal); display: flex; flex-direction: column; justify-content: space-between; padding: 72px 80px; color: var(--off-white); position: relative; overflow: hidden; }
+  .close-panel::before { content: ''; position: absolute; right: -160px; bottom: -160px; width: 420px; height: 420px; border-radius: 50%; background: rgba(168,181,160,0.18); }
+  .close-panel-content { position: relative; z-index: 1; }
+  .close-panel h3 { font-family: 'Fraunces', serif; font-size: 30px; line-height: 1.25; color: var(--off-white); font-weight: 400; margin-bottom: 16px; }
+  .close-panel p { font-size: 14px; line-height: 1.55; color: var(--sage); max-width: 360px; }
+  .close-panel-meta { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sage); font-weight: 500; position: relative; z-index: 1; }
+
+  @media print { body { overflow: visible; } .slide { page-break-after: always; } }
+</style>
+</head>
+<body>
+
+<!-- 1: TITLE -->
+<section class="slide slide--title">
+  <div class="title-grid">
+    <div class="title-panel">
+      <div><div class="title-meta">A working session</div></div>
+      <div class="wordmark">Cool Hollow<br>Coaching<span class="accent">.</span></div>
+      <div class="title-meta">Business Plan Overview</div>
+    </div>
+    <div class="title-content">
+      <div class="title-eyebrow">Business Plan Overview &middot; v1</div>
+      <h1>What we're<br>building, and<br>where it stands.</h1>
+      <p class="title-tagline">The offer, the delivery model, and the funnel so far, plus the areas we'd value an outside read on.</p>
+      <div class="title-byline">Matt Fitzpatrick &middot; June 23, 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2: THE BUSINESS & OFFER -->
+<section class="slide">
+  <div class="slide-tag">The Business</div>
+  <div class="slide-num">02 / 10</div>
+  <h2>Business Without You.</h2>
+  <p class="lede">The online scale-up arm of Cool Hollow Solutions, Mark's existing in-person advisory firm.</p>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Tier 1 price</span>
+      <div class="stat-number">$5,000</div>
+      <p class="stat-body">12-week program for $1M-$10M owner-operators who are the bottleneck in their own business.</p>
+    </div>
+    <div class="stat">
+      <span class="stat-label">The promise</span>
+      <div class="stat-number">$50K+</div>
+      <p class="stat-body">15 hours back per week, plus at least $50,000 in profit found. The spine of the whole pitch.</p>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Long-term goal</span>
+      <div class="stat-number">$3M/yr</div>
+      <p class="stat-body">500 clients a year, system "waxed" by end of July, product live by year end.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3: THE HONEST GAP -->
+<section class="slide">
+  <div class="slide-tag">Where We're Being Careful</div>
+  <div class="slide-num">03 / 10</div>
+  <h2>The $50,000 figure, and what stands behind it.</h2>
+  <p class="lede">The number is real. The proof behind it is still building.</p>
+  <div class="callout">
+    <p>The $50,000 figure comes from Mark's own track record, 20 years of personally running a consulting firm and finding that number or more in client after client. It has <strong>not yet been proven in this new, productized, self-guided format</strong> with a paying cohort. We're staging the claim conservatively until that proof exists, and we'd value an outside read on how we're handling that.</p>
+  </div>
+</section>
+
+<!-- 4: THE CURRICULUM -->
+<section class="slide">
+  <div class="slide-tag">How We're Doing It</div>
+  <div class="slide-num">04 / 10</div>
+  <h2>7 milestones. 12 weeks. Real tools.</h2>
+  <p class="lede">Mark fronts every module. A CFO and a hiring specialist go deep on their own domain.</p>
+  <div class="modules">
+    <div class="module">
+      <div class="module-head"><span class="module-tag">Weeks 1-6</span></div>
+      <h3>Operator Foundations</h3>
+      <ul>
+        <li>Reclaim the Owner's Time and Identity</li>
+        <li>Define the Destination with Precision</li>
+        <li>Install the Dashboard That Tells the Truth</li>
+        <li>Discover the Hidden Profit (Cam, CFO)</li>
+      </ul>
+    </div>
+    <div class="module">
+      <div class="module-head"><span class="module-tag">Weeks 7-12</span></div>
+      <h3>Cash, Constraint &amp; Team</h3>
+      <ul>
+        <li>Build Cash Confidence (Cam, CFO)</li>
+        <li>Break the Binding Constraint</li>
+        <li>Build the Team That Builds the Business (Hannah)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 5: THE DIFFERENTIATOR -->
+<section class="slide">
+  <div class="slide-tag">The Differentiator</div>
+  <div class="slide-num">05 / 10</div>
+  <h2>Every lesson has a real tool behind it.</h2>
+  <p class="lede">Not just videos. A client uploads their own numbers and gets a scored, specific recommendation.</p>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Free lead magnet</span>
+      <div class="stat-number">1</div>
+      <p class="stat-body">The hidden-profit analyzer, P&L upload, instant findings, built and tested.</p>
+    </div>
+    <div class="stat">
+      <span class="stat-label">In-program tools</span>
+      <div class="stat-number">7</div>
+      <p class="stat-body">One per milestone, each built and working today, running locally only.</p>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Deployed publicly</span>
+      <div class="stat-number">0</div>
+      <p class="stat-body">The one real technical gate left before any tool can sit inside a lesson.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6: THE FUNNEL STRUCTURE -->
+<section class="slide">
+  <div class="slide-tag">The Marketing Funnel</div>
+  <div class="slide-num">06 / 10</div>
+  <h2>One community, three tiers.</h2>
+  <p class="lede">Free builds the audience. Paid community builds trust. The locked classroom is the $5,000 program.</p>
+  <div class="phases">
+    <div class="phase">
+      <div class="phase-num">1</div>
+      <div class="phase-when">Free</div>
+      <h3>The Open Door</h3>
+      <ul>
+        <li>Open discussion, Mark engages directly</li>
+        <li>1-2 teaser lessons, rest locked</li>
+        <li>Hidden-profit analyzer as the proof tool</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="phase-num">2</div>
+      <div class="phase-when">$39-49 / mo</div>
+      <h3>The Paid Community</h3>
+      <ul>
+        <li>Live specialist calls unlocked</li>
+        <li>Community chat, direct access</li>
+        <li>Classroom stays locked</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="phase-num">3</div>
+      <div class="phase-when">$5,000</div>
+      <h3>The Program</h3>
+      <ul>
+        <li>Full 7-milestone classroom unlocked</li>
+        <li>Every lesson linked to its live tool</li>
+        <li>Keeps all community perks too</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 7: WHERE WE ACTUALLY STAND -->
+<section class="slide">
+  <div class="slide-tag">Where We Actually Stand</div>
+  <div class="slide-num">07 / 10</div>
+  <h2>Built, but not live.</h2>
+  <p class="lede">Being straight about the gap between the plan and what's actually running today.</p>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Instagram followers</span>
+      <div class="stat-number">0</div>
+      <p class="stat-body">Page not created yet.</p>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Community members</span>
+      <div class="stat-number">0</div>
+      <p class="stat-body">Skool group not created yet.</p>
+    </div>
+    <div class="stat">
+      <span class="stat-label">CRM connected</span>
+      <div class="stat-number">0</div>
+      <p class="stat-body">GoHighLevel not started.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8: QUESTIONS, SET 1 -->
+<section class="slide">
+  <div class="slide-tag">Where We'd Value Your Perspective</div>
+  <div class="slide-num">08 / 10</div>
+  <h2>Relationship and experience design.</h2>
+  <p class="lede">A few areas where 25 years of customer-experience work would sharpen our thinking.</p>
+  <div class="qlist">
+    <div class="qitem"><div class="qnum">1</div><div class="qtext">Your work measures relationship strength at enterprise scale. What's the smallest version of that thinking that applies to a free community of a few hundred people?</div></div>
+    <div class="qitem"><div class="qnum">2</div><div class="qtext">Our free-to-paid mechanic relies on visible-but-locked content. From a CX lens, where does that approach tip from motivating into manipulative?</div></div>
+    <div class="qitem"><div class="qnum">3</div><div class="qtext">Does a 12-week, video-plus-tool curriculum actually map to your "Learn, Do, See, Extend" model, or are we missing a step?</div></div>
+  </div>
+</section>
+
+<!-- 9: QUESTIONS, SET 2 -->
+<section class="slide">
+  <div class="slide-tag">Where We'd Value Your Perspective</div>
+  <div class="slide-num">09 / 10</div>
+  <h2>On proof, funnel shape, and scale.</h2>
+  <p class="lede">The more direct questions too, the ones that matter most before we launch.</p>
+  <div class="qlist">
+    <div class="qitem"><div class="qnum">4</div><div class="qtext">How would you stage an unproven headline claim like ours, soft language now, hard guarantee later, or something else?</div></div>
+    <div class="qitem"><div class="qnum">5</div><div class="qtext">Where do funnels like ours usually leak the most people, before anyone even sees the price?</div></div>
+    <div class="qitem"><div class="qnum">6</div><div class="qtext">Your clients are usually mid-to-large enterprises. What's the biggest mistake a solo operator makes applying enterprise-grade rigor to a business this size?</div></div>
+    <div class="qitem"><div class="qnum">7</div><div class="qtext">If you were in my position, built program, no audience yet, what's the one thing you'd fix before anything else?</div></div>
+  </div>
+</section>
+
+<!-- 10: CLOSE -->
+<section class="slide slide--close">
+  <div class="close-grid">
+    <div class="close-content">
+      <div class="title-eyebrow" style="margin-bottom: 16px;">Business Without You</div>
+      <h2>The plan is real.<br>Your read on it is<br>what we came for.</h2>
+      <p class="close-tagline">Thank you for taking the time to go through this with us. We'd genuinely value whatever you push back on.</p>
+      <div class="close-contact">
+        <div class="close-contact-row"><span><strong>Matt Fitzpatrick</strong></span><span>Owner, Cool Hollow Coaching</span></div>
+        <div class="close-contact-row"><span>Email</span><span>matthewfbuck@icloud.com</span></div>
+        <div class="close-contact-row"><span>Version</span><span>v1, June 23, 2026</span></div>
+      </div>
+    </div>
+    <div class="close-panel">
+      <div class="close-panel-meta">Cool Hollow Coaching</div>
+      <div class="close-panel-content">
+        <h3>Built program.<br>No audience yet.<br>Honest about both.</h3>
+        <p>The strongest move in this meeting is naming the gaps before he finds them.</p>
+      </div>
+      <div class="close-panel-meta">Meeting Prep &middot; v1</div>
+    </div>
+  </div>
+</section>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

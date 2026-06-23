@@ -17,8 +17,9 @@ st.set_page_config(page_title="Cool Hollow Coaching, the hidden-profit finder", 
 st.title("Find the profit already in your business")
 st.write(
     "Upload your P&L and we will show you where the money is leaking and where "
-    "the margin is sitting unclaimed. Most businesses we look at have at least "
-    "$50,000 sitting in plain sight."
+    "the margin is sitting unclaimed. Many owner-run businesses in this revenue "
+    "range have at least $50,000 sitting unclaimed somewhere in pricing, cost, "
+    "or cash timing."
 )
 
 st.divider()

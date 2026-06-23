@@ -23,22 +23,20 @@ Direct, warm, outcome-led, plain-spoken. US English. No hype words, no corporate
 
 ## 4. Visual identity
 
-Inherited as a starting point from Cool Hollow Solutions' real site (verified against their live CSS, not guessed):
+A deliberate full swap from the earlier teal/sage/lime direction (which was only ever a starting point inherited from Cool Hollow Solutions) to a black, white, and gold palette:
 
-| Token | Value | Source |
+| Token | Value | Note |
 |---|---|---|
-| Deep ink | `#0E4643` | Solutions' primary dark tone |
-| Dark panel | `#14313A` | Solutions' secondary dark tone |
-| Accent (sage-blue) | `#589BA8` | Solutions' compass-needle color |
-| Accent 2 (lime) | `#B4D351` | Solutions' bright highlight color |
-| Paper | `#FAF8F3` | Warm off-white, not pulled from Solutions (their site is dark-mode; Coaching needs a light, readable base for social content) |
-| Font | Poppins | Solutions' real Google Fonts choice, confirmed in their site's CSS |
+| Ink (black) | `#1A1A1A` | Primary text and dark surfaces |
+| Dark panel | `#0D0D0D` | Near-black, for deepest backgrounds |
+| Accent (gold) | `#C8A227` | The single accent color, used sparingly |
+| Accent 2 (champagne gold) | `#E8C766` | Lighter gold, subtle highlights only |
+| Paper | `#FFFFFF` | Pure white, for high-contrast readability |
+| Font | Poppins | Carried over from the previous direction, still no Coaching-specific font chosen |
 
-**Logo: none yet.** Solutions has a real mark, a compass/needle forming a stylized C/H, in lime and sage-blue (see `refs/chs-logo-white-reference.png`). That mark belongs to Solutions. Coaching has no mark of its own. Two open paths, both need your call:
-- Commission or design a distinct Coaching mark that shares the color language but not the icon.
-- Adapt the compass device into a Coaching-specific variant, reinforcing the shared lineage on purpose.
+**Logo: decided, not yet drawn.** Coaching keeps the compass/needle device from Cool Hollow Solutions, on purpose, recolored to gold and black to reinforce the shared lineage without reusing Solutions' actual mark. The exploratory draft (`cool-hollow-coaching-logo-draft.svg`) is already the right colors and the right concept, but it has real, unfixed rendering problems, the compass icon renders as a broken shape, and the wordmark clips off the edge of the canvas. It needs a proper redraw, not a reuse, before it's an approved mark.
 
-Until one is chosen, all generated assets use typography and color only, no logo placement.
+Until that redraw is approved, all generated assets use typography and color only, no logo placement.
 
 ## 5. Style direction
 
@@ -54,13 +52,13 @@ Grounded, financial-advisory photography and illustration. Real business setting
 
 ## 7. Prompt scaffolding
 
-`[Real business scene] + [deep teal/lime color grade] + [soft natural light] + [negative space reserved for headline] + [no text in the image itself]`
+`[Real business scene] + [black, white, gold color grade] + [soft natural light] + [negative space reserved for headline] + [no text in the image itself]`
 
-Example: "A business owner reviewing a printed P&L at a wooden desk, morning light through a window, deep teal and warm cream tones, lime-green accent in a coffee mug or notebook, calm and focused mood, negative space on the left third for a headline, no on-image text."
+Example: "A business owner reviewing a printed P&L at a wooden desk, morning light through a window, high-contrast black and white tones, a single gold accent in a pen or notebook detail, calm and focused mood, negative space on the left third for a headline, no on-image text."
 
 ## 8. Reusable fragments
 
-- Color grade: "deep teal (#0E4643) and forest tones with a lime-green (#B4D351) accent"
+- Color grade: "black (#1A1A1A) and white, with a single gold (#C8A227) accent, used sparingly"
 - Mood: "grounded, credible, financial-advisory, never glossy"
 - Light: "soft natural light, no harsh studio flash"
 
