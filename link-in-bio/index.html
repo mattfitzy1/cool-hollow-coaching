@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Without You</title>
+<meta name="description" content="Helping $1M-$10M owners escape the day-to-day. Time back and profit you didn't know you had.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0D0D0D;
+    --paper: #FFFFFF;
+    --accent: #C8A227;
+    --accent-soft: #E8C766;
+    --muted: rgba(255,255,255,0.55);
+    --line: rgba(255,255,255,0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Poppins', system-ui, sans-serif;
+    background:
+      radial-gradient(900px 500px at 50% -10%, rgba(200,162,39,0.10), transparent 70%),
+      var(--ink);
+    color: var(--paper);
+    min-height: 100dvh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 64px 22px 48px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { width: 100%; max-width: 440px; text-align: center; }
+
+  /* Wordmark */
+  .mark { margin-bottom: 30px; }
+  .mark .kicker {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .mark .name {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+  .mark .name .gold { color: var(--accent); }
+
+  .tagline {
+    color: var(--muted);
+    font-size: 14.5px;
+    font-weight: 300;
+    line-height: 1.5;
+    margin: 0 auto 34px;
+    max-width: 340px;
+  }
+
+  /* Links */
+  .links { display: flex; flex-direction: column; gap: 14px; }
+  .link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 17px 20px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.03);
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 15.5px;
+    font-weight: 500;
+    transition: transform .15s ease, background .2s ease, border-color .2s ease;
+  }
+  .link:hover { transform: translateY(-2px); border-color: rgba(200,162,39,0.5); background: rgba(255,255,255,0.06); }
+  .link .sub { display: block; font-size: 12px; font-weight: 300; color: var(--muted); margin-top: 2px; }
+  .link .stack { display: flex; flex-direction: column; line-height: 1.25; }
+
+  /* Primary (the free tool) */
+  .link.primary {
+    background: linear-gradient(180deg, var(--accent-soft), var(--accent));
+    color: var(--ink);
+    border-color: transparent;
+    font-weight: 600;
+    box-shadow: 0 10px 30px -12px rgba(200,162,39,0.7);
+  }
+  .link.primary .sub { color: rgba(13,13,13,0.7); }
+  .link.primary:hover { background: linear-gradient(180deg, #f0d27a, var(--accent-soft)); border-color: transparent; }
+
+  .footer {
+    margin-top: 40px;
+    color: rgba(255,255,255,0.35);
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+  }
+  .footer .dot { color: var(--accent); }
+</style>
+</head>
+<body>
+  <main class="wrap">
+
+    <div class="mark">
+      <div class="kicker">Cool Hollow Coaching</div>
+      <div class="name">Business<br>Without <span class="gold">You</span></div>
+    </div>
+
+    <p class="tagline">
+      Helping $1M&ndash;$10M owners escape the day-to-day.
+      Time back, and profit you didn't know you had.
+    </p>
+
+    <!--
+      EDIT YOUR LINKS HERE.
+      Each block below is one button. To turn a link on, put the real web address
+      between the quote marks in href="...". Leave href="#" to keep a button parked.
+      To remove a button, delete its whole <a>...</a> block. To add one, copy a block.
+    -->
+    <nav class="links">
+
+      <a class="link primary" href="#">
+        <span class="stack">
+          Try the Free Profit Finder
+          <span class="sub">Find up to $50K hidden in your books</span>
+        </span>
+      </a>
+
+      <a class="link" href="https://instagram.com/businesswithoutyou" target="_blank" rel="noopener">
+        <span class="stack">
+          Follow on Instagram
+          <span class="sub">@businesswithoutyou</span>
+        </span>
+      </a>
+
+      <!-- Parked until live. Drop the real URL in href to switch it on.
+      <a class="link" href="#">
+        <span class="stack">
+          Join the Community
+          <span class="sub">Owners building businesses that run without them</span>
+        </span>
+      </a>
+      -->
+
+    </nav>
+
+    <div class="footer">
+      Cool Hollow Coaching <span class="dot">&middot;</span> Business Without You
+    </div>
+
+  </main>
+</body>
+</html>

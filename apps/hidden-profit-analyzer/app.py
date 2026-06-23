@@ -1,9 +1,13 @@
 """
 Cool Hollow Coaching, the hidden-profit analyzer.
 
-A prospect uploads a P&L (CSV, Excel, or PDF) and gets back a plain-English
-report of pricing gaps, cost leakage, and cash timing risk, with a headline
-dollar figure: the profit and risk found in their own numbers.
+A business owner uploads a P&L (CSV, Excel, or PDF) and gets back a plain-English
+first look at three things, read straight from their own numbers: gross margin,
+costs that crept up, and any months where money went out faster than it came in.
+
+Honesty rules baked in: every figure points back to a line in the uploaded file,
+the three findings are kept separate (never summed into one inflated "profit found"
+number), and the page does not sell or promise anything that is not built.
 """
 
 import pandas as pd
@@ -14,62 +18,89 @@ from pdf_parser import parse_pdf
 
 st.set_page_config(page_title="Cool Hollow Coaching, the hidden-profit finder", page_icon="$")
 
-st.title("Find the profit already in your business")
+st.title("See what your own numbers are telling you")
 st.write(
-    "Upload your P&L and we will show you where the money is leaking and where "
-    "the margin is sitting unclaimed. Many owner-run businesses in this revenue "
-    "range have at least $50,000 sitting unclaimed somewhere in pricing, cost, "
-    "or cash timing."
+    "Upload your profit and loss and this reads three things straight from it: your "
+    "gross margin, any costs that have crept up, and any months where more went out "
+    "than came in. It is a first look, not a full audit, and every number it shows "
+    "points back to a line in your file."
+)
+st.caption(
+    "Your file is read only to produce this report, in this session. It is not saved "
+    "or stored anywhere."
 )
 
 st.divider()
 
 with st.expander("What file should I upload?"):
     st.write(
-        "A CSV, Excel, or PDF export of your profit and loss. The first column "
-        "should be the line item name (Revenue, Cost of Goods Sold, Rent, "
-        "Software, and so on). If you have more than one month, add a column "
-        "per month. If you only have totals, one amount column is fine too. "
-        "PDF exports straight from QuickBooks, Xero, or similar tools work best."
+        "A CSV, Excel, or PDF export of your profit and loss. The first column should "
+        "be the line item name (Revenue, Cost of Goods Sold, Rent, Software, and so "
+        "on). If you have more than one month, add a column per month, in date order. "
+        "If you only have totals, a single amount column is fine. PDF exports straight "
+        "from QuickBooks, Xero, or similar tools work best."
     )
 
 uploaded = st.file_uploader("Upload your P&L (CSV, Excel, or PDF)", type=["csv", "xlsx", "xls", "pdf"])
 
-if uploaded:
-    name = uploaded.name.lower()
-    try:
-        if name.endswith(".csv"):
-            raw = pd.read_csv(uploaded)
-        elif name.endswith(".pdf"):
-            raw = parse_pdf(uploaded)
-            with st.expander("What we read from your PDF"):
-                st.dataframe(raw)
-        else:
-            raw = pd.read_excel(uploaded)
-    except Exception as exc:
-        st.error(f"Could not read that file. Double-check it is a plain P&L export. ({exc})")
-        st.stop()
+if not uploaded:
+    st.info("Upload a file above to get your first look.")
+    st.stop()
 
-    try:
-        result = run_full_analysis(raw)
-    except Exception as exc:
-        st.error(f"Could not analyze that file: {exc}")
-        st.stop()
+name = uploaded.name.lower()
+try:
+    if name.endswith(".csv"):
+        raw = pd.read_csv(uploaded)
+    elif name.endswith(".pdf"):
+        raw = parse_pdf(uploaded)
+    else:
+        raw = pd.read_excel(uploaded)
+except Exception as exc:
+    st.error(f"Could not read that file. Double-check it is a plain P&L export. ({exc})")
+    st.stop()
 
-    st.divider()
-    st.header(f"We found ${result['total_found']:,.0f} in profit and cash risk")
+try:
+    result = run_full_analysis(raw)
+except Exception as exc:
+    st.error(f"Could not analyze that file: {exc}")
+    st.stop()
 
-    for check in result["checks"]:
-        st.subheader(f"{check['name']}: ${check['estimate']:,.0f}")
-        for line in check["findings"]:
-            st.write(f"- {line}")
+st.divider()
 
-    st.divider()
+# Transparency first: show how every line was read, so the numbers can be trusted.
+with st.expander("How we read your file (check this first)"):
     st.write(
-        "This is a first pass, not a full audit. Business Without You goes "
-        "through every one of these in detail over 12 weeks, and finds the "
-        "rest of what is hiding. The program costs $5,000. You just saw why "
-        "that is rarely the hard part."
+        "Here is how each line was classified. If anything looks misread, your export "
+        "may use unusual labels. The numbers below are built only from these."
     )
-else:
-    st.info("Upload a file above to get your first report.")
+    st.dataframe(result["breakdown"], use_container_width=True)
+
+margin = result["margin"]
+creep = result["creep"]
+cash = result["cash"]
+
+st.header("Pricing and margin")
+if margin["gross_margin"] is not None:
+    st.metric("Your gross margin", f"{margin['gross_margin']:.0%}")
+for line in margin["findings"]:
+    st.write(f"- {line}")
+
+st.header("Cost creep")
+if creep["creep"] > 0:
+    st.metric("Costs that crept up over the period", f"${creep['creep']:,.0f}")
+for line in creep["findings"]:
+    st.write(f"- {line}")
+
+st.header("Cash timing")
+if cash["shortfall"] > 0:
+    st.metric("Total of the months that ran short", f"${cash['shortfall']:,.0f}")
+for line in cash["findings"]:
+    st.write(f"- {line}")
+
+st.divider()
+st.write(
+    "This is a first look at your own numbers, not a full audit. The real work is "
+    "going through each of these line by line: where the margin is leaking, which "
+    "costs are worth a hard look, and how to see a cash gap coming before it lands. "
+    "That is exactly the kind of thing Cool Hollow works on with owners."
+)
