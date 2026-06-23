@@ -87,7 +87,7 @@ if snapshot["gross_margin"] is not None:
 if snapshot["operating_margin"] is not None:
     cols[1].metric("Operating margin", f"{snapshot['operating_margin']:.0%}")
 for line in snapshot["findings"]:
-    st.write(f"- {line}")
+    st.write("- " + line.replace("$", "\\$"))
 
 st.header("Where the money goes")
 if where.get("rows"):
@@ -102,23 +102,23 @@ if where.get("rows"):
     ])
     st.table(table)
 for line in where["findings"]:
-    st.write(f"- {line}")
+    st.write("- " + line.replace("$", "\\$"))
 
 st.header("Your levers")
 for line in lev["findings"]:
-    st.write(f"- {line}")
+    st.write("- " + line.replace("$", "\\$"))
 
 st.header("Cost creep")
 if creep["creep"] > 0:
     st.metric("Costs that crept up over the period", f"${creep['creep']:,.0f}")
 for line in creep["findings"]:
-    st.write(f"- {line}")
+    st.write("- " + line.replace("$", "\\$"))
 
 st.header("Cash timing")
 if cash["shortfall"] > 0:
     st.metric("Total of the months that ran short", f"${cash['shortfall']:,.0f}")
 for line in cash["findings"]:
-    st.write(f"- {line}")
+    st.write("- " + line.replace("$", "\\$"))
 
 st.divider()
 st.write(
