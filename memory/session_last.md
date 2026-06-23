@@ -6,24 +6,26 @@ description: What was worked on, decisions made, and next steps from the most re
 **Date:** 2026-06-23
 
 **What was worked on:**
-- Rewrote the Senteo consultant meeting deck (`outputs/decks/2026-06-23-senteo-meeting-prep.html`) so it reads like a real document for an outside reader, not internal notes. Fixed the title, the $50K honesty slide, both question slides, and the close, which had all been written as instructions to Matt rather than content for Senteo.
-- Found and fixed a real bug in `cool-hollow-coaching-logo-draft.svg`: the compass icon was rendering as a broken shape and the wordmark was clipping off the canvas edge. Made "COOL HOLLOW" bold against a lighter "COACHING" for hierarchy, confirmed visually.
-- Switched the Cool Hollow Coaching brand palette from teal/sage/lime to black, white, and gold across `context/brand.md`, `brand.json`, and `brand-pack.md`, all three now in sync.
-- Reviewed Cloudflare Pages as a hosting option; confirmed it's right for the future website and the decks, not for the seven Python tools (those need Streamlit Community Cloud or similar).
-- Committed and pushed everything: the brand swap, Mark's voice profile, the funnel site draft, hook scripts, and meeting decks.
+- Reviewed about a dozen GitHub repos Matt asked about for "upgrading Claude" (Ruflo, addyosmani/agent-skills, system-prompts-leaks, Canopy, an unfiltered AI video studio, stop-slop, superpowers, an agent-context-engineering skill, and others). Talked through why most don't fit a one-person coaching business and a couple carry real risk.
+- Saved one exception, `ui-ux-pro-max` (a generic design-pattern reference skill), into `.claude/skills/ui-ux-pro-max/`, to use for layout/conversion-flow structure next time we work on the funnel site or landing pages. Locked brand colors and voice always override its own suggestions.
+- Ran a functional test of all seven Business Without You milestone tools against their sample data. All passed. Added a missing `sample_receivables.csv` to Cash Confidence so its optional receivables-timing check is actually covered.
+- Looked up real 2026 pricing for HeyGen, Higgsfield, and ElevenLabs for the Mark AI clone project.
+- Committed and pushed: the new skill, the test data fix, site logo assets (`site/logos/`), and in-progress edits to `site/discovery.html` and `site/index.html`.
 
 **Key decisions:**
-- Brand colors are now locked to black `#1A1A1A`, white `#FFFFFF`, and gold `#C8A227` (with a lighter champagne gold `#E8C766` for subtle highlights), replacing the earlier teal/sage/lime direction.
-- The logo keeps the compass/needle device from Cool Hollow Solutions rather than commissioning a brand-new mark, just recolored to gold and black. This is locked in `brand.json` and `brand-pack.md`.
-- AI-generated logos are off the table per the standing house rule (never generate a logo or wordmark). The actual redraw still needs a real designer or a Canva session, the user has not yet picked which.
+- Standing rule: always self-review code for bugs/data leaks before calling a task done, instead of installing third-party engineering-workflow plugins for that purpose.
+- For Mark's AI clone: keep Higgsfield for general creative content, add ElevenLabs (~$22/mo, Creator plan) specifically for voice, since voice realism was HeyGen's actual weak point, not video quality.
+- Declined to install Ruflo, agent-skills, Canopy, the unfiltered video studio, stop-slop, superpowers, and the context-engineering skill repo. None solve a real gap; a couple (autonomous agents, no-content-filter media gen) are actual risks for a client-facing brand.
 
 **Open / unfinished:**
-- The compass logo still needs a proper redraw (the broken draft SVG is concept/color-approved, not execution-approved). Waiting on the user to choose: write a design brief for a real designer, walk through Canva together, or both.
-- The seven milestone tools and the analyzer are still local only, not deployed publicly, the same real blocker flagged in prior sessions.
-- Cloudflare is connected (token + account ID both set) but nothing has been deployed yet.
-- ElevenLabs still not connected (`ELEVENLABS_API_KEY` empty), so Mark's voice clone hasn't started despite his voice profile being documented.
+- The compass logo still needs a proper redraw (designer brief vs. Canva, still undecided), carried over from prior sessions.
+- The seven milestone tools and analyzer are still local only, not deployed publicly.
+- Nothing deployed to Cloudflare Pages yet, even though it's connected.
+- ElevenLabs not yet set up (`ELEVENLABS_API_KEY` empty) — this is the concrete next step for Mark's voice clone.
+- `site/discovery.html` and `site/index.html` have in-progress edits that were committed as-is; worth a look together to confirm where that draft stands.
 
 **Next steps:**
-- Decide how the compass logo gets properly redrawn (designer brief vs. Canva) and execute it.
-- Pick a first thing to deploy to Cloudflare Pages now that it's connected (the site draft in `site/`, or one of the decks).
-- Get real, well-lit photos of Mark for Higgsfield Soul ID, the current avatar likeness test didn't look like him.
+- Set up ElevenLabs (Creator plan, ~$22/mo) to unblock Mark's voice clone.
+- Decide on the logo redraw path and execute it.
+- Pick a first thing to deploy to Cloudflare Pages.
+- Get well-lit reference photos of Mark for any future likeness/voice work.
