@@ -6,21 +6,23 @@ description: What was worked on, decisions made, and next steps from the most re
 **Date:** 2026-06-23
 
 **What was worked on:**
-- Rebuilt the hidden-profit analyzer's P&L reader to be SECTION-AWARE: it classifies each line by the section header it sits under (Income / Cost of Goods Sold / Expenses) instead of guessing from line names. This fixed the earlier failure (100% and -2368% margins on real files).
-- Validated against four real P&Ls (two garage-door PDFs, Precision Trades PDF, Elite Restoration Excel): computed revenue/COGS/gross profit match each file's own stated totals to the cent.
-- Text-first PDF parsing (account codes stay in labels, not counted as money); new `excel_parser.py` makes Excel uploads robust (title rows, sheet pick, amount columns).
-- Expanded the report into richer, still-honest insights: profit snapshot (gross + operating margin, "keep X cents per dollar"), where the money goes (top costs vs revenue, biggest lever), and levers (price/margin what-ifs, breakeven revenue). Nudges owners to upload monthly columns.
-- Backtest is now 7/7 (added two cases mirroring the real-file structure). Everything committed and pushed.
+- DEPLOYED the hidden-profit analyzer LIVE to Streamlit Community Cloud (free host, connected to the private GitHub repo). Public and working at **profit-finder-coolhollow.streamlit.app**.
+- Verified in the cloud with a real P&L: numbers match local exactly (Elite Restoration: revenue $1,435,139, gross margin 53%, operating margin -5%).
+- Fixed a display bug (Streamlit read "$" as LaTeX math, so amounts rendered in italics with no dollar sign); escaped them, auto-redeployed.
+- Renamed the app URL to the clean profit-finder-coolhollow.streamlit.app.
+- Earlier in the session: rebuilt the analyzer's reader to be section-aware (validated to the cent on 4 real P&Ls), added richer owner insights (profit snapshot, where money goes, levers), made Excel uploads robust, backtest 7/7. All committed and pushed.
 
-**Key decisions / framing:**
-- The tool SURFACES signals and opens the conversation; it does NOT manufacture a "found $50,000" number. That headline is the CFO's work inside the program. Keep the copy honest about this (ties to the no-advertising-unbuilt-product and never-invent-a-number rules).
-- Real client P&Ls are NOT committed to the repo (privacy); their structure lives in synthetic backtest cases instead.
+**Key decisions:**
+- The analyzer is now a real, built, free value tool, so linking it in the IG bio breaks no "don't sell what isn't built" rule. It is the honest front-door lead magnet.
+- Deployment clicks (account, GitHub auth, deploy) are Matt's to do; Claude cannot click inside the browser (Safari is view-only). Claude guides and watches.
 
 **Open / unfinished:**
-- Analyzer is now trustworthy on real data but NOT yet deployed. Remaining before it can go in the IG bio: (1) deploy to a free public host (Streamlit Community Cloud) - this is the "put it live" step needing Matt's explicit yes and a guided setup; (2) a final read of the privacy wording.
-- Cosmetic: doubled account-code prefixes (e.g. "66026 66026-Payroll...") still show in some line labels; could tidy display.
-- Still floating from before: raw unbranded Mark footage for a Coaching Reel; pasting the new bio; the Mark "Hiring" video edit was never verified frame-by-frame.
+- Paste the live link into the Instagram bio. Draft bio line ready: "Find the profit hiding in your business. Free, 2-minute read of your own numbers 👇 profit-finder-coolhollow.streamlit.app". The bio draft doc (instagram-profile.md) still says "link pending" and should be updated with the live link.
+- Tidy negative-number formatting in the report ("$-69,707" -> "-$69,707"). Cosmetic.
+- Cosmetic: doubled account-code prefixes still show in some line labels.
+- Still floating from earlier: raw unbranded Mark footage for a Coaching Reel; the Mark "Hiring" video edit was never verified frame-by-frame.
+- Note: link-in-bio/index.html was edited to link to coolhollowsolutions.com (the Solutions site) - worth checking that does not muddy the Coaching/Solutions brand separation.
 
 **Next steps:**
-- Deploy the analyzer to the free host (the actual go-live), walk Matt through it slowly, then add the link to the IG bio.
-- Optional polish: strip doubled account codes from displayed line names; test a couple more P&L formats.
+- Update instagram-profile.md with the live analyzer link and paste the bio into Instagram.
+- Optional polish on the analyzer: negative-number formatting, strip doubled account codes, test more P&L formats.
