@@ -10,6 +10,12 @@
 
 ## 2026-06-23
 
+### Team Launch and Scaling Plan Deck
+- Built a 16-slide team-facing deck (`outputs/decks/2026-06-23-team-launch-scaling-plan.html` + PDF) in the black/white/gold Poppins brand: the launch plan, filming load, Tier 1 scaling, paid-ads option, Tier 2 outline, and the combined picture.
+- Rewrote all copy to be plain and straight (not salesy), reframed the first cohort as "the people closest to us whose advice we trust," and listed the built tool under each of the 7 milestones.
+- Set Tier 1 year one at ~$95k context-corrected (Cool Hollow Solutions now ~$95k/month, 45 clients), Tier 1 program goal $150k-$215k year one building to $300k-$450k by 18 months, Tier 2 priced at $22,000/year (exponential model), and a "what it's worth per week" snapshot (~$11,900/week for ~3 hrs at 80 Tier 1 + 10 Tier 2).
+- Moved the dashboard module (milestone 3) from Mark to Cam: Mark now 13 lessons, Cam 11.
+
 ### Instagram Front Door Live: Profile, Bio, and Branded Link Hub
 - Set the Instagram identity: handle `@businesswithoutyou`, name field `Mark · Business Without You`, all saved to `outputs/content/cool-hollow-coaching/instagram-profile.md`.
 - Built a self-hosted, branded link-in-bio page (`link-in-bio/index.html`, black/gold/Poppins) instead of Linktree, so it carries no third-party branding or fee. Deployed it free to Cloudflare Pages, live at `business-without-you.pages.dev`.
