@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Business Without You, Launch and Scaling Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A1A;
+    --dark: #0D0D0D;
+    --paper: #FFFFFF;
+    --soft: #FAFAF7;
+    --faint: #F2F1EC;
+    --line: #E6E4DC;
+    --body: #45433E;
+    --muted: #8A877F;
+    --gold: #C8A227;
+    --gold-2: #E8C766;
+    --gold-faint: #F7EFD6;
+    font-family: 'Poppins', -apple-system, system-ui, sans-serif;
+    color: var(--ink);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #c9c6bd; }
+  .slide {
+    width: 1920px; height: 1080px; position: relative;
+    background: var(--soft); padding: 96px 120px 110px; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .slide + .slide { margin-top: 40px; }
+  .slide-tag { position: absolute; top: 52px; left: 120px; font-size: 15px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .slide-num { position: absolute; top: 52px; right: 120px; font-size: 15px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .footnote { position: absolute; bottom: 44px; left: 120px; right: 120px; font-size: 16px; line-height: 1.5; color: var(--muted); font-style: italic; }
+  h1 { font-size: 96px; font-weight: 600; line-height: 1.04; letter-spacing: -0.02em; }
+  h2 { font-size: 58px; font-weight: 600; line-height: 1.1; letter-spacing: -0.015em; }
+  h3 { font-size: 30px; font-weight: 600; letter-spacing: -0.01em; }
+  .lede { font-size: 27px; line-height: 1.5; color: var(--body); max-width: 1440px; font-weight: 300; margin-top: 28px; }
+  .lede strong { font-weight: 600; color: var(--ink); }
+  strong { font-weight: 600; }
+  .gold { color: var(--gold); }
+
+  /* Title */
+  .slide--title { padding: 0; flex-direction: row; }
+  .title-panel { width: 42%; background: var(--dark); color: var(--paper); padding: 100px 90px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+  .title-panel::after { content: ''; position: absolute; right: -160px; bottom: -160px; width: 460px; height: 460px; border-radius: 50%; border: 2px solid rgba(200,162,39,0.35); }
+  .title-panel::before { content: ''; position: absolute; right: -90px; bottom: -90px; width: 300px; height: 300px; border-radius: 50%; background: rgba(200,162,39,0.08); }
+  .title-kicker { font-size: 17px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .wordmark { font-size: 60px; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; }
+  .wordmark .dot { color: var(--gold); }
+  .title-content { width: 58%; padding: 110px 100px; display: flex; flex-direction: column; justify-content: center; background: var(--paper); }
+  .title-eyebrow { font-size: 19px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 34px; }
+  .title-tagline { font-size: 28px; line-height: 1.5; color: var(--body); font-weight: 300; margin-top: 36px; max-width: 760px; }
+  .title-byline { margin-top: 60px; font-size: 19px; color: var(--muted); font-weight: 400; letter-spacing: 0.02em; }
+  .title-byline strong { color: var(--ink); }
+
+  /* Stat cards */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 60px; }
+  .stat { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 48px 44px; border-top: 4px solid var(--gold); }
+  .stat-label { font-size: 17px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .stat-number { font-size: 72px; font-weight: 600; line-height: 1; margin: 22px 0 20px; letter-spacing: -0.02em; }
+  .stat-body { font-size: 20px; line-height: 1.5; color: var(--body); font-weight: 300; }
+
+  .head-block { max-width: 1560px; }
+
+  /* milestone list */
+  .miles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px 56px; margin-top: 40px; }
+  .mile { display: flex; align-items: flex-start; gap: 24px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+  .mile-num { flex: none; width: 48px; height: 48px; border-radius: 50%; background: var(--dark); color: var(--gold); font-weight: 600; font-size: 22px; display: flex; align-items: center; justify-content: center; }
+  .mile-text { padding-top: 4px; }
+  .mile-text h3 { font-size: 24px; }
+  .mile-text p { font-size: 18px; color: var(--muted); font-weight: 300; margin-top: 4px; }
+  .mile-text .mile-tool { font-size: 16px; color: var(--gold); font-weight: 600; margin-top: 6px; letter-spacing: 0.01em; }
+
+  /* delivery / who teaches */
+  .deliver { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; margin-top: 56px; align-items: start; }
+  .deliver-col h3 { font-size: 22px; color: var(--gold); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 28px; }
+  .dlist { display: flex; flex-direction: column; gap: 22px; }
+  .ditem { display: flex; gap: 22px; align-items: flex-start; }
+  .dcheck { flex: none; width: 38px; height: 38px; border-radius: 50%; background: var(--gold-faint); display: flex; align-items: center; justify-content: center; }
+  .dcheck svg { width: 20px; height: 20px; stroke: var(--gold); stroke-width: 3; fill: none; }
+  .ditem p { font-size: 22px; line-height: 1.45; color: var(--body); font-weight: 300; }
+  .ditem p strong { color: var(--ink); }
+  .teach-card { background: var(--dark); border-radius: 18px; padding: 48px 46px; color: var(--paper); }
+  .teach-card h3 { color: var(--gold); }
+  .teach-row { display: flex; justify-content: space-between; align-items: baseline; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .teach-row:last-child { border-bottom: none; }
+  .teach-who { font-size: 25px; font-weight: 500; }
+  .teach-who span { display: block; font-size: 16px; color: rgba(255,255,255,0.55); font-weight: 300; margin-top: 2px; }
+  .teach-n { font-size: 25px; font-weight: 600; color: var(--gold); }
+
+  /* filming table */
+  .ftable { margin-top: 52px; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--paper); }
+  .frow { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.5fr; align-items: center; }
+  .frow > div { padding: 28px 40px; font-size: 24px; }
+  .frow.head > div { background: var(--dark); color: var(--paper); font-size: 17px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+  .frow:not(.head):not(.total) { border-top: 1px solid var(--line); }
+  .frow .who { font-weight: 600; }
+  .frow .who span { display: block; font-size: 16px; color: var(--muted); font-weight: 300; margin-top: 3px; }
+  .frow .num { color: var(--body); font-weight: 400; }
+  .frow.total > div { background: var(--gold-faint); font-weight: 600; border-top: 2px solid var(--gold); }
+  .frow.total .num { color: var(--ink); }
+
+  /* phases timeline */
+  .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px; }
+  .phase { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 44px 40px; position: relative; }
+  .phase-num { width: 60px; height: 60px; border-radius: 50%; background: var(--dark); color: var(--gold); font-size: 28px; font-weight: 600; display: flex; align-items: center; justify-content: center; margin-bottom: 26px; }
+  .phase-when { font-size: 16px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .phase h3 { font-size: 26px; margin: 10px 0 22px; }
+  .phase ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .phase li { font-size: 20px; line-height: 1.4; color: var(--body); font-weight: 300; padding-left: 26px; position: relative; }
+  .phase li::before { content: ''; position: absolute; left: 0; top: 11px; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); }
+
+  /* goal row (two cards) */
+  .goalrow { display: grid; grid-template-columns: 1fr auto 1fr; gap: 50px; align-items: center; margin-top: 80px; }
+  .goalcard { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; padding: 60px 56px; border-top: 5px solid var(--gold); }
+  .goalcard.dark { background: var(--dark); color: var(--paper); border: none; }
+  .goal-label { font-size: 18px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .goalcard.dark .goal-label { color: var(--gold); }
+  .goal-num { font-size: 92px; font-weight: 600; line-height: 1; margin: 26px 0 24px; letter-spacing: -0.02em; }
+  .goal-num.range { font-size: 58px; }
+  .goalcard p { font-size: 23px; line-height: 1.45; color: var(--body); font-weight: 300; }
+  .goalcard.dark p { color: rgba(255,255,255,0.78); }
+  .goal-mid { font-size: 18px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; text-align: center; }
+
+  /* breakdown */
+  .breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 52px; }
+  .bcard { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 44px 52px; }
+  .bcard.dark { background: var(--dark); color: var(--paper); border: none; }
+  .bcard h3 { font-size: 24px; color: var(--gold); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 8px; }
+  .brow { display: flex; justify-content: space-between; align-items: baseline; padding: 24px 0; border-bottom: 1px solid var(--line); }
+  .bcard.dark .brow { border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .brow:last-child { border-bottom: none; }
+  .blabel { font-size: 21px; color: var(--body); font-weight: 300; }
+  .bcard.dark .blabel { color: rgba(255,255,255,0.7); }
+  .bval { font-size: 27px; font-weight: 600; text-align: right; color: var(--ink); }
+  .bcard.dark .bval { color: var(--paper); }
+  .bval.hi { color: var(--gold); }
+  .bcard.dark .bval.hi { color: var(--gold-2); }
+
+  /* growth paths */
+  .paths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 60px; }
+  .path { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 50px 44px; }
+  .path.feature { background: var(--dark); color: var(--paper); border: none; }
+  .path-label { font-size: 17px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .path.feature .path-label { color: var(--gold); }
+  .path-rev { font-size: 52px; font-weight: 600; line-height: 1; margin: 22px 0; letter-spacing: -0.02em; color: var(--ink); }
+  .path.feature .path-rev { color: var(--gold-2); }
+  .path p { font-size: 20px; line-height: 1.5; color: var(--body); font-weight: 300; }
+  .path.feature p { color: rgba(255,255,255,0.8); }
+  .path-note { font-size: 16px; color: var(--gold); font-weight: 600; margin-top: 18px; }
+
+  /* worth per week */
+  .bcard.worth { display: flex; flex-direction: column; justify-content: center; gap: 44px; }
+  .worth-num { font-size: 72px; font-weight: 600; line-height: 1; color: var(--gold-2); letter-spacing: -0.02em; }
+  .worth-label { font-size: 22px; color: rgba(255,255,255,0.7); font-weight: 300; margin-top: 10px; display: block; }
+
+  /* bar chart */
+  .chart { display: flex; align-items: flex-end; gap: 70px; margin-top: 64px; height: 470px; padding: 0 40px; }
+  .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+  .bar-val { font-size: 26px; font-weight: 600; margin-bottom: 18px; text-align: center; }
+  .bar-val span { display: block; font-size: 16px; color: var(--muted); font-weight: 300; text-align: center; margin-top: 4px; }
+  .bar { width: 100%; max-width: 230px; background: linear-gradient(to top, var(--dark), #3a3a3a); border-radius: 12px 12px 0 0; }
+  .bar-label { margin-top: 24px; font-size: 22px; font-weight: 600; text-align: center; }
+  .bar-label span { display: block; font-size: 16px; color: var(--muted); font-weight: 300; margin-top: 4px; }
+
+  /* tier2 outline two-col */
+  .t2grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 56px; }
+  .t2card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 50px 48px; }
+  .t2card.dark { background: var(--dark); color: var(--paper); border: none; }
+  .t2card h3 { font-size: 24px; color: var(--gold); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 28px; }
+  .t2card ul { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+  .t2card li { font-size: 23px; line-height: 1.45; font-weight: 300; padding-left: 28px; position: relative; }
+  .t2card.dark li { color: rgba(255,255,255,0.85); }
+  .t2card li::before { content: ''; position: absolute; left: 0; top: 12px; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); }
+  .t2price { font-size: 64px; font-weight: 600; line-height: 1; }
+  .t2price span { font-size: 24px; color: rgba(255,255,255,0.6); font-weight: 300; }
+  .t2sub { font-size: 19px; color: rgba(255,255,255,0.6); font-weight: 300; margin-top: 16px; line-height: 1.5; }
+
+  /* combined table */
+  .ctable { margin-top: 52px; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--paper); }
+  .crow { display: grid; grid-template-columns: 1fr 1.2fr 1.2fr 1.2fr; align-items: center; }
+  .crow > div { padding: 32px 44px; font-size: 25px; }
+  .crow.head > div { background: var(--dark); color: var(--paper); font-size: 17px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+  .crow:not(.head) { border-top: 1px solid var(--line); }
+  .crow .hz { font-weight: 600; }
+  .crow .t1v { color: var(--body); font-weight: 400; }
+  .crow .t2v { color: var(--body); font-weight: 400; }
+  .crow .cv { color: var(--gold); font-weight: 600; }
+  .crow.head .cv { color: var(--gold); }
+
+  /* next steps */
+  .steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 52px; }
+  .step { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 40px 36px; }
+  .step-num { width: 56px; height: 56px; border-radius: 50%; background: var(--gold-faint); color: var(--gold); font-size: 26px; font-weight: 600; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
+  .step h3 { font-size: 23px; margin-bottom: 12px; }
+  .step p { font-size: 19px; line-height: 1.45; color: var(--body); font-weight: 300; }
+
+  /* close */
+  .slide--close { padding: 0; flex-direction: row; }
+  .close-content { width: 58%; padding: 100px 100px; display: flex; flex-direction: column; justify-content: center; background: var(--paper); }
+  .close-content h2 { font-size: 60px; }
+  .close-panel { width: 42%; background: var(--dark); color: var(--paper); padding: 100px 90px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+  .close-panel::after { content: ''; position: absolute; left: -160px; top: -160px; width: 460px; height: 460px; border-radius: 50%; border: 2px solid rgba(200,162,39,0.35); }
+  .close-panel h3 { font-size: 38px; color: var(--paper); font-weight: 600; line-height: 1.25; }
+  .close-panel h3 .gold { color: var(--gold); }
+  .close-panel p { font-size: 21px; color: rgba(255,255,255,0.7); font-weight: 300; margin-top: 24px; line-height: 1.5; }
+  .close-meta { font-size: 16px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<!-- 1. Title -->
+<section class="slide slide--title">
+  <div class="title-panel">
+    <div class="title-kicker">For the team</div>
+    <div class="wordmark">Business<br>Without You<span class="dot">.</span></div>
+    <div class="title-kicker">Cool Hollow Coaching</div>
+  </div>
+  <div class="title-content">
+    <div class="title-eyebrow">Launch &amp; Scaling Plan &middot; v1</div>
+    <h1>How this<br>plays out.</h1>
+    <p class="title-tagline">What we are building, what it takes to launch, and a realistic look at the numbers for Tier 1, with Tier 2 outlined.</p>
+    <div class="title-byline"><strong>Matt Fitzpatrick</strong> &middot; 23 June 2026</div>
+  </div>
+</section>
+
+<!-- 2. Why now -->
+<section class="slide">
+  <div class="slide-tag">Why we are doing this</div>
+  <div class="slide-num">02 / 16</div>
+  <div class="head-block">
+    <h2>Cool Hollow Solutions is doing well, but it is full.</h2>
+    <p class="lede">One on one advisory only scales so far. Every new client takes another slice of our time, and we are running out of slices. Coaching takes the same frameworks and the same team and delivers them to more owners, without costing an hour each. That is the whole idea.</p>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Where Solutions sits</span>
+      <div class="stat-number">~$95k</div>
+      <p class="stat-body">A month, across about 45 clients. Good work, but capped at how many clients one advisor can hold.</p>
+    </div>
+    <div class="stat">
+      <span class="stat-label">How coaching is different</span>
+      <div class="stat-number">Recorded</div>
+      <p class="stat-body">Filmed once, it serves many owners. One filming instead of one meeting per owner.</p>
+    </div>
+    <div class="stat">
+      <span class="stat-label">What we reuse</span>
+      <div class="stat-number">Everything</div>
+      <p class="stat-body">Our frameworks, our finance and people expertise, and the Cool Hollow name. None of this starts from scratch.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Where we are today -->
+<section class="slide">
+  <div class="slide-tag">Where we are today</div>
+  <div class="slide-num">03 / 16</div>
+  <div class="head-block">
+    <h2>Most of the work is already done.</h2>
+    <p class="lede">The curriculum and the tools are built. What is left is filming the lessons and getting the first owners through it.</p>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Curriculum</span>
+      <div class="stat-number">7</div>
+      <p class="stat-body">Milestones mapped end to end, with a consistent flow and 28 lessons outlined.</p>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Tools built</span>
+      <div class="stat-number">7 / 7</div>
+      <p class="stat-body">One working tool per milestone, each tested against two sample businesses before any client sees it.</p>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Front door</span>
+      <div class="stat-number">Live</div>
+      <p class="stat-body">Instagram page, a branded link page, and a free profit finder tool, all standing and ready for content.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. The product, Tier 1 -->
+<section class="slide">
+  <div class="slide-tag">The product &middot; Tier 1</div>
+  <div class="slide-num">04 / 16</div>
+  <div class="head-block">
+    <h2>Tier 1: Business Without You. <span class="gold">$5,000</span>, 12 weeks, 7 milestones.</h2>
+    <p class="lede">The promise is simple: <strong>15 hours back, plus up to $50,000 in profit found.</strong> Each milestone has the owner look at their own numbers first, then teaches to what it finds.</p>
+  </div>
+  <div class="miles">
+    <div class="mile"><div class="mile-num">1</div><div class="mile-text"><h3>Reclaim time and identity</h3><p>Get the owner out of the day to day grind.</p><p class="mile-tool">Tool: 15-Hour Reclaim Protocol</p></div></div>
+    <div class="mile"><div class="mile-num">2</div><div class="mile-text"><h3>Define the destination</h3><p>Get clear on where the business is going.</p><p class="mile-tool">Tool: 12-Month Impact Map</p></div></div>
+    <div class="mile"><div class="mile-num">3</div><div class="mile-text"><h3>Install the dashboard</h3><p>Five metrics, 15 minutes every Monday.</p><p class="mile-tool">Tool: Monday Morning Dashboard</p></div></div>
+    <div class="mile"><div class="mile-num">4</div><div class="mile-text"><h3>Discover the hidden profit</h3><p>Surface the profit already in the business.</p><p class="mile-tool">Tool: Profit Discovery Audit</p></div></div>
+    <div class="mile"><div class="mile-num">5</div><div class="mile-text"><h3>Build cash confidence</h3><p>A 13 week forecast so the owner can sleep.</p><p class="mile-tool">Tool: 13-Week Cash Forecast</p></div></div>
+    <div class="mile"><div class="mile-num">6</div><div class="mile-text"><h3>Break the binding constraint</h3><p>Remove the one thing capping growth.</p><p class="mile-tool">Tool: Bottleneck Breakthrough Plan</p></div></div>
+    <div class="mile"><div class="mile-num">7</div><div class="mile-text"><h3>Build the team</h3><p>So it runs without the owner in every seat.</p><p class="mile-tool">Tool: Build the Team Scorecard</p></div></div>
+  </div>
+</section>
+
+<!-- 5. How it's delivered -->
+<section class="slide">
+  <div class="slide-tag">How owners go through it</div>
+  <div class="slide-num">05 / 16</div>
+  <div class="head-block">
+    <h2>Recorded once. Owners join when they are ready.</h2>
+    <p class="lede">After a short first group while we learn how to run it, owners join whenever they are ready, not on a fixed start date. That works because the teaching is recorded and the live time is open to everyone.</p>
+  </div>
+  <div class="deliver">
+    <div class="deliver-col">
+      <h3>How it works</h3>
+      <div class="dlist">
+        <div class="ditem"><div class="dcheck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><p><strong>Recorded lessons,</strong> watched at the owner's own pace from their day one.</p></div>
+        <div class="ditem"><div class="dcheck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><p><strong>Monthly live calls</strong> with Cam and Hannah, open to whoever is at that point.</p></div>
+        <div class="ditem"><div class="dcheck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><p><strong>Mark runs the live Q&amp;A</strong> and opens and closes every milestone.</p></div>
+        <div class="ditem"><div class="dcheck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><p><strong>A tool for each milestone,</strong> so owners work on their own numbers, not theory.</p></div>
+      </div>
+    </div>
+    <div class="teach-card">
+      <h3>Who teaches what</h3>
+      <div class="teach-row"><div class="teach-who">Mark<span>Milestones 1, 2, 6, finale</span></div><div class="teach-n">13 lessons</div></div>
+      <div class="teach-row"><div class="teach-who">Cam, CFO<span>Dashboard, hidden profit, cash confidence</span></div><div class="teach-n">11 lessons</div></div>
+      <div class="teach-row"><div class="teach-who">Hannah<span>Build the team</span></div><div class="teach-n">4 lessons</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. The ask, filming -->
+<section class="slide">
+  <div class="slide-tag">What this needs from the team</div>
+  <div class="slide-num">06 / 16</div>
+  <div class="head-block">
+    <h2>The main thing it needs: filming time.</h2>
+    <p class="lede">At 30 to 75 minutes a lesson, here is the honest filming load. We do not need it all before we start. We need Mark's first two milestones filmed, then the rest can be filmed while the first group is going through it.</p>
+  </div>
+  <div class="ftable">
+    <div class="frow head"><div>Presenter</div><div>Lessons</div><div>Finished hours</div><div>Filming days</div></div>
+    <div class="frow"><div class="who">Mark<span>Milestones 1, 2, 6, and the finale</span></div><div class="num">13</div><div class="num">~12 hrs</div><div class="num">6 to 7 days</div></div>
+    <div class="frow"><div class="who">Cam, CFO<span>Dashboard, profit, cash</span></div><div class="num">11</div><div class="num">~10 hrs</div><div class="num">5 to 6 days</div></div>
+    <div class="frow"><div class="who">Hannah<span>Build the team</span></div><div class="num">4</div><div class="num">~3.5 hrs</div><div class="num">~2 days</div></div>
+    <div class="frow total"><div class="who">Total, fully filmed</div><div class="num">28</div><div class="num">~25 hrs</div><div class="num">13 to 15 days</div></div>
+  </div>
+  <div class="footnote">Filming days assume outlines are ready before camera day and about 3.5 hours of filming per day. Only Mark's first two milestones, roughly 4 days, are needed before the first group can start.</div>
+</section>
+
+<!-- 7. The launch path -->
+<section class="slide">
+  <div class="slide-tag">The plan</div>
+  <div class="slide-num">07 / 16</div>
+  <div class="head-block">
+    <h2>The plan, in three steps.</h2>
+  </div>
+  <div class="phases">
+    <div class="phase">
+      <div class="phase-num">1</div>
+      <div class="phase-when">Weeks 1 to 5</div>
+      <h3>Film the core</h3>
+      <ul>
+        <li>Mark films milestones 1 and 2, the 8 lessons needed to open</li>
+        <li>Set up where the program lives and how owners join</li>
+        <li>No clients yet, this is the setup</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="phase-num">2</div>
+      <div class="phase-when">Months 1 to 3</div>
+      <h3>First group</h3>
+      <ul>
+        <li>Start with 2 to 3 people close to us, the ones whose advice we trust and who will help</li>
+        <li>Cam and Hannah film their lessons while it runs</li>
+        <li>The goal here is honest feedback and getting it right, not revenue</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="phase-num">3</div>
+      <div class="phase-when">Months 4 to 12</div>
+      <h3>Open it up</h3>
+      <ul>
+        <li>Owners can join anytime, no fixed start</li>
+        <li>Instagram content and referrals bring in new owners</li>
+        <li>Real results start doing the talking</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Tier 1 numbers -->
+<section class="slide">
+  <div class="slide-tag">The numbers &middot; Tier 1</div>
+  <div class="slide-num">08 / 16</div>
+  <div class="head-block">
+    <h2>Tier 1 is the main focus.</h2>
+    <p class="lede">Built on people we know and organic content, no ad spend. Year one is about getting it right. As real results and content build up, the pace picks up.</p>
+  </div>
+  <div class="goalrow">
+    <div class="goalcard">
+      <span class="goal-label">Year one</span>
+      <div class="goal-num range">$150k to $215k</div>
+      <p>A realistic first year, while we film the rest, run the first group, and start posting.</p>
+    </div>
+    <div class="goal-mid">builds<br>toward</div>
+    <div class="goalcard dark">
+      <span class="goal-label">By 18 months</span>
+      <div class="goal-num range">$300k to $450k</div>
+      <p>A year, as word of mouth kicks in and the content keeps compounding.</p>
+    </div>
+  </div>
+  <div class="footnote">Estimates, not promises. We are pre launch with no clients yet. As owners build up, hiring help with delivery becomes the next question.</div>
+</section>
+
+<!-- 9. What it takes month to month -->
+<section class="slide">
+  <div class="slide-tag">What the goal takes</div>
+  <div class="slide-num">09 / 16</div>
+  <div class="head-block">
+    <h2>What it takes, month to month.</h2>
+    <p class="lede">At $5,000 a client, here is the goal broken into sales and a monthly number to aim at. Year one ramps up, so the monthly pace is the steady rhythm we build to, not month one.</p>
+  </div>
+  <div class="breakdown">
+    <div class="bcard">
+      <h3>Year one</h3>
+      <div class="brow"><span class="blabel">Revenue goal</span><span class="bval">$150k to $215k</span></div>
+      <div class="brow"><span class="blabel">Clients to sell</span><span class="bval">30 to 43</span></div>
+      <div class="brow"><span class="blabel">New clients a month</span><span class="bval hi">3 to 4</span></div>
+      <div class="brow"><span class="blabel">Revenue a month</span><span class="bval hi">$12k to $18k</span></div>
+    </div>
+    <div class="bcard dark">
+      <h3>Year two</h3>
+      <div class="brow"><span class="blabel">Revenue goal</span><span class="bval">$300k to $450k</span></div>
+      <div class="brow"><span class="blabel">Clients to sell</span><span class="bval">60 to 90</span></div>
+      <div class="brow"><span class="blabel">New clients a month</span><span class="bval hi">5 to 8</span></div>
+      <div class="brow"><span class="blabel">Revenue a month</span><span class="bval hi">$25k to $38k</span></div>
+    </div>
+  </div>
+  <div class="footnote">At $5,000 a client. The first months are slower while we film and run the first group, so the monthly pace is the rhythm we build to once owners are joining steadily.</div>
+</section>
+
+<!-- 10. How fast we grow -->
+<section class="slide">
+  <div class="slide-tag">How fast we grow</div>
+  <div class="slide-num">10 / 16</div>
+  <div class="head-block">
+    <h2>How fast we grow is a choice.</h2>
+    <p class="lede">Same product, three different levels of effort behind it. Here is a rough year one number for each.</p>
+  </div>
+  <div class="paths">
+    <div class="path">
+      <span class="path-label">Coast on content</span>
+      <div class="path-rev">$40k to $80k</div>
+      <p>Posting now and then, no real consistency. Most of it still comes from people we already know.</p>
+    </div>
+    <div class="path feature">
+      <span class="path-label">Get serious about social</span>
+      <div class="path-rev">$150k to $215k</div>
+      <p>Posting every day, real hooks, real effort.</p>
+      <p class="path-note">What this plan assumes. Costs time, not money.</p>
+    </div>
+    <div class="path">
+      <span class="path-label">Add paid marketing</span>
+      <div class="path-rev">$400k to $600k</div>
+      <p>Pay to reach more owners, faster. Quicker growth, but it needs a real ad budget. The next slide breaks it down.</p>
+    </div>
+  </div>
+  <div class="footnote">Rough estimates, not promises. The plan today is the middle path: serious organic, no ad spend, since there is no budget yet.</div>
+</section>
+
+<!-- 11. Paid ads projection -->
+<section class="slide">
+  <div class="slide-tag">If we add paid ads</div>
+  <div class="slide-num">11 / 16</div>
+  <div class="head-block">
+    <h2>What paid ads would look like.</h2>
+    <p class="lede">Paid ads buy speed. Here is a rough year running them, and the budget it would take. Early on each client costs more to win, until the funnel is proven.</p>
+  </div>
+  <div class="breakdown">
+    <div class="bcard">
+      <h3>The spend</h3>
+      <div class="brow"><span class="blabel">Ad budget</span><span class="bval">~$12k a month</span></div>
+      <div class="brow"><span class="blabel">A year</span><span class="bval">~$144k</span></div>
+      <div class="brow"><span class="blabel">Cost to win one client</span><span class="bval hi">~$1,200</span></div>
+    </div>
+    <div class="bcard dark">
+      <h3>The return</h3>
+      <div class="brow"><span class="blabel">Clients a year</span><span class="bval">~120</span></div>
+      <div class="brow"><span class="blabel">Tier 1 revenue</span><span class="bval">~$600k</span></div>
+      <div class="brow"><span class="blabel">Kept after ad spend</span><span class="bval hi">~$456k</span></div>
+    </div>
+  </div>
+  <div class="footnote">Rough estimates, not promises. Paid results vary a lot, and a new funnel costs more per client until it is dialed in. It needs cash upfront, and there is no budget for it yet.</div>
+</section>
+
+<!-- 12. Tier 2 outline -->
+<section class="slide">
+  <div class="slide-tag">The next tier &middot; outline only</div>
+  <div class="slide-num">12 / 16</div>
+  <div class="head-block">
+    <h2>Tier 2 comes later.</h2>
+    <p class="lede">It starts once Tier 1 has owners with real results behind it. Fewer clients, higher value, and a lot less day to day support. It grows exponentially: Tier 1 graduates move up, members refer other big owners, and the community compounds on itself.</p>
+  </div>
+  <div class="t2grid">
+    <div class="t2card">
+      <h3>What it would look like</h3>
+      <ul>
+        <li>For owners doing $10M and above</li>
+        <li>Tax strategy, investment, and scaling</li>
+        <li>A community with 1 to 2 live sessions a week</li>
+        <li>The full team in the room: CFO, COO, people, and Mark on strategy</li>
+      </ul>
+    </div>
+    <div class="t2card dark">
+      <h3>Starting price</h3>
+      <div class="t2price">$22,000<span> / year</span></div>
+      <p class="t2sub">Somewhere in the $15k to $25k range, as a yearly membership for that level of team access. A starting point, not a final call.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10. Tier 2 numbers -->
+<section class="slide">
+  <div class="slide-tag">The numbers &middot; Tier 2</div>
+  <div class="slide-num">13 / 16</div>
+  <div class="head-block">
+    <h2>Tier 2, on its own.</h2>
+    <p class="lede">A few members move the total a long way, because each one is worth more than three Tier 1 clients, with far less support behind it. This is the exponential layer: it builds on Tier 1 graduates and member referrals.</p>
+  </div>
+  <div class="chart">
+    <div class="bar-col">
+      <div class="bar-val">$66k to $110k<span>3 to 5 first members</span></div>
+      <div class="bar" style="height: 14%"></div>
+      <div class="bar-label">First members<span>once Tier 1 has results</span></div>
+    </div>
+    <div class="bar-col">
+      <div class="bar-val">$220k to $330k<span>10 to 15 members</span></div>
+      <div class="bar" style="height: 42%"></div>
+      <div class="bar-label">Building<span>as Tier 1 owners move up</span></div>
+    </div>
+    <div class="bar-col">
+      <div class="bar-val">$440k to $660k<span>20 to 30 members</span></div>
+      <div class="bar" style="height: 83%"></div>
+      <div class="bar-label">By 18 months<span>at the $22k membership</span></div>
+    </div>
+  </div>
+  <div class="footnote">Estimates at the $22,000 starting price. Tier 2 depends on Tier 1 producing real results first, so these numbers come after, not alongside, year one.</div>
+</section>
+
+<!-- 11. Combined -->
+<section class="slide">
+  <div class="slide-tag">The two together</div>
+  <div class="slide-num">14 / 16</div>
+  <div class="head-block">
+    <h2>The two tiers, kept separate.</h2>
+    <p class="lede">Tier 1 first, to get owners real results. Tier 2 after, because it is worth more per client. Here is the picture if both come together, with each run on its own.</p>
+  </div>
+  <div class="ctable">
+    <div class="crow head"><div>Stage</div><div>Tier 1</div><div>Tier 2</div><div class="cv">Together, per year</div></div>
+    <div class="crow"><div class="hz">Year one</div><div class="t1v">$150k to $215k</div><div class="t2v">Not started</div><div class="cv">$150k to $215k</div></div>
+    <div class="crow"><div class="hz">By 18 months</div><div class="t1v">$300k to $450k</div><div class="t2v">$440k to $660k</div><div class="cv">~$740k to $1.11M</div></div>
+  </div>
+  <div class="footnote">Year one is the smallest year on purpose. The bigger numbers come later, and only if the first owners get real results. Nothing here is a promise.</div>
+</section>
+
+<!-- 14. What it is worth per week -->
+<section class="slide">
+  <div class="slide-tag">What it is worth</div>
+  <div class="slide-num">15 / 16</div>
+  <div class="head-block">
+    <h2>What this is worth, for the time it takes.</h2>
+    <p class="lede">The lessons are recorded, so the weekly commitment is small. At a steady 80 Tier 1 clients and 10 Tier 2 members, here is the year, and what it works out to a week.</p>
+  </div>
+  <div class="breakdown">
+    <div class="bcard">
+      <h3>The year</h3>
+      <div class="brow"><span class="blabel">Tier 1: 80 clients at $5,000</span><span class="bval">$400k</span></div>
+      <div class="brow"><span class="blabel">Tier 2: 10 members at $22,000</span><span class="bval">$220k</span></div>
+      <div class="brow"><span class="blabel">Total a year</span><span class="bval hi">$620k</span></div>
+    </div>
+    <div class="bcard dark worth">
+      <div><div class="worth-num">~$11,900</div><span class="worth-label">a week</span></div>
+      <div><div class="worth-num">~3 hours</div><span class="worth-label">of your time a week</span></div>
+    </div>
+  </div>
+  <div class="footnote">At $5,000 a Tier 1 client and $22,000 a Tier 2 member. The recorded lessons do the teaching, so the weekly time is mostly the live calls and Q&A.</div>
+</section>
+
+<!-- 15. Close / next steps -->
+<section class="slide slide--close">
+  <div class="close-content">
+    <div class="title-eyebrow">What we need to decide</div>
+    <h2>What we need<br>to decide.</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><h3>Filming time</h3><p>Mark, Cam, and Hannah confirm the days they can give, and when.</p></div>
+      <div class="step"><div class="step-num">2</div><h3>Lesson length</h3><p>Settle on a target per lesson so we can schedule the filming.</p></div>
+      <div class="step"><div class="step-num">3</div><h3>The first group</h3><p>Agree who the first 2 to 3 people are, the ones whose feedback we trust.</p></div>
+      <div class="step"><div class="step-num">4</div><h3>Tier 2 in principle</h3><p>Agree it is the longer term direction, so we build Tier 1 to lead into it.</p></div>
+    </div>
+  </div>
+  <div class="close-panel">
+    <div class="close-meta">Cool Hollow Coaching</div>
+    <div>
+      <h3>Most of the work is done. <span class="gold">What is left is filming, and the first few owners.</span></h3>
+      <p>Year one is about getting it right, not the revenue. Get the first owners a real result and everything after that gets easier.</p>
+    </div>
+    <div class="close-meta">Launch &amp; Scaling Plan &middot; v1 &middot; 23 June 2026</div>
+  </div>
+</section>
+
+</body>
+</html>
