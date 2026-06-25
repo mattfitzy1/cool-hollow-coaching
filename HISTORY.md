@@ -22,6 +22,12 @@
 - Offer framing: the $5K program is the front door that scales all of Cool Hollow; Tier 2 = $22K/year, open to all owners, 1-on-1 coaching twice a week.
 - Video style: narrative/roadmap, not slogan montage; lock the script before rendering.
 
+### GTD System, Logo on Landing Pages, Deck v2
+- Installed the Productivity OS (GTD): `gtd/` inbox, next-actions, projects, areas, waiting-for, someday-maybe, dashboard, and refresh/inbox-capture scripts, customized to Cool Hollow Coaching's own areas (Content & Social, Funnel & Lead Gen, Product & Delivery, Platform & Tools, Finance & Pricing, Team & Partners).
+- Installed Intel OS collection scripts (Fireflies/Fathom meeting collectors, Slack classifier, shared `data/data.db` tables) ahead of getting a recorder connected; decided to use a personal Fathom account rather than fight the office Google Workspace admin lock.
+- Recolored the Cool Hollow compass-mark logo to the Coaching gold/black/champagne palette and added it to both `site/index.html` (top-left nav) and `link-in-bio/index.html` (centered top).
+- Rebuilt the team launch and scaling deck as v2: added the logo, a new organic-marketing (attract/capture/convert) slide, a cost-to-run slide framing the ~$850/month stack as funnel-building not overhead, and upgraded year-two growth numbers (15 new Tier 1 clients/month, 4 new Tier 2 members/month, ~$1.9M), with explicit "not a made up figure" arithmetic behind the $3M goal. Checked older slides for consistency with the new numbers.
+
 ## 2026-06-23
 
 ### Team Launch and Scaling Plan Deck
