@@ -39,3 +39,9 @@ credentials/
 generated_imgs/
 outputs/creative/**/drafts/
 apps/*/dist/
+
+# Video build intermediates (regenerable from beats.json + scripts/video/)
+outputs/videos/**/frames/
+outputs/videos/**/silent.mp4
+outputs/videos/**/master.wav
+outputs/videos/**/voice/

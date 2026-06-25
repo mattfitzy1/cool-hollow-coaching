@@ -8,6 +8,20 @@
 
 ---
 
+## 2026-06-24
+
+### Brand & Growth Roadmap and condensed explainer video
+- Built a full Brand & Growth Roadmap from the marketing discovery call with Sam (and Josh): positioning (blue-collar niche, layered hook), offer ladder, story bank, content engine ("media company that sells coaching"), funnel, GoHighLevel, social audit, 90-day plan, and an in-house-vs-agency comparison. Saved as `outputs/strategy/2026-06-24-brand-and-growth-roadmap.md` (+ styled HTML + PDF). Purpose: show Cam we can build the marketing in-house instead of paying the agency's full fee.
+- Stood up markdown-to-HTML and HTML-to-PDF helpers (`scripts/md_to_html.py`, `scripts/html_to_pdf.py`) so strategy docs render as clean branded pages/PDFs without pandoc.
+- Built a 100-second condensed-roadmap explainer video (`outputs/videos/cool-hollow-brand/cool-hollow-brand-explainer.mp4`, 8.7MB): kinetic typography in the black/gold brand, ElevenLabs voiceover (Eric), synth music bed. Wrote the full render pipeline from scratch (`scripts/video/`) since the demo-video skill shipped without its engine code: TTS + timeline + music mix, Playwright frame capture, resume-on-stall capture, ffmpeg mux.
+- Connected ElevenLabs (free tier) for voiceover; key stored in `.env`.
+
+### Decisions
+- Audience: niche on blue-collar owner-operators ($500K-$10M), not industry-agnostic. "We own the blue-collar space."
+- Messaging: drop the bare "$50k found" claim as the lead; lead with the life (a business that runs without you), prove with real client stories.
+- Offer framing: the $5K program is the front door that scales all of Cool Hollow; Tier 2 = $22K/year, open to all owners, 1-on-1 coaching twice a week.
+- Video style: narrative/roadmap, not slogan montage; lock the script before rendering.
+
 ## 2026-06-23
 
 ### Team Launch and Scaling Plan Deck
