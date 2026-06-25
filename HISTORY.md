@@ -10,6 +10,13 @@
 
 ## 2026-06-25
 
+### Never-Miss-a-Job Concept and Hormozi/Cardone Teardown
+- Deep research teardown of Hormozi and Cardone Ventures' blue-collar funnels: hook patterns, audience sentiment and weak spots, and where Cool Hollow can position against them, with a synthesis report tying it together.
+- Spec'd out a new "never miss a job" tool concept and checked it against market saturation before committing further.
+- Drafted a database reactivation tool spec and a build-run-price bundle playbook for packaging services around these tools.
+- Wrote a marketing one-pager and sales video script for never-miss-a-job, and an AI operator product vision doc.
+- Installed the `claude-for-safari` skill (third-party, controls the real Safari browser) for use in another session; flagged its Snyk High Risk rating and the multi-tab visibility caveat, saved to memory for future reference.
+
 ### Tier 2 Pricing Update and Blue-Collar Niche Market Research
 - Updated the scaling plan deck: Tier 2 now priced at **$25,000–$35,000/year** (raised from $22,000). Revised all references in the deck including the long-term revenue math (25 Tier 2 members at the new range), year-two projections (10 members at ~$30K = $300K), and supporting footnotes.
 - Built comprehensive **blue-collar high-ticket coaching market research** in three formats (Markdown, HTML, PDF): validated the niche with data on $16–20B coaching market, $650–750B home services, and four major competitors (Breakthrough Academy $38.7K–$105.3K, Contractor Fight $697/mo, Tommy Mello tiered, CertainPath $399+/mo). Identified Cool Hollow's unowned gap: owner-exit + CFO expertise (vs competitors' growth/scale focus), with defensible pricing at $5K–$35K vs market's $38K–$105K. Confirmed the niche does not cap the $1.5M goal (900K+ contractor establishments in addressable universe) and documented the engagement science for time-poor owners (short lessons, high price, community accountability).
