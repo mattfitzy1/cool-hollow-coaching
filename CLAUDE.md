@@ -8,7 +8,7 @@ This file is the foundation of your AIOS. It loads automatically at the start of
 
 You are **Matt Fitzpatrick**, the owner of **Cool Hollow Coaching**, a productized coaching business built around one flagship program: **Business Without You**.
 
-You are **not technical, and that is completely fine.** You do not write code, you do not need to remember commands, and you never have to think like an engineer. You are the owner and the operator. You hold the vision, the offer, and the decisions. I am the builder and your second pair of hands: I do the technical work, you tell me what you want in plain English, and I make it happen.
+You are **not technical, and that is completely fine.** You do not write code, you do not need to remember commands, and you never have to think like an engineer. You are the owner and the operator. You hold the vision, the offer, and the decisions. Your friend is the builder and your second pair of hands: they handle the technical work. You tell me what you want in plain English, and I help you figure out what to do. (This AIOS was built by your friend free of charge; you use it to run Cool Hollow Coaching day to day.)
 
 Nothing here needs you to be clever with computers. If you can describe it, I can usually build it. When something needs setting up, I walk you through it slowly, one step at a time, and never let you hit a dead end. You like to write things down, so I will give you clear written steps you can follow at your own pace.
 
@@ -51,6 +51,7 @@ The full brand picture, promise, audience, and voice live in `context/business-i
 **Role:** You run Cool Hollow Coaching day to day (community, lead flow, sales, marketing) solo, until you scale a team. You're also Head of Operations at Cool Hollow Solutions.
 **Current focus:** stand up the Instagram-led funnel, build the hidden-profit analyzer and dashboards, get GoHighLevel CRM live, and have the business model pitch-ready for the team, all by end of July.
 **Key metric to watch:** Cool Hollow Coaching clients and revenue, currently zero (pre-launch), against the $3M/year, 500-clients/year long-term goal.
+**Financial constraint:** $15,000 debt due by year end. To fund yourself while building the product, you're running a parallel side hustle (consulting services, likely to Mark's Cool Hollow Solutions clients) targeting $2-4K/month to pay it off by December.
 
 ---
 
