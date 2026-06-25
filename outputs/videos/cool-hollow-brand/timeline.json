@@ -1,0 +1,95 @@
+{
+  "total_ms": 99195,
+  "beats": [
+    {
+      "start_ms": 1100,
+      "dur_ms": 9984,
+      "kicker": "01 \u00b7 Who we serve",
+      "line": "Blue-collar owners.",
+      "line2": "",
+      "sub": "$500K to $10M a year. The space we own.",
+      "brand": false
+    },
+    {
+      "start_ms": 11734,
+      "dur_ms": 10309,
+      "kicker": "The promise",
+      "line": "A business that",
+      "line2": "runs without you.",
+      "sub": "Lead with the life. Prove it with real stories.",
+      "brand": false
+    },
+    {
+      "start_ms": 22693,
+      "dur_ms": 10448,
+      "kicker": "02 \u00b7 The offer",
+      "line": "$5,000.",
+      "line2": "",
+      "sub": "The front door that scales all of Cool Hollow.",
+      "brand": false
+    },
+    {
+      "start_ms": 33791,
+      "dur_ms": 10727,
+      "kicker": "Tier 2",
+      "line": "$22,000",
+      "line2": "",
+      "sub": "Per year. Open to all owners. One-on-one coaching, twice a week.",
+      "brand": false
+    },
+    {
+      "start_ms": 45168,
+      "dur_ms": 7058,
+      "kicker": "03 \u00b7 The story bank",
+      "line": "Real wins.",
+      "line2": "Our unfair advantage.",
+      "sub": "Stories no agency could invent. They're ours.",
+      "brand": false
+    },
+    {
+      "start_ms": 52876,
+      "dur_ms": 9705,
+      "kicker": "04 \u00b7 The content engine",
+      "line": "A media company",
+      "line2": "that sells coaching.",
+      "sub": "Earn trust first. Fronted by Mark.",
+      "brand": false
+    },
+    {
+      "start_ms": 63231,
+      "dur_ms": 8916,
+      "kicker": "05 \u00b7 The funnel",
+      "line": "Warm. Amplify. Capture.",
+      "line2": "",
+      "sub": "Content warms. Ads fuel what works. One system follows up.",
+      "brand": false
+    },
+    {
+      "start_ms": 72797,
+      "dur_ms": 9752,
+      "kicker": "The 90-day plan",
+      "line": "Foundation. Engine on.",
+      "line2": "Amplify.",
+      "sub": "Build the story bank. Launch a beta. Scale what converts.",
+      "brand": false
+    },
+    {
+      "start_ms": 83199,
+      "dur_ms": 11192,
+      "kicker": "The bottom line",
+      "line": "We don't rent it.",
+      "line2": "We build it.",
+      "sub": "Our stories. Mark's voice. Already ours.",
+      "brand": false
+    },
+    {
+      "start_ms": 95041,
+      "dur_ms": 2554,
+      "kicker": "",
+      "line": "COOL HOLLOW COACHING",
+      "line2": "",
+      "sub": "Business Without You",
+      "brand": true
+    }
+  ]
+}

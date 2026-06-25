@@ -1,0 +1,41 @@
+{
+  "voice_id": "cjVigY5qzO86Huf0OWal",
+  "voice_name": "Eric",
+  "model_id": "eleven_multilingual_v2",
+  "voice_settings": {"stability": 0.5, "similarity_boost": 0.85, "style": 0.0, "use_speaker_boost": true},
+  "lead_in_ms": 1100,
+  "gap_ms": 650,
+  "tail_ms": 1600,
+  "music": "warm_pad",
+  "beats": [
+    {"vo": "It starts with who. Blue-collar owners doing half a million to ten million a year. The ones who are the bottleneck in their own company. This is our space, and we own it.",
+     "kicker": "01 · Who we serve", "line": "Blue-collar owners.", "line2": "", "sub": "$500K to $10M a year. The space we own."},
+
+    {"vo": "We lead with the life, not a claim. A business that runs without you. Then we prove it with real client stories. The actual wins, not a slogan.",
+     "kicker": "The promise", "line": "A business that", "line2": "runs without you.", "sub": "Lead with the life. Prove it with real stories."},
+
+    {"vo": "At the center sits the coaching program. Five thousand dollars. It's the front door that scales every side of Cool Hollow. Consulting, financial, the whole brand grows behind it.",
+     "kicker": "02 · The offer", "line": "$5,000.", "line2": "", "sub": "The front door that scales all of Cool Hollow."},
+
+    {"vo": "And it funnels into tier two. Twenty-two thousand a year, open to any business owner, not just ours. Premium one-on-one coaching, and live advice twice a week.",
+     "kicker": "Tier 2", "line": "$22,000", "line2": "", "sub": "Per year. Open to all owners. One-on-one coaching, twice a week."},
+
+    {"vo": "The fuel is our story bank. Ten to fifteen real client wins. The kind no agency could ever invent, because they're ours.",
+     "kicker": "03 · The story bank", "line": "Real wins.", "line2": "Our unfair advantage.", "sub": "Stories no agency could invent. They're ours."},
+
+    {"vo": "Then the engine. We build a media company that happens to sell coaching. Honest, story-led content, fronted by Mark, that earns trust before we ever ask for the sale.",
+     "kicker": "04 · The content engine", "line": "A media company", "line2": "that sells coaching.", "sub": "Earn trust first. Fronted by Mark."},
+
+    {"vo": "Here's how it connects. Content warms people up. Paid ads pour fuel on what's working. And every lead lands in one system that books the call and follows up.",
+     "kicker": "05 · The funnel", "line": "Warm. Amplify. Capture.", "line2": "", "sub": "Content warms. Ads fuel what works. One system follows up."},
+
+    {"vo": "The next ninety days. Lock the message and build the story bank. Turn the engine on and launch a small beta. Then put spend behind what converts, and open the doors.",
+     "kicker": "The 90-day plan", "line": "Foundation. Engine on.", "line2": "Amplify.", "sub": "Build the story bank. Launch a beta. Scale what converts."},
+
+    {"vo": "And the bottom line. The two things that matter most, our stories and Mark's voice, can't be bought from an agency. They're already ours. So we don't rent this. We build it.",
+     "kicker": "The bottom line", "line": "We don't rent it.", "line2": "We build it.", "sub": "Our stories. Mark's voice. Already ours."},
+
+    {"vo": "Cool Hollow Coaching. A business without you.",
+     "line": "COOL HOLLOW COACHING", "line2": "", "sub": "Business Without You", "brand": true}
+  ]
+}
