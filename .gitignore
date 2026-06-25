@@ -45,3 +45,7 @@ outputs/videos/**/frames/
 outputs/videos/**/silent.mp4
 outputs/videos/**/master.wav
 outputs/videos/**/voice/
+
+# Tool cache and a separate cloned repo (not Cool Hollow work)
+.firecrawl/
+Agent-Reach/
