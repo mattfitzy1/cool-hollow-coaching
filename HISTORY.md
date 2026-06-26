@@ -8,7 +8,18 @@
 
 ---
 
-## 2026-06-25
+## 2026-06-26
+
+### Hormozi Funnel Mechanism, Blue-Collar Redesign, and Lead-Gated Analyzer
+- Read the Hormozi/Acquisition.com funnel teardown and the blue-collar synthesis doc, approved adopting the mechanism: free diagnostic gated by email capture, immediate post-result pitch, fit-gated application before any sales call. Saved both as standing project memories for future funnel and content work.
+- Added a name/email capture gate to the hidden-profit analyzer (`apps/hidden-profit-analyzer/app.py`): the report no longer renders until the visitor submits contact info, which saves to a local gitignored `leads.csv`. Added a post-report CTA pointing to the application.
+- Retargeted all three site pages (`site/index.html`, `discovery.html`, `thank-you.html`) from generic "business owner" language to named trades (HVAC, plumbing, electrical, roofing, construction), using the swipe-template hooks from the synthesis research.
+- Full redesign pass after feedback that the pages weren't on-brand: swapped the elegant italic serif (Fraunces) for Barlow Condensed + Manrope, a bolder industrial pairing that fits the blue-collar audience. Fixed a real bug where several trust-strip logos (Premier HVAC, Cline Collision, Laurel Asphalt, Luxus Property) were invisible, white-on-white, by classifying each logo as light or dark and giving only the dark ones a white backing chip.
+- Trimmed the homepage from ~12 sections to 8 (deleted a fully redundant "more than a coaching program" section, cut the FAQ from 11 questions to 6, fixed a stale product-name mismatch in one FAQ answer), and reduced competing CTAs down to one dominant action per page instead of "Apply Now" competing with the diagnostic everywhere.
+- Brought `thank-you.html` onto the current black/gold brand palette; it had been left on the old teal/sage scheme since before the rebrand.
+
+### Workspace tidy-up
+- Confirmed no secrets staged; added `.claude/launch.json` (local static-server config for previewing `site/`) and a leads.csv gitignore rule.
 
 ### Never-Miss-a-Job Concept and Hormozi/Cardone Teardown
 - Deep research teardown of Hormozi and Cardone Ventures' blue-collar funnels: hook patterns, audience sentiment and weak spots, and where Cool Hollow can position against them, with a synthesis report tying it together.
