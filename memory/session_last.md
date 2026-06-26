@@ -3,21 +3,27 @@ name: last-session-summary
 description: What was worked on, decisions made, and next steps from the most recent session
 ---
 
-**Date:** 2026-06-25
+**Date:** 2026-06-26
 
 **What was worked on:**
-- Installed Node.js, npm, and Homebrew on this machine (none were present), then installed the third-party `claude-for-safari` skill for use in another session.
-- Tested `claude-for-safari` on a low-stakes task (open Safari, navigate to google.com, screenshot) — confirmed it can navigate, open tabs, and screenshot. Clicking, page reads, and JS-based actions need "Allow JavaScript from Apple Events" enabled in Safari's Develop menu, which is not yet on.
-- Committed today's earlier work: Hormozi/Cardone blue-collar funnel teardown (deep research), never-miss-a-job tool spec + market saturation check + sales script + marketing one-pager, database reactivation tool spec, build-run-price bundle playbook, AI operator product vision, and a CLAUDE.md wording tweak.
+- Matt read the Hormozi funnel teardown and approved adopting its mechanism. Implemented: email-gated the hidden-profit analyzer's report, added a post-report CTA, tightened the discovery.html application copy into a fit-gate frame.
+- Found the live analyzer fix was sitting uncommitted (Matt tested the old deployed version and saw the bug, "got the report before being asked for email" — confirmed and explained, held off pushing per Matt's instruction to focus on landing pages first).
+- Matt asked to retheme all 3 site pages for the blue-collar trade audience: retargeted copy to named trades (HVAC, plumbing, electrical, roofing, construction).
+- Matt then asked for a fuller redesign: pulled in the frontend-design and ui-ux-pro-max skills, fixed a real logo-visibility bug (several logos were white-on-white), replaced the font (Fraunces → Barlow Condensed + Manrope), trimmed the homepage from ~12 sections to 8, cut the FAQ from 11 to 6, reduced competing CTAs to one dominant action per page, and brought thank-you.html onto the current black/gold palette (it had been left on the old teal/sage scheme).
+- Committed and pushed all of it.
 
 **Key decisions:**
-- Keeping `claude-for-safari` installed but treating it as invoke-deliberately-per-task, not always-on, given its Snyk High Risk flag and the fact it can see/act on any open Safari tab.
-- Left `Agent-Reach/` (a separate cloned repo, not Cool Hollow work) and `.firecrawl/` (tool cache) out of git tracking.
+- Hormozi mechanism approved as the standing funnel structure (saved to memory: project_hormozi_funnel_mechanism, project_hormozi_cardone_synthesis_strategy).
+- Discovery.html's application form dropped the extrovert/introvert personality questions (friction without real qualification value) and added a Trade dropdown instead.
+- New font system (Barlow Condensed + Manrope) replaces Fraunces/Inter across all 3 site pages going forward.
 
 **Open / unfinished:**
-- "Allow JavaScript from Apple Events" not yet enabled in Safari — needed if the other session wants full click/read/form-fill capability from claude-for-safari.
-- The never-miss-a-job tool and database reactivation tool are specced but not built.
+- The hidden-profit-analyzer email-gate fix is committed and pushed now, but Matt has not yet confirmed the live Streamlit deploy picked it up (Streamlit Cloud auto-redeploys on push, should be live within a minute or two, worth a check next session).
+- `site/` is still not deployed to Cloudflare Pages. `APPLY_URL` in `apps/hidden-profit-analyzer/app.py` is a placeholder (`#`) until that happens.
+- Matt was mid-review of the 3 redesigned pages when this session ended ("keep reviewing"), no further feedback captured yet.
+- Offered to extend the same font/structure treatment to the link-in-bio page; not yet actioned.
 
 **Next steps:**
-- Pick up the other session's task using claude-for-safari, enabling the Apple Events JS setting first if full interaction is needed.
-- Decide whether to move from spec to build on never-miss-a-job or database reactivation tool.
+- Pick up Matt's feedback on the 3 redesigned pages once he's done reviewing.
+- Confirm the live analyzer deploy shows the email gate.
+- Decide on Cloudflare Pages deployment timing for site/.
