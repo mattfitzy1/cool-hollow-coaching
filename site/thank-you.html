@@ -8,38 +8,45 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #FAF8F3; --card: #F1EDE2; --ink: #0E4643; --body-ink: #283835;
-    --accent: #589BA8; --accent2: #B4D351; --dark: #14313A;
+    --paper: #FFFFFF; --card: #F4F4F2; --ink: #0A0A0A; --body-ink: #1A1A1A;
+    --amber: #C8A227; --dark: #060606;
   }
-  body { background: var(--paper); color: var(--body-ink); }
-  .font-display { font-family: 'Fraunces', serif; }
+  * { box-sizing: border-box; }
+  body { background: var(--paper); color: var(--body-ink); overflow-x: hidden; }
+  .font-display { font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: 0.005em; font-weight: 800; }
   .font-body { font-family: 'Manrope', sans-serif; }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
-  .label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); opacity: 0.55; }
+  .label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); opacity: 0.6; }
   .hairline { height: 1px; background: var(--ink); opacity: 0.12; }
+  .amber { color: var(--amber); }
+  .grain { position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: 0.05; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
   .calendar-frame {
-    border: 1.5px dashed rgba(14,70,67,0.3); border-radius: 12px;
+    border: 2px dashed rgba(200,162,39,0.5); border-radius: 14px;
     background: var(--card);
     padding: 64px 32px; text-align: center;
   }
+  ::selection { background: var(--amber); color: #0A0A0A; }
 </style>
 </head>
-<body class="font-body antialiased selection:bg-[#0E4643] selection:text-[#FAF8F3]">
+<body class="font-body antialiased">
 
-<nav class="w-full px-6 md:px-12 py-7 flex justify-between items-center max-w-screen-2xl mx-auto">
-  <a href="index.html" class="font-display italic text-lg tracking-tight" style="color:var(--ink)">Cool Hollow Coaching</a>
+<div class="grain"></div>
+
+<nav class="w-full px-6 md:px-12 py-6 flex justify-between items-center max-w-screen-2xl mx-auto fixed top-0 left-0 right-0 z-40 backdrop-blur-md" style="background:rgba(6,6,6,0.55); border-bottom:1px solid rgba(255,255,255,0.08)">
+  <a href="index.html" class="font-display text-lg tracking-tight" style="color:#fff">Cool Hollow <span class="amber">Coaching</span></a>
 </nav>
 
-<header class="px-6 md:px-12 pt-6 pb-12 max-w-screen-2xl mx-auto">
+<header class="px-6 md:px-12 pt-40 pb-12 max-w-screen-2xl mx-auto">
   <div class="flex items-center gap-3 mb-8">
-    <i data-lucide="check-circle-2" class="w-5 h-5" style="color:var(--accent)"></i>
+    <i data-lucide="check-circle-2" class="w-5 h-5 amber"></i>
     <span class="label">Application received</span>
   </div>
-  <h1 class="font-display text-4xl md:text-6xl leading-[0.95] tracking-tight max-w-3xl mb-6" style="color:var(--ink)">Got it.<br><span class="italic">Now pick a time.</span></h1>
-  <p class="opacity-80 max-w-xl text-base leading-relaxed">Grab a time below for your Profit Discovery Call. Twenty to thirty minutes, no pitch deck.</p>
+  <h1 class="font-display text-5xl md:text-7xl leading-[0.92] tracking-tight max-w-3xl mb-6" style="color:var(--ink)">Got it.<br><span class="amber">Now pick a time.</span></h1>
+  <p class="opacity-80 max-w-xl text-base leading-relaxed font-body">Grab a time below for your Profit Discovery Call. Twenty to thirty minutes, no pitch deck, just your numbers and your shop.</p>
 </header>
 
 <section class="px-6 md:px-12 max-w-screen-2xl mx-auto mb-24">
@@ -51,18 +58,18 @@
     https://help.calendly.com/hc/en-us/articles/223147027
   -->
   <div class="calendar-frame">
-    <i data-lucide="calendar" class="w-8 h-8 mx-auto mb-6 opacity-40" style="color:var(--ink)"></i>
+    <i data-lucide="calendar" class="w-8 h-8 mx-auto mb-6 amber" style="opacity:0.7"></i>
     <p class="font-mono text-xs tracking-widest uppercase opacity-50" style="color:var(--ink)">Calendly embed goes here</p>
-    <p class="text-sm opacity-60 mt-3 max-w-sm mx-auto">Send your Calendly link, or set one up at calendly.com, and it gets wired in here.</p>
+    <p class="text-sm opacity-60 mt-3 max-w-sm mx-auto font-body">Send your Calendly link, or set one up at calendly.com, and it gets wired in here.</p>
   </div>
 </section>
 
-<section class="px-6 md:px-12 max-w-screen-2xl mx-auto py-16" style="border-top:1px solid rgba(14,70,67,0.12)">
+<section class="px-6 md:px-12 max-w-screen-2xl mx-auto py-16" style="border-top:1px solid rgba(0,0,0,0.12)">
   <div class="flex items-center gap-4 mb-8">
     <span class="label">What to expect on the call</span>
     <div class="hairline flex-1"></div>
   </div>
-  <p class="max-w-2xl text-[15px] leading-relaxed opacity-80">We'll go through your numbers together, the same five areas the program is built around: time, direction, your dashboard, hidden profit, and cash. You'll walk away with at least one real thing to act on, whether or not the program ends up being a fit.</p>
+  <p class="max-w-2xl text-[15px] leading-relaxed opacity-80 font-body">We'll go through your numbers together, the same five areas the program is built around: time, direction, your dashboard, hidden profit, and cash. You'll walk away with at least one real thing to act on in your shop, whether or not the program ends up being a fit.</p>
 </section>
 
 <footer class="px-6 md:px-12 py-10 max-w-screen-2xl mx-auto">

@@ -68,9 +68,16 @@ without re-running this and keeping it green.**
   tool deliberately does not claim a "healthy margin" target, because that varies by
   industry and would be inventing a standard.
 
-## Not yet live
+## Live
 
-This runs locally, passes its backtest, and reads four real P&Ls correctly to the cent.
-Before it goes in front of a prospect it still needs: (1) a decided, free public host,
-and (2) a final read of the privacy wording. Do not link it from the Instagram bio
-until those are done.
+Deployed at https://profit-finder-coolhollow.streamlit.app (Streamlit Community Cloud).
+
+## Lead capture
+
+The report is gated behind a name/email form (Hormozi-style: deliver the diagnostic,
+but only once we have contact info). Submissions append to `leads.csv` in this folder
+(gitignored, never committed, since it holds real contact info). After the report,
+a CTA points to `site/discovery.html` to apply for Business Without You, the
+pattern-interrupt step right after the result lands rather than waiting for a follow-up.
+The `APPLY_URL` constant in `app.py` is a placeholder (`#`) until `site/` is deployed
+to Cloudflare Pages, swap it for the real domain then.

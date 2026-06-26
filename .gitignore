@@ -49,3 +49,6 @@ outputs/videos/**/voice/
 # Tool cache and a separate cloned repo (not Cool Hollow work)
 .firecrawl/
 Agent-Reach/
+
+# Captured lead data (PII, never commit)
+apps/hidden-profit-analyzer/leads.csv

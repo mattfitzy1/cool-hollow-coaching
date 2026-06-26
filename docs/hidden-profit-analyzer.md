@@ -1,11 +1,11 @@
 # System: Hidden-Profit Analyzer
 
-> Takes an uploaded P&L (CSV, Excel, or PDF) and surfaces pricing gaps, cost leakage, and cash flow timing risk, with one headline dollar figure. Lead-magnet tool for Cool Hollow Coaching's front door.
+> Takes an uploaded P&L (CSV, Excel, or PDF) and surfaces pricing gaps, cost leakage, and cash flow timing risk, kept as separate honest findings (no inflated single number). Lead-magnet tool for Cool Hollow Coaching's front door, gated behind email capture.
 
 ## Architecture
 
 ```
-[CSV/Excel/PDF upload] --> [pdf_parser.py, if PDF] --> [analysis.py: load_pnl + 3 checks] --> [Streamlit report in browser]
+[CSV/Excel/PDF upload] --> [pdf_parser.py, if PDF] --> [analysis.py: full breakdown] --> [email/name gate, saves to leads.csv] --> [Streamlit report] --> [CTA to site/discovery.html]
 ```
 
 ## Key Files
@@ -26,11 +26,9 @@
    - CSV/Excel: first column is the line item name; remaining columns are either one `amount` column (totals only) or one column per month.
    - PDF: `pdf_parser.parse_pdf()` first tries pdfplumber's table extraction (works for clean QuickBooks/Xero exports), then falls back to line-by-line text parsing that matches a label followed by one or more dollar amounts. Either path produces the same line_item + amount-column shape as a CSV upload.
 2. `load_pnl()` normalizes this into rows of `category` (revenue, cogs, expense, other), `line_item`, `month`, `amount`. Category is guessed from keywords in the line item name.
-3. Three checks run independently and each return a dollar estimate plus plain-English findings:
-   - `check_pricing_margin` — flags gross margin below a 50% benchmark.
-   - `check_cost_leakage` — flags expense lines growing faster than 15% month over month, and lists the largest recurring costs.
-   - `check_cash_timing` — flags months where outflow exceeds inflow (needs 2+ months of data to run).
-4. The app sums the three estimates into one headline "profit and cash risk found" number.
+3. `run_full_analysis()` returns five sections, each kept separate and never summed into one number: profit snapshot (margins), where the money goes (top cost lines), leverage (the biggest dollar moves), cost creep (line items genuinely growing), and cash timing (months where outflow exceeded inflow).
+4. Before the report renders, `st.session_state.get("lead_captured")` gates it: a name/email/business form must be submitted first. On submit, `save_lead()` appends to `leads.csv` in this folder (gitignored, real contact info, never committed) and the report unlocks via `st.rerun()`.
+5. Right after the report, a CTA ("Want us to find the rest?") links to `site/discovery.html` via `APPLY_URL` — the pattern-interrupt step that pitches the program the moment the result lands, instead of waiting for a follow-up email. `APPLY_URL` is `"#"` until `site/` is deployed to Cloudflare Pages.
 
 ## Configuration
 
@@ -77,13 +75,14 @@ with open('sample_pnl.pdf', 'rb') as f:
 ## Dependencies
 
 - **Depends on:** Python 3.9+, streamlit, pandas, openpyxl, pdfplumber.
-- **Used by:** nothing yet. Planned: embed into the future program website, or link standalone from Instagram as a lead magnet.
+- **Used by:** `site/index.html` and `site/discovery.html` link to it as the primary front-door CTA. It links back out to `site/discovery.html` after the report.
 
 ## Open items
 
 - Benchmarks (50% gross margin, 15% cost growth) are starting defaults, not yet validated against real client data.
-- Not yet deployed anywhere public. Currently runs locally only.
+- `APPLY_URL` in `app.py` is a placeholder until `site/` is deployed to Cloudflare Pages.
 - PDF parsing is heuristic (table extraction, then text-line pattern matching) and has not been tested against scanned or image-based PDFs, only text-based ones.
+- `leads.csv` is a local file on whatever machine runs the Streamlit deploy; no CRM/GoHighLevel hookup yet, so leads need to be pulled manually until that's wired.
 
 ## History
 
@@ -91,5 +90,7 @@ with open('sample_pnl.pdf', 'rb') as f:
 |------|--------|
 | 2026-06-22 | Initial build and documentation |
 | 2026-06-22 | Added PDF upload support (table + text-line extraction) |
+| 2026-06-23 | Deployed to Streamlit Community Cloud at profit-finder-coolhollow.streamlit.app |
+| 2026-06-25 | Added email/name capture gate before the report, and a post-report CTA to apply for Business Without You, adopting the Hormozi funnel mechanism (diagnostic → email gate → immediate pitch → fit application) |
 
 Note: this doc covers the lead-magnet tool. For the in-program Milestone 4 tool, see `docs/profit-discovery-audit.md`.

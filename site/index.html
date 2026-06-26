@@ -4,67 +4,64 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Business Without You | Cool Hollow Coaching</title>
-<meta name="description" content="A 12-week program for owners doing $500K to $10M a year who are still the bottleneck in their own business. 10 hours back, up to $50,000 in profit found.">
+<meta name="description" content="A 12-week program for trade and field-service owners (HVAC, plumbing, electrical, roofing, construction) doing $500K to $10M a year who are still the bottleneck in their own business. 10 hours back, up to $50,000 in profit found.">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #FFFFFF; --card: #F4F4F2; --ink: #0A0A0A; --body-ink: #1A1A1A;
-    --accent: #1A1A1A; --accent2: #C8A227; --amber: #C8A227; --dark: #060606;
+    --amber: #C8A227; --dark: #060606;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { background: var(--paper); color: var(--body-ink); overflow-x: hidden; }
-  .font-display { font-family: 'Fraunces', serif; }
-  .font-body { font-family: 'Inter', sans-serif; }
+  .font-display { font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: 0.005em; font-weight: 800; }
+  .font-body { font-family: 'Manrope', sans-serif; }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
   .label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); opacity: 0.6; }
   .hairline { height: 1px; background: var(--ink); opacity: 0.12; }
   .amber { color: var(--amber); }
-  .grain { position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: 0.035; mix-blend-mode: overlay;
+  .grain { position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: 0.05; mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
   .pill-primary {
-    position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px; overflow: hidden;
-    background: linear-gradient(135deg, #E0BA46, var(--amber) 60%, #9C7A1E); color: #0A0A0A;
-    padding: 19px 36px; border-radius: 999px;
-    font-family: 'Inter', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.01em;
-    transition: transform 0.25s cubic-bezier(.2,.9,.3,1.3), box-shadow 0.25s; box-shadow: 0 10px 30px rgba(200,162,39,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
-  }
-  .pill-primary::after {
-    content: ''; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.55), transparent);
-    transform: skewX(-20deg); transition: left 0.6s ease;
-  }
-  .pill-primary:hover::after { left: 130%; }
-  .pill-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 16px 36px rgba(200,162,39,0.55), inset 0 1px 0 rgba(255,255,255,0.5); }
-  .pill-ghost {
-    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-    border: 1.5px solid rgba(255,255,255,0.5); color: var(--paper);
+    position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    background: var(--amber); color: #0A0A0A; border: 2px solid #0A0A0A;
     padding: 18px 34px; border-radius: 999px;
-    font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px;
-    transition: background 0.3s, color 0.3s, border-color 0.3s;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; font-size: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .pill-ghost:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
-  .stat-num { font-family: 'Fraunces', serif; font-weight: 700; font-optical-sizing: auto; }
-  .marquee-track { display: flex; gap: 56px; animation: scroll 38s linear infinite; white-space: nowrap; }
+  .pill-primary.glow { box-shadow: 0 10px 30px rgba(200,162,39,0.45); }
+  .pill-primary.glow:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(200,162,39,0.6); }
+  .pill-primary.hard { box-shadow: 6px 6px 0 0 #0A0A0A; }
+  .pill-primary.hard:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 0 #0A0A0A; }
+  .text-link {
+    display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid currentColor; padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
+  .text-link:hover { opacity: 0.6; }
+  .stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; }
+  .marquee-track { display: flex; gap: 48px; align-items: center; animation: scroll 36s linear infinite; white-space: nowrap; }
   .marquee-track:hover { animation-play-state: paused; }
   @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   .pain-row { border-top: 1px solid rgba(0,0,0,0.12); transition: padding-left 0.3s, background 0.3s; }
   .pain-row:hover { background: rgba(200,162,39,0.06); padding-left: 12px; }
-  .asset-card { background: var(--card); border-radius: 14px; padding: 32px; border: 1px solid transparent; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; }
-  .asset-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.1); border-color: rgba(200,162,39,0.4); }
-  .testimonial-card { background: #fff; border: 1px solid rgba(0,0,0,0.1); border-radius: 14px; padding: 32px; transition: transform 0.3s, box-shadow 0.3s; }
-  .testimonial-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.1); }
-  .qualify-card { border: 1.5px solid var(--ink); border-radius: 14px; padding: 32px; transition: background 0.3s, color 0.3s; }
+  .asset-card { background: var(--card); border-radius: 10px; padding: 28px; border: 2px solid var(--ink); box-shadow: 4px 4px 0 0 rgba(10,10,10,0.15); transition: transform 0.25s, box-shadow 0.25s; }
+  .asset-card:hover { transform: translate(-3px,-3px); box-shadow: 7px 7px 0 0 rgba(200,162,39,0.9); }
+  .testimonial-card { background: #fff; border: 2px solid var(--ink); border-radius: 10px; padding: 30px; transition: transform 0.25s, box-shadow 0.25s; }
+  .testimonial-card:hover { transform: translate(-3px,-3px); box-shadow: 6px 6px 0 0 rgba(10,10,10,0.9); }
+  .qualify-card { border: 2px solid var(--ink); border-radius: 10px; padding: 30px; transition: background 0.3s, color 0.3s; }
   .qualify-card:hover { background: var(--ink); }
   .qualify-card:hover h3, .qualify-card:hover p { color: var(--paper) !important; opacity: 0.92; }
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
   .gold-rule { width: 56px; height: 3px; background: linear-gradient(90deg, var(--amber), transparent); margin: 0 auto; }
   .hero-glow { position: absolute; width: 700px; height: 700px; background: radial-gradient(circle, rgba(200,162,39,0.22), transparent 70%); border-radius: 50%; filter: blur(10px); pointer-events: none; }
+  .logo-chip-light { padding: 14px 20px; border-radius: 8px; background: #fff; display: flex; align-items: center; }
+  .logo-chip-dark { display: flex; align-items: center; }
   ::selection { background: var(--amber); color: #0A0A0A; }
 </style>
 </head>
@@ -75,17 +72,17 @@
 <nav class="w-full px-6 md:px-12 py-6 flex justify-between items-center max-w-screen-2xl mx-auto fixed top-0 left-0 right-0 z-40 backdrop-blur-md" style="background:rgba(6,6,6,0.55); border-bottom:1px solid rgba(255,255,255,0.08)">
   <a href="#" class="flex items-center gap-3 no-underline">
     <img src="assets/logo-gold-white.png" alt="Cool Hollow Coaching" class="h-9 w-auto md:h-10" />
-    <span class="font-display italic text-xl tracking-tight" style="color:#fff">Cool Hollow <span class="amber">Coaching</span></span>
+    <span class="font-display text-lg tracking-tight" style="color:#fff">Cool Hollow <span class="amber">Coaching</span></span>
   </a>
-  <a href="discovery.html" class="pill-primary !py-3 !px-6 !text-sm">Apply Now</a>
+  <a href="https://profit-finder-coolhollow.streamlit.app" class="pill-primary glow !py-3 !px-6 !text-sm">Free Diagnostic</a>
 </nav>
 
-<header class="relative overflow-hidden px-6 md:px-12 pt-40 pb-28 md:pt-48 md:pb-36 max-w-screen-2xl mx-auto text-center" style="background:var(--dark)">
+<header class="relative overflow-hidden px-6 md:px-12 pt-40 pb-28 md:pt-48 md:pb-32 max-w-screen-2xl mx-auto text-center" style="background:var(--dark)">
   <div class="hero-glow" style="top:-200px; left:50%; transform:translateX(-50%)"></div>
   <div class="relative">
-    <span class="label block mb-8" style="color:rgba(255,255,255,0.6)">Do you want to build a business that can run without you?</span>
-    <h1 class="font-display text-6xl md:text-9xl leading-[0.92] tracking-tight max-w-5xl mx-auto mb-3" style="color:#fff">
-      Business <span class="italic amber">Without</span> You
+    <span class="label block mb-8" style="color:rgba(255,255,255,0.6)">For HVAC, plumbing, electrical, roofing, and construction owners who are the bottleneck in their own shop</span>
+    <h1 class="font-display text-7xl md:text-[8.5rem] leading-[0.88] tracking-tight max-w-5xl mx-auto mb-3" style="color:#fff">
+      Business <span class="amber">Without</span> You
     </h1>
     <div class="gold-rule my-10"></div>
     <div class="flex flex-wrap justify-center gap-10 md:gap-20 mb-12">
@@ -93,37 +90,46 @@
       <div><div class="stat-num text-5xl md:text-6xl amber"><span class="count-up" data-target="50">0</span>K</div><div class="label mt-3" style="color:rgba(255,255,255,0.55)">up to, in found profit</div></div>
       <div><div class="stat-num text-5xl md:text-6xl amber count-up" data-target="12">0</div><div class="label mt-3" style="color:rgba(255,255,255,0.55)">weeks</div></div>
     </div>
-    <p class="text-base md:text-lg leading-relaxed max-w-xl mx-auto mb-12" style="color:rgba(255,255,255,0.75)">You built something real. Now build the system that runs it, so you can lead your business instead of being buried by it.</p>
-    <a href="discovery.html" class="pill-primary !text-base">Apply Now <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+    <p class="text-base md:text-lg leading-relaxed max-w-xl mx-auto mb-10 font-body" style="color:rgba(255,255,255,0.75)">You learned how to run a crew. Nobody taught you how to run a business. Now you build the system that runs the shop, so you lead it instead of being buried under it.</p>
+    <a href="https://profit-finder-coolhollow.streamlit.app" class="pill-primary glow !text-base">Get Your Free Profit Diagnostic <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+    <div class="mt-6">
+      <a href="discovery.html" class="text-link" style="color:rgba(255,255,255,0.55)">Already know you want in? Apply directly →</a>
+    </div>
   </div>
 </header>
 
 <section class="py-20" style="background:var(--dark)">
   <div class="max-w-screen-2xl mx-auto px-6 md:px-12 mb-10 text-center reveal">
-    <p class="label" style="color:var(--accent2); opacity:0.85">Trusted by 200+ business owners making $500K – $10 million</p>
+    <p class="label" style="color:var(--amber); opacity:0.85">Trusted by 200+ trade and field-service owners making $500K – $10 million</p>
   </div>
   <div class="overflow-hidden">
     <div class="marquee-track" id="logo-track"></div>
   </div>
   <script>
     const logos = [
-      { type: 'img', src: 'logos/premier-hvac.png', alt: 'Premier HVAC' },
-      { type: 'img', src: 'logos/cline-collision.png', alt: 'Cline Collision' },
-      { type: 'img', src: 'logos/cs-stoneworks.webp', alt: 'CS Stoneworks' },
-      { type: 'img', src: 'logos/willoughby.svg', alt: 'Willoughby Commercial' },
-      { type: 'img', src: 'logos/certapro.svg', alt: 'CertaPro' },
-      { type: 'img', src: 'logos/laurel-asphalt.png', alt: 'Laurel Asphalt' },
-      { type: 'img', src: 'logos/luxus-property.png', alt: 'Luxus Property Group' },
+      { type: 'img', src: 'logos/premier-hvac.png', alt: 'Premier HVAC', light: true },
+      { type: 'img', src: 'logos/cline-collision.png', alt: 'Cline Collision', light: true },
+      { type: 'img', src: 'logos/cs-stoneworks.webp', alt: 'CS Stoneworks', light: false },
+      { type: 'img', src: 'logos/willoughby.svg', alt: 'Willoughby Commercial', light: false },
+      { type: 'img', src: 'logos/certapro.svg', alt: 'CertaPro', light: false },
+      { type: 'img', src: 'logos/laurel-asphalt.png', alt: 'Laurel Asphalt', light: true },
+      { type: 'img', src: 'logos/luxus-property.png', alt: 'Luxus Property Group', light: true },
       { type: 'text', name: 'Gene Latta Ford' },
       { type: 'text', name: 'ADC Wastewater Engineering' },
       { type: 'text', name: 'DeLeon Painting' },
       { type: 'text', name: 'JW Mechanicals' },
     ];
     const track = document.getElementById('logo-track');
-    const renderSet = () => logos.map(l => l.type === 'img'
-      ? `<span class="px-4 py-3 rounded-xl flex items-center" style="background:#fff"><img src="${l.src}" alt="${l.alt}" style="height:36px; width:auto; max-width:160px; object-fit:contain"></span>`
-      : `<span class="font-display italic text-2xl px-6" style="color:rgba(255,255,255,0.55)">${l.name}</span>`
-    ).join('');
+    const renderSet = () => logos.map(l => {
+      if (l.type === 'text') {
+        return `<span class="font-mono text-xs uppercase tracking-[0.15em] px-6" style="color:rgba(255,255,255,0.5)">${l.name}</span>`;
+      }
+      // Light-colored logos sit directly on the dark strip (that's what they're designed for).
+      // Dark-colored logos get a white chip behind them so they don't disappear.
+      return l.light
+        ? `<span class="logo-chip-dark"><img src="${l.src}" alt="${l.alt}" style="height:34px; width:auto; max-width:170px; object-fit:contain"></span>`
+        : `<span class="logo-chip-light"><img src="${l.src}" alt="${l.alt}" style="height:30px; width:auto; max-width:160px; object-fit:contain"></span>`;
+    }).join('');
     track.innerHTML = renderSet() + renderSet();
   </script>
   <div class="max-w-screen-2xl mx-auto px-6 md:px-12 mt-10 text-center">
@@ -131,149 +137,139 @@
   </div>
 </section>
 
-<section class="px-6 md:px-12 py-28 max-w-screen-2xl mx-auto reveal">
+<section class="px-6 md:px-12 py-24 max-w-screen-2xl mx-auto reveal">
   <div class="text-center max-w-3xl mx-auto mb-16">
     <span class="label block mb-6">Our story</span>
-    <h2 class="font-display text-4xl md:text-6xl tracking-tight leading-tight" style="color:var(--ink)">Cool Hollow exists to give business owners their life back.</h2>
-    <p class="mt-8 text-base md:text-lg leading-relaxed opacity-80">We were built by the team behind Cool Hollow Solutions, operators who've spent 20 years inside 2,000+ accounts, working alongside 200+ business owners doing $500K to $10M a year, and scaling a company of their own past $20M. We saw the same thing every time: the owner had become the ceiling. <strong style="color:var(--ink)">Business Without You</strong> is that same operating system, repackaged as a 12-week program so any owner can install it, not just the ones who can afford a retainer.</p>
+    <h2 class="font-display text-4xl md:text-6xl tracking-tight leading-tight" style="color:var(--ink)">Cool Hollow exists to give trade business owners their life back.</h2>
+    <p class="mt-8 text-base md:text-lg leading-relaxed opacity-80 font-body">We were built by the team behind Cool Hollow Solutions, operators who've spent 20 years inside 2,000+ accounts, working alongside 200+ trade and field-service owners (HVAC, plumbing, electrical, roofing, construction, and the trucks-and-crew businesses like them) doing $500K to $10M a year, and scaling a company of their own past $20M. We saw the same thing every time: the owner had become the ceiling. <strong style="color:var(--ink)">Business Without You</strong> is that same operating system, repackaged as a 12-week program so any owner can install it, not just the ones who can afford a retainer.</p>
   </div>
 </section>
 
-<section class="px-6 md:px-12 py-28 max-w-screen-2xl mx-auto reveal">
+<section class="px-6 md:px-12 py-24 max-w-screen-2xl mx-auto reveal">
   <div class="flex items-center gap-4 mb-4">
-    <span class="label">What we do</span>
+    <span class="label">The problem</span>
     <div class="hairline flex-1"></div>
   </div>
-  <h2 class="font-display text-4xl md:text-6xl tracking-tight mb-4 max-w-3xl" style="color:var(--ink)">We build the system that runs your business, so it stops depending on <span class="italic amber">you</span>.</h2>
-  <p class="max-w-2xl text-base leading-relaxed opacity-80 mb-16">Most owners think the problem is sales, people, or hours. It isn't. The business was built around you, and now you're the ceiling. We install the operating system that removes the one constraint holding everything back.</p>
+  <h2 class="font-display text-4xl md:text-6xl tracking-tight mb-4 max-w-3xl" style="color:var(--ink)">We build the system that runs your shop, so it stops depending on <span class="amber">you</span>.</h2>
+  <p class="max-w-2xl text-base leading-relaxed opacity-80 mb-16 font-body">Most owners think the problem is more leads, or more crew. It isn't. It's that the business can't run a single day without you in it.</p>
 
-  <div class="mb-8">
-    <span class="label">The pain we eliminate: the owner being the bottleneck</span>
-  </div>
   <div>
     <div class="pain-row grid grid-cols-1 md:grid-cols-12 gap-6 py-8">
       <div class="md:col-span-1 font-mono text-sm amber">01</div>
-      <div class="md:col-span-4"><h3 class="font-display text-2xl" style="color:var(--ink)">Reclaim your time</h3></div>
-      <div class="md:col-span-7 opacity-75 text-[15px] leading-relaxed">Audit where your hours actually go, then strip out the low-value work, 10 hours back in the first 30 days.</div>
+      <div class="md:col-span-4"><h3 class="font-display text-2xl" style="color:var(--ink)">Get off the tools</h3></div>
+      <div class="md:col-span-7 opacity-75 text-[15px] leading-relaxed font-body">Stop being the best tech in your own company. Audit where your hours actually go, strip out the work that should never have reached you.</div>
     </div>
     <div class="pain-row grid grid-cols-1 md:grid-cols-12 gap-6 py-8">
       <div class="md:col-span-1 font-mono text-sm amber">02</div>
       <div class="md:col-span-4"><h3 class="font-display text-2xl" style="color:var(--ink)">Decisions by dashboard</h3></div>
-      <div class="md:col-span-7 opacity-75 text-[15px] leading-relaxed">Five metrics that tell the truth in 15 minutes a week, so the business is steered by data, not your gut.</div>
+      <div class="md:col-span-7 opacity-75 text-[15px] leading-relaxed font-body">Five metrics that tell the truth in 15 minutes a week, so the shop is steered by data, not your gut, and not whoever called last.</div>
     </div>
     <div class="pain-row grid grid-cols-1 md:grid-cols-12 gap-6 py-8" style="border-bottom:1px solid rgba(0,0,0,0.12)">
       <div class="md:col-span-1 font-mono text-sm amber">03</div>
-      <div class="md:col-span-4"><h3 class="font-display text-2xl" style="color:var(--ink)">Transfer to the team</h3></div>
-      <div class="md:col-span-7 opacity-75 text-[15px] leading-relaxed">A structured handoff of responsibility, not a dump, so good decisions get made when you're not in the room.</div>
+      <div class="md:col-span-4"><h3 class="font-display text-2xl" style="color:var(--ink)">Transfer to the crew</h3></div>
+      <div class="md:col-span-7 opacity-75 text-[15px] leading-relaxed font-body">A structured handoff of responsibility, not a dump, so good calls get made on the job site when you're not standing there.</div>
     </div>
   </div>
 </section>
 
-<section class="py-28 reveal" style="background:var(--dark)">
-  <div class="px-6 md:px-12 max-w-screen-2xl mx-auto">
-    <div class="flex items-center gap-4 mb-4">
-      <span class="label" style="color:var(--accent2); opacity:0.85">You're not doing this alone</span>
-      <div class="hairline flex-1" style="background:var(--paper); opacity:0.15"></div>
-    </div>
-    <h2 class="font-display text-4xl md:text-6xl tracking-tight mb-16 max-w-2xl" style="color:var(--paper)">More than a coaching program.</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="p-8 rounded-2xl" style="background:rgba(255,255,255,0.05); border:1px solid rgba(200,162,39,0.2)">
-        <h3 class="font-display text-2xl mb-3" style="color:var(--paper)">A private community of owners</h3>
-        <p class="opacity-70 text-[15px] leading-relaxed" style="color:var(--paper)">A room full of like-minded business owners looking to scale without the business needing them 24/7. You grow together, compare notes, and never feel alone in it.</p>
-      </div>
-      <div class="p-8 rounded-2xl" style="background:rgba(255,255,255,0.05); border:1px solid rgba(200,162,39,0.2)">
-        <h3 class="font-display text-2xl mb-3" style="color:var(--paper)">Access to a team that scaled to $20M</h3>
-        <p class="opacity-70 text-[15px] leading-relaxed" style="color:var(--paper)">You get the team behind a $20 million company, plus guest speakers who add real value across every sector of your business, from finance to hiring to operations.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="px-6 md:px-12 py-28 max-w-screen-2xl mx-auto reveal">
+<section class="px-6 md:px-12 py-24 max-w-screen-2xl mx-auto reveal">
   <div class="flex items-center gap-4 mb-4">
-    <span class="label">Your inside edge</span>
-    <div class="hairline flex-1"></div>
-  </div>
-  <h2 class="font-display text-4xl md:text-6xl tracking-tight mb-4 max-w-2xl" style="color:var(--ink)">What you walk away holding.</h2>
-  <p class="max-w-2xl text-base leading-relaxed opacity-80 mb-16">Every part of the program produces a real asset for your business, not notes, not theory.</p>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <div class="asset-card">
-      <h3 class="font-display text-xl mb-3" style="color:var(--ink)">The Liberation Audit</h3>
-      <p class="opacity-75 text-[15px] leading-relaxed">See exactly where your time goes, then reclaim 10 hours of low-value work in 30 days.</p>
-    </div>
-    <div class="asset-card">
-      <h3 class="font-display text-xl mb-3" style="color:var(--ink)">The Profit Discovery Audit</h3>
-      <p class="opacity-75 text-[15px] leading-relaxed">Find up to $50,000 in hidden profit already sitting inside your business.</p>
-    </div>
-    <div class="asset-card">
-      <h3 class="font-display text-xl mb-3" style="color:var(--ink)">The Truth-Telling Dashboard</h3>
-      <p class="opacity-75 text-[15px] leading-relaxed">Five metrics, reviewed in 15 minutes every Monday, that spot trouble before it becomes a crisis.</p>
-    </div>
-    <div class="asset-card">
-      <h3 class="font-display text-xl mb-3" style="color:var(--ink)">The Delegation System</h3>
-      <p class="opacity-75 text-[15px] leading-relaxed">Move responsibility to your team in a structured way that actually sticks.</p>
-    </div>
-    <div class="asset-card">
-      <h3 class="font-display text-xl mb-3" style="color:var(--ink)">Live coaching &amp; hot seats</h3>
-      <p class="opacity-75 text-[15px] leading-relaxed">Bring your real numbers and get worked on live, every week, alongside other owners.</p>
-    </div>
-    <div class="asset-card">
-      <h3 class="font-display text-xl mb-3" style="color:var(--ink)">The community &amp; guest experts</h3>
-      <p class="opacity-75 text-[15px] leading-relaxed">Like-minded owners and specialists who deepen every area of your business.</p>
-    </div>
-  </div>
-</section>
-
-<section class="px-6 md:px-12 py-28 max-w-screen-2xl mx-auto reveal">
-  <div class="flex items-center gap-4 mb-4">
-    <span class="label">Try it before you apply</span>
+    <span class="label">Start here, free</span>
     <div class="hairline flex-1"></div>
   </div>
   <h2 class="font-display text-4xl md:text-6xl tracking-tight mb-4 max-w-2xl" style="color:var(--ink)">The Hidden Profit Analyzer.</h2>
-  <p class="max-w-2xl text-base leading-relaxed opacity-80 mb-12">A tool we built ourselves, free to run before you ever apply. Upload a P&amp;L, and it scans for the leakage every owner has and nobody's measured: underpriced jobs, margin creep, unprofitable customers, cash tied up in the wrong places.</p>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-    <div class="asset-card" style="border-color:rgba(200,162,39,0.3); background:linear-gradient(160deg, rgba(200,162,39,0.07), var(--card))">
+  <p class="max-w-2xl text-base leading-relaxed opacity-80 mb-8 font-body">Upload a P&amp;L, and it scans for the leakage every trade owner has and nobody's measured: underpriced jobs, margin creep on certain crews or job types, unprofitable customers, cash tied up in the wrong places.</p>
+  <a href="https://profit-finder-coolhollow.streamlit.app" class="pill-primary hard !text-base !w-auto mb-12">Run My Free Diagnostic <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="asset-card">
       <i data-lucide="upload" class="w-7 h-7 mb-5 amber"></i>
       <h3 class="font-display text-xl mb-3" style="color:var(--ink)">Upload your P&amp;L</h3>
-      <p class="opacity-75 text-[15px] leading-relaxed">No spreadsheet wrangling. Drop in what you already have.</p>
+      <p class="opacity-75 text-[15px] leading-relaxed font-body">No spreadsheet wrangling. Drop in what you already have.</p>
     </div>
-    <div class="asset-card" style="border-color:rgba(200,162,39,0.3); background:linear-gradient(160deg, rgba(200,162,39,0.07), var(--card))">
+    <div class="asset-card">
       <i data-lucide="search" class="w-7 h-7 mb-5 amber"></i>
       <h3 class="font-display text-xl mb-3" style="color:var(--ink)">We scan for leakage</h3>
-      <p class="opacity-75 text-[15px] leading-relaxed">The same lens we use inside the program, run against your real numbers in minutes.</p>
+      <p class="opacity-75 text-[15px] leading-relaxed font-body">The same lens we use inside the program, run against your real numbers in minutes.</p>
     </div>
-    <div class="asset-card" style="border-color:rgba(200,162,39,0.3); background:linear-gradient(160deg, rgba(200,162,39,0.07), var(--card))">
+    <div class="asset-card">
       <i data-lucide="sparkles" class="w-7 h-7 mb-5 amber"></i>
       <h3 class="font-display text-xl mb-3" style="color:var(--ink)">See what's hiding</h3>
-      <p class="opacity-75 text-[15px] leading-relaxed">A plain-English breakdown of where the profit already in your business is sitting.</p>
+      <p class="opacity-75 text-[15px] leading-relaxed font-body">A plain-English breakdown of where the profit already in your shop is sitting.</p>
     </div>
   </div>
-  <p class="text-[15px] opacity-60 max-w-2xl">This is the same diagnostic that anchors the Profit Discovery Audit inside the program, just a smaller version, free, before you commit to anything.</p>
 </section>
 
-<section class="px-6 md:px-12 py-28 max-w-screen-2xl mx-auto reveal">
+<section class="px-6 md:px-12 py-24 max-w-screen-2xl mx-auto reveal">
+  <div class="flex items-center gap-4 mb-4">
+    <span class="label">What's inside</span>
+    <div class="hairline flex-1"></div>
+  </div>
+  <h2 class="font-display text-4xl md:text-6xl tracking-tight mb-4 max-w-2xl" style="color:var(--ink)">What you walk away holding.</h2>
+  <p class="max-w-2xl text-base leading-relaxed opacity-80 mb-16 font-body">Every part of the program produces a real asset for your business, not notes, not theory.</p>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="asset-card">
+      <h3 class="font-display text-xl mb-3" style="color:var(--ink)">The Liberation Audit</h3>
+      <p class="opacity-75 text-[15px] leading-relaxed font-body">See exactly where your time goes, then reclaim 10 hours of low-value work in 30 days.</p>
+    </div>
+    <div class="asset-card">
+      <h3 class="font-display text-xl mb-3" style="color:var(--ink)">The Profit Discovery Audit</h3>
+      <p class="opacity-75 text-[15px] leading-relaxed font-body">Find up to $50,000 in hidden profit already sitting inside your business.</p>
+    </div>
+    <div class="asset-card">
+      <h3 class="font-display text-xl mb-3" style="color:var(--ink)">The Truth-Telling Dashboard</h3>
+      <p class="opacity-75 text-[15px] leading-relaxed font-body">Five metrics, reviewed in 15 minutes every Monday, that spot trouble before it becomes a crisis.</p>
+    </div>
+    <div class="asset-card">
+      <h3 class="font-display text-xl mb-3" style="color:var(--ink)">The Delegation System</h3>
+      <p class="opacity-75 text-[15px] leading-relaxed font-body">Move responsibility to your crew in a structured way that actually sticks.</p>
+    </div>
+    <div class="asset-card">
+      <h3 class="font-display text-xl mb-3" style="color:var(--ink)">Live coaching &amp; hot seats</h3>
+      <p class="opacity-75 text-[15px] leading-relaxed font-body">Bring your real numbers and get worked on live, every week, alongside other owners.</p>
+    </div>
+    <div class="asset-card">
+      <h3 class="font-display text-xl mb-3" style="color:var(--ink)">A private community &amp; the team behind a $20M firm</h3>
+      <p class="opacity-75 text-[15px] leading-relaxed font-body">Other owners scaling without the business needing them 24/7, plus guest experts across finance, hiring, and operations.</p>
+    </div>
+  </div>
+</section>
+
+<section class="px-6 md:px-12 py-24 max-w-screen-2xl mx-auto reveal">
   <div class="flex items-center gap-4 mb-4">
     <span class="label">Who this is for</span>
     <div class="hairline flex-1"></div>
   </div>
-  <h2 class="font-display text-4xl md:text-6xl tracking-tight mb-16 max-w-2xl" style="color:var(--ink)">Built for established owners.</h2>
+  <h2 class="font-display text-4xl md:text-6xl tracking-tight mb-4 max-w-2xl" style="color:var(--ink)">Built for trade and field-service owners.</h2>
+  <p class="max-w-2xl text-base leading-relaxed opacity-80 mb-16 font-body">HVAC, plumbing, electrical, roofing, construction, landscaping, and businesses like them. If you're running trucks, a crew, and real jobs, this was built around you.</p>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     <div class="qualify-card">
-      <h3 class="font-display text-xl mb-3" style="color:var(--ink)">Owners with a team</h3>
-      <p class="opacity-75 text-[15px] leading-relaxed">You have 3 to 30 people and a real operation running, but you're still the one holding everything together, and you're ready to change that.</p>
+      <h3 class="font-display text-xl mb-3" style="color:var(--ink)">A crew and a real operation</h3>
+      <p class="opacity-75 text-[15px] leading-relaxed font-body">You have 3 to 30 people on the payroll and trucks on the road, but you're still the one holding it all together, and you're ready to change that.</p>
     </div>
     <div class="qualify-card">
       <h3 class="font-display text-xl mb-3" style="color:var(--ink)">Doing $500K to $10M</h3>
-      <p class="opacity-75 text-[15px] leading-relaxed">You've built something that works. The problem is it only works because of you. You want a business that grows on its structure, not your effort.</p>
+      <p class="opacity-75 text-[15px] leading-relaxed font-body">You've built something that works. The problem is it only works because of you. You want a shop that runs on its structure, not your effort.</p>
     </div>
     <div class="qualify-card">
       <h3 class="font-display text-xl mb-3" style="color:var(--ink)">Tried everything else</h3>
-      <p class="opacity-75 text-[15px] leading-relaxed">You've read the books, joined the programs, listened to the podcasts. You have the knowledge. Now you need someone to actually install the system.</p>
+      <p class="opacity-75 text-[15px] leading-relaxed font-body">You've read the books, joined the programs, listened to the podcasts. You have the knowledge. Now you need someone to actually install the system.</p>
     </div>
   </div>
 </section>
 
-<section class="px-6 md:px-12 py-28 max-w-screen-2xl mx-auto reveal">
+<section class="px-6 md:px-12 py-24 max-w-screen-2xl mx-auto reveal">
+  <div class="rounded-2xl p-10 md:p-16 text-center" style="background:var(--dark); border:1px solid rgba(200,162,39,0.25)">
+    <div class="w-16 h-16 rounded-full mx-auto mb-8 flex items-center justify-center" style="background:var(--amber); box-shadow:0 0 40px rgba(200,162,39,0.5)">
+      <i data-lucide="shield-check" class="w-8 h-8" style="color:#0A0A0A"></i>
+    </div>
+    <span class="label block mb-6" style="color:var(--amber); opacity:0.85">Our guarantee</span>
+    <h2 class="font-display text-4xl md:text-6xl tracking-tight mb-8 max-w-2xl mx-auto" style="color:var(--paper)">If you don't reclaim 10 hours, or we don't find real profit, you don't pay.</h2>
+    <p class="opacity-75 max-w-2xl mx-auto text-base leading-relaxed mb-4 font-body" style="color:var(--paper)">Go through the first 30 days. Run the audits. Follow the steps. If you haven't reclaimed at least 10 hours of your week, <span class="amber">or</span> we haven't found real profit already sitting in your business, send one email and you get a full refund. No forms, no hoops, no awkward calls.</p>
+    <p class="opacity-60 max-w-xl mx-auto text-sm leading-relaxed font-body">This works because it's the same operating system used to run a real consulting firm for 20 years. Not theory. Installed. The only risk here is staying exactly where you are.</p>
+  </div>
+</section>
+
+<section class="px-6 md:px-12 py-24 max-w-screen-2xl mx-auto reveal">
   <div class="flex items-center gap-4 mb-4">
     <span class="label">In their words</span>
     <div class="hairline flex-1"></div>
@@ -281,76 +277,50 @@
   <h2 class="font-display text-4xl md:text-6xl tracking-tight mb-16 max-w-2xl" style="color:var(--ink)">Owners who got their business back.</h2>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     <div class="testimonial-card">
-      <p class="font-display italic text-lg leading-snug mb-6" style="color:var(--ink)">"Instrumental in helping us define, strategize and implement a plan for financial independence."</p>
-      <p class="text-[14px] opacity-75 leading-relaxed mb-6">For the better part of a decade, Mark Richards and Cool Hollow have been instrumental in helping Platte River and my family define, strategize and implement a plan for financial independence. His guidance has allowed our business to thrive both personally and professionally.</p>
+      <p class="font-display text-lg leading-snug mb-6 normal-case tracking-normal" style="color:var(--ink); font-weight:600;">"Instrumental in helping us define, strategize and implement a plan for financial independence."</p>
+      <p class="text-[14px] opacity-75 leading-relaxed mb-6 font-body">For the better part of a decade, Mark Richards and Cool Hollow have been instrumental in helping Platte River and my family define, strategize and implement a plan for financial independence.</p>
       <p class="label">Brent Allshouse &middot; Founder, Platte River Networks</p>
     </div>
     <div class="testimonial-card">
-      <p class="font-display italic text-lg leading-snug mb-6" style="color:var(--ink)">"Mark looks at the whole picture and pulls everyone together on the same page."</p>
-      <p class="text-[14px] opacity-75 leading-relaxed mb-6">I ran Keystone Ford hands-on for 34 years and felt I never needed a consultant, until I stepped back and brought in a GM. You can't go wrong having Mark by your side; I only wish I'd done this sooner.</p>
+      <p class="font-display text-lg leading-snug mb-6 normal-case tracking-normal" style="color:var(--ink); font-weight:600;">"Mark looks at the whole picture and pulls everyone together on the same page."</p>
+      <p class="text-[14px] opacity-75 leading-relaxed mb-6 font-body">I ran Keystone Ford hands-on for 34 years and felt I never needed a consultant, until I stepped back and brought in a GM. I only wish I'd done this sooner.</p>
       <p class="label">Clayton Black &middot; Owner, Keystone Ford</p>
     </div>
     <div class="testimonial-card">
-      <p class="font-display italic text-lg leading-snug mb-6" style="color:var(--ink)">"There hasn't been a topic or question Mark hasn't been able to give high-level guidance on."</p>
-      <p class="text-[14px] opacity-75 leading-relaxed mb-6">Working with Mark has been an invaluable investment for our operations. He has used his vast experience to elevate the way we operate, strategize, and achieve our goals.</p>
+      <p class="font-display text-lg leading-snug mb-6 normal-case tracking-normal" style="color:var(--ink); font-weight:600;">"There hasn't been a topic or question Mark hasn't been able to give high-level guidance on."</p>
+      <p class="text-[14px] opacity-75 leading-relaxed mb-6 font-body">Working with Mark has been an invaluable investment for our operations. He has used his vast experience to elevate the way we operate, strategize, and achieve our goals.</p>
       <p class="label">Dr. Rob Norris, PharmD &middot; CEO, Chambers' Apothecary</p>
     </div>
   </div>
 </section>
 
-<section class="py-32 px-6 md:px-12 text-center reveal" style="background-image: radial-gradient(rgba(0,0,0,0.18) 1px, transparent 1px); background-size: 28px 28px;">
-  <div class="max-w-screen-md mx-auto">
-    <span class="label block mb-8">Ready when you are</span>
-    <p class="font-display text-4xl md:text-6xl leading-tight mb-6" style="color:var(--ink)">Build the business that <span class="italic amber">runs without you.</span></p>
-    <p class="text-base opacity-75 mb-12">Apply now and, even if we don't work together, you'll leave the call with a custom roadmap.</p>
-    <a href="discovery.html" class="pill-primary !text-base">Apply Now <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-  </div>
-</section>
-
-<section class="px-6 md:px-12 py-28 max-w-screen-2xl mx-auto reveal">
-  <div class="rounded-3xl p-10 md:p-16 text-center" style="background:var(--dark); border:1px solid rgba(200,162,39,0.25)">
-    <div class="w-16 h-16 rounded-full mx-auto mb-8 flex items-center justify-center" style="background:var(--amber); box-shadow:0 0 40px rgba(200,162,39,0.5)">
-      <i data-lucide="shield-check" class="w-8 h-8" style="color:#0A0A0A"></i>
-    </div>
-    <span class="label block mb-6" style="color:var(--accent2); opacity:0.85">Our guarantee</span>
-    <h2 class="font-display text-4xl md:text-6xl tracking-tight mb-8 max-w-2xl mx-auto" style="color:var(--paper)">If you don't reclaim 10 hours, or we don't find real profit, you don't pay.</h2>
-    <p class="opacity-75 max-w-2xl mx-auto text-base leading-relaxed mb-4" style="color:var(--paper)">Go through the first 30 days. Run the audits. Follow the steps. If you haven't reclaimed at least 10 hours of your week, <span class="italic amber">or</span> we haven't found real profit already sitting in your business, send one email and you get a full refund. No forms, no hoops, no awkward calls.</p>
-    <p class="opacity-60 max-w-xl mx-auto text-sm leading-relaxed">This works because it's the same operating system used to run a real consulting firm for 20 years. Not theory. Installed. The only risk here is staying exactly where you are.</p>
-  </div>
-</section>
-
-<section class="px-6 md:px-12 py-28 max-w-screen-2xl mx-auto reveal">
+<section class="px-6 md:px-12 py-24 max-w-screen-2xl mx-auto reveal">
   <div class="flex items-center gap-4 mb-4">
     <span class="label">Questions</span>
     <div class="hairline flex-1"></div>
   </div>
   <h2 class="font-display text-4xl md:text-6xl tracking-tight mb-16 max-w-2xl" style="color:var(--ink)">Frequently asked questions.</h2>
   <div class="max-w-3xl" id="faq-list"></div>
-  <p class="mt-12 text-[15px] opacity-70">Still have a question? Reach out directly at <a href="mailto:office@coolhollowsolutions.com" class="underline" style="color:var(--ink)">office@coolhollowsolutions.com</a>.</p>
+  <p class="mt-12 text-[15px] opacity-70 font-body">Still have a question? Reach out directly at <a href="mailto:office@coolhollowsolutions.com" class="underline" style="color:var(--ink)">office@coolhollowsolutions.com</a>.</p>
 </section>
 
 <script>
   const faqs = [
-    { q: "What exactly is \"12 Weeks to Self-Running\"?", a: "A hands-on program where we rebuild how your business operates. We install a working operating system, not a course, so the business runs without you making every decision." },
-    { q: "How is this different from other business coaching programs?", a: "Most programs teach concepts and leave you to install them yourself. This one gets installed with you, the same system used to run a real consulting firm for 20 years." },
+    { q: "What exactly is Business Without You?", a: "A hands-on 12-week program where we rebuild how your shop operates. We install a working operating system, not a course, so the business runs without you making every decision." },
+    { q: "How is this different from other coaching programs?", a: "Most programs teach concepts and leave you to install them yourself. This one gets installed with you, the same system used to run a real consulting firm for 20 years." },
     { q: "What results can I realistically expect?", a: "10 hours back in your week within the first 30 days, and most owners uncover up to $50,000 in profit already sitting in the business along the way." },
-    { q: "How much does it cost?", a: "$5,000 for the 12-week program. Most clients find several times that back in the Profit Discovery Audit alone." },
-    { q: "Is there a guarantee?", a: "Yes. Do the work in the first 30 days, run the audits, and if you haven't reclaimed 10 hours, or we haven't found real profit in your business, one email gets you a full refund." },
-    { q: "How much time do I need to commit each week?", a: "Enough to do the work, not enough to add to your load. This isn't hours of video to sit through." },
-    { q: "My business is very specific. Will this still work for me?", a: "If you have a team, you're doing $500K to $10M, and you're the bottleneck, yes. The system adapts to your industry, not the other way around." },
-    { q: "I've tried coaching before and it didn't work. Why would this be different?", a: "This isn't coaching you and sending you off to figure it out. We sit inside your business and build the system with you." },
-    { q: "Is this for freelancers or solopreneurs?", a: "No. This is built for owners with a real team and real revenue who are ready to stop running it alone, not for someone still wearing every hat solo." },
-    { q: "What kind of businesses does this work for?", a: "Professional services, trades, B2B operators. Real team, real revenue, tired of being the one everything depends on." },
-    { q: "How do I get started?", a: "Apply above. We review within 24 hours, confirm fit, and book the call. No long sales process." },
+    { q: "How much does it cost, and is there a guarantee?", a: "$5,000 for the 12-week program. If you haven't reclaimed 10 hours or we haven't found real profit in the first 30 days, one email gets you a full refund." },
+    { q: "Is this for freelancers or solopreneurs?", a: "No. This is built for owners with a real crew and real revenue who are ready to stop running it alone, not for someone still wearing every hat solo." },
+    { q: "How do I get started?", a: "Apply below. We review within 24 hours, confirm fit, and book the call. No long sales process." },
   ];
   const faqList = document.getElementById('faq-list');
   faqList.innerHTML = faqs.map((item, i) => `
     <div style="border-bottom:1px solid rgba(0,0,0,0.12)">
       <button class="w-full text-left py-6 flex items-center justify-between gap-4 faq-toggle" data-idx="${i}">
-        <span class="font-display text-lg md:text-xl" style="color:var(--ink)">${item.q}</span>
+        <span class="font-display text-lg md:text-xl normal-case tracking-normal" style="color:var(--ink); font-weight:600;">${item.q}</span>
         <i data-lucide="plus" class="w-5 h-5 flex-shrink-0 faq-icon" style="color:var(--ink)"></i>
       </button>
-      <div class="faq-answer hidden pb-6 pr-10 opacity-75 text-[15px] leading-relaxed">${item.a}</div>
+      <div class="faq-answer hidden pb-6 pr-10 opacity-75 text-[15px] leading-relaxed font-body">${item.a}</div>
     </div>
   `).join('');
   lucide.createIcons();
@@ -364,6 +334,15 @@
     });
   });
 </script>
+
+<section class="py-28 px-6 md:px-12 text-center reveal" style="background-image: radial-gradient(rgba(0,0,0,0.18) 1px, transparent 1px); background-size: 28px 28px;">
+  <div class="max-w-screen-md mx-auto">
+    <span class="label block mb-8">Ready when you are</span>
+    <p class="font-display text-4xl md:text-6xl leading-tight mb-6" style="color:var(--ink)">Build the business that <span class="amber">runs without you.</span></p>
+    <p class="text-base opacity-75 mb-12 font-body">Apply now and, even if we don't work together, you'll leave the call with a custom roadmap.</p>
+    <a href="discovery.html" class="pill-primary hard !text-base">Apply Now <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+  </div>
+</section>
 
 <footer class="px-6 md:px-12 py-10 max-w-screen-2xl mx-auto">
   <div class="hairline mb-8"></div>

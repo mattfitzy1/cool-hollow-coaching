@@ -8,44 +8,42 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #FFFFFF; --card: #F4F4F2; --ink: #0A0A0A; --body-ink: #1A1A1A;
-    --accent: #1A1A1A; --accent2: #C8A227; --amber: #C8A227; --dark: #060606;
+    --amber: #C8A227; --dark: #060606;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { background: var(--paper); color: var(--body-ink); overflow-x: hidden; }
-  .font-display { font-family: 'Fraunces', serif; }
-  .font-body { font-family: 'Inter', sans-serif; }
+  .font-display { font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: 0.005em; font-weight: 800; }
+  .font-body { font-family: 'Manrope', sans-serif; }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
   .label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); opacity: 0.6; }
   .hairline { height: 1px; background: var(--ink); opacity: 0.12; }
   .amber { color: var(--amber); }
-  .grain { position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: 0.035; mix-blend-mode: overlay;
+  .grain { position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: 0.05; mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
   .pill-primary {
-    position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px; overflow: hidden;
-    background: linear-gradient(135deg, #E0BA46, var(--amber) 60%, #9C7A1E); color: #0A0A0A; padding: 19px 36px; border-radius: 999px;
-    font-family: 'Inter', sans-serif; font-weight: 700; font-size: 15px; border: none; cursor: pointer; width: 100%;
-    transition: transform 0.25s cubic-bezier(.2,.9,.3,1.3), box-shadow 0.25s; box-shadow: 0 10px 30px rgba(200,162,39,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
+    position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    background: var(--amber); color: #0A0A0A; border: 2px solid #0A0A0A; padding: 18px 34px; border-radius: 999px;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; font-size: 16px;
+    cursor: pointer; width: 100%; transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .pill-primary::after {
-    content: ''; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.55), transparent);
-    transform: skewX(-20deg); transition: left 0.6s ease;
-  }
-  .pill-primary:hover::after { left: 130%; }
-  .pill-primary:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 16px 36px rgba(200,162,39,0.55), inset 0 1px 0 rgba(255,255,255,0.5); }
+  .pill-primary.glow { box-shadow: 0 10px 30px rgba(200,162,39,0.45); }
+  .pill-primary.glow:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(200,162,39,0.6); }
+  .pill-primary.hard { box-shadow: 6px 6px 0 0 #0A0A0A; }
+  .pill-primary.hard:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 0 #0A0A0A; }
   .pill-ghost {
     display: inline-flex; align-items: center; justify-content: center; gap: 10px;
     border: 1.5px solid rgba(255,255,255,0.5); color: var(--paper); padding: 18px 34px; border-radius: 999px;
-    font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px; transition: background 0.3s, color 0.3s, border-color 0.3s;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; font-size: 15px;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
   }
   .pill-ghost:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
   .video-frame {
-    aspect-ratio: 16/9; border-radius: 16px; background: var(--dark); border: 1px solid rgba(200,162,39,0.25);
+    aspect-ratio: 16/9; border-radius: 14px; background: var(--dark); border: 1px solid rgba(200,162,39,0.25);
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
     position: relative; overflow: hidden;
   }
@@ -55,14 +53,14 @@
     background-size: 22px 22px;
   }
   .play-ring {
-    width: 84px; height: 84px; border-radius: 999px; background: linear-gradient(135deg, #E0BA46, var(--amber) 60%, #9C7A1E);
+    width: 84px; height: 84px; border-radius: 999px; background: var(--amber);
     display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;
-    box-shadow: 0 0 50px rgba(200,162,39,0.5);
+    box-shadow: 0 0 50px rgba(200,162,39,0.5); border: 2px solid #0A0A0A;
   }
   .field label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); opacity: 0.7; display: block; margin-bottom: 8px; }
   .field input, .field select, .field textarea {
-    width: 100%; background: #fff; border: 1.5px solid rgba(0,0,0,0.18); border-radius: 8px;
-    padding: 12px 14px; font-family: 'Inter', sans-serif; font-size: 15px; color: var(--ink);
+    width: 100%; background: #fff; border: 1.5px solid rgba(0,0,0,0.18); border-radius: 6px;
+    padding: 12px 14px; font-family: 'Manrope', sans-serif; font-size: 15px; color: var(--ink);
     transition: border-color 0.3s, box-shadow 0.3s;
   }
   .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--amber); box-shadow: 0 0 0 3px rgba(200,162,39,0.15); }
@@ -71,18 +69,18 @@
   .choice-pill input { position: absolute; opacity: 0; }
   .choice-pill label {
     display: block; text-align: center; padding: 14px; border-radius: 999px;
-    border: 1.5px solid rgba(0,0,0,0.25); font-family: 'Inter', sans-serif; font-weight: 600;
+    border: 1.5px solid rgba(0,0,0,0.25); font-family: 'Manrope', sans-serif; font-weight: 700;
     font-size: 14px; color: var(--ink); cursor: pointer; transition: all 0.2s; text-transform: none; opacity: 0.8;
   }
   .choice-pill input:checked + label { background: var(--ink); color: var(--paper); border-color: var(--ink); opacity: 1; }
-  .reason-card { border: 1.5px solid var(--ink); border-radius: 14px; padding: 24px; transition: transform 0.3s, border-color 0.3s; }
-  .reason-card:hover { transform: translateY(-5px); border-color: var(--amber); }
+  .reason-card { border: 2px solid var(--ink); border-radius: 10px; padding: 24px; box-shadow: 4px 4px 0 0 rgba(10,10,10,0.15); transition: transform 0.25s, box-shadow 0.25s; }
+  .reason-card:hover { transform: translate(-3px,-3px); box-shadow: 7px 7px 0 0 rgba(200,162,39,0.9); }
   .step-num {
-    width: 36px; height: 36px; border-radius: 999px; background: var(--amber); color: #0A0A0A;
-    display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 700; font-size: 15px; flex-shrink: 0;
+    width: 36px; height: 36px; border-radius: 999px; background: var(--amber); color: #0A0A0A; border: 2px solid #0A0A0A;
+    display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16px; flex-shrink: 0;
   }
-  .tool-card { border: 1px solid rgba(200,162,39,0.3); border-radius: 16px; padding: 36px; background: linear-gradient(160deg, rgba(200,162,39,0.07), transparent); transition: transform 0.3s, box-shadow 0.3s; }
-  .tool-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.08); }
+  .tool-card { border: 2px solid var(--ink); border-radius: 10px; padding: 32px; background: var(--card); box-shadow: 4px 4px 0 0 rgba(10,10,10,0.15); transition: transform 0.25s, box-shadow 0.25s; }
+  .tool-card:hover { transform: translate(-3px,-3px); box-shadow: 7px 7px 0 0 rgba(200,162,39,0.9); }
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
   ::selection { background: var(--amber); color: #0A0A0A; }
@@ -93,16 +91,16 @@
 <div class="grain"></div>
 
 <nav class="w-full px-6 md:px-12 py-6 flex justify-between items-center max-w-screen-2xl mx-auto fixed top-0 left-0 right-0 z-40 backdrop-blur-md" style="background:rgba(6,6,6,0.55); border-bottom:1px solid rgba(255,255,255,0.08)">
-  <a href="index.html" class="font-display italic text-xl tracking-tight" style="color:#fff">Cool Hollow <span class="amber">Coaching</span></a>
-  <a href="#apply" class="pill-primary !py-3 !px-6 !text-sm !w-auto">Apply Now</a>
+  <a href="index.html" class="font-display text-lg tracking-tight" style="color:#fff">Cool Hollow <span class="amber">Coaching</span></a>
+  <a href="#apply" class="pill-primary glow !py-3 !px-6 !text-sm !w-auto">Apply Now</a>
 </nav>
 
 <header class="px-6 md:px-12 pt-40 pb-16 max-w-screen-2xl mx-auto text-center">
   <span class="label block mb-6">Discovery</span>
-  <h1 class="font-display text-5xl md:text-7xl leading-[0.95] tracking-tight max-w-3xl mx-auto mb-6" style="color:var(--ink)">
-    Watch this first.<br><span class="italic amber">Then apply.</span>
+  <h1 class="font-display text-6xl md:text-8xl leading-[0.92] tracking-tight max-w-3xl mx-auto mb-6" style="color:var(--ink)">
+    Watch this first.<br><span class="amber">Then apply.</span>
   </h1>
-  <p class="opacity-80 max-w-xl mx-auto text-base leading-relaxed">A 14-minute walkthrough of exactly what we install, who it's for, and what changes in your business in 12 weeks.</p>
+  <p class="opacity-80 max-w-xl mx-auto text-base leading-relaxed font-body">A 14-minute walkthrough of exactly what we install, who it's for, and what changes in your shop in 12 weeks. Built for HVAC, plumbing, electrical, roofing, and construction owners.</p>
 </header>
 
 <section class="px-6 md:px-12 max-w-screen-2xl mx-auto mb-10 reveal">
@@ -123,85 +121,85 @@
       <div class="hairline flex-1"></div>
     </div>
     <h2 class="font-display text-4xl md:text-6xl tracking-tight mb-16 max-w-2xl" style="color:var(--ink)">You did not build a business. You built a job.</h2>
-    <p class="opacity-80 max-w-xl mb-12 text-base">The harder you work, the worse the problem gets.</p>
+    <p class="opacity-80 max-w-xl mb-12 text-base font-body">You learned how to run a crew. Nobody taught you how to run a business. The harder you work, the worse the problem gets.</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="reason-card">
         <span class="label block mb-3 amber">Bottleneck</span>
-        <p class="font-display text-lg" style="color:var(--ink)">Every decision routes through you.</p>
+        <p class="font-display text-lg normal-case tracking-normal" style="color:var(--ink); font-weight:600;">Every call, every change order, routes through you.</p>
       </div>
       <div class="reason-card">
         <span class="label block mb-3 amber">Fragile</span>
-        <p class="font-display text-lg" style="color:var(--ink)">Every process lives only in your head.</p>
+        <p class="font-display text-lg normal-case tracking-normal" style="color:var(--ink); font-weight:600;">Every process lives only in your head, not on paper, not with the crew.</p>
       </div>
       <div class="reason-card">
         <span class="label block mb-3 amber">Capped</span>
-        <p class="font-display text-lg" style="color:var(--ink)">You are the ceiling, growth stops where you stop.</p>
+        <p class="font-display text-lg normal-case tracking-normal" style="color:var(--ink); font-weight:600;">You are the ceiling, growth stops where you stop.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="py-28 reveal" style="background:var(--dark)">
+<section class="py-24 reveal" style="background:var(--dark)">
   <div class="px-6 md:px-12 max-w-screen-2xl mx-auto">
     <div class="flex items-center gap-4 mb-4">
-      <span class="label" style="color:var(--accent2); opacity:0.85">The opportunity</span>
+      <span class="label" style="color:var(--amber); opacity:0.85">The opportunity</span>
       <div class="hairline flex-1" style="background:var(--paper); opacity:0.15"></div>
     </div>
     <h2 class="font-display text-4xl md:text-6xl tracking-tight mb-10 max-w-2xl" style="color:var(--paper)">The operating system that sets you free.</h2>
-    <p class="opacity-75 max-w-2xl text-base leading-relaxed mb-6" style="color:var(--paper)">Not a theory. Not a framework from a book. An actual operating system, the same one used to run a wealth management and consulting firm for 20 years, managing 2,000+ accounts and working alongside 200 business owners generating $500K to $10M a year.</p>
-    <p class="opacity-75 max-w-2xl text-base leading-relaxed mb-6" style="color:var(--paper)">It's not about working less. It's about building the architecture so the business no longer needs you to make every call. Decisions get made by a dashboard, not your gut. Responsibilities move to your team through a structured transfer, not a dump. The hidden profit sitting inside your business right now gets found and returned to you.</p>
-    <p class="opacity-75 max-w-2xl text-base leading-relaxed mb-10" style="color:var(--paper)">Imagine walking into Monday knowing the business is moving without you pushing it. A vacation that's actually a vacation. Leading your company instead of being consumed by it. In 12 weeks, we rebuild that architecture together, and you come out the other side with 10 hours back in your week and up to $50,000 in found profit.</p>
-    <a href="#apply" class="pill-primary !w-auto">Apply Now <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+    <p class="opacity-75 max-w-2xl text-base leading-relaxed mb-6 font-body" style="color:var(--paper)">Not a theory. Not a framework from a book. An actual operating system, the same one used to run a wealth management and consulting firm for 20 years, managing 2,000+ accounts and working alongside 200 trade and field-service owners (HVAC, plumbing, electrical, roofing, construction) generating $500K to $10M a year.</p>
+    <p class="opacity-75 max-w-2xl text-base leading-relaxed mb-10 font-body" style="color:var(--paper)">Decisions get made by a dashboard, not your gut. Responsibilities move to your crew through a structured transfer, not a dump. The hidden profit sitting inside your books right now gets found and returned to you. In 12 weeks, you come out the other side with 10 hours back in your week and up to $50,000 in found profit.</p>
+    <a href="#apply" class="pill-primary glow !w-auto">Apply Now <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
   </div>
 </section>
 
-<section class="px-6 md:px-12 py-28 max-w-screen-2xl mx-auto reveal">
+<section class="px-6 md:px-12 py-24 max-w-screen-2xl mx-auto reveal">
   <div class="flex items-center gap-4 mb-4">
     <span class="label">Try it before you apply</span>
     <div class="hairline flex-1"></div>
   </div>
   <h2 class="font-display text-4xl md:text-6xl tracking-tight mb-4 max-w-2xl" style="color:var(--ink)">The Hidden Profit Analyzer.</h2>
-  <p class="max-w-2xl text-base leading-relaxed opacity-80 mb-12">A tool we built ourselves, free to run before you ever apply. Upload a P&amp;L, and it scans for the leakage every owner has and nobody's measured: underpriced jobs, margin creep, unprofitable customers, cash tied up in the wrong places.</p>
+  <p class="max-w-2xl text-base leading-relaxed opacity-80 mb-8 font-body">A tool we built ourselves, free to run before you ever apply. Upload a P&amp;L, and it scans for the leakage every trade owner has and nobody's measured.</p>
+  <a href="https://profit-finder-coolhollow.streamlit.app" class="pill-primary hard !text-base !w-auto mb-12">Run My Free Diagnostic <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     <div class="tool-card">
       <i data-lucide="upload" class="w-7 h-7 mb-5 amber"></i>
       <h3 class="font-display text-xl mb-3" style="color:var(--ink)">Upload your P&amp;L</h3>
-      <p class="opacity-75 text-[15px] leading-relaxed">No spreadsheet wrangling. Drop in what you already have.</p>
+      <p class="opacity-75 text-[15px] leading-relaxed font-body">No spreadsheet wrangling. Drop in what you already have.</p>
     </div>
     <div class="tool-card">
       <i data-lucide="search" class="w-7 h-7 mb-5 amber"></i>
       <h3 class="font-display text-xl mb-3" style="color:var(--ink)">We scan for leakage</h3>
-      <p class="opacity-75 text-[15px] leading-relaxed">The same lens we use inside the program, run against your real numbers in minutes.</p>
+      <p class="opacity-75 text-[15px] leading-relaxed font-body">The same lens we use inside the program, run against your real numbers in minutes.</p>
     </div>
     <div class="tool-card">
       <i data-lucide="sparkles" class="w-7 h-7 mb-5 amber"></i>
       <h3 class="font-display text-xl mb-3" style="color:var(--ink)">See what's hiding</h3>
-      <p class="opacity-75 text-[15px] leading-relaxed">A plain-English breakdown of where the profit already in your business is sitting.</p>
+      <p class="opacity-75 text-[15px] leading-relaxed font-body">A plain-English breakdown of where the profit already in your shop is sitting.</p>
     </div>
   </div>
-  <p class="mt-10 text-[15px] opacity-60 max-w-2xl">This is the same diagnostic that anchors the Profit Discovery Audit inside the program, just a smaller version, free, before you commit to anything.</p>
 </section>
 
-<section id="apply" class="px-6 md:px-12 max-w-screen-2xl mx-auto py-28 reveal">
+<section id="apply" class="px-6 md:px-12 max-w-screen-2xl mx-auto py-24 reveal">
   <div class="grid grid-cols-1 md:grid-cols-12 gap-16">
 
     <div class="md:col-span-4">
       <span class="label block mb-6">Tell us about your business</span>
-      <h2 class="font-display text-4xl md:text-5xl tracking-tight mb-6" style="color:var(--ink)">We accept a small number of operators per cohort.</h2>
-      <p class="opacity-80 text-[15px] leading-relaxed mb-10">This short application helps us qualify fit before we book a call.</p>
+      <h2 class="font-display text-4xl md:text-5xl tracking-tight mb-6" style="color:var(--ink)">We accept a small number of trade owners per cohort.</h2>
+      <p class="opacity-80 text-[15px] leading-relaxed mb-2 font-body">This is an application, not a sales call. You're applying to see if you're a fit, we're not applying to sell you.</p>
+      <p class="opacity-80 text-[15px] leading-relaxed mb-10 font-body">A call only gets booked if we're a fit on both sides.</p>
 
       <div class="flex flex-col gap-6">
         <div class="flex items-start gap-4">
           <div class="step-num">1</div>
-          <p class="text-[15px] opacity-85 pt-1">We review your application within 24 hours.</p>
+          <p class="text-[15px] opacity-85 pt-1 font-body">We review your application within 24 hours.</p>
         </div>
         <div class="flex items-start gap-4">
           <div class="step-num">2</div>
-          <p class="text-[15px] opacity-85 pt-1">If we're a fit, we book a 45-minute strategy call.</p>
+          <p class="text-[15px] opacity-85 pt-1 font-body">If we're a fit, we book a 45-minute strategy call. If we're not, we tell you that too.</p>
         </div>
         <div class="flex items-start gap-4">
           <div class="step-num">3</div>
-          <p class="text-[15px] opacity-85 pt-1">You leave with a custom roadmap, yours to keep, even if we never work together.</p>
+          <p class="text-[15px] opacity-85 pt-1 font-body">You leave with a custom roadmap, yours to keep, even if we never work together.</p>
         </div>
       </div>
     </div>
@@ -218,7 +216,20 @@
         <div class="field"><label for="last">Last name *</label><input type="text" id="last" name="last" required></div>
         <div class="field"><label for="email">Email *</label><input type="email" id="email" name="email" required></div>
         <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="phone"></div>
-        <div class="field"><label for="company">Company</label><input type="text" id="company" name="company"></div>
+        <div class="field"><label for="company">Company / shop name</label><input type="text" id="company" name="company"></div>
+        <div class="field">
+          <label for="trade">Trade</label>
+          <select id="trade" name="trade">
+            <option value="">Select one</option>
+            <option>HVAC</option>
+            <option>Plumbing</option>
+            <option>Electrical</option>
+            <option>Roofing</option>
+            <option>Construction</option>
+            <option>Landscaping</option>
+            <option>Other field service</option>
+          </select>
+        </div>
         <div class="field">
           <label for="revenue">Annual revenue *</label>
           <select id="revenue" name="revenue" required>
@@ -231,8 +242,8 @@
             <option>Over $10M</option>
           </select>
         </div>
-        <div class="field md:col-span-2">
-          <label for="team">Team size *</label>
+        <div class="field">
+          <label for="team">Crew size *</label>
           <select id="team" name="team" required>
             <option value="">Select one</option>
             <option>Just me</option>
@@ -250,26 +261,11 @@
           </div>
         </div>
         <div class="field md:col-span-2">
-          <label for="bottleneck">Where are you the bottleneck in your business right now? *</label>
+          <label for="bottleneck">Where are you the bottleneck in your shop right now? *</label>
           <textarea id="bottleneck" name="bottleneck" rows="3" required></textarea>
         </div>
-        <div class="field">
-          <label>Which best describes you?</label>
-          <div class="choice-pair">
-            <div class="choice-pill"><input type="radio" id="extrovert" name="personality" value="extrovert"><label for="extrovert">Extrovert</label></div>
-            <div class="choice-pill"><input type="radio" id="introvert" name="personality" value="introvert"><label for="introvert">Introvert</label></div>
-          </div>
-        </div>
-        <div class="field">
-          <label>And which are you more of?</label>
-          <div class="choice-pair">
-            <div class="choice-pill"><input type="radio" id="task" name="work-style" value="task"><label for="task">Task-oriented</label></div>
-            <div class="choice-pill"><input type="radio" id="people" name="work-style" value="people"><label for="people">People-oriented</label></div>
-          </div>
-        </div>
-        <p class="md:col-span-2 text-[13px] opacity-50 -mt-2">This helps us coach you the way you actually work.</p>
         <div class="md:col-span-2 mt-4">
-          <button type="submit" class="pill-primary">Submit application <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+          <button type="submit" class="pill-primary glow">Submit application <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
         </div>
         <p class="md:col-span-2 label !opacity-50 text-center">We review every application within 24 hours.</p>
       </form>
