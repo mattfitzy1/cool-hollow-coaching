@@ -31,8 +31,8 @@
     font-family: 'Barlow Condensed', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; font-size: 16px;
     cursor: pointer; width: 100%; transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .pill-primary.glow { box-shadow: 0 10px 30px rgba(200,162,39,0.45); }
-  .pill-primary.glow:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(200,162,39,0.6); }
+  .pill-primary.glow { box-shadow: 0 6px 18px rgba(200,162,39,0.25); }
+  .pill-primary.glow:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(200,162,39,0.35); }
   .pill-primary.hard { box-shadow: 6px 6px 0 0 #0A0A0A; }
   .pill-primary.hard:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 0 #0A0A0A; }
   .pill-ghost {
@@ -84,6 +84,18 @@
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
   ::selection { background: var(--amber); color: #0A0A0A; }
+  .progress-track { height: 4px; background: rgba(0,0,0,0.1); border-radius: 999px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--amber); border-radius: 999px; transition: width 0.4s ease; }
+  .form-step { display: none; }
+  .form-step.active { display: grid; }
+  .pill-secondary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: transparent; color: var(--ink); border: 1.5px solid rgba(0,0,0,0.25);
+    padding: 16px 30px; border-radius: 999px;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; font-size: 15px;
+    cursor: pointer; transition: border-color 0.2s, background 0.2s;
+  }
+  .pill-secondary:hover { border-color: var(--ink); background: rgba(0,0,0,0.04); }
 </style>
 </head>
 <body class="font-body antialiased">
@@ -96,7 +108,7 @@
 </nav>
 
 <header class="px-6 md:px-12 pt-40 pb-16 max-w-screen-2xl mx-auto text-center">
-  <span class="label block mb-6">Discovery</span>
+  <span class="label block mb-6"><span class="amber">Step 2 of 3</span> &middot; Apply</span>
   <h1 class="font-display text-6xl md:text-8xl leading-[0.92] tracking-tight max-w-3xl mx-auto mb-6" style="color:var(--ink)">
     Watch this first.<br><span class="amber">Then apply.</span>
   </h1>
@@ -146,7 +158,7 @@
       <div class="hairline flex-1" style="background:var(--paper); opacity:0.15"></div>
     </div>
     <h2 class="font-display text-4xl md:text-6xl tracking-tight mb-10 max-w-2xl" style="color:var(--paper)">The operating system that sets you free.</h2>
-    <p class="opacity-75 max-w-2xl text-base leading-relaxed mb-6 font-body" style="color:var(--paper)">Not a theory. Not a framework from a book. An actual operating system, the same one used to run a wealth management and consulting firm for 20 years, managing 2,000+ accounts and working alongside 200 trade and field-service owners (HVAC, plumbing, electrical, roofing, construction) generating $500K to $10M a year.</p>
+    <p class="opacity-75 max-w-2xl text-base leading-relaxed mb-6 font-body" style="color:var(--paper)">Not a theory. Not a framework from a book. An actual operating system, the same one used to run a wealth management and consulting firm for 20 years, working alongside 200 trade and field-service owners (HVAC, plumbing, electrical, roofing, construction) generating $500K to $10M a year.</p>
     <p class="opacity-75 max-w-2xl text-base leading-relaxed mb-10 font-body" style="color:var(--paper)">Decisions get made by a dashboard, not your gut. Responsibilities move to your crew through a structured transfer, not a dump. The hidden profit sitting inside your books right now gets found and returned to you. In 12 weeks, you come out the other side with 10 hours back in your week and up to $50,000 in found profit.</p>
     <a href="#apply" class="pill-primary glow !w-auto">Apply Now <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
   </div>
@@ -211,64 +223,112 @@
         an email API key, or a simple third-party form service, before
         this goes live. Destination once wired: office@coolhollowsolutions.com
       -->
-      <form method="POST" action="#" onsubmit="return false;" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="field"><label for="first">First name *</label><input type="text" id="first" name="first" required></div>
-        <div class="field"><label for="last">Last name *</label><input type="text" id="last" name="last" required></div>
-        <div class="field"><label for="email">Email *</label><input type="email" id="email" name="email" required></div>
-        <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="phone"></div>
-        <div class="field"><label for="company">Company / shop name</label><input type="text" id="company" name="company"></div>
-        <div class="field">
-          <label for="trade">Trade</label>
-          <select id="trade" name="trade">
-            <option value="">Select one</option>
-            <option>HVAC</option>
-            <option>Plumbing</option>
-            <option>Electrical</option>
-            <option>Roofing</option>
-            <option>Construction</option>
-            <option>Landscaping</option>
-            <option>Other field service</option>
-          </select>
+      <div class="mb-8">
+        <div class="flex justify-between items-center mb-3">
+          <span class="label" id="step-label">Step 1 of 2 &middot; About you</span>
+          <span class="label" id="step-count">50%</span>
         </div>
-        <div class="field">
-          <label for="revenue">Annual revenue *</label>
-          <select id="revenue" name="revenue" required>
-            <option value="">Select one</option>
-            <option>Under $500K</option>
-            <option>$500K to $1M</option>
-            <option>$1M to $3M</option>
-            <option>$3M to $5M</option>
-            <option>$5M to $10M</option>
-            <option>Over $10M</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="team">Crew size *</label>
-          <select id="team" name="team" required>
-            <option value="">Select one</option>
-            <option>Just me</option>
-            <option>2 to 5</option>
-            <option>6 to 15</option>
-            <option>16 to 30</option>
-            <option>30+</option>
-          </select>
-        </div>
-        <div class="field md:col-span-2">
-          <label>Are you ready to invest $5,000 in solving this? *</label>
-          <div class="choice-pair">
-            <div class="choice-pill"><input type="radio" id="invest-yes" name="invest" value="yes" required><label for="invest-yes">Yes</label></div>
-            <div class="choice-pill"><input type="radio" id="invest-no" name="invest" value="no"><label for="invest-no">Not yet</label></div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:50%"></div></div>
+      </div>
+
+      <form id="apply-form" method="POST" action="#" onsubmit="return false;">
+
+        <div class="form-step active grid grid-cols-1 md:grid-cols-2 gap-8" data-step="1">
+          <div class="field"><label for="first">First name *</label><input type="text" id="first" name="first" required></div>
+          <div class="field"><label for="last">Last name *</label><input type="text" id="last" name="last" required></div>
+          <div class="field"><label for="email">Email *</label><input type="email" id="email" name="email" required></div>
+          <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="phone"></div>
+          <div class="field md:col-span-2"><label for="company">Company / shop name</label><input type="text" id="company" name="company"></div>
+          <div class="md:col-span-2 mt-2">
+            <button type="button" id="to-step-2" class="pill-primary glow">Next: A few quick questions <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
           </div>
         </div>
-        <div class="field md:col-span-2">
-          <label for="bottleneck">Where are you the bottleneck in your shop right now? *</label>
-          <textarea id="bottleneck" name="bottleneck" rows="3" required></textarea>
+
+        <div class="form-step grid grid-cols-1 md:grid-cols-2 gap-8" data-step="2">
+          <div class="field">
+            <label for="trade">Trade</label>
+            <select id="trade" name="trade">
+              <option value="">Select one</option>
+              <option>HVAC</option>
+              <option>Plumbing</option>
+              <option>Electrical</option>
+              <option>Roofing</option>
+              <option>Construction</option>
+              <option>Landscaping</option>
+              <option>Other field service</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="revenue">Annual revenue *</label>
+            <select id="revenue" name="revenue" required>
+              <option value="">Select one</option>
+              <option>Under $500K</option>
+              <option>$500K to $1M</option>
+              <option>$1M to $3M</option>
+              <option>$3M to $5M</option>
+              <option>$5M to $10M</option>
+              <option>Over $10M</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="team">Crew size *</label>
+            <select id="team" name="team" required>
+              <option value="">Select one</option>
+              <option>Just me</option>
+              <option>2 to 5</option>
+              <option>6 to 15</option>
+              <option>16 to 30</option>
+              <option>30+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Are you ready to actually fix this, not just talk about it? *</label>
+            <div class="choice-pair">
+              <div class="choice-pill"><input type="radio" id="invest-yes" name="ready" value="yes" required><label for="invest-yes">Yes, now</label></div>
+              <div class="choice-pill"><input type="radio" id="invest-no" name="ready" value="no"><label for="invest-no">Not yet</label></div>
+            </div>
+          </div>
+          <div class="field md:col-span-2">
+            <label for="bottleneck">Where are you the bottleneck in your shop right now? *</label>
+            <textarea id="bottleneck" name="bottleneck" rows="3" required></textarea>
+          </div>
+          <div class="md:col-span-2 mt-2 flex gap-4">
+            <button type="button" id="to-step-1" class="pill-secondary">Back</button>
+            <button type="submit" class="pill-primary glow">Submit application <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+          </div>
+          <p class="md:col-span-2 label !opacity-50 text-center">We review every application within 24 hours.</p>
         </div>
-        <div class="md:col-span-2 mt-4">
-          <button type="submit" class="pill-primary glow">Submit application <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
-        </div>
-        <p class="md:col-span-2 label !opacity-50 text-center">We review every application within 24 hours.</p>
+
       </form>
+
+      <script>
+        (function () {
+          const steps = document.querySelectorAll('.form-step');
+          const fill = document.getElementById('progress-fill');
+          const stepLabel = document.getElementById('step-label');
+          const stepCount = document.getElementById('step-count');
+          const labels = { 1: 'Step 1 of 2 · About you', 2: 'Step 2 of 2 · A few quick questions' };
+          const widths = { 1: '50%', 2: '100%' };
+
+          function goTo(stepNum) {
+            steps.forEach(s => s.classList.toggle('active', s.dataset.step === String(stepNum)));
+            fill.style.width = widths[stepNum];
+            stepLabel.textContent = labels[stepNum];
+            stepCount.textContent = widths[stepNum];
+          }
+
+          document.getElementById('to-step-2').addEventListener('click', () => {
+            const step1 = document.querySelector('[data-step="1"]');
+            const required = step1.querySelectorAll('[required]');
+            for (const field of required) {
+              if (!field.value.trim()) { field.reportValidity(); return; }
+            }
+            goTo(2);
+          });
+
+          document.getElementById('to-step-1').addEventListener('click', () => goTo(1));
+        })();
+      </script>
     </div>
 
   </div>
