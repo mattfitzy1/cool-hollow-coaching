@@ -8,6 +8,15 @@
 
 ---
 
+## 2026-06-29
+
+### Funnel Polish: Two-Step Apply Form, Softer Glow, Dropped Unverified Stat
+- Converted the discovery.html application into a real 2-step flow (contact info, then qualifying questions) with a progress bar, replacing the single long-scroll form.
+- Added a 3-step funnel indicator ("Step 1 of 3" etc.) across index.html and discovery.html so a visitor can see where they are in the diagnostic-then-apply path.
+- Dropped the "2,000+ accounts" claim from index.html's story section, since it wasn't a number Matt could stand behind for Cool Hollow Coaching specifically. Added a small-print disclosure clarifying the "200+ companies" track record belongs to Cool Hollow Solutions, not Coaching.
+- Softened the gold button glow and hero glow (lower opacity, more blur) per earlier feedback that it read too bright.
+- Refreshed `key-metrics.md` exchange rates and saved a deep-memory note from the prior session's funnel work.
+
 ## 2026-06-26
 
 ### Hormozi Funnel Mechanism, Blue-Collar Redesign, and Lead-Gated Analyzer
