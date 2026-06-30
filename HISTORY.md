@@ -8,6 +8,19 @@
 
 ---
 
+## 2026-06-30
+
+### Senteo Consultant Call and Curriculum Rebuild
+- Attended 67-minute call with Mike Ruckman (Senteo): got feedback on curriculum structure, module length, pricing model, delivery approach, and platform choice.
+- Rebuilt the entire curriculum 4-step flow from Exercise/Model/Videos/Diagnosis into Learn, See, Do, Extend based on Mike's organizational psychologist methodology.
+- Added a Do step (guided worksheet on a fictional business) to every milestone so owners get a practice rep before touching their own data.
+- Capped all video modules at 8 to 15 minutes. Ohio method and Jobs to Be Done added to Milestone 1 content.
+- Key decision: do not film any videos until Milestones 1, 2, and 3 are run live on Zoom with 3 to 4 beta clients first.
+- Mapped Cool Hollow Coaching against Mike's business maturity model (Balance Sheet to Relationship-Centric). Goal is Relationship-Centric: recurring community revenue, not just one-time program sales.
+- Action items logged: call Mark, send Mike calendar invite for Monday 6pm, pricing and MVP definition to be worked through with Mike on Monday.
+
+---
+
 ## 2026-06-29
 
 ### Funnel Polish: Two-Step Apply Form, Softer Glow, Dropped Unverified Stat
