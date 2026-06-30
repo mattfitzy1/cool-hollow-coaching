@@ -45,14 +45,18 @@ Specialist cohesion rules still apply: Mark opens and closes every milestone, sp
 
 ---
 
-## The consistent 4-step flow
+## The consistent 4-step flow (updated June 30, 2026)
 
-Every milestone follows the same shape: diagnose first, then teach to the specific gap, then show the stakes. This is a deliberate change from the original doc's teach-then-do order, made because owners retain a lesson far better once they have seen their own gap.
+Every milestone follows the Learn, See, Do, Extend model. This replaces the prior Exercise/Model/Videos/Diagnosis order based on feedback from the Senteo consultant call: the original structure had no practice rep before owners touched their own data, which caused freezing and errors. The Do step is the fix.
 
-1. **Exercise** — the owner does the work. This is the "asset produced" already defined for each skill in the original doc, unchanged.
-2. **Model** — takes the exercise's raw input and outputs a scored, specific recommendation. New build, one per milestone.
-3. **Videos** — Mark's existing skill lessons, reframed as how to act on what the model just surfaced, not theory upfront.
-4. **Diagnosis** — a real if/then: what changes in dollars, hours, or risk if implemented, versus what keeps costing the owner if it does not.
+Each video is 8 to 15 minutes maximum. Nothing longer. If a lesson runs past 15 minutes it gets split into two videos.
+
+1. **Learn** — Mark (or specialist) teaches the theory or methodology. One focused video, 8 to 12 minutes.
+2. **See** — A case study or real example showing the method in action, told as a story. One video, 8 to 12 minutes.
+3. **Do** — A guided worksheet exercise on a fictional sample business (not the owner's own). Owners practice the method with no risk before touching their own data. 15 to 20 minutes.
+4. **Extend** — Owner applies the method to their own business using the milestone tool. The model scores their input and outputs a specific, named recommendation. 20 to 30 minutes.
+
+**Important: do not film any videos before running Milestones 1, 2, and 3 live on Zoom with 3 to 4 beta clients.** Refine based on that feedback, then film. Filming ahead of feedback is how you end up reshooting for months.
 
 ---
 
