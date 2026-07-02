@@ -31,7 +31,7 @@ The promise stays the same regardless of order: **15 hours back, plus up to $50,
 | 1 | Reclaim the Owner's Time and Identity | Mark |
 | 2 | Define the Destination with Precision | Mark |
 | 3 | Implementation week | — |
-| 4 | Install the Dashboard That Tells the Truth | Mark |
+| 4 | Install the Dashboard That Tells the Truth | Mark + Cam (CFO) |
 | 5 | Discover the Hidden Profit | Cam (CFO) |
 | 6 | Build Cash Confidence | Cam (CFO) |
 | 7 | Implementation week | — |
@@ -119,7 +119,7 @@ Each video is 8 to 15 minutes maximum. Nothing longer. If a lesson runs past 15 
 | 2 | Strategy Razor / Impact Map filter | **Live, beta-tested** — `apps/impact-map/` |
 | 3 | Five-metric dashboard selector | **Live, beta-tested** — `apps/dashboard-selector/` |
 | 4 | Profit Discovery Audit | **Live, beta-tested, math fixed** — `apps/profit-discovery-audit/` |
-| 5 | 13-week cash forecast + decision filter | **Live, beta-tested, known gap** — `apps/cash-confidence/` |
+| 5 | 13-week cash forecast + decision filter | **Live, beta-tested** — `apps/cash-confidence/` (receivables-timing gap closed, verified July 1, 2026) |
 | 6 | Constraint ranker + automation hit list | **Live, beta-tested** — `apps/bottleneck-breakthrough/` |
 | 7 | Hiring / delegation / leadership scorer | **Live, beta-tested** — `apps/team-builder/` |
 

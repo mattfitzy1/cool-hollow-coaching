@@ -18,22 +18,24 @@ from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.datavalidation import DataValidation
 
-INK = "0E4643"
-ACCENT = "589BA8"
-ACCENT2 = "B4D351"
-PAPER = "FAF8F3"
+# Brand palette (context/brand.md, approved June 2026): black ink, white
+# paper, gold as the single accent, champagne for subtle highlights only.
+INK = "1A1A1A"
+ACCENT = "C8A227"
+ACCENT2 = "E8C766"
+PAPER = "FFFFFF"
 COMPANY = "Cool Hollow Coaching"
 PROGRAM = "Business Without You"
 
 TITLE_FONT = Font(name="Calibri", size=16, bold=True, color="FFFFFF")
-SUBTITLE_FONT = Font(name="Calibri", size=12, bold=True, color="FFFFFF")
+SUBTITLE_FONT = Font(name="Calibri", size=12, bold=True, color=ACCENT2)
 HEADER_FONT = Font(name="Calibri", size=11, bold=True, color="FFFFFF")
 BODY_FONT = Font(name="Calibri", size=11, color=INK)
 NOTE_FONT = Font(name="Calibri", size=10, italic=True, color="5A5A5A")
 EXAMPLE_FONT = Font(name="Calibri", size=11, italic=True, color="6B6B6B")
 
 TITLE_FILL = PatternFill("solid", fgColor=INK)
-HEADER_FILL = PatternFill("solid", fgColor=ACCENT)
+HEADER_FILL = PatternFill("solid", fgColor=INK)
 ACCENT_FILL = PatternFill("solid", fgColor=ACCENT2)
 EXAMPLE_FILL = PatternFill("solid", fgColor="EFEFEF")
 

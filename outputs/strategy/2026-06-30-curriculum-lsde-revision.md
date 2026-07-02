@@ -65,7 +65,7 @@ Students submit their own initiative list. The model applies the Razor, outputs 
 ---
 
 ## Milestone 3: Install the Dashboard That Tells the Truth
-**Lead:** Mark
+**Lead:** Mark + Cam (CFO)
 **Week:** 4
 
 ### Learn (8 to 12 min video)
