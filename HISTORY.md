@@ -8,6 +8,25 @@
 
 ---
 
+## 2026-07-01
+
+### Signature Framework, Funnel Blueprint, and Tool Polish
+- Named the method: The Business Without You Method. Three phases: Get Your Time Back, Find the Money, Make It Run Without You.
+- Wrote the full signature framework and client acquisition funnel blueprint (outputs/strategy/2026-07-01-signature-framework-and-funnel-blueprint.md).
+- Built the 8-beat VSL script structure for the results-page video, with placeholders flagged for the two unverified facts needing confirmation from Mark.
+- Mapped a 9-section landing page layout anchored to the diagnostic as the front door.
+- Built the internal PDF briefing for Cam and Mark (outputs/strategy/BWY_Signature_Framework_and_Funnel_Blueprint.pdf).
+- Closed the Cash Confidence "known gap" flag: receivables-timing module verified present and working.
+- Re-skinned all 7 Excel templates to the approved black/white/gold palette.
+- Answered the question of how to state an unverified claim in copy: five honest frameworks (mechanism, borrowed proof, "typically", challenge, target).
+
+### Curriculum Correction, Brand Rebrand, and Curriculum PDF
+- Corrected Milestone 3 (Install the Dashboard) lead to Mark + Cam (CFO) in both curriculum.md and the June 30 LSDE revision doc.
+- Rebranded all 7 milestone Excel templates from the old teal/sage palette to the approved black (#1A1A1A) and gold (#C8A227) palette via template_builder.py.
+- Exported the full curriculum as a clean, formatted PDF: outputs/strategy/curriculum-business-without-you.pdf.
+
+---
+
 ## 2026-06-30
 
 ### Senteo Consultant Call and Curriculum Rebuild

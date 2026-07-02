@@ -1,26 +1,28 @@
 ---
 name: last-session-summary
-description: "Quick /commit save - 2026-06-29 - funnel two-step form finalized, changelog updated"
+description: What was worked on, decisions made, and next steps from the most recent session
 ---
 
-**Date:** 2026-06-29 (Monday - /commit, full save)
+**Date:** 2026-07-01 (Wednesday - /commit, full save)
 
 **What was worked on:**
-- Reviewed and committed the prior session's pending funnel work: the discovery.html application is now a proper 2-step form with a progress bar, a 3-step funnel indicator was added across index.html and discovery.html, the unverified "2,000+ accounts" stat was dropped with a disclosure added clarifying the "200+ companies" track record belongs to Cool Hollow Solutions, and the gold glow/glare was softened further.
-- Added a changelog entry for the above to `HISTORY.md`.
-- No new work was done this session beyond reviewing, committing, and pushing what was already drafted.
+- Reviewed the updated curriculum from the June 30 Senteo call (Mike Ruckman).
+- Corrected Milestone 3 (Install the Dashboard That Tells the Truth) lead to Mark + Cam (CFO) in both context/curriculum.md and outputs/strategy/2026-06-30-curriculum-lsde-revision.md.
+- Exported the full Business Without You curriculum as a clean, branded PDF: outputs/strategy/curriculum-business-without-you.pdf. Includes cover, milestone order table, 12-week schedule, 4-step flow explanation, all 7 milestones in full Learn/See/Do/Extend detail, the Liberation Finale, and notes for Mark.
+- All 7 milestone Excel templates were also rebranded to the approved black/gold palette (this was staged from a prior session's work).
 
 **Key decisions:**
-- None new this session - work committed as-is from the prior draft.
+- Confirmed the step order is Learn, See, Do, Extend (not five steps - Matt clarified "Practice" was not part of the model).
+- Cam co-leads Milestone 3 alongside Mark (correction from prior record).
 
 **Open / unfinished:**
-- Cloudflare Pages deployment of `site/` is still pending Matt's explicit go-ahead - this blocks the hidden-profit analyzer's "Want us to find the rest?" CTA and going public.
-- Matt had said the 2-step form "wasn't quite there yet" as of Friday - worth checking with him directly whether this version (now committed) resolves that, since no specific feedback was captured on what was wrong.
-- Testimonial quote-break styling from Friday's session was applied but Matt's reaction to it was never confirmed.
+- Monday call with Mike to confirm: tiered pricing structure, platform choice, MVP definition.
+- Mark still needs to be briefed: no filming until Milestones 1, 2, and 3 run live on Zoom with 3 to 4 beta clients.
+- Calendar invite for Mike: Monday 6pm.
 
 **Next steps:**
-- Ask Matt for his read on the now-committed 2-step form and testimonial styling.
-- Get an explicit go/no-go on Cloudflare Pages deployment.
-- Suggest Matt ask Mark for 2-3 more real client quotes to expand testimonial coverage.
+- Prep agenda for Monday's call with Mike (pricing, platform, MVP).
+- Brief Mark on the no-filming decision and the beta client plan.
+- Consider whether the curriculum PDF is ready to share with Mark or the team.
 
 **Save type:** /commit (full) - committed and pushed.
