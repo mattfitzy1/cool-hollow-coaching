@@ -8,6 +8,13 @@
 
 ---
 
+## 2026-07-05
+
+### Monday Call Prep: Offer Inventory, Gap Analysis, and a Trades Pricing System
+- Drafted two replies to Mike for the Monday pricing call: the exhaustive offer inventory (in-house/partner x event-based/cyclical, 32 items) and a point-by-point response to his 8-part gap analysis (both in `outputs/strategy/`).
+- Wrote the three-pains response plan mapping Mike's trade-business pains (pricing, team engagement, sales function) to what exists, what extends, and what gets built new.
+- Solved the trades pricing problem standalone: a three-layer system (true cost, price mechanics, close-rate thermostat) with stress tests and a week-by-week rollout (`outputs/strategy/2026-07-05-trades-pricing-system.md`).
+
 ## 2026-07-01
 
 ### Signature Framework, Funnel Blueprint, and Tool Polish
