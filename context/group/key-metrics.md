@@ -1,21 +1,21 @@
 # Key Metrics
 
-> Auto-generated from database. Last updated: 2026-06-30
+> Auto-generated from database. Last updated: 2026-07-06
 > Source: `data/data.db` | Regenerate: `python scripts/generate_metrics.py`
 
 ## Exchange Rates
 | Currency | Rate (from USD) | As Of |
 |----------|----------------|-------|
-| AUD | 1.4493 | 2026-06-29 |
-| CAD | 1.4204 | 2026-06-29 |
-| EUR | 0.8767 | 2026-06-29 |
-| GBP | 0.7559 | 2026-06-29 |
-| JPY | 161.8600 | 2026-06-29 |
+| AUD | 1.4413 | 2026-07-03 |
+| CAD | 1.4202 | 2026-07-03 |
+| EUR | 0.8735 | 2026-07-03 |
+| GBP | 0.7488 | 2026-07-03 |
+| JPY | 161.1500 | 2026-07-03 |
 
 ## Data Freshness
 | Source | Latest Record | Status |
 |--------|---------------|--------|
-| fx_rates | 2026-06-29 | Connected |
+| fx_rates | 2026-07-03 | Connected |
 | meetings | — | Empty |
 | slack_messages | — | No date column |
 | staff_registry | — | No date column |
