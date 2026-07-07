@@ -8,6 +8,16 @@
 
 ---
 
+## 2026-07-06
+
+### Community-First Pivot and Miro Board Prep Pack
+- Debriefed the Mike (Senteo) call: locked in the community-first model. The 12-week program is now the front door, not the product. The recurring community is the real business. This changes the pricing shape, the funnel, and the pitch deck.
+- Updated `context/business-info.md` and `context/strategy.md` to reflect the pivot: three-layer offer (entry / ongoing / partner-delivered), freemium + tiered pricing as a capacity valve, Zoom-first recording instead of AI clone.
+- Built four filled Miro exercises for the July 14 call with Mike: package breakdown rings, customer journey (before/journey/after), cyclic identification and mapping, and the full CJM Blueprint Components grid (9 rows, 3 columns, color-coded by status).
+- Produced `Miro_Board_Prep_Pack.pdf`: a 6-page branded offline briefing (black/white/gold) covering all four exercises, the MVP list, and call questions.
+
+---
+
 ## 2026-07-05
 
 ### Monday Call Prep: Offer Inventory, Gap Analysis, and a Trades Pricing System

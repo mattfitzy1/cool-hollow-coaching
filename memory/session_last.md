@@ -3,25 +3,28 @@ name: last-session-summary
 description: What was worked on, decisions made, and next steps from the most recent session
 ---
 
-**Date:** 2026-07-05 (Sunday evening, committed just after midnight - /commit, full save)
+**Date:** 2026-07-06
 
 **What was worked on:**
-- Drafted the reply to Mike's offer-structure request: the exhaustive offer inventory across his four buckets (in-house/partner x event-based/cyclical), 32 items, grounded in the real curriculum and tools. Saved at outputs/strategy/2026-07-05-offer-inventory-reply-to-mike.md (initially addressed to Mark by mistake, corrected).
-- Rewrote Mike's 8-point gap analysis (offering approach, pricing, partners, customization, data, management, journey, analytics) as a reply from Matt: outputs/strategy/2026-07-05-gap-analysis-reply-to-mike.md. Both replies were put on the clipboard for Matt to send himself.
-- Built the three-pains response plan for Mike's trade-business observations (no pricing system, weak team engagement, no sales/account management function): outputs/strategy/2026-07-05-three-pains-response-plan.md.
-- Solved the trades pricing problem as a standalone system (Matt asked for it independent of Business Without You): three layers (true cost of a billable hour, price mechanics, close-rate thermostat), fear-killing volume-loss math, five stress tests, week-by-week rollout. outputs/strategy/2026-07-05-trades-pricing-system.md.
+- Debriefed the July 6 call with Mike (Senteo): extracted the key takeaways and broke them into actionable parts.
+- Locked in the community-first model: the 12-week Business Without You program is the front door / onboarding, not the product. The recurring community (ongoing coaching, tools, partner services) is the real business.
+- Updated context/business-info.md and context/strategy.md with the new three-layer offer structure, freemium + tiered pricing shape, and Zoom-first recording decision.
+- Built four filled Miro board exercises mapped to our business: package breakdown (nested rings), customer journey (before/journey/after), cyclic identification and mapping (four arcs), and the CJM Blueprint Components grid (9 rows, color-coded by status).
+- Produced Miro_Board_Prep_Pack.pdf: a clean 6-page offline briefing in the black/white/gold house style, ready to read before the July 14 call.
 
 **Key decisions:**
-- Mike (Senteo) recommends monthly tiered pricing over lump sum; Matt's reply agrees with the direction. To be worked through on the Monday call.
-- The standalone pricing-system note deliberately does NOT tie back to Business Without You, per Matt's instruction.
+- Community-first model locked: the recurring community is the business; the 12-week program is the entry point.
+- Zoom-first recording: Mark records on Zoom cheaply and iterates before any studio session. AI clone is deprioritized for now.
+- Freemium + tiered pricing: tiers act as a capacity valve on Mark's time; Cool Hollow Mastermind stays application-gated.
 
 **Open / unfinished:**
-- Whether Matt sent the two replies to Mike (drafted and clipboarded, sending is his).
-- The Monday call with Mike (today, July 6, 6pm): pricing structure, platform choice, MVP definition, plus Mike's potential partner role and the journey-mapping workshop he offered.
-- Still carried from July 1: brief Mark on no filming until Milestones 1-3 run live with 3-4 beta clients; decide if the curriculum PDF is ready to share.
-- Open idea raised: a Pricing System Install as Matt's side-hustle consulting offer ($2-5K fixed scope) toward the $15K debt.
+- The founding-cohort sequencing: the empty-room-at-launch risk was flagged in the docs but not yet resolved as a plan. Worth raising with Mike on July 14.
+- Pricing tiers: the freemium + paid structure is shaped but not yet finalized with numbers.
+- The JOURNEY column build: most of the recurring community (weekly Q&A, platform, content library, tiers) is "planned" not built. This is the main July-to-launch work.
+- Carrying from before: brief Mark on filming hold until Milestones 1-3 run live with 3-4 beta clients; decide if curriculum PDF is ready to share.
 
 **Next steps:**
-- Debrief after the Monday call with Mike and update strategy/pricing context with whatever gets decided.
-- Decide whether to build the Pricing System Install as a tool/offer.
-- Brief Mark (filming hold + beta plan).
+- Read the Miro_Board_Prep_Pack.pdf before July 14.
+- Place the filled exercises on the Miro board (use the three output docs as the source; the prep pack doc has a 5-minute board setup guide).
+- July 14, 10:30 AM ET: call with Mike. Bring the founding-cohort question and the MVP defense.
+- After July 14: debrief and update strategy context with whatever gets decided on pricing, platform, and MVP scope.
