@@ -18,6 +18,8 @@ Everything below serves those dates. I will flag when work is drifting off the p
 
 **Business Without You.** The owner is the single point of failure, and that is the problem we solve. We lead with outcomes — **15 hours back and up to $50,000 in profit found** — never with features or jargon. "10x is easier than 2x" is the philosophy underneath the higher tier: push for structural change, not incremental tweaks.
 
+**The core model: community, not course (locked in 2026-07-06 with Mike).** The 12-week program is the **front door**, not the product. Its job is to onboard a buyer and convert them into a long-term member. The real business is a **recurring community** (ongoing coaching, tools, partner services) where the lifetime value lives. Every strategy call, pricing move, and funnel decision now serves "get them in the door with the 12 weeks, keep them in the community for years." Full detail in `context/business-info.md`.
+
 ---
 
 ## The end-of-July checklist
@@ -35,6 +37,8 @@ By end of July, Matt wants:
 
 ## Active decisions and open questions
 
+- **MVP definition via Miro (due July 14 call with Mike).** Map the full offering and customer journey on a Miro board, color-code every component by launch priority (critical for launch / phase 2 / phase 3), and define the MVP. Core product = the ongoing community; entry point = the 12-week program; in-house offerings at the core, partner offerings on the periphery, a possible third-party tool marketplace later. Next meeting: **Tuesday July 14, 10:30 AM ET.**
+- **Pricing (freemium + tiers).** Freemium community access with locked rooms; paid tiers unlock more and give progressive discounts on premium services; tiers act as a capacity valve on Mark's time; Cool Hollow Mastermind gated by separate application + fee. Still to be finalized.
 - **Pricing and curriculum structure.** Still being worked out — needs to be realistic and built to actually convert, not just look good on paper.
 - **The marketing funnel and organic lead generation.** This is the real blocker right now, not the curriculum.
 - **Budget and timing for content production.** Filming everything live with Mark is not sustainable at the volume needed — this is why an AI clone of Mark (likeness + voice) for lesson and content generation is a live priority, not a someday idea.

@@ -19,13 +19,34 @@ The plan: take what already works in the 1:1 advisory (the expertise, the team, 
 
 ---
 
-## The offer: a tiered coaching model
+## The core model: a community, not a course (decided 2026-07-06)
 
-### Tier 1: Business Without You
-- **What it is:** a 12-week coaching program.
-- **Price:** $5,000.
-- **Who it is for:** owner-operators of companies doing **$1M to $10M a year** in revenue, where the owner is still the single point of failure and is stretched thin.
-- **The promise:** **15 hours back, plus up to $50,000 in profit found.** Backed by a strong in-house CFO who almost always finds real hidden profit in a client's books. When the program surfaces profit the owner did not know they had, a $5,000 fee is an obvious yes.
+The real business is a **long-term, recurring community**, not the 12-week program. This was locked in on the July 6 call with Mike (Senteo). The distinction that runs through everything now:
+
+- **The 12-week Business Without You program is the front door, not the product.** Its job is onboarding: it initiates a buyer, delivers a fast win, and converts them into a long-term community member. Think of it as the entry point, not the destination.
+- **The recurring community is the product.** Ongoing coaching, video content, tools, and partner-delivered services that members pay for month after month. This is where the lifetime value lives, and it is what actually gets us to $3M / 500 clients. 500 one-time sales is a treadmill; 500 members paying on a recurring basis is a business.
+- **Why it matters:** a one-time $5K sale caps revenue at "how many new people can I enroll this month." A community turns one sale into years of value and scales Mark's expertise through a network of trusted partners (Cam for finance, Hannah for hiring) rather than Mark's own limited hours.
+
+---
+
+## The offer: onboarding into an ongoing community
+
+Structured in three layers, with the recurring layer as the spine:
+
+### Entry (event-based) — the front door
+- **Business Without You:** the 12-week program. Priced around **$5,000** as the onboarding offer. For owner-operators doing **$1M to $10M a year** where the owner is still the single point of failure. The promise: **15 hours back, plus up to $50,000 in profit found.** Backed by a strong in-house CFO who reliably finds real hidden profit in a client's books.
+- **Profit Discovery Session** with Cam: a fast, high-value early win.
+- **Hiring Sprint** with Hannah.
+
+### Ongoing (cyclical) — the real product
+- Weekly live Q&A calls with Mark.
+- Monthly "CFO Office Hours" with Cam.
+- Quarterly business reviews.
+
+### Partner-delivered (premium)
+- Guest-speaker masterclasses.
+- Fractional CFO and tax-strategy services.
+- Business valuation assessments, tiered from a quick estimate up to a full valuation.
 
 **The seven milestones:**
 1. Reclaim the owner's time and identity.
@@ -36,11 +57,12 @@ The plan: take what already works in the 1:1 advisory (the expertise, the team, 
 6. Cash-flow confidence (13-week forecast).
 7. Build the team.
 
-### Tier 2: for $10M+ owners
-- For owners who have outgrown Tier 1 — companies doing **$10M and above**.
-- Focus: tax strategy, investment, and taking the business to the next level.
-- Includes a **community** with one to two live sessions a week.
-- The full team is involved: CFO, COO, and a people/HR specialist, plus Mark on strategy.
+### Pricing shape (freemium + tiers, being designed)
+- **Freemium:** community access with most rooms and courses locked. Gets people in the door.
+- **Tiered plans:** higher tiers unlock more, plus **progressive discounts on premium services** (like 1-on-1s with Mark). The tiers double as a **capacity valve**: price throttles who gets Mark's limited time.
+- **High-ticket (Cool Hollow Mastermind):** stays behind a separate application and fee to protect quality.
+
+For $10M+ owners, the focus shifts to tax strategy, investment, and scaling, with the full team involved (CFO, COO, HR/people specialist, plus Mark on strategy).
 
 **Guiding philosophy:** "10x is easier than 2x." The program pushes owners toward bigger structural moves, not incremental tweaks.
 
@@ -61,7 +83,7 @@ There is no funnel live yet. The plan is **social media first**, not the website
 
 - A **new Instagram page**, posting **twice a day**, built around the pain points and issues the coaching program solves.
 - Content built from researched **viral hooks**: reviewing what works across competitive coaches and the broader business-consulting space, then adapting the best hooks and scripts to get in front of the ideal customer.
-- To make this sustainable, Matt wants an **AI clone of Mark** (likeness and voice) so lesson and content video can be generated without needing Mark on camera for every piece.
+- **Content recording (decided 2026-07-06): Zoom first, studio later.** Record Mark's teaching content on Zoom cheaply so he can iterate on delivery, refine his stories, and build confidence before committing to a polished studio recording. This avoids paying to refilm content shot before the material was proven. Mike offered to coach Mark on structuring content for impact (statistics, case studies). This is the near-term answer to the filming bottleneck; the **AI clone of Mark** (likeness and voice) remains a later ambition, not the current plan.
 - The **hidden-profit analyzer** (a tool that takes a P&L and surfaces leakage and hidden profit) doubles as a lead magnet and a proof of the program's core promise before anyone pays.
 
 ---
