@@ -10,6 +10,13 @@
 
 ## 2026-07-09
 
+### QuickBooks P&L support, a live-data rendering bug, and the Profit Finder fix
+- Added QuickBooks P&L import to the Profit Discovery Audit: owners can now export straight from QuickBooks (or upload their own spreadsheet) with no re-typing, title rows, month columns, section subtotals, and accounting-style formatting are all handled, and subtotal rows are automatically excluded so nothing is double counted.
+- Found and fixed a real bug surfaced by testing against a real client QuickBooks file: Streamlit renders text between two "$" signs as math notation, so any finding with two or more dollar figures (very common) was displaying as broken, garbled text instead of plain English. Fixed across the Profit Discovery Audit and Cash Confidence, the two tools that generate dollar findings; confirmed the other five tools never generate dollar text and were never affected.
+- Found and fixed a second, related bug in the same pass: raw QuickBooks account-number prefixes ("66026 66026-Payroll Expense...") were leaking straight into results instead of a clean label. Fixed at the source so every tool that reads a P&L gets clean labels.
+- Swept all 7 milestone tools for copy clarity; fixed one real issue (reclaim-protocol was showing "owner_only" with a raw underscore in results prose instead of plain English).
+- Carried the same two fixes over to the public Profit Finder lead-magnet tool (profit-finder-coolhollow.streamlit.app), plus found and fixed a third bug there: section headers ("Expenses") were leaking into the cost-line table as fake "$0" line items. Verified live on the deployed site.
+
 ### Branded, secured, and rebuilt the 7 milestone tools for client use
 - Gave all 7 tools (Reclaim Protocol, Impact Map, Dashboard, Profit Discovery Audit, Cash Confidence, Bottleneck Breakthrough, Team Builder) the Cool Hollow Coaching header and gold house styling, driven from one shared file so future logo changes update everywhere at once.
 - Locked in a zero-data-retention policy: nothing uploaded or generated is ever stored on a server. Each tool now offers a branded PDF download of the client's own results, since that download is their only copy. Drafted disclaimer, terms of use, and privacy notice for a lawyer to review before real client data goes through the tools.
