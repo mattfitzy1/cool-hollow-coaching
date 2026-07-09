@@ -8,6 +8,15 @@
 
 ---
 
+## 2026-07-09
+
+### Branded, secured, and rebuilt the 7 milestone tools for client use
+- Gave all 7 tools (Reclaim Protocol, Impact Map, Dashboard, Profit Discovery Audit, Cash Confidence, Bottleneck Breakthrough, Team Builder) the Cool Hollow Coaching header and gold house styling, driven from one shared file so future logo changes update everywhere at once.
+- Locked in a zero-data-retention policy: nothing uploaded or generated is ever stored on a server. Each tool now offers a branded PDF download of the client's own results, since that download is their only copy. Drafted disclaimer, terms of use, and privacy notice for a lawyer to review before real client data goes through the tools.
+- Rebuilt all 7 Excel templates: Instructions, Examples, and a new Starter Ideas tab (common tasks, metrics, constraints, and roles to jog memory, names only, never pre-filled numbers or ratings).
+- Found and fixed a real launch blocker: a client filling in the old templates and uploading them got rejected by every tool. Built a shared smart reader so one filled workbook uploads correctly into every box of a multi-file tool.
+- Found and fixed a second bug: a "the tool never reads this tab" warning looked bold in the file but silently failed to render bold in Excel/LibreOffice due to a rich-text-in-merged-cell limitation. Verified the fix by converting to PDF and visually checking, not just trusting the file data.
+
 ## 2026-07-08
 
 ### 18-Slide PowerPoint Team Deck: Progress & Path Forward
