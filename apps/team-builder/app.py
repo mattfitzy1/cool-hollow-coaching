@@ -50,6 +50,13 @@ if os.path.exists(TEMPLATE_PATH):
 
 st.divider()
 
+st.info(
+    "**One workbook, uploaded twice.** Your filled-in template has both tabs in it. "
+    "Upload that same file into the role inventory box below, then upload it again "
+    "into the candidates box if you're actively hiring, each one automatically "
+    "reads the tab it needs."
+)
+
 st.subheader("1. Role inventory and delegation map")
 with st.expander("What file should I upload?"):
     st.write(

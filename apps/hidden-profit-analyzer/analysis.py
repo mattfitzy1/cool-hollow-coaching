@@ -18,9 +18,14 @@ Files with no section headers (a bare CSV) fall back to keyword classification.
 Subtotal/total rows are always excluded so nothing is double counted.
 """
 
+import os
 import re
+import sys
 
 import pandas as pd
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "_shared"))
+from text_safety import clean_line_item
 
 # Fallback keyword classification (only used when a file has no section headers).
 REVENUE_KEYWORDS = ["revenue", "sales", "income", "turnover"]
@@ -130,7 +135,10 @@ def _classify_rows(df: pd.DataFrame, amount_cols: list):
         if section is not None:
             current = section
             categories.append(section)
-            totals.append(False)
+            # A section header ("Income", "Expenses") is not a real line
+            # item, it has no amount. Mark it like a total row so _detail()
+            # drops it, otherwise it shows up as a fake "$0" cost line.
+            totals.append(True)
             continue
         categories.append(current if current is not None else _classify(label))
         totals.append(False)
@@ -155,6 +163,7 @@ def load_pnl(df: pd.DataFrame) -> pd.DataFrame:
     categories, totals = _classify_rows(df, amount_cols)
     df["category"] = categories
     df["is_total"] = totals
+    df["line_item"] = df["line_item"].apply(clean_line_item)
 
     month_cols = [c for c in amount_cols if c != "amount"]
     if month_cols:

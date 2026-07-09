@@ -66,7 +66,13 @@ def _classify(line_item: str) -> str:
 
 
 def load_pnl(df: pd.DataFrame) -> pd.DataFrame:
-    """Normalize a raw uploaded P&L into category, line_item, amount, and month columns."""
+    """Normalize a raw uploaded P&L into category, line_item, amount, and month columns.
+
+    When the upload came through the shared pnl_reader (our template, a
+    QuickBooks export, or the client's own spreadsheet), rows arrive with a
+    trusted section-aware category already attached and subtotals removed.
+    That category wins; keyword classification is only the fallback for a
+    bare DataFrame without one."""
     df = df.copy()
     df.columns = [str(c).strip().lower().replace(" ", "_") for c in df.columns]
 
@@ -74,10 +80,12 @@ def load_pnl(df: pd.DataFrame) -> pd.DataFrame:
         first_col = df.columns[0]
         df = df.rename(columns={first_col: "line_item"})
 
+    has_category = "category" in df.columns
+    id_vars = ["line_item", "category"] if has_category else ["line_item"]
     month_cols = [c for c in df.columns if c not in ("line_item", "category", "amount")]
 
     if month_cols:
-        df = df.melt(id_vars=["line_item"], value_vars=month_cols,
+        df = df.melt(id_vars=id_vars, value_vars=month_cols,
                       var_name="month", value_name="amount")
     elif "amount" in df.columns:
         df["month"] = "total"
@@ -86,7 +94,8 @@ def load_pnl(df: pd.DataFrame) -> pd.DataFrame:
 
     df["amount"] = pd.to_numeric(df["amount"], errors="coerce").fillna(0)
     df["line_item"] = df["line_item"].astype(str)
-    df["category"] = df["line_item"].apply(_classify)
+    if not has_category:
+        df["category"] = df["line_item"].apply(_classify)
     return df[["category", "line_item", "month", "amount"]]
 
 

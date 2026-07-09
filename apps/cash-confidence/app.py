@@ -21,6 +21,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "_shared"))
 from branding import apply_branding, show_disclaimer
 from client_upload import read_upload
 from results_pdf import build_results_pdf
+from text_safety import escape_dollars
 
 from analysis import run_cash_confidence
 
@@ -50,6 +51,13 @@ if os.path.exists(TEMPLATE_PATH):
     st.caption("Fill in the data tabs, save, and upload that same file into every upload box below. Each box automatically finds the tab it needs.")
 
 st.divider()
+
+st.info(
+    "**One workbook, uploaded up to three times.** Your filled-in template has all "
+    "three tabs in it. Upload that same file into each box below, box 1 for cash "
+    "items, box 2 for recurring expenses, box 3 for receivables, each one "
+    "automatically reads the tab it needs. Don't split them into separate files."
+)
 
 starting_balance = st.number_input("Your current cash balance ($)", min_value=0.0, value=0.0, step=1000.0)
 
@@ -141,12 +149,12 @@ if cash_file and expenses_file:
     if receivables["overdue_accounts"]:
         st.divider()
         st.header(f"Receivables timing: ${receivables['overdue_amount']:,.0f} stuck beyond your own terms")
-        st.write(
+        st.write(escape_dollars(
             f"Of ${receivables['total_outstanding']:,.0f} total outstanding, "
             f"${receivables['overdue_amount']:,.0f} is sitting past the terms you actually quoted. "
             f"This is cash you've already earned, it's just not in the bank yet. For most owners "
             f"in this program, accelerating this is a bigger lever than cutting any expense below."
-        )
+        ))
         for acct in receivables["overdue_accounts"]:
             st.write(
                 f"- **{acct['customer_name']}**: ${acct['amount_outstanding']:,.0f} outstanding, "

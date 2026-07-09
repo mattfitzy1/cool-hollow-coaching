@@ -38,7 +38,7 @@ st.write(
 
 st.warning(
     "This only works if the time log is honest. If everything ends up marked "
-    "owner_only, that is the result worth sitting with, not a clean bill of health."
+    "owner-only, that is the result worth sitting with, not a clean bill of health."
 )
 
 if os.path.exists(TEMPLATE_PATH):
@@ -85,12 +85,12 @@ if log_file:
 
     st.header(f"{result['reclaimable_hours']:.1f} hours a week up for reclaim")
     st.write(
-        f"{result['owner_only_hours']:.1f} hours a week stay owner_only for now, "
+        f"{result['owner_only_hours']:.1f} hours a week stay owner-only for now, "
         f"work only you can do today."
     )
 
     if not result["items"]:
-        st.info("Every task in this log was marked owner_only. Nothing to hand off yet.")
+        st.info("Every task in this log was marked owner-only. Nothing to hand off yet.")
     else:
         st.divider()
         for tier in ["This week", "Within 2 weeks", "Within 30 days"]:
@@ -121,7 +121,7 @@ if log_file:
     pdf_bytes = build_results_pdf(
         1, "The 15-Hour Reclaim Protocol",
         f"{result['reclaimable_hours']:.1f} hours a week up for reclaim. "
-        f"{result['owner_only_hours']:.1f} hours a week stay owner_only for now.",
+        f"{result['owner_only_hours']:.1f} hours a week stay owner-only for now.",
         pdf_sections,
     )
     st.download_button(

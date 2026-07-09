@@ -20,7 +20,9 @@ import streamlit as st
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "_shared"))
 from branding import apply_branding, show_disclaimer
 from client_upload import read_upload
+from pnl_reader import read_pnl
 from results_pdf import build_results_pdf
+from text_safety import escape_dollars
 
 from analysis import run_full_audit, BUSINESS_TYPE_BENCHMARKS, DEFAULT_BUSINESS_TYPE
 
@@ -52,15 +54,29 @@ if os.path.exists(TEMPLATE_PATH):
 
 st.divider()
 
+st.info(
+    "**Already keep your books in QuickBooks?** You don't need to re-type anything. "
+    "Export your P&L straight from QuickBooks (or use your own spreadsheet) and drop "
+    "it in the P&L box as is, titles, totals, and formatting are handled automatically. "
+    "Then use our template for the customer/service breakdown, that part isn't in "
+    "QuickBooks. If you filled in our template's P&L tab instead, upload that same "
+    "workbook into both boxes, each one reads the tab it needs."
+)
+
 col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("1. Your P&L")
     with st.expander("What file should I upload?"):
         st.write(
-            "A CSV or Excel export of your profit and loss. The first column should be "
-            "the line item name (Revenue, Cost of Goods Sold, Rent, Software, Discounts, "
-            "and so on). If you have more than one month, add a column per month."
+            "Any of these work, no re-typing needed:\n"
+            "- **A QuickBooks P&L export** (Excel or CSV), exactly as QuickBooks "
+            "produces it. Title rows, month columns, section subtotals, and "
+            "$1,200-style formatting are all handled, and subtotal rows are "
+            "automatically skipped so nothing is double counted.\n"
+            "- **Your own spreadsheet**: first column is the line item name "
+            "(Revenue, Cost of Goods Sold, Rent, and so on), one column per month.\n"
+            "- **Our template's P&L tab**, if you filled that in."
         )
     pnl_file = st.file_uploader("Upload your P&L (CSV or Excel)", type=["csv", "xlsx", "xls"], key="pnl")
 
@@ -100,7 +116,7 @@ st.divider()
 
 if pnl_file and breakdown_file:
     try:
-        pnl_raw = read_upload(pnl_file, {"line_item"})
+        pnl_raw = read_pnl(pnl_file)
         breakdown_raw = read_upload(breakdown_file, {"type", "name", "revenue", "direct_cost"})
     except pd.errors.ParserError:
         st.error(
@@ -129,7 +145,7 @@ if pnl_file and breakdown_file:
     for check in result["checks"]:
         st.subheader(f"{check['name']}: ${check['estimate']:,.0f}")
         for line in check["findings"]:
-            st.write(f"- {line}")
+            st.write(f"- {escape_dollars(line)}")
 
     st.divider()
     st.write(
