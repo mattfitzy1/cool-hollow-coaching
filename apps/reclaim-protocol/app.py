@@ -11,9 +11,15 @@ Protocol: a named, deadlined list of what moves first.
 """
 
 import os
+import sys
 
 import pandas as pd
 import streamlit as st
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "_shared"))
+from branding import apply_branding, show_disclaimer
+from client_upload import read_upload
+from results_pdf import build_results_pdf
 
 from analysis import build_protocol, load_time_log
 
@@ -21,6 +27,7 @@ TEMPLATE_NAME = "Cool_Hollow_Coaching_Milestone_1_Reclaim_Protocol_Template.xlsx
 TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), TEMPLATE_NAME)
 
 st.set_page_config(page_title="Business Without You, the 15-Hour Reclaim Protocol", page_icon="⏱")
+apply_branding(1, "The 15-Hour Reclaim Protocol")
 
 st.title("The 15-Hour Reclaim Protocol")
 st.write(
@@ -38,6 +45,7 @@ if os.path.exists(TEMPLATE_PATH):
     with open(TEMPLATE_PATH, "rb") as f:
         st.download_button("Download the blank template", f.read(), file_name=TEMPLATE_NAME,
                             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    st.caption("Fill in the data tab, save, and upload that same file below. The Instructions and Examples tabs stay in the file, the tool skips them automatically.")
 
 st.divider()
 
@@ -56,7 +64,7 @@ st.divider()
 
 if log_file:
     try:
-        log_raw = pd.read_csv(log_file) if log_file.name.lower().endswith(".csv") else pd.read_excel(log_file)
+        log_raw = read_upload(log_file, {"task", "hours_per_week", "category"})
     except pd.errors.ParserError:
         st.error(
             "Could not read that file. This usually means a task name has a comma in it "
@@ -101,5 +109,28 @@ if log_file:
         "Bring this list to your next live call. The hours add up fastest when the "
         "top tier actually moves this week, not when the whole list looks tidy on paper."
     )
+
+    pdf_sections = []
+    for tier in ["This week", "Within 2 weeks", "Within 30 days"]:
+        tier_items = [i for i in result["items"] if i["deadline"] == tier]
+        if tier_items:
+            pdf_sections.append((tier, [
+                f"{i['action']}: {i['task']} ({i['hours_per_week']:.1f} hrs/week). {i['reasoning']}"
+                for i in tier_items
+            ]))
+    pdf_bytes = build_results_pdf(
+        1, "The 15-Hour Reclaim Protocol",
+        f"{result['reclaimable_hours']:.1f} hours a week up for reclaim. "
+        f"{result['owner_only_hours']:.1f} hours a week stay owner_only for now.",
+        pdf_sections,
+    )
+    st.download_button(
+        "Download your results (PDF)", pdf_bytes,
+        file_name="Cool_Hollow_Coaching_Reclaim_Protocol_Results.pdf",
+        mime="application/pdf", type="primary",
+    )
+    st.caption("Nothing you upload or generate here is stored on our servers. This download is your only copy.")
 else:
     st.info("Upload your time log above to build your reclaim protocol.")
+
+show_disclaimer()

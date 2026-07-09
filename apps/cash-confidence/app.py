@@ -12,9 +12,15 @@ actually gets cut.
 """
 
 import os
+import sys
 
 import pandas as pd
 import streamlit as st
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "_shared"))
+from branding import apply_branding, show_disclaimer
+from client_upload import read_upload
+from results_pdf import build_results_pdf
 
 from analysis import run_cash_confidence
 
@@ -22,6 +28,7 @@ TEMPLATE_NAME = "Cool_Hollow_Coaching_Milestone_5_Cash_Confidence_Template.xlsx"
 TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), TEMPLATE_NAME)
 
 st.set_page_config(page_title="Business Without You, Cash Confidence", page_icon="\U0001F4B0")
+apply_branding(5, "Cash Confidence")
 
 st.title("Cash Confidence")
 st.write(
@@ -40,6 +47,7 @@ if os.path.exists(TEMPLATE_PATH):
     with open(TEMPLATE_PATH, "rb") as f:
         st.download_button("Download the blank template", f.read(), file_name=TEMPLATE_NAME,
                             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    st.caption("Fill in the data tabs, save, and upload that same file into every upload box below. Each box automatically finds the tab it needs.")
 
 st.divider()
 
@@ -86,11 +94,16 @@ st.divider()
 
 if cash_file and expenses_file:
     try:
-        cash_raw = pd.read_csv(cash_file) if cash_file.name.lower().endswith(".csv") else pd.read_excel(cash_file)
-        expenses_raw = pd.read_csv(expenses_file) if expenses_file.name.lower().endswith(".csv") else pd.read_excel(expenses_file)
+        cash_raw = read_upload(cash_file, {"week", "type", "amount"})
+        expenses_raw = read_upload(expenses_file, {
+            "expense_name", "weekly_amount", "core_customer_fit", "revenue_risk_if_cut",
+            "roi_clarity", "no_cheaper_alternative", "would_approve_today",
+        })
         receivables_raw = None
         if receivables_file:
-            receivables_raw = pd.read_csv(receivables_file) if receivables_file.name.lower().endswith(".csv") else pd.read_excel(receivables_file)
+            receivables_raw = read_upload(receivables_file, {
+                "customer_name", "amount_outstanding", "terms_days", "days_outstanding",
+            })
     except pd.errors.ParserError:
         st.error(
             "Could not read one of those files. This usually means a description or "
@@ -182,5 +195,50 @@ if cash_file and expenses_file:
         "Bring both forecasts to your next live call. The Decision Filter only "
         "matters if a cut candidate actually gets cancelled, not just flagged."
     )
+
+    pdf_sections = []
+    baseline_status = (
+        "Goes negative in week(s): " + ", ".join(str(w) for w in result["baseline_negative_weeks"]) + "."
+        if result["baseline_negative_weeks"] else "Stays positive across all 13 weeks."
+    )
+    pdf_sections.append(("13-week cash forecast", [baseline_status]))
+
+    if receivables["overdue_accounts"]:
+        lines = [
+            f"${receivables['overdue_amount']:,.0f} of ${receivables['total_outstanding']:,.0f} total "
+            f"outstanding is sitting past terms."
+        ]
+        lines += [
+            f"{acct['customer_name']}: ${acct['amount_outstanding']:,.0f} outstanding, "
+            f"{acct['days_outstanding']} days (terms are {acct['terms_days']}), "
+            f"{acct['days_overdue']} days past terms."
+            for acct in receivables["overdue_accounts"]
+        ]
+        pdf_sections.append(("Receivables timing", lines))
+
+    filter_lines = []
+    if filt["cut_candidates"]:
+        filter_lines.append(f"Cut candidates: ${filt['weekly_savings_if_cut']:,.0f}/week")
+        filter_lines += [
+            f"{item['expense_name']} (${item['weekly_amount']:,.0f}/week, score {item['composite']}/5). {item['reasoning']}"
+            for item in filt["cut_candidates"]
+        ]
+    else:
+        filter_lines.append("No recurring expense failed the filter. Everything earns its place today.")
+    pdf_sections.append(("The Financial Decision Filter", filter_lines))
+
+    pdf_bytes = build_results_pdf(
+        5, "Cash Confidence",
+        f"Starting cash balance: ${starting_balance:,.0f}. {baseline_status}",
+        pdf_sections,
+    )
+    st.download_button(
+        "Download your results (PDF)", pdf_bytes,
+        file_name="Cool_Hollow_Coaching_Cash_Confidence_Results.pdf",
+        mime="application/pdf", type="primary",
+    )
+    st.caption("Nothing you upload or generate here is stored on our servers. This download is your only copy.")
 else:
     st.info("Upload both files above to run Cash Confidence.")
+
+show_disclaimer()

@@ -12,9 +12,15 @@ magnet. For that, see apps/hidden-profit-analyzer.
 """
 
 import os
+import sys
 
 import pandas as pd
 import streamlit as st
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "_shared"))
+from branding import apply_branding, show_disclaimer
+from client_upload import read_upload
+from results_pdf import build_results_pdf
 
 from analysis import run_full_audit, BUSINESS_TYPE_BENCHMARKS, DEFAULT_BUSINESS_TYPE
 
@@ -22,6 +28,7 @@ TEMPLATE_NAME = "Cool_Hollow_Coaching_Milestone_4_Profit_Discovery_Audit_Templat
 TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), TEMPLATE_NAME)
 
 st.set_page_config(page_title="Business Without You, the Profit Discovery Audit", page_icon="$")
+apply_branding(4, "The Profit Discovery Audit")
 
 st.title("The Profit Discovery Audit")
 st.write(
@@ -41,6 +48,7 @@ if os.path.exists(TEMPLATE_PATH):
     with open(TEMPLATE_PATH, "rb") as f:
         st.download_button("Download the blank template", f.read(), file_name=TEMPLATE_NAME,
                             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    st.caption("Fill in the data tabs, save, and upload that same file into every upload box below. Each box automatically finds the tab it needs.")
 
 st.divider()
 
@@ -92,8 +100,8 @@ st.divider()
 
 if pnl_file and breakdown_file:
     try:
-        pnl_raw = pd.read_csv(pnl_file) if pnl_file.name.lower().endswith(".csv") else pd.read_excel(pnl_file)
-        breakdown_raw = pd.read_csv(breakdown_file) if breakdown_file.name.lower().endswith(".csv") else pd.read_excel(breakdown_file)
+        pnl_raw = read_upload(pnl_file, {"line_item"})
+        breakdown_raw = read_upload(breakdown_file, {"type", "name", "revenue", "direct_cost"})
     except pd.errors.ParserError:
         st.error(
             "Could not read one of those files. This usually means a line item or "
@@ -129,5 +137,25 @@ if pnl_file and breakdown_file:
         "figure are where Mark or the specialist team should look closest, the model "
         "behind this number is a guide, not the final word."
     )
+
+    pdf_sections = [
+        (f"{check['name']}: ${check['estimate']:,.0f}", check["findings"])
+        for check in result["checks"]
+    ]
+    pdf_bytes = build_results_pdf(
+        4, "The Profit Discovery Audit",
+        f"Audit found ${result['total_found']:,.0f} a year in profit opportunity. "
+        f"Annualized from {result['period_months']:.0f} month(s) of data, benchmarked "
+        f"against a {result['business_type'].lower()} business.",
+        pdf_sections,
+    )
+    st.download_button(
+        "Download your results (PDF)", pdf_bytes,
+        file_name="Cool_Hollow_Coaching_Profit_Discovery_Audit_Results.pdf",
+        mime="application/pdf", type="primary",
+    )
+    st.caption("Nothing you upload or generate here is stored on our servers. This download is your only copy.")
 else:
     st.info("Upload both files above to run the audit.")
+
+show_disclaimer()

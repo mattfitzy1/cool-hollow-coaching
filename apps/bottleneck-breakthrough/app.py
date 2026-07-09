@@ -12,9 +12,15 @@ ranked by hours saved for the effort required.
 """
 
 import os
+import sys
 
 import pandas as pd
 import streamlit as st
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "_shared"))
+from branding import apply_branding, show_disclaimer
+from client_upload import read_upload
+from results_pdf import build_results_pdf
 
 from analysis import build_breakthrough_plan, load_constraints
 
@@ -22,6 +28,7 @@ TEMPLATE_NAME = "Cool_Hollow_Coaching_Milestone_6_Bottleneck_Breakthrough_Templa
 TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), TEMPLATE_NAME)
 
 st.set_page_config(page_title="Business Without You, the Bottleneck Breakthrough Plan", page_icon="\U0001F517")
+apply_branding(6, "The Bottleneck Breakthrough Plan")
 
 st.title("The Bottleneck Breakthrough Plan")
 st.write(
@@ -40,6 +47,7 @@ if os.path.exists(TEMPLATE_PATH):
     with open(TEMPLATE_PATH, "rb") as f:
         st.download_button("Download the blank template", f.read(), file_name=TEMPLATE_NAME,
                             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    st.caption("Fill in the data tab, save, and upload that same file below. The Instructions and Examples tabs stay in the file, the tool skips them automatically.")
 
 st.divider()
 
@@ -59,7 +67,10 @@ st.divider()
 
 if constraints_file:
     try:
-        raw = pd.read_csv(constraints_file) if constraints_file.name.lower().endswith(".csv") else pd.read_excel(constraints_file)
+        raw = read_upload(constraints_file, {
+            "constraint_name", "process", "frequency_per_week",
+            "hours_lost_per_occurrence", "downstream_impact", "automatable",
+        })
     except pd.errors.ParserError:
         st.error(
             "Could not read that file. This usually means a constraint name has a comma "
@@ -112,5 +123,35 @@ if constraints_file:
         "Bring this plan to your next live call. The binding constraint is the one "
         "to attack, the rest of the ranked list is context, not a second priority."
     )
+
+    pdf_sections = [("Full ranked constraint list", [
+        f"{item['rank']}. {item['constraint_name']} ({item['process']}), "
+        f"{item['weekly_hours_lost']:.1f} hrs/week, downstream impact "
+        f"{item['downstream_impact']}/5, score {item['constraint_score']:.1f}."
+        for item in result["ranked_constraints"]
+    ])]
+    if result["automation_hit_list"]:
+        pdf_sections.append(("Automation hit list", [
+            f"{item['constraint_name']}: {item['weekly_hours_lost']:.1f} hrs/week, "
+            f"effort {item['automation_effort']}/5, ROI score {item['automation_roi']:.1f}."
+            for item in result["automation_hit_list"]
+        ]))
+    headline = "No single constraint was clearly binding in this data."
+    if result["binding_constraint"]:
+        bc = result["binding_constraint"]
+        headline = (
+            f"The binding constraint: {bc['constraint_name']} in {bc['process']}, "
+            f"costing {bc['weekly_hours_lost']:.1f} hours a week, downstream impact "
+            f"{bc['downstream_impact']}/5. Break this one first."
+        )
+    pdf_bytes = build_results_pdf(6, "The Bottleneck Breakthrough Plan", headline, pdf_sections)
+    st.download_button(
+        "Download your results (PDF)", pdf_bytes,
+        file_name="Cool_Hollow_Coaching_Bottleneck_Breakthrough_Results.pdf",
+        mime="application/pdf", type="primary",
+    )
+    st.caption("Nothing you upload or generate here is stored on our servers. This download is your only copy.")
 else:
     st.info("Upload your constraint list above to build your breakthrough plan.")
+
+show_disclaimer()

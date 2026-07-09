@@ -12,9 +12,15 @@ indicators worth checking first every Monday.
 """
 
 import os
+import sys
 
 import pandas as pd
 import streamlit as st
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "_shared"))
+from branding import apply_branding, show_disclaimer
+from client_upload import read_upload
+from results_pdf import build_results_pdf
 
 from analysis import build_dashboard, load_metrics
 
@@ -22,6 +28,7 @@ TEMPLATE_NAME = "Cool_Hollow_Coaching_Milestone_3_Dashboard_Template.xlsx"
 TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), TEMPLATE_NAME)
 
 st.set_page_config(page_title="Business Without You, the Monday Morning Dashboard", page_icon="\U0001F4CA")
+apply_branding(3, "The Monday Morning Dashboard")
 
 st.title("The Monday Morning Dashboard")
 st.write(
@@ -40,6 +47,7 @@ if os.path.exists(TEMPLATE_PATH):
     with open(TEMPLATE_PATH, "rb") as f:
         st.download_button("Download the blank template", f.read(), file_name=TEMPLATE_NAME,
                             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    st.caption("Fill in the data tab, save, and upload that same file below. The Instructions and Examples tabs stay in the file, the tool skips them automatically.")
 
 st.divider()
 
@@ -58,7 +66,7 @@ st.divider()
 
 if metrics_file:
     try:
-        raw = pd.read_csv(metrics_file) if metrics_file.name.lower().endswith(".csv") else pd.read_excel(metrics_file)
+        raw = read_upload(metrics_file, {"category", "metric_name", "current_value", "target_value", "direction", "leading", "impact"})
     except pd.errors.ParserError:
         st.error(
             "Could not read that file. This usually means a metric name has a comma in "
@@ -100,5 +108,27 @@ if metrics_file:
         "leading indicators first, then everything else, and only dig deeper into "
         "anything sitting yellow or red."
     )
+
+    status_word = {"green": "on target", "yellow": "watch", "red": "off target"}
+    pdf_sections = [("Your five metrics", [
+        f"{m['category'].capitalize()}: {m['metric_name']}"
+        + (" (leading indicator, check first)" if m["flagged_leading"] else "")
+        + f", currently {m['current_value']:,.1f}, target {m['target_value']:,.1f}, status {status_word[m['status']]}."
+        for m in result["dashboard"]
+    ])]
+    pdf_bytes = build_results_pdf(
+        3, "The Monday Morning Dashboard",
+        "Your five-metric dashboard. Check the leading indicators first every Monday, "
+        "15 minutes, then everything else.",
+        pdf_sections,
+    )
+    st.download_button(
+        "Download your results (PDF)", pdf_bytes,
+        file_name="Cool_Hollow_Coaching_Monday_Dashboard_Results.pdf",
+        mime="application/pdf", type="primary",
+    )
+    st.caption("Nothing you upload or generate here is stored on our servers. This download is your only copy.")
 else:
     st.info("Upload your candidate metric list above to build your dashboard.")
+
+show_disclaimer()

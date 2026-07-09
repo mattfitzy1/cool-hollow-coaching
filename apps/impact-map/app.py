@@ -12,9 +12,15 @@ and the reasoning behind every cut.
 """
 
 import os
+import sys
 
 import pandas as pd
 import streamlit as st
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "_shared"))
+from branding import apply_branding, show_disclaimer
+from client_upload import read_upload
+from results_pdf import build_results_pdf
 
 from analysis import build_impact_map, load_initiatives
 
@@ -22,6 +28,7 @@ TEMPLATE_NAME = "Cool_Hollow_Coaching_Milestone_2_Impact_Map_Template.xlsx"
 TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), TEMPLATE_NAME)
 
 st.set_page_config(page_title="Business Without You, the 12-Month Impact Map", page_icon="\U0001F3AF")
+apply_branding(2, "The 12-Month Impact Map")
 
 st.title("The 12-Month Impact Map")
 st.write(
@@ -39,6 +46,7 @@ if os.path.exists(TEMPLATE_PATH):
     with open(TEMPLATE_PATH, "rb") as f:
         st.download_button("Download the blank template", f.read(), file_name=TEMPLATE_NAME,
                             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    st.caption("Fill in the data tab, save, and upload that same file below. The Instructions and Examples tabs stay in the file, the tool skips them automatically.")
 
 st.divider()
 
@@ -56,7 +64,7 @@ st.divider()
 
 if initiatives_file:
     try:
-        raw = pd.read_csv(initiatives_file) if initiatives_file.name.lower().endswith(".csv") else pd.read_excel(initiatives_file)
+        raw = read_upload(initiatives_file, {"initiative", "core_customer_fit", "unfair_advantage_fit", "impact", "effort"})
     except pd.errors.ParserError:
         st.error(
             "Could not read that file. This usually means an initiative name has a comma "
@@ -95,5 +103,28 @@ if initiatives_file:
         "Bring this map to your next live call. The test is not whether the kept list "
         "looks impressive, it's whether you actually stop chasing what got cut."
     )
+
+    pdf_sections = [("Kept for the next 12 months", [
+        f"{item['initiative']} (impact {item['impact']}/5, effort {item['effort']}/5). {item['reasoning']}"
+        for item in result["kept"]
+    ])]
+    if result["cut"]:
+        pdf_sections.append(("Cut, and why", [
+            f"{item['initiative']}. {item['reasoning']}" for item in result["cut"]
+        ]))
+    pdf_bytes = build_results_pdf(
+        2, "The 12-Month Impact Map",
+        f"{result['focus_score']:.0%} of the list cut. "
+        f"{len(result['kept'])} of {result['total_initiatives']} initiatives kept for the next 12 months.",
+        pdf_sections,
+    )
+    st.download_button(
+        "Download your results (PDF)", pdf_bytes,
+        file_name="Cool_Hollow_Coaching_Impact_Map_Results.pdf",
+        mime="application/pdf", type="primary",
+    )
+    st.caption("Nothing you upload or generate here is stored on our servers. This download is your only copy.")
 else:
     st.info("Upload your initiative list above to build your 12-Month Impact Map.")
+
+show_disclaimer()

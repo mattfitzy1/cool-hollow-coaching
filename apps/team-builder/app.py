@@ -12,8 +12,14 @@ scorecard.
 
 import pandas as pd
 import os
+import sys
 
 import streamlit as st
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "_shared"))
+from branding import apply_branding, show_disclaimer
+from client_upload import read_upload
+from results_pdf import build_results_pdf
 
 from analysis import run_team_builder
 
@@ -21,6 +27,7 @@ TEMPLATE_NAME = "Cool_Hollow_Coaching_Milestone_7_Team_Builder_Template.xlsx"
 TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), TEMPLATE_NAME)
 
 st.set_page_config(page_title="Business Without You, Build the Team", page_icon="\U0001F465")
+apply_branding(7, "Build the Team That Builds the Business")
 
 st.title("Build the Team That Builds the Business")
 st.write(
@@ -39,6 +46,7 @@ if os.path.exists(TEMPLATE_PATH):
     with open(TEMPLATE_PATH, "rb") as f:
         st.download_button("Download the blank template", f.read(), file_name=TEMPLATE_NAME,
                             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    st.caption("Fill in the data tabs, save, and upload that same file into every upload box below. Each box automatically finds the tab it needs.")
 
 st.divider()
 
@@ -66,10 +74,17 @@ st.divider()
 
 if roles_file:
     try:
-        roles_raw = pd.read_csv(roles_file) if roles_file.name.lower().endswith(".csv") else pd.read_excel(roles_file)
+        roles_raw = read_upload(roles_file, {
+            "role_name", "current_delegation_level", "target_delegation_level",
+            "key_outcome_1", "key_outcome_2", "key_outcome_3",
+            "decision_rights", "success_metric",
+        })
         candidates_raw = None
         if candidates_file:
-            candidates_raw = pd.read_csv(candidates_file) if candidates_file.name.lower().endswith(".csv") else pd.read_excel(candidates_file)
+            candidates_raw = read_upload(candidates_file, {
+                "candidate_name", "role_name", "ownership", "communication",
+                "judgment", "coachability", "results_track_record",
+            })
     except pd.errors.ParserError:
         st.error(
             "Could not read one of those files. This usually means a role or outcome "
@@ -128,5 +143,36 @@ if roles_file:
         "the business passes a two-week owner-absence test, not whether the org "
         "chart looks complete."
     )
+
+    pdf_sections = [("Delegation-gap ranking", [
+        f"{item['rank']}. {item['role_name']}: currently level "
+        f"{item['current_delegation_level']}/5, target {item['target_delegation_level']}/5, "
+        f"gap of {item['delegation_gap']:.1f}."
+        for item in result["delegation_scores"]
+    ])]
+    pdf_sections.append(("Outcome-based hiring templates", [
+        f"{item['role_name']}: {item['template']}" for item in result["hiring_templates"]
+    ]))
+    if result["leadership_scorecard"]:
+        lines = []
+        for role_name, candidates in result["leadership_scorecard"].items():
+            for c in candidates:
+                top_tag = " (top candidate)" if c["is_top_candidate"] else ""
+                trait_text = ", ".join(f"{k.replace('_', ' ')} {v}" for k, v in c["traits"].items())
+                lines.append(f"{role_name}, {c['rank']}. {c['candidate_name']}{top_tag}, composite {c['composite']}/5. {trait_text}.")
+        pdf_sections.append(("Leadership scorecard", lines))
+    pdf_bytes = build_results_pdf(
+        7, "Build the Team That Builds the Business",
+        "Delegation-gap ranking, hiring templates, and leadership scorecard.",
+        pdf_sections,
+    )
+    st.download_button(
+        "Download your results (PDF)", pdf_bytes,
+        file_name="Cool_Hollow_Coaching_Team_Builder_Results.pdf",
+        mime="application/pdf", type="primary",
+    )
+    st.caption("Nothing you upload or generate here is stored on our servers. This download is your only copy.")
 else:
     st.info("Upload your role inventory above to build your team plan.")
+
+show_disclaimer()
