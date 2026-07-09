@@ -3,28 +3,26 @@ name: last-session-summary
 description: What was worked on, decisions made, and next steps from the most recent session
 ---
 
-**Date:** 2026-07-06
+**Date:** July 8, 2026
 
 **What was worked on:**
-- Debriefed the July 6 call with Mike (Senteo): extracted the key takeaways and broke them into actionable parts.
-- Locked in the community-first model: the 12-week Business Without You program is the front door / onboarding, not the product. The recurring community (ongoing coaching, tools, partner services) is the real business.
-- Updated context/business-info.md and context/strategy.md with the new three-layer offer structure, freemium + tiered pricing shape, and Zoom-first recording decision.
-- Built four filled Miro board exercises mapped to our business: package breakdown (nested rings), customer journey (before/journey/after), cyclic identification and mapping (four arcs), and the CJM Blueprint Components grid (9 rows, color-coded by status).
-- Produced Miro_Board_Prep_Pack.pdf: a clean 6-page offline briefing in the black/white/gold house style, ready to read before the July 14 call.
+- Built a complete 18-slide PowerPoint presentation for Mark, Cam, and Hannah to review Cool Hollow Coaching progress since June.
+- Added two strategic slides requested mid-session: (1) the organic funnel playbook with Hormozi's diagnostic-first mechanism plus Cardone/Hormozi content lessons, and (2) the full offer matrix (in-house/partner × event-based/cyclical) showing how every event-based offer has a recurring twin.
+- Showcased all 7 milestone tools with live example screenshots (hidden-profit analyzer with a real P&L breakdown, Monday dashboard with metric cards and status indicators, 13-week cash confidence forecast with receivables check).
+- Fixed QA issues from fresh-eyes review: timeline label collisions, close-slide text overflow, and made open-questions cards read as distinct callouts with gold "STILL OPEN" tags.
+- Deck is available in three formats: editable PowerPoint (.pptx), PDF, and HTML (all in outputs/decks/2026-07-08-progress-and-path-forward.*).
 
 **Key decisions:**
-- Community-first model locked: the recurring community is the business; the 12-week program is the entry point.
-- Zoom-first recording: Mark records on Zoom cheaply and iterates before any studio session. AI clone is deprioritized for now.
-- Freemium + tiered pricing: tiers act as a capacity valve on Mark's time; Cool Hollow Mastermind stays application-gated.
+- Established the slide deck as the canonical summary of all work for team review — this is the artifact for the July 14 call with Mike and beyond.
+- Committed to honest framing throughout: pricing undecided, community build unmapped, founding cohort sequencing is a live risk. Nothing presented as final.
+- Deck follows Cool Hollow voice and brand exactly (no deviations for presentation purposes).
 
 **Open / unfinished:**
-- The founding-cohort sequencing: the empty-room-at-launch risk was flagged in the docs but not yet resolved as a plan. Worth raising with Mike on July 14.
-- Pricing tiers: the freemium + paid structure is shaped but not yet finalized with numbers.
-- The JOURNEY column build: most of the recurring community (weekly Q&A, platform, content library, tiers) is "planned" not built. This is the main July-to-launch work.
-- Carrying from before: brief Mark on filming hold until Milestones 1-3 run live with 3-4 beta clients; decide if curriculum PDF is ready to share.
+- Deck is ready to present, but no changes are committed until Mark, Cam, and Hannah give feedback.
+- The July 14 call with Mike (10:30 AM ET) will lock in pricing, MVP scope, and founding-cohort plan — outputs from that call should flow back into the strategy docs.
+- Parallel work that remains: 6 weeks with Mike to finalize the community model and pricing before any product-facing announcements.
 
 **Next steps:**
-- Read the Miro_Board_Prep_Pack.pdf before July 14.
-- Place the filled exercises on the Miro board (use the three output docs as the source; the prep pack doc has a 5-minute board setup guide).
-- July 14, 10:30 AM ET: call with Mike. Bring the founding-cohort question and the MVP defense.
-- After July 14: debrief and update strategy context with whatever gets decided on pricing, platform, and MVP scope.
+- Share the PowerPoint with Mark, Cam, and Hannah for review before the July 14 call.
+- Capture their feedback (if any) in a separate session and iterate the deck if needed.
+- After the July 14 call with Mike, debrief the decisions and update context/strategy.md and context/business-info.md with any changes to pricing, MVP scope, or community model.
