@@ -23,7 +23,7 @@
 1. User uploads a CSV or Excel sheet: one row per initiative, with `initiative`, `core_customer_fit` (1-5), `unfair_advantage_fit` (1-5), `impact` (1-5), `effort` (1-5), rated from the owner's Strategy Razor draft, Core Customer Decree, and Unfair Advantage list.
 2. `load_initiatives()` normalizes the sheet and clamps every rating to the 0-5 range.
 3. `build_impact_map()` applies the razor: an initiative passes only if core_customer_fit, unfair_advantage_fit, and impact are all 3 or higher. Anything that fails is cut regardless of how appealing it looks.
-4. Initiatives that pass are ranked by an impact-for-effort score (`impact - effort/5`) and the top 5 are kept. If fewer than 3 pass the razor, the model fills up to 3 from the best of what failed, so the map is never empty.
+4. Initiatives that pass are ranked by an impact-for-effort score (`impact - effort/5`) and the top 5 are kept. If fewer than 3 pass the razor, the model fills up to 3 from the best of what failed, so the map is never empty. Back-filled items get their own honest wording ("did not clear the razor, kept only to bring the list up to a minimum of three, treat it as provisional"), never the "cut by the razor" text, so a kept item can never read as cut.
 5. The app shows the focus score (percentage of the original list cut), the kept list with reasoning, and an expandable list of everything cut with the specific razor gap that sank it.
 
 ## Configuration
@@ -69,3 +69,4 @@ print(build_impact_map(initiatives))
 |------|--------|
 | 2026-06-22 | Initial build and documentation |
 | 2026-06-22 | Bug fix: kept-vs-cut tracking now uses row index instead of initiative name, since two initiatives sharing the same name previously got conflated. Added the branded template and an in-app download button. |
+| 2026-07-10 | Review fix: initiatives back-filled into the kept list (when fewer than 3 pass the razor) previously carried the "Cut by the razor" reasoning while sitting under "Kept", a direct contradiction in client-facing output. They now get their own provisional wording via `_backfill_reason()`. |
