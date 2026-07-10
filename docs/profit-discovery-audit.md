@@ -27,8 +27,8 @@ Distinct from `apps/hidden-profit-analyzer`, the prospect-facing lead magnet (se
 1. User uploads a CSV or Excel P&L (line item name plus one amount column or one column per month) and a customer/service breakdown sheet (`type`, `name`, `revenue`, `direct_cost`).
 2. `load_pnl()` normalizes the P&L into `category` (revenue, cogs, expense, leakage, other), `line_item`, `month`, `amount`, guessing category from keywords in the line item name.
 3. `load_breakdown()` normalizes the breakdown sheet, validating the four required columns.
-4. Five checks run independently, each returning a dollar estimate and plain-English findings: pricing gaps (gross margin vs. a 50% benchmark), cost inefficiencies (expense lines growing faster than 15% month over month, sorted chronologically), customer profitability and service mix (line margin vs. a 20% benchmark), and revenue leakage (discount/write-off/refund lines).
-5. The app sums all five estimates into one headline dollar figure.
+4. Five checks run independently, each returning a dollar estimate and plain-English findings: pricing gaps (gross margin vs. the business-type benchmark), cost inefficiencies (expense lines growing meaningfully **faster than revenue** month over month, sorted chronologically; a cost rising in step with revenue is growth, not waste, and is explicitly not flagged), customer profitability and service mix (line margin vs. the business-type line benchmark), and revenue leakage (discount/write-off/refund lines).
+5. The headline dollar figure is **not a straight sum**. Pricing gaps, customer profitability, and service mix are three views of the same revenue (one bad customer deal shows up in all three), so only the largest of the three counts toward the headline; the result names which view led (`margin_lead`). Cost inefficiencies and leakage sit outside gross margin and are added on top. The app and the results PDF both explain this counting to the client.
 
 ## Configuration
 
@@ -74,3 +74,4 @@ print(run_full_audit(pnl, breakdown))
 |------|--------|
 | 2026-06-22 | Initial build (undocumented at the time) |
 | 2026-06-22 | First system doc written. Bug fixes: month-over-month cost growth now sorts chronologically instead of alphabetically (was comparing "Apr" before "Jan"); corrected the app's milestone label from "Milestone 5" to the actual "Milestone 4"; column headers now normalize spaces to underscores. Added the branded template and an in-app download button. |
+| 2026-07-10 | CFO-review fixes to the headline math. (1) Cost inefficiencies now measure each expense line against revenue growth over the same months, so a growing business no longer gets healthy proportional cost growth booked as waste; only the excess above revenue's pace is priced, capped at the line's actual dollar increase. (2) The headline no longer sums the three overlapping margin views (pricing gaps, customer profitability, service mix); it takes the largest of the three plus cost inefficiencies and leakage, with the counting explained in-app and in the PDF. |

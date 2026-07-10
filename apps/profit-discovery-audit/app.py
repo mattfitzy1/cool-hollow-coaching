@@ -141,6 +141,13 @@ if pnl_file and breakdown_file:
         f"Annualized from {result['period_months']:.0f} month(s) of data, benchmarked against "
         f"a {result['business_type'].lower()} business."
     )
+    st.caption(
+        "How the headline is counted: pricing gaps, customer profitability, and service mix "
+        "are three views of the same revenue, so only the largest of the three goes into the "
+        "headline (here, " + result["margin_lead"].lower() + "). The other two show where "
+        "inside that gap to look. Cost inefficiencies and revenue leakage are separate money "
+        "and are added on top."
+    )
 
     for check in result["checks"]:
         st.subheader(f"{check['name']}: ${check['estimate']:,.0f}")
@@ -162,7 +169,9 @@ if pnl_file and breakdown_file:
         4, "The Profit Discovery Audit",
         f"Audit found ${result['total_found']:,.0f} a year in profit opportunity. "
         f"Annualized from {result['period_months']:.0f} month(s) of data, benchmarked "
-        f"against a {result['business_type'].lower()} business.",
+        f"against a {result['business_type'].lower()} business. The three margin checks "
+        f"are views of the same revenue, so the headline counts only the largest of them "
+        f"({result['margin_lead'].lower()}), plus cost inefficiencies and leakage.",
         pdf_sections,
     )
     st.download_button(

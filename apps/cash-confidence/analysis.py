@@ -52,7 +52,22 @@ def load_cash_items(df: pd.DataFrame) -> pd.DataFrame:
             f"optionally category, description."
         )
 
-    df["week"] = pd.to_numeric(df["week"], errors="coerce").fillna(0).astype(int).clip(1, TOTAL_WEEKS)
+    # A typo week (blank, 0, 20, 2.5) must never be silently moved into the
+    # 13-week window: the whole point of the forecast is that each week's
+    # number can be trusted. Name the bad values and stop.
+    week_num = pd.to_numeric(df["week"], errors="coerce")
+    bad_week = week_num.isna() | (week_num < 1) | (week_num > TOTAL_WEEKS) | (week_num % 1 != 0)
+    if bad_week.any():
+        bad_values = sorted(
+            {"(blank)" if (raw is None or str(raw).strip() == "" or pd.isna(raw)) else str(raw).strip()
+             for raw in df.loc[bad_week, "week"]}
+        )
+        raise ValueError(
+            f"Found week value(s) that aren't a whole number from 1 to {TOTAL_WEEKS}: "
+            f"{', '.join(bad_values)}. Each cash item's week must be 1 to {TOTAL_WEEKS}. "
+            f"Fix those rows and upload again."
+        )
+    df["week"] = week_num.astype(int)
     df["type"] = df["type"].astype(str).str.strip().str.lower()
     df["amount"] = pd.to_numeric(df["amount"], errors="coerce").fillna(0).abs()
 

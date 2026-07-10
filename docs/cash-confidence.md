@@ -22,7 +22,7 @@
 ## How It Works
 
 1. User enters a starting cash balance and uploads two required sheets plus one optional sheet:
-   - **Cash items**: one row per inflow/outflow, with `week` (1-13), `type` (inflow/outflow), `amount`, and optional `category`/`description`.
+   - **Cash items**: one row per inflow/outflow, with `week` (1-13), `type` (inflow/outflow), `amount`, and optional `category`/`description`. A week that is blank, fractional, or outside 1-13 is rejected with a plain-English error naming the bad values; it is never silently moved into the window, since a typo landing in the wrong week would quietly distort the forecast.
    - **Recurring expenses**: one row per expense, with `expense_name`, `weekly_amount`, and five 1-5 ratings: `core_customer_fit`, `revenue_risk_if_cut`, `roi_clarity`, `no_cheaper_alternative`, `would_approve_today`.
    - **Receivables aging** (optional): one row per customer who owes money, with `customer_name`, `amount_outstanding`, `terms_days` (what the stated terms are, net-30 is 30), `days_outstanding` (how long it's actually been unpaid).
 2. `load_cash_items()`, `load_expenses()`, and `load_receivables()` normalize and validate the sheets.
@@ -78,3 +78,4 @@ print(run_cash_confidence(cash, expenses, starting_balance=2000))
 | 2026-06-22 | Initial build and documentation |
 | 2026-06-22 | Cleanup: removed dead code (unused `_protected` column flag, unused `exclude_outflows` parameter). Column headers now normalize spaces to underscores. Added the branded template and an in-app download button. |
 | 2026-06-22 | Added the optional fourth check: receivables timing (`load_receivables`, `run_receivables_check`), surfacing how much cash is overdue against the client's own payment terms. Added a third tab to the branded template. |
+| 2026-07-10 | CFO-review fix: `load_cash_items()` now rejects week values that are blank, fractional, or outside 1-13 with an error naming the bad values, instead of silently clipping them into week 1 or week 13 (a week-20 typo used to land in week 13 with no warning). |

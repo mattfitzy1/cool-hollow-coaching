@@ -13,7 +13,10 @@ Takes:
 - a parsed breakdown sheet (type: "customer" or "service", name, revenue, direct_cost)
 
 Returns five findings with plain-English explanations and a dollar estimate
-each, summed into one headline number.
+each. The headline number is NOT a straight sum: the three margin checks
+(pricing gaps, customer profitability, service mix) are overlapping views
+of the same revenue, so only the largest of the three counts toward the
+headline, plus cost inefficiencies and leakage which are genuinely separate.
 
 All revenue-scaled estimates (pricing gaps, customer profitability, service
 mix, revenue leakage) are annualized using period_months, the number of
@@ -163,10 +166,21 @@ def _chronological_months(months) -> list:
 
 
 def check_cost_inefficiencies(pnl: pd.DataFrame) -> dict:
+    """Flag expense lines growing faster than revenue, not just growing.
+
+    A growing business has growing costs; that is health, not waste. The
+    inefficiency signal is a cost taking a BIGGER SHARE of revenue over
+    time, so each line's growth is measured against revenue growth over
+    the same months. Only the excess above revenue's pace is priced, and
+    never more than the line's actual dollar increase, so the estimate
+    stays conservative. Without a usable revenue trend the check falls
+    back to flagging raw growth, the old behavior.
+    """
     expenses = pnl[pnl["category"] == "expense"]
 
     findings = []
     estimate = 0.0
+    grew_with_revenue = 0
 
     if expenses.empty:
         findings.append("No expense lines were found to check for inefficiency.")
@@ -180,11 +194,21 @@ def check_cost_inefficiencies(pnl: pd.DataFrame) -> dict:
         months_sorted = _chronological_months(pivot.columns)
         if len(months_sorted) >= 2:
             first, last = pivot[months_sorted[0]], pivot[months_sorted[-1]]
+
+            rev_by_month = pnl[pnl["category"] == "revenue"].groupby("month")["amount"].sum()
+            rev_start = float(rev_by_month.get(months_sorted[0], 0.0))
+            rev_end = float(rev_by_month.get(months_sorted[-1], 0.0))
+            rev_growth = (rev_end - rev_start) / rev_start if rev_start > 0 else None
+
             for line_item in pivot.index:
                 start, end = first.get(line_item, 0), last.get(line_item, 0)
-                if start > 0:
-                    growth = (end - start) / start
-                    if growth > HIGH_GROWTH_FLAG and end > 0:
+                if start <= 0 or end <= start:
+                    continue
+                growth = (end - start) / start
+
+                if rev_growth is None:
+                    # No revenue trend to compare against: fall back to raw growth.
+                    if growth > HIGH_GROWTH_FLAG:
                         monthly_increase = round(end - start, 2)
                         annualized_risk = round(monthly_increase * MONTHS_PER_YEAR, 2)
                         estimate += annualized_risk
@@ -193,6 +217,26 @@ def check_cost_inefficiencies(pnl: pd.DataFrame) -> dict:
                             f"{months_sorted[-1]} (${start:,.0f} to ${end:,.0f}). If that pace holds, "
                             f"it costs roughly ${annualized_risk:,.0f} a year versus where it started."
                         )
+                    continue
+
+                excess_growth = growth - rev_growth
+                if excess_growth > HIGH_GROWTH_FLAG:
+                    # Price only the growth above revenue's pace, capped at the
+                    # actual dollar increase so a revenue dip can't inflate it.
+                    expected_end = start * (1 + rev_growth)
+                    monthly_excess = round(min(end - expected_end, end - start), 2)
+                    annualized_risk = round(monthly_excess * MONTHS_PER_YEAR, 2)
+                    estimate += annualized_risk
+                    rev_phrase = (f"revenue grew {rev_growth:.0%}" if rev_growth >= 0
+                                  else f"revenue fell {abs(rev_growth):.0%}")
+                    findings.append(
+                        f"\"{line_item}\" grew {growth:.0%} from {months_sorted[0]} to "
+                        f"{months_sorted[-1]} (${start:,.0f} to ${end:,.0f}) while {rev_phrase}. "
+                        f"Growing faster than revenue is the flag: at that pace it costs roughly "
+                        f"${annualized_risk:,.0f} a year more than if it had just kept pace."
+                    )
+                elif growth > HIGH_GROWTH_FLAG:
+                    grew_with_revenue += 1
 
     top_3 = by_line.head(3)
     findings.append(
@@ -200,8 +244,14 @@ def check_cost_inefficiencies(pnl: pd.DataFrame) -> dict:
         f", out of ${total_expense:,.0f} total expense."
     )
 
+    if grew_with_revenue:
+        findings.append(
+            f"{grew_with_revenue} cost line(s) grew, but no faster than revenue did, so they "
+            f"are not flagged. Costs rising in step with sales is growth, not waste."
+        )
+
     if not estimate:
-        findings.append("No clear runaway cost trend found across the months provided. "
+        findings.append("No cost line is outpacing revenue across the months provided. "
                          "Worth a manual look at vendor contracts and subscriptions even so.")
 
     return {"name": "Cost structure inefficiencies", "estimate": round(estimate, 2), "findings": findings}
@@ -301,13 +351,25 @@ def run_full_audit(pnl_raw: pd.DataFrame, breakdown_raw: pd.DataFrame,
     benchmarks = BUSINESS_TYPE_BENCHMARKS.get(business_type, BUSINESS_TYPE_BENCHMARKS[DEFAULT_BUSINESS_TYPE])
     annualize_factor = MONTHS_PER_YEAR / period_months if period_months > 0 else 1.0
 
-    checks = [
-        check_pricing_gaps(pnl, benchmarks["gross_margin"], annualize_factor),
-        check_cost_inefficiencies(pnl),
-        check_customer_profitability(breakdown, benchmarks["line_margin"], annualize_factor),
-        check_service_mix(breakdown, benchmarks["line_margin"], annualize_factor),
-        check_revenue_leakage(pnl, annualize_factor),
-    ]
-    total = round(sum(c["estimate"] for c in checks), 2)
+    pricing = check_pricing_gaps(pnl, benchmarks["gross_margin"], annualize_factor)
+    costs = check_cost_inefficiencies(pnl)
+    customers = check_customer_profitability(breakdown, benchmarks["line_margin"], annualize_factor)
+    services = check_service_mix(breakdown, benchmarks["line_margin"], annualize_factor)
+    leakage = check_revenue_leakage(pnl, annualize_factor)
+
+    checks = [pricing, costs, customers, services, leakage]
+
+    # Pricing gaps, customer profitability, and service mix are three views of
+    # the SAME revenue: a bad customer deal shows up in the whole-P&L margin
+    # gap AND in the customer view AND often in the service view. Summing all
+    # three would count one weakness up to three times, so the headline takes
+    # only the largest of the three. The other two views stay in the report as
+    # the map of WHERE inside that gap to look. Cost inefficiencies (overhead
+    # trends) and leakage (recorded discounts/refunds) sit outside gross
+    # margin, so those two genuinely add.
+    margin_views = [pricing, customers, services]
+    margin_lead = max(margin_views, key=lambda c: c["estimate"])
+    total = round(margin_lead["estimate"] + costs["estimate"] + leakage["estimate"], 2)
+
     return {"checks": checks, "total_found": total, "business_type": business_type,
-            "period_months": period_months}
+            "period_months": period_months, "margin_lead": margin_lead["name"]}

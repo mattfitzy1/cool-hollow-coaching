@@ -56,13 +56,7 @@ def _impact_effort_score(row: pd.Series) -> float:
     return row["impact"] - effort_drag
 
 
-def _reason(row: pd.Series, passed: bool) -> str:
-    if passed:
-        return (
-            f"Serves the core customer ({row['core_customer_fit']:.0f}/5), leverages the unfair "
-            f"advantage ({row['unfair_advantage_fit']:.0f}/5), impact {row['impact']:.0f}/5 for "
-            f"{row['effort']:.0f}/5 effort."
-        )
+def _gap_text(row: pd.Series) -> str:
     gaps = []
     if row["core_customer_fit"] < RAZOR_PASS_THRESHOLD:
         gaps.append(f"core customer fit only {row['core_customer_fit']:.0f}/5")
@@ -70,7 +64,28 @@ def _reason(row: pd.Series, passed: bool) -> str:
         gaps.append(f"unfair advantage fit only {row['unfair_advantage_fit']:.0f}/5")
     if row["impact"] < RAZOR_PASS_THRESHOLD:
         gaps.append(f"impact only {row['impact']:.0f}/5")
-    return "Cut by the razor: " + ", ".join(gaps) + "."
+    return ", ".join(gaps)
+
+
+def _reason(row: pd.Series, passed: bool) -> str:
+    if passed:
+        return (
+            f"Serves the core customer ({row['core_customer_fit']:.0f}/5), leverages the unfair "
+            f"advantage ({row['unfair_advantage_fit']:.0f}/5), impact {row['impact']:.0f}/5 for "
+            f"{row['effort']:.0f}/5 effort."
+        )
+    return "Cut by the razor: " + _gap_text(row) + "."
+
+
+def _backfill_reason(row: pd.Series) -> str:
+    """Wording for an initiative that failed the razor but was kept anyway to
+    reach the minimum of three priorities. It must never read as 'cut' while
+    sitting in the kept list."""
+    return (
+        "Did not clear the razor (" + _gap_text(row) + "), kept only to bring the list "
+        "up to a minimum of three. Treat it as provisional, not a proven priority, and "
+        "consider whether something better belongs in this slot."
+    )
 
 
 def build_impact_map(df: pd.DataFrame) -> dict:
@@ -102,7 +117,8 @@ def build_impact_map(df: pd.DataFrame) -> dict:
             "initiative": row["initiative"],
             "impact": int(row["impact"]),
             "effort": int(row["effort"]),
-            "reasoning": _reason(row, bool(row["passes_razor"])),
+            "reasoning": (_reason(row, True) if bool(row["passes_razor"])
+                          else _backfill_reason(row)),
         })
 
     cut = []
