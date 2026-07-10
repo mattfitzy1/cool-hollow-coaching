@@ -8,6 +8,17 @@
 
 ---
 
+## 2026-07-10
+
+### CFO-level audit of the 7 milestone tools, two real bugs fixed, team speech drafted
+- Ran a full CFO-standard audit of all 7 milestone tools plus the Profit Finder: engineering discipline scored above par overall, with two real issues confirmed against live test scenarios.
+- Fixed the Profit Discovery Audit booking healthy revenue growth as fake "cost inefficiency" ($48,000 a year of false findings on a real test case). The check now compares each expense line's growth against revenue growth over the same months, and only flags a cost outpacing revenue.
+- Fixed the audit headline double-counting the same margin weakness up to three times (pricing gaps, customer profitability, and service mix all price the same underlying revenue). The headline now takes the largest of the three plus cost inefficiencies and leakage, with the counting logic explained in the app and the client PDF.
+- Fixed Cash Confidence silently mangling bad week values (a typo "20" became week 13, a blank became week 1) instead of warning the owner. It now rejects out-of-range or blank weeks with a clear message.
+- Fixed Impact Map's wording for a kept-but-failed initiative, it no longer reads as "cut" while sitting in the kept list.
+- Wrote up the full audit, plus a project-level risk review (beta-client critical path, single-channel acquisition risk, open pricing blocking three workstreams, key-man risk, the legal review bottleneck), in `outputs/strategy/2026-07-10-tool-audit-and-project-review.md`.
+- Drafted the team-update speech to accompany the 18-slide "Progress and Path Forward" deck, in Matt's own words and voice: a printable Word version and an 18-page phone cue-card PDF, one speech beat per slide, for flicking through during the live Zoom presentation.
+
 ## 2026-07-09
 
 ### QuickBooks P&L support, a live-data rendering bug, and the Profit Finder fix
