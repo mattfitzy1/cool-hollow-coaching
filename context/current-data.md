@@ -26,7 +26,7 @@ A light snapshot of where things actually are right now. Where we do not have a 
 ### Tier 1: Business Without You
 - **Price:** $5,000.
 - **Length:** 12 weeks.
-- **Milestones:** 7 (reclaim time and identity, define the destination, install the dashboard, break the constraint, discover the hidden product, cash-flow confidence, build the team).
+- **Milestones:** 7 (reclaim time and identity, define the destination, install the dashboard, discover the hidden product, cash-flow confidence, break the constraint, build the team).
 - **Target buyer:** owner-operators of companies doing **$1M to $10M a year** in revenue.
 - **Core promise:** 15 hours back, plus up to $50,000 in profit found.
 

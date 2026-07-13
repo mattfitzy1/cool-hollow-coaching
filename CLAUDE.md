@@ -30,9 +30,9 @@ The promise on Tier 1 is the spine of everything: **15 hours back, plus up to $5
 1. **Reclaim the owner's time and identity.** Get the owner out of the day-to-day grind.
 2. **Define the destination.** Get clear on where the business is actually going.
 3. **Install the dashboard.** Five metrics, reviewed in 15 minutes every Monday.
-4. **Break the binding constraint.** Find and remove the one thing holding growth back.
-5. **Discover the hidden product.** Surface $50,000+ in profit already inside the business.
-6. **Cash-flow confidence.** A 13-week forecast so the owner can sleep.
+4. **Discover the hidden product.** Surface $50,000+ in profit already inside the business.
+5. **Cash-flow confidence.** A 13-week forecast so the owner can sleep.
+6. **Break the binding constraint.** Find and remove the one thing holding growth back.
 7. **Build the team.** So the business runs without the owner in every seat.
 
 **How delivery works.** Mark fronts the videos (he is the on-camera face, same as for Cool Hollow Solutions). You want your **own coaching platform** to host it (not Skool), with **GoHighLevel** handling booking and CRM, kept separate from Cool Hollow Solutions' CRM so commission-only reps can run on it cleanly.

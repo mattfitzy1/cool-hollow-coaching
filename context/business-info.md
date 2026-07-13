@@ -52,9 +52,9 @@ Structured in three layers, with the recurring layer as the spine:
 1. Reclaim the owner's time and identity.
 2. Define the destination.
 3. Install the dashboard (five key metrics, 15 minutes every Monday).
-4. Break the binding constraint.
-5. Discover the hidden product (surface $50,000+ in profit already inside the business).
-6. Cash-flow confidence (13-week forecast).
+4. Discover the hidden product (surface $50,000+ in profit already inside the business).
+5. Cash-flow confidence (13-week forecast).
+6. Break the binding constraint.
 7. Build the team.
 
 ### Pricing shape (freemium + tiers, being designed)
