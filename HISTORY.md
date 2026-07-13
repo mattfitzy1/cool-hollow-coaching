@@ -8,6 +8,15 @@
 
 ---
 
+## 2026-07-13
+
+### 12-month self-study curriculum and consultant training notes
+- Built a 12-month, part-time, self-directed business study plan (books, textbooks, podcasts) modeled on the influences behind Alex Hormozi and Michael Ruckman, sequenced for realistic part-time reading with a free-first/library-first budget path throughout.
+- Compiled distilled learning notes on one anchor book per phase (frameworks, thinking behind each, applied directly to Business Without You).
+- Built a separate Independent Consultant's Library: 14 books in priority tiers for general business consulting (not specific to Cool Hollow Coaching), aimed at the side hustle paying down the $15K debt.
+- Expanded that into a full 12-week, in-depth consultant training guide pulling the best frameworks, scripts, and behavioral science from all 14 books, exported to a branded PDF.
+- While double-checking the notes against the real curriculum, found and fixed a real inconsistency: CLAUDE.md, business-info.md, and current-data.md still showed the pre-June-22 milestone order (constraint-breaking at position 4) instead of the current canonical order in curriculum.md (position 6). Corrected all three.
+
 ## 2026-07-10
 
 ### CFO-level audit of the 7 milestone tools, two real bugs fixed, team speech drafted
