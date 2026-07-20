@@ -3,27 +3,29 @@ name: last-session-summary
 description: What was worked on, decisions made, and next steps from the most recent session
 ---
 
-**Date:** 2026-07-13
+**Date:** 2026-07-20
 
 **What was worked on:**
-
-Matt has found his path: 12 months of dedicated part-time self-study in business (books, textbooks, podcasts), not going back to finish the supply chain degree. Built out a full learning system for it:
-- A 12-month reading curriculum modeled on the influences behind Alex Hormozi and Michael Ruckman, sequenced for real part-time pace with a free/library-first budget path (`outputs/learning/2026-07-10-12-month-business-study-plan.md`).
-- Compiled learning notes distilling one anchor book per phase into frameworks plus how each applies directly to Business Without You (`outputs/learning/2026-07-10-compiled-learning-notes.md`).
-- A separate Independent Consultant's Library: 14 books, ranked in priority tiers, aimed at general business consulting (any industry, not just Cool Hollow Coaching), which ties directly into the side hustle funding the $15K debt payoff (`outputs/learning/2026-07-10-independent-consultant-library.md`).
-- Expanded that into a full 12-week, in-depth consultant training guide, pulling the deepest frameworks, in-the-room scripts, and behavioral science from all 14 books, with a field drill each week (`outputs/learning/2026-07-10-consultant-study-notes-3-months.md`), exported to a branded PDF for easy reading.
+- Debriefed the July 17 call with Mike (Senteo) into deep memory, full detail on his ACE offering model, community design thinking, retainer redesign approach, and pricing psychology.
+- Opened the Cool Hollow Solutions scale-up as a live project lane in the AIOS (CLAUDE.md updated, project register entry created).
+- Wrote a first-pass diagnostic on Cool Hollow Solutions (the math, the five bottlenecks, a phased plan) in outputs/strategy.
+- Built a printable client acquisition audit worksheet (PDF + reusable build script) for Mike's homework exercise.
+- Filled the worksheet in over several rounds using real data: the Master Client List and On Pause sheets. Every one of the 24 active clients is now traced to a channel (Boardroom, LAN, Local, TSC, Mastermind, Referral, or the original 2021 webinar cohort). Mastermind and Referral totals now reconcile exactly with Matt's original verbal estimates (2 and 8) once the older clients are folded in.
+- Filled in the churn autopsy table (10 most recent paused clients) with real reasons Matt provided.
+- Drafted a community research brief and an ACE-model worksheet for the community design workstream.
 
 **Key decisions:**
-- Matt corrected scope creep mid-session: he wants Claude to stay narrowly on what's asked (e.g. "double-check the notes") and not also edit adjacent business context files without checking first, even when a real inconsistency is found along the way. Noted as a working preference.
-- While double-checking the compiled notes, found and fixed a real bug: CLAUDE.md, business-info.md, and current-data.md still had the pre-June-22 milestone order (constraint-breaking at position 4). Corrected to match the canonical order in curriculum.md (constraint-breaking at position 6). Matt was asked whether to keep or revert this fix; he did not explicitly say revert, so it stands as committed.
+- CHS scale-up is now fully in scope for this AIOS, a second live venture lane alongside Cool Hollow Coaching (previously explicitly out of scope).
+- Matt is the right hand to Mike for the August-September alignment workshops: prepping materials, taking notes, drafting summary decks.
+- Matt owns community design and the acquisition audit; Mike owns the retainer/offering redesign.
 
 **Open / unfinished:**
-- None of the "make it a pdf" ambiguity from July 10 was revisited this session; if still relevant, ask Matt directly.
-- No lawyer has reviewed the disclaimer/terms/privacy drafts yet (flagged in the July 10 tool audit as sitting on the critical path to running beta clients).
-- Beta-client recruitment has not started.
-- Pricing still open, was due to be settled on the July 14 call with Mike.
+- Where Business Without You sits in the ACE map (flagship product vs. scalable attractor) is an open strategic fork, not yet raised with Mike.
+- Networking events cost/client-count and the exact date of "the 11th" workshop kickoff (likely Aug 11) are still unconfirmed.
+- The community research brief needs Matt's 2-3 real community names before the research pass can run.
+- Next call with Mike: Tuesday, July 21, 11:00 AM ET.
 
 **Next steps:**
-- Check in on how the July 14 Mike/Senteo call went (MVP definition, pricing).
-- Ask if Matt wants the 12-month study plan tracked as a project for regular check-ins, and whether he wants a per-book notes template to fill in as he reads.
-- Continue toward beta-client recruitment and the legal review, both flagged as the real schedule risks to "product out by year end."
+- Send Mike the calendar invite for Tuesday's call (from Matt's personal gmail, not the office@ calendar).
+- Bring the acquisition worksheet into that call, referrals are the single biggest channel (8 of 24 clients, essentially free) against $87K/year spent on Boardroom and LAN combined for 5 clients, worth leading with.
+- Name the 2-3 communities Matt belongs to so the community research pass can run and slides can get built for Mike.
