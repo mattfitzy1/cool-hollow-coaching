@@ -8,6 +8,14 @@
 
 ---
 
+## 2026-07-17
+
+### Cool Hollow Solutions scale-up lane opened, acquisition audit built
+- Brought the Cool Hollow Solutions restructure into AIOS scope: Matt is now working as the right hand to Mike (Michael Ruckman, Senteo) on realigning and scaling the firm, alignment workshops running August through the week of September 7. Updated CLAUDE.md and opened the project register.
+- Saved the full July 17 call debrief (ACE offering model, community design, retainer redesign, pricing psychology) to deep memory, plus a first-pass scale-up diagnostic in outputs/strategy.
+- Built a printable client acquisition audit worksheet (with a reusable PDF build script) and, working from the real Master Client List and On Pause sheets, traced every one of the 24 active clients back to a channel: Boardroom, LAN, Local, TSC, Mastermind, Referral, or the original 2021 webinar cohort. Referral and Mastermind counts now reconcile exactly with Matt's original estimates once the older clients are included.
+- Drafted a community research brief and an ACE-model worksheet for the community design workstream.
+
 ## 2026-07-13
 
 ### 12-month self-study curriculum and consultant training notes
