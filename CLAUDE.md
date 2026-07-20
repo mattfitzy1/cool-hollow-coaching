@@ -18,7 +18,7 @@ You move fast and you are willing to put in the hours. You want this system "wax
 
 ## What Cool Hollow Coaching Is
 
-**Cool Hollow Coaching is the online coaching arm built to scale past the ceiling of Cool Hollow Solutions** (Mark's existing in-person, 1:1 advisory firm — about 35 clients, roughly $60,000/month, capacity-capped). The flagship product is **Business Without You**, a tiered coaching offer:
+**Cool Hollow Coaching is the online coaching arm built to scale past the ceiling of Cool Hollow Solutions** (Mark's existing in-person, 1:1 advisory firm: 24 clients, roughly $60,000/month, average retention about 12 months, capacity-capped). The flagship product is **Business Without You**, a tiered coaching offer:
 
 - **Tier 1:** a 12-week program priced at **$5,000**, built for companies doing **$1M to $10M a year** where the owner is still the single point of failure.
 - **Tier 2:** for owners doing **$10M and above** — tax strategy, investment, and scaling, with a community and 1-2 live sessions a week, and the full team involved (CFO, COO, an HR/people specialist, plus Mark on strategy).
@@ -41,7 +41,7 @@ The promise on Tier 1 is the spine of everything: **15 hours back, plus up to $5
 
 The full brand picture, promise, audience, and voice live in `context/business-info.md`, `context/strategy.md`, `context/brand.md`, and `context/voice-and-tone.md`. The visual identity (logo, colors, type) is not locked yet and is to be developed with you.
 
-> A note on the other Cool Hollow. Your day job is Head of Operations at **Cool Hollow Solutions**, Mark's existing firm. **This AIOS is not for that day job.** It is for Cool Hollow Coaching, your own venture to build and run. Anything to do with Cool Hollow Solutions' core operations stays out of here unless you say otherwise.
+> A note on the other Cool Hollow. Your day job is Head of Operations at **Cool Hollow Solutions**, Mark's existing firm. Day-to-day operations of that firm stay out of here. One exception, opened by you on July 17, 2026: the **Cool Hollow Solutions scale-up project** is now a live lane in this AIOS. You are working as the right hand to **Mike (Michael Ruckman, Senteo)** on restructuring and scaling the firm (alignment workshops August-September, community design, retainer redesign, acquisition audit). The project lives in `projects/active/chs-scale-up-with-mike.md` and its working docs in `outputs/strategy/`. The firm's office@ Google Calendar is connected: read it freely for analysis, never create or change events on it without your explicit say-so.
 
 ---
 
@@ -49,7 +49,7 @@ The full brand picture, promise, audience, and voice live in `context/business-i
 
 **Business:** Cool Hollow Coaching, the online scale-up arm of Cool Hollow Solutions (Mark's in-person advisory firm). Flagship offer is the tiered Business Without You program.
 **Role:** You run Cool Hollow Coaching day to day (community, lead flow, sales, marketing) solo, until you scale a team. You're also Head of Operations at Cool Hollow Solutions.
-**Current focus:** stand up the Instagram-led funnel, build the hidden-profit analyzer and dashboards, get GoHighLevel CRM live, and have the business model pitch-ready for the team, all by end of July.
+**Current focus:** stand up the Instagram-led funnel, build the hidden-profit analyzer and dashboards, get GoHighLevel CRM live, and have the business model pitch-ready for the team, all by end of July. New as of July 17: the Cool Hollow Solutions scale-up with Mike (Senteo): alignment workshops start in August, big week of September 7, homework due each Tuesday call.
 **Key metric to watch:** Cool Hollow Coaching clients and revenue, currently zero (pre-launch), against the $3M/year, 500-clients/year long-term goal.
 **Financial constraint:** $15,000 debt due by year end. To fund yourself while building the product, you're running a parallel side hustle (consulting services, likely to Mark's Cool Hollow Solutions clients) targeting $2-4K/month to pay it off by December.
 
