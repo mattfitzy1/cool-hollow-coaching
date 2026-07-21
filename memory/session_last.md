@@ -3,29 +3,25 @@ name: last-session-summary
 description: What was worked on, decisions made, and next steps from the most recent session
 ---
 
-**Date:** 2026-07-20
+**Date:** 2026-07-21
 
 **What was worked on:**
-- Debriefed the July 17 call with Mike (Senteo) into deep memory, full detail on his ACE offering model, community design thinking, retainer redesign approach, and pricing psychology.
-- Opened the Cool Hollow Solutions scale-up as a live project lane in the AIOS (CLAUDE.md updated, project register entry created).
-- Wrote a first-pass diagnostic on Cool Hollow Solutions (the math, the five bottlenecks, a phased plan) in outputs/strategy.
-- Built a printable client acquisition audit worksheet (PDF + reusable build script) for Mike's homework exercise.
-- Filled the worksheet in over several rounds using real data: the Master Client List and On Pause sheets. Every one of the 24 active clients is now traced to a channel (Boardroom, LAN, Local, TSC, Mastermind, Referral, or the original 2021 webinar cohort). Mastermind and Referral totals now reconcile exactly with Matt's original verbal estimates (2 and 8) once the older clients are folded in.
-- Filled in the churn autopsy table (10 most recent paused clients) with real reasons Matt provided.
-- Drafted a community research brief and an ACE-model worksheet for the community design workstream.
+- Debriefed the July 21 impromptu Mike call (the scheduled Tuesday follow-up). Full record in memory/deep-memory/2026-07-21-debrief-mike-call-role-and-acquisition.md. Headline: Matt's CHS role is now undefined because the restructure grew into a big-vision exercise; the community "product owner" box only becomes his after the vision lands (months out, likely past his visa). Mike's play: add tactical value now (take tasks off Kathy/Hannah/Cam), lean into Mike, plan a dignified November exit with remote continuation from London.
+- Reviewed Matt's draft message to Mark about interim value and tightened it (lead from strength, cut the "I sense irritation" line, shrink the leave-and-come-back option to one line). Matt sent his own version; Mark replied "we'll talk tomorrow."
+- Long personal conversation working through why things feel off with Mark. Landing: Matt didn't do anything wrong. The likely pivot is the stalled $25/hr raise (see the role/living memory). The coldness is Mark's conflict-avoidance plus a value-perception gap, not a transgression by Matt. Matt felt lighter by the end.
 
-**Key decisions:**
-- CHS scale-up is now fully in scope for this AIOS, a second live venture lane alongside Cool Hollow Coaching (previously explicitly out of scope).
-- Matt is the right hand to Mike for the August-September alignment workshops: prepping materials, taking notes, drafting summary decks.
-- Matt owns community design and the acquisition audit; Mike owns the retainer/offering redesign.
+**Key facts surfaced:**
+- Matt lives in Mark's house. Mark has been away ~4 weeks; distant/low/little eye contact when around. Matt reads a real "off" vibe (Mike independently sensed it too).
+- Mark promised $25/hr starting July (said it 3x), then when Matt asked in July to budget/stop using Mark's card, deflected ("confused," "we'll talk"), never did, went quiet. The ask made Matt's cost visible while his value was unclear, exactly Mike's warning.
+- Visa: Matt out of the US by ~early November.
 
 **Open / unfinished:**
-- Where Business Without You sits in the ACE map (flagship product vs. scalable attractor) is an open strategic fork, not yet raised with Mike.
-- Networking events cost/client-count and the exact date of "the 11th" workshop kickoff (likely Aug 11) are still unconfirmed.
-- The community research brief needs Matt's 2-3 real community names before the research pass can run.
-- Next call with Mike: Tuesday, July 21, 11:00 AM ET.
+- Whether Matt opens the door with Mark directly (clear-the-air, NOT re-asking for money) or just plays out his plan to November and leans into Mike. Matt prefers directness but Mark is non-confrontational, so delivery must give Mark a face-saving ramp.
+- Acquisition sheet upgrade (cost/revenue/attendance/conversion + Solutions→Financial conversion cross-ref) still to do.
+- Matt's own paid side offer (productized diagnostic using the frameworks + the 7 tools) to fund the $15k debt: still just the plan, not started.
+- Friday call with Mike: time to be confirmed by text (Matt flies the 23rd).
 
 **Next steps:**
-- Send Mike the calendar invite for Tuesday's call (from Matt's personal gmail, not the office@ calendar).
-- Bring the acquisition worksheet into that call, referrals are the single biggest channel (8 of 24 clients, essentially free) against $87K/year spent on Boardroom and LAN combined for 5 clients, worth leading with.
-- Name the 2-3 communities Matt belongs to so the community research pass can run and slides can get built for Mike.
+- Tomorrow's conversation with Mark is the near-term focus; prep it if Matt wants (open, listen, close, face-saving delivery).
+- Build the acquisition sheet upgrade when Matt's ready.
+- Scope lane 2 (the paid diagnostic offer) into concrete steps: what it is, who to sell first, what to charge.

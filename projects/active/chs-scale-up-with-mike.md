@@ -2,10 +2,11 @@
 name: Cool Hollow Solutions scale-up (with Mike / Senteo)
 area: Cool Hollow Solutions
 priority: 1
-last_activity: 2026-07-17
-summary: Restructure and scale Mark's firm from roughly $720K/year to $3-5M without meaningful headcount growth. Matt is Mike's right hand for the alignment workshops. Matt owns the community design and the client acquisition audit; Mike owns the retainer and offering redesign.
-next_action: Before the Tuesday Jul 21, 11:00 AM call with Mike, fill in the client acquisition worksheet and name the 2-3 communities to research (outputs/strategy/, both dated 2026-07-17).
+last_activity: 2026-07-21
+summary: Restructure and scale Mark's firm from roughly $720K/year to $3-5M without meaningful headcount growth. As of the Jul 21 call, Matt's role is undefined, the restructure grew into a big-vision exercise and the community "product owner" box only becomes his after the vision lands (months out, likely past his Nov visa exit). Near-term play: add tactical value (take tasks off Kathy/Hannah/Cam), lean into Mike, plan a dignified November exit with remote continuation from London.
+next_action: Prep tomorrow's conversation with Mark (clear the air, not re-asking for money); upgrade the acquisition sheet (add cost/revenue/attendance/conversion columns + cross-ref Solutions→Financial conversions); confirm Friday follow-up call time with Mike.
 sources:
+  - memory/deep-memory/2026-07-21-debrief-mike-call-role-and-acquisition.md
   - memory/deep-memory/2026-07-17-debrief-mike-ruckman-senteo.md
   - outputs/strategy/2026-07-17-chs-scale-up-diagnostic-v1.md
   - outputs/strategy/2026-07-17-chs-client-acquisition-worksheet.md
