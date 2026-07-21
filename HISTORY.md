@@ -3,6 +3,13 @@
 > Chronological log of all work done in this workspace. Updated every session.
 > Most recent entries at the top. Each entry has a date, title, and bullet points.
 >
+
+## 2026-07-21
+
+### Mike call debrief + CHS role status update
+- Debriefed the July 21 Mike call in full (`memory/deep-memory/2026-07-21-debrief-mike-call-role-and-acquisition.md`): the CHS restructure has grown into a big-vision exercise, leaving Matt's role undefined; the community "product owner" box only becomes his once the vision lands, likely past his November visa exit. Near-term play: add tactical value, lean into Mike, plan a dignified November pivot with remote continuation from London. Captured the full acquisition numbers (referrals the only efficient channel, social media $30k/yr for 0 clients) and the ACE model draft.
+- Worked through the personal friction with Mark and landed the honest read: no transgression by Matt; the likely pivot is a stalled $25/hr raise Mark promised then went quiet on, a value-perception gap plus Mark's conflict-avoidance, not anything Matt did wrong.
+- Updated the CHS project register entry (role now undefined, next actions reset) and backed up the community ACE worksheet PDF from the 20th.
 > How it works: when you run `/commit` after meaningful work, Claude adds an entry here
 > automatically. You do not need to write this file yourself.
 
